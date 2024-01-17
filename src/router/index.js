@@ -1,0 +1,1 @@
+export { hierarchy } from './routes'

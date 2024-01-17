@@ -4,8 +4,9 @@ import Settings from './Components/Settings'
 import Question from './Components/Question'
 import TestLayot from './Components/TestLayot'
 import GridTable from './Components/GridTable'
-
+import { RouterProvider } from 'react-router'
 import './App.css'
+import { router } from './router/router'
 
 function App() {
   // const questions = useSelector((state) => state.questions)
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="app-container">{component}</div>
+      <RouterProvider router={router} />
     </div>
   )
 }
