@@ -8,7 +8,7 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState([])
   //   let results = []
-
+  console.log('stimuliArray ',stimuliArray)
   useEffect(() => {
     // const startTime = Date.now()
     // Function to handle keydown events
@@ -32,8 +32,8 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
     }
   }, [startTime])
 
-  console.log('step 3')
-  console.log(stimulus)
+  // console.log('step 3')
+  // console.log(stimulus)
   useEffect(() => {
     if (index < stimuliArray.length) {
       setStartTime(Date.now())

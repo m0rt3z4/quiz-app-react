@@ -14,8 +14,12 @@ const trialBlocks = [
   ['ID', 'IL', 'HD', 'HL'],
 ]
 
-const MainTest = ({ setText }) => {
+const MainTest = () => {
   const [results, setResults] = useState([])
+  const [params, setParams] = useState({})
+  useEffect(() => {
+    setParams(createTrialParams('H'))
+  }, [])
   const shuffledTrialBlocks = shuffleArray(trialBlocks)
   let trialArray = []
   shuffledTrialBlocks.forEach((arr) => {
@@ -36,9 +40,12 @@ const MainTest = ({ setText }) => {
       onFinish={saveTrialResults}
     />
   )
-  const finishTest = () => {}
+  const finishTest = (resp) => {
+    console.log(resp)
+  }
   // const trialParams = createTrialParams('H')
   // console.log(trialParams)
+  const trialParams = createTrialParams('H')
   return (
     // <GridTable
     //   props={{
@@ -47,7 +54,13 @@ const MainTest = ({ setText }) => {
     //     // stimulus: { i: 1, j: 2, iconType: 'STIMULUS' },
     //   }}
     // />
-    <Zrial background={'L'} letter={'H'} setText={setText} />
+    <Zrial
+      background={'L'}
+      letter={'H'}
+      // setText={setText}
+      trialParams={trialParams}
+      onFinishTrial={finishTest}
+    />
   )
 }
 
