@@ -15,10 +15,10 @@ const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
     <Box
       sx={{
         display: 'flex',
-        backgroundColor: 'white',
+        backgroundColor: backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        border: '2px solid black',
+        border: '1px solid black',
         width: 70,
         height: 70,
       }}

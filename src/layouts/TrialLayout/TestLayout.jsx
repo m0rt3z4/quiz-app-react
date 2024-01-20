@@ -44,10 +44,11 @@ export const TrialLayout = () => {
               alignItems: 'center',
               justifyContent: 'center',
               minHeight: 140,
+              borderRadius:'35px'
             }}
           >
             <Stack p={1} py={2}>
-              <Typography>{title}</Typography>
+              <Typography fontSize={'25px'}>{title}</Typography>
             </Stack>
           </Card>
         </Grid>
@@ -66,13 +67,20 @@ export const TrialLayout = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '150px',
+                  borderRadius:'35px'
+
                 }}
               >
                 <ArrowBackIcon fontSize="large" />
               </Card>
             )}
           </Grid>
-          <Grid item justifyContent="center" alignItems="center" xs={4}>
+          <Grid
+            item
+            justifyContent="center"
+            alignItems="center"
+            xs={4}
+          >
             <Outlet />
           </Grid>
           <Grid item xs={1}>
@@ -83,6 +91,8 @@ export const TrialLayout = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '150px',
+                  borderRadius:'35px'
+
                 }}
               >
                 <ArrowForwardIcon fontSize="large" />

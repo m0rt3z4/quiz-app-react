@@ -56,9 +56,11 @@ export const TrialGrid = ({
     <Card
       sx={{
         display: 'flex',
+        backgroundColor: isWhiteThemed ? 'white' : 'lightGray',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 6,
+        borderRadius: '35px',
       }}
     >
       <Box

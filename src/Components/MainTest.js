@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-// import GridTable from './GridTable'
-// import Trial from './TrialManager/Trial'
-// import Step1 from './TrialManager/Step1'
 import createTrialParams from '../helpers/createTrialParams'
 import shuffleArray from '../helpers/shuffleArray'
-import Zrial from './TrialManager/Zrial'
+import Trial from './TrialManager/Trial'
 
 const trialBlocks = [
   ['HL', 'HD', 'IL', 'ID'],
@@ -34,31 +31,14 @@ const MainTest = () => {
       finishTest()
     }
   }
-  // const akbar = (
-  //   <Trial
-  //     letter={trialArray[trialIndex][0]}
-  //     background={trialArray[trialIndex][1]}
-  //     onFinish={saveTrialResults}
-  //   />
-  // )
   const finishTest = (resp) => {
     console.log(resp)
   }
-  // const trialParams = createTrialParams('H')
-  // console.log(trialParams)
   const trialParams = createTrialParams('H')
   return (
-    // <GridTable
-    //   props={{
-    //     // darkLightArray: MockArrays.hLetterArray,
-    //     isWhiteThemed: true,
-    //     // stimulus: { i: 1, j: 2, iconType: 'STIMULUS' },
-    //   }}
-    // />
-    <Zrial
+    <Trial
       background={'L'}
       letter={'H'}
-      // setText={setText}
       trialParams={trialParams}
       onFinishTrial={finishTest}
     />
