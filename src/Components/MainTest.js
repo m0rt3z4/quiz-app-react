@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import GridTable from './GridTable'
-import Trial from './TrialManager/Trial'
-import Step1 from './TrialManager/Step1'
+// import GridTable from './GridTable'
+// import Trial from './TrialManager/Trial'
+// import Step1 from './TrialManager/Step1'
 import createTrialParams from '../helpers/createTrialParams'
 import shuffleArray from '../helpers/shuffleArray'
 import Zrial from './TrialManager/Zrial'
@@ -29,17 +29,18 @@ const MainTest = () => {
   const saveTrialResults = (result) => {
     setResults([...results, result])
     if (results.length < shuffledTrialBlocks.length) {
+      setTrialIndex(trialIndex+1)
     } else {
       finishTest()
     }
   }
-  const akbar = (
-    <Trial
-      letter={trialArray[trialIndex][0]}
-      background={trialArray[trialIndex][1]}
-      onFinish={saveTrialResults}
-    />
-  )
+  // const akbar = (
+  //   <Trial
+  //     letter={trialArray[trialIndex][0]}
+  //     background={trialArray[trialIndex][1]}
+  //     onFinish={saveTrialResults}
+  //   />
+  // )
   const finishTest = (resp) => {
     console.log(resp)
   }

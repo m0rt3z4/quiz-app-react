@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react'
-// import useKeyboard from '../../helpers/useKeyboard'
-import GridTable from '../GridTable'
+
+import { useTrialContext } from '../../layouts/TrialLayout/context'
+import { TrialGrid } from '../TrialGrid/TrialGrid'
 
 const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [result, setResult] = useState({})
   const [startTime, setStartTime] = useState(0)
+  const { title, changeTitle, showArrows } = useTrialContext()
 
-  console.log('step2 ',stimuliArray)
   useEffect(() => {
     if (index < stimuliArray.length) {
       if (stimuliArray[index].iconType === 'SURPRIZE') {
+        changeTitle('Surprize')
+        showArrows(true)
         setStimulus(stimuliArray[index])
         setStartTime(Date.now())
       } else {
+        if (title === 'Surprize') changeTitle('Focus!')
         setStimulus(stimuliArray[index])
         setTimeout(() => {
           setStimulus({})
           setIndex(index + 1)
         }, 500)
       }
-      // showStimulus(stimuliArray[index])
     } else {
       onFinishStep(result)
     }
@@ -33,6 +36,7 @@ const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
       if (['ArrowRight', 'ArrowLeft'].includes(event.key)) {
         const endTime = Date.now()
         setResult({ responseTime: endTime - startTime, userAnswer: event.key })
+        showArrows(false)
         setIndex(index + 1)
       }
     }
@@ -44,11 +48,9 @@ const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
   }, [startTime])
 
   const Grid = (
-    <GridTable
-      props={{
-        isWhiteThemed: background === 'L' ? true : false,
-        stimulus,
-      }}
+    <TrialGrid
+      isWhiteThemed={background === 'L' ? true : false}
+      stimulus={stimulus}
     />
   )
   return Grid

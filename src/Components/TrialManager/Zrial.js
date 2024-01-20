@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import createTrialParams from '../../helpers/createTrialParams'
 import shuffleArray from '../../helpers/shuffleArray'
+// import provider from '../../layouts/TrialLayout/provider'
 
 import Step1 from './Step1'
 import Step2 from './Step2'

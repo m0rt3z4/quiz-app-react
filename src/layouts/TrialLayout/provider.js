@@ -19,6 +19,11 @@ export const TrialProvider = ({ children }) => {
     setLeftBarVisible(isVisible)
   }, [])
 
+  const showArrows = useCallback((isVisible) => {
+    setLeftBarVisible(isVisible)
+    setRightBarVisible(isVisible)
+  }, [])
+
   const value = useMemo(() => {
     return {
       step,
@@ -29,6 +34,7 @@ export const TrialProvider = ({ children }) => {
       rightBarVisible,
       changeLeftbarVisiblity,
       changeRightbarVisiblity,
+      showArrows,
     }
   }, [
     step,
@@ -39,6 +45,7 @@ export const TrialProvider = ({ children }) => {
     rightBarVisible,
     changeLeftbarVisiblity,
     changeRightbarVisiblity,
+    showArrows,
   ])
 
   return <TrialContext.Provider value={value}>{children}</TrialContext.Provider>
