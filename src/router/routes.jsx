@@ -10,6 +10,10 @@ export const { collection, hierarchy } = defineRoutes([
         key: 'trial',
         path: '/trial',
       },
+      {
+        key: 'tutorial',
+        path: '/tutorial',
+      },
     ]
   },
   

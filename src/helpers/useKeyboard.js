@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react'
 
-const useKeyboard = (start) => {
+const useKeyboard = (startTime, keyArray = [], callback) => {
   const [keyPressed, setKeyPressed] = useState(null)
-  const [startTime, setStartTime] = useState(start || Date.now())
+  // const [startTime, setStartTime] = useState(start || Date.now())
   const [responseTime, setResponseTime] = useState(null)
 
   useEffect(() => {
     // const startTime = Date.now()
     // Function to handle keydown events
     const handleKeyDown = (event) => {
-      if (['ArrowRight', 'ArrowLeft', ' '].includes(event.key)) {
+      if (keyArray.includes(event.key)) {
         const endTime = Date.now()
-        setKeyPressed(event.key)
         setResponseTime(!!startTime ? endTime - startTime : null)
-        // setStartTime(0)
+        setKeyPressed(event.key)
       }
     }
 
@@ -29,7 +28,7 @@ const useKeyboard = (start) => {
     }
   }, [])
 
-  return { responseTime, keyPressed }
+  return callback({ keyPressed, responseTime })
 }
 
 export default useKeyboard

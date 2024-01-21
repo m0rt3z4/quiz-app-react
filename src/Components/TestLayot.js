@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState,  } from 'react'
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Grid from '@mui/material/Grid'
 
-import GridTable from './GridTable'
 import MainTest from './MainTest'
-import MockArrays from './MockArrays'
 
 const InstructionBar = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -36,7 +34,7 @@ const Gridoo = () => {
   const [istruction, setInstruction] = useState('start')
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3} justifyContent={'center'} paddingTop={'50px'}>
+      <Grid container spacing={2} justifyContent={'center'} paddingTop={1}>
         <Grid container spacing={2} justifyContent={'center'}>
           <Grid item xs={8}>
             <InstructionBar>

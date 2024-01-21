@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
 import Cell from './Cell'
-import useKeyboard from '../helpers/useKeyboard'
 
 const GridTable = ({ props }) => {
   const {
@@ -9,36 +8,8 @@ const GridTable = ({ props }) => {
     darkLightArray,
     isWhiteThemed = true,
     stimulus = {},
-    respondable = false,
-    onReceiveResponse,
   } = props
 
-  // const [trigger, setTrigger] = useState(respondable)
-  // const userResponse = useKeyboard()
-
-  // console.log(stimulus, userResponse)
-  // const [userResponse, setUserResponse] = useState({})
-  // console.log(userResponse)
-  // useEffect(() => {
-  //   if (
-  //     respondable &&
-  //     userResponse &&
-  //     !!userResponse.keyPressed &&
-  //     !!userResponse.responseTime &&
-  //     (userResponse.keyPressed === 'ArrowLeft' ||
-  //       userResponse.keyPressed === 'ArrowRight')
-  //   ) {
-  //     console.log(
-  //       `answering qustion with => ${
-  //         userResponse.keyPressed === 'ArrowRight' ? 'YES' : 'NO'
-  //       }`
-  //     )
-  //     onReceiveResponse({
-  //       responseTime: userResponse.responseTime,
-  //       userAnswer: userResponse.keyPressed === 'ArrowRight' ? 'YES' : 'NO',
-  //     })
-  //   }
-  // }, [userResponse])
 
   const hasCostumBackground = !!darkLightArray
   const renderGrid = () => {
