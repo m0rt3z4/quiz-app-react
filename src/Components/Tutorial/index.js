@@ -5,15 +5,21 @@ import { TrialGrid } from '../TrialGrid/TrialGrid'
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
+import Step4 from './Step4'
+import Step5 from './Step5'
 
 const Tutorial = ({}) => {
   const [step, setStep] = useState(0)
   const { changeTitle, changeOutletWidth } = useTrialContext()
-  changeTitle('Tutorial')
-  changeOutletWidth(8)
+
   const onNextStep = () => {
     setStep(step + 1)
   }
+
+  useEffect(() => {
+    changeTitle('Tutorial')
+    changeOutletWidth(8)
+  }, [])
 
   const renderStep = () => {
     switch (step) {
@@ -23,6 +29,10 @@ const Tutorial = ({}) => {
         return <Step2 onNext={onNextStep} />
       case 2:
         return <Step3 onNext={onNextStep} />
+      case 3:
+        return <Step4 onNext={onNextStep} />
+      case 4:
+        return <Step5 onNext={onNextStep} />
       default:
         break
     }

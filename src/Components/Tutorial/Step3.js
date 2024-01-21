@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
+import useKeyboard from '../../helpers/useKeyboard'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
@@ -10,10 +11,23 @@ const Step3 = ({ onNext }) => {
   const [background, setBackground] = useState(true)
   const [customBgArray, setCustomBgArray] = useState([])
 
-  const { showArrows } = useTrialContext()
+  const { showArrows, changeLeftBarWarning } = useTrialContext()
   useEffect(() => {
     showArrows(true)
   }, [])
+
+  const onResponse = (resp) => {
+    console.log(resp)
+    if (!!resp && resp.keyPressed === 'ArrowLeft') {
+      console.log('ss')
+      changeLeftBarWarning(true)
+    } else if (!!resp && resp.keyPressed === 'ArrowRight') {
+      showArrows(false)
+      changeLeftBarWarning(false)
+      onNext()
+    }
+  }
+  useKeyboard(Date.now(), ['ArrowLeft', 'ArrowRight'], onResponse)
 
   useEffect(() => {
     const timeout = setTimeout(() => {

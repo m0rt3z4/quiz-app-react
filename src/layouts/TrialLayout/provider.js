@@ -7,6 +7,8 @@ export const TrialProvider = ({ children }) => {
   const [outletWidth, setOutletWidth] = useState(4)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
+  const [leftBarWarning, setLeftBarWarning] = useState(false)
+  const [rightBarWarning, setRightBarWarning] = useState(false)
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -28,10 +30,16 @@ export const TrialProvider = ({ children }) => {
     setRightBarVisible(isVisible)
   }, [])
 
+  const changeRightBarWarning = useCallback((isWarning) => {
+    setRightBarWarning(isWarning)
+  }, [])
+
+  const changeLeftBarWarning = useCallback((isWarning) => {
+    setLeftBarWarning(isWarning)
+  }, [])
+
   const value = useMemo(() => {
     return {
-      step,
-      setStep,
       outletWidth,
       changeOutletWidth,
       title,
@@ -41,9 +49,12 @@ export const TrialProvider = ({ children }) => {
       changeLeftbarVisiblity,
       changeRightbarVisiblity,
       showArrows,
+      changeRightBarWarning,
+      changeLeftBarWarning,
+      leftBarWarning,
+      rightBarWarning,
     }
   }, [
-    step,
     outletWidth,
     changeOutletWidth,
     title,
@@ -53,6 +64,10 @@ export const TrialProvider = ({ children }) => {
     changeLeftbarVisiblity,
     changeRightbarVisiblity,
     showArrows,
+    changeRightBarWarning,
+    changeLeftBarWarning,
+    leftBarWarning,
+    rightBarWarning,
   ])
 
   return <TrialContext.Provider value={value}>{children}</TrialContext.Provider>

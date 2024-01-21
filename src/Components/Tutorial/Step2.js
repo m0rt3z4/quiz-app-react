@@ -14,7 +14,7 @@ const Step2 = ({ onNext }) => {
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === ' ') onNext()
   }
-  useKeyboard(Date.now(), keyboardCallback)
+  useKeyboard(Date.now(), [' '], keyboardCallback)
 
   useEffect(() => {
     const timeout = setTimeout(() => {

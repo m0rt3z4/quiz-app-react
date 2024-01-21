@@ -14,7 +14,7 @@ const Step1 = ({ background, letter, onStartTrial }) => {
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === ' ') onStartTrial()
   }
-  useKeyboard(Date.now(), keyboardCallback)
+  useKeyboard(Date.now(), [' '], keyboardCallback)
 
   const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
   return Grid
