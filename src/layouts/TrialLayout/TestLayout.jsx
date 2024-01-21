@@ -9,6 +9,7 @@ export const TrialLayout = () => {
   const {
     title,
     // changeTitle,
+    outletWidth,
     leftBarVisible,
     rightBarVisible,
     // showArrows,
@@ -35,7 +36,7 @@ export const TrialLayout = () => {
         justifyContent={'center'}
         alignContent={'center'}
         spacing={2}
-        sx={{ paddingTop: 5 }}
+        sx={{ paddingTop: 1 }}
       >
         <Grid item xs={6}>
           <Card
@@ -43,8 +44,9 @@ export const TrialLayout = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 140,
-              borderRadius:'35px'
+              minHeight: 125,
+              borderRadius: '35px',
+              border: '1px solid black',
             }}
           >
             <Stack p={1} py={2}>
@@ -56,8 +58,8 @@ export const TrialLayout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={{ paddingTop: '20px' }}
-          spacing={1}
+          sx={{ paddingTop: '10px' }}
+          spacing={2}
         >
           <Grid item xs={1}>
             {leftBarVisible && (
@@ -67,8 +69,8 @@ export const TrialLayout = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '150px',
-                  borderRadius:'35px'
-
+                  borderRadius: '35px',
+                  border: '1px solid black',
                 }}
               >
                 <ArrowBackIcon fontSize="large" />
@@ -79,7 +81,7 @@ export const TrialLayout = () => {
             item
             justifyContent="center"
             alignItems="center"
-            xs={4}
+            xs={outletWidth}
           >
             <Outlet />
           </Grid>
@@ -91,8 +93,8 @@ export const TrialLayout = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   height: '150px',
-                  borderRadius:'35px'
-
+                  borderRadius: '35px',
+                  border: '1px solid black',
                 }}
               >
                 <ArrowForwardIcon fontSize="large" />

@@ -4,11 +4,15 @@ import { TrialContext } from './context'
 export const TrialProvider = ({ children }) => {
   const [step, setStep] = useState(0)
   const [title, setTitle] = useState()
+  const [outletWidth, setOutletWidth] = useState(4)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
+  }, [])
+  const changeOutletWidth = useCallback((newWidth) => {
+    setOutletWidth(newWidth)
   }, [])
 
   const changeRightbarVisiblity = useCallback((isVisible) => {
@@ -28,6 +32,8 @@ export const TrialProvider = ({ children }) => {
     return {
       step,
       setStep,
+      outletWidth,
+      changeOutletWidth,
       title,
       changeTitle,
       leftBarVisible,
@@ -38,7 +44,8 @@ export const TrialProvider = ({ children }) => {
     }
   }, [
     step,
-    setStep,
+    outletWidth,
+    changeOutletWidth,
     title,
     changeTitle,
     leftBarVisible,

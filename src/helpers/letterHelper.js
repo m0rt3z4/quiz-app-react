@@ -74,3 +74,9 @@ export const pickRandomDirection = (n, exclude = []) => {
 export const pickSurprizeLocation = () => {
   return pickRandomFromArray([...iOnLetters, ...hOnLetters], 1)[0]
 }
+
+export const pickRandomStimulus = () => {
+  const location = pickRandomFromArray([...iOnLetters, ...hOnLetters], 1)[0]
+  const direction = pickRandomDirection(1)[0]
+  return { i: location[0], j: location[1], iconType: `STIMULUS_${direction}` }
+}

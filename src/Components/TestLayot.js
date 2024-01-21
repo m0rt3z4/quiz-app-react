@@ -34,7 +34,7 @@ const Gridoo = () => {
   const [istruction, setInstruction] = useState('start')
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={3} justifyContent={'center'} paddingTop={'50px'}>
+      <Grid container spacing={2} justifyContent={'center'} paddingTop={1}>
         <Grid container spacing={2} justifyContent={'center'}>
           <Grid item xs={8}>
             <InstructionBar>

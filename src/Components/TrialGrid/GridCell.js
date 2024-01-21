@@ -1,13 +1,23 @@
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Typography } from '@mui/material'
+
+import { iconLoader } from './iconLoader'
 
 const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
   // const backgroundColor = isLightBackground ? 'white' : 'lightgray'
+  // const iconImg = () => <img src={iconLoader(iconType)} alt="fireSpot" />
   const Icon = (iconType) => {
     if (iconType === 'SURPRIZE') {
-      return '*'
+      return <Typography fontSize={'30px'}>*</Typography>
     } else {
-      return '🌟'
+      // return <Typography fontSize={'20px'}>{'🌟'}</Typography>
+      return (
+        <img
+          src={iconLoader(iconType)}
+          alt="fireSpot"
+          style={{ display: 'flex', width: '40px', height: '40px' }}
+        />
+      )
     }
   }
   const content = showStimulus ? <span>{Icon(iconType)}</span> : null
