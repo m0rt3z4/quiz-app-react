@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 
-import { useTrialContext } from '../../layouts/TrialLayout/context'
 import useKeyboard from '../../helpers/useKeyboard'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 import { hLetterArray, iLetterArray } from './customBackground'
@@ -20,7 +19,6 @@ const Step1 = ({ onNext }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (index < refreshGridArray.length) {
-        console.log(refreshGridArray[index][0])
         setCustomBgArray(
           refreshGridArray[index][0] === 'H' ? hLetterArray : iLetterArray
         )

@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useTrialContext } from '../../layouts/TrialLayout/context'
+import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 
@@ -9,16 +8,6 @@ export const TrialGrid = ({
   isWhiteThemed,
   stimulus = {},
 }) => {
-  // const { title, changeTitle } = useTrialContext()
-  // console.log(cutomBgArray);
-  // let customBackground = []
-  // if (!!cutomBgArray) {
-  //   if (cutomBgArray === 'H') {
-  //     customBackground = hLetterArray
-  //   } else if (cutomBgArray === 'I') {
-  //     customBackground = iLetterArray
-  //   }
-  // }
   const renderGrid = () => {
     let rows = []
     rows.includes()
@@ -33,7 +22,6 @@ export const TrialGrid = ({
             : isWhiteThemed
         let showStimulus =
           !!stimulus && i === stimulus.i && j === stimulus.j ? true : false
-        // console.log(bgColor);
         cells.push(
           <GridCell
             backgroundColor={bgColor ? 'white' : 'lightGray'}

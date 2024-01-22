@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
@@ -14,6 +14,7 @@ const Step3 = ({ onNext }) => {
   const { showArrows, changeLeftBarWarning } = useTrialContext()
   useEffect(() => {
     showArrows(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const onResponse = (resp) => {
@@ -53,7 +54,6 @@ const Step3 = ({ onNext }) => {
         sx={{
           display: 'flex',
           justifyContent: 'center',
-          //   alignItems: 'center',
           padding: 3,
         }}
       >

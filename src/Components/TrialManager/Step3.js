@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 
 import { TrialGrid } from '../TrialGrid/TrialGrid'
@@ -12,9 +13,9 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
 
   useEffect(() => {
     changeTitle('Recognition Step\nWas this Stimulus Shown?')
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
+
     // Function to handle keydown events
     const handleKeyDown = (event) => {
       if (['ArrowRight', 'ArrowLeft'].includes(event.key)) {
@@ -30,7 +31,6 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startTime])
 
   useEffect(() => {
@@ -43,7 +43,6 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
       setStimulus({})
       onFinishStep(results)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
 
   const onUserResp = (resp) => {

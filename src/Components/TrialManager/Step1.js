@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-import GridTable from '../GridTable'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 import useKeyboard from '../../helpers/useKeyboard'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
 const Step1 = ({ background, letter, onStartTrial }) => {
-  const { title, changeTitle } = useTrialContext()
-  console.log(title)
+  const { changeTitle } = useTrialContext()
   changeTitle(
     `Imagin the letter '${letter}' on the grid.\nPress 'Space' Key to start.`
   )

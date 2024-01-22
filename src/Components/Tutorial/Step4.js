@@ -1,16 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
-import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 import { pickRandomStimulus } from '../../helpers/letterHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import { hLetterArray, iLetterArray } from './customBackground'
 
 const Step4 = ({ onNext }) => {
-  const [background, setBackground] = useState(true)
-  const [customBgArray, setCustomBgArray] = useState([])
   const [stimulus, setStimulus] = useState({})
   const { showArrows } = useTrialContext()
+
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === ' ') {
@@ -47,16 +46,10 @@ const Step4 = ({ onNext }) => {
         </Box>
       </Grid>
       <Grid item xs={7}>
-        <TrialGrid
-          isWhiteThemed={background}
-          cutomBgArray={customBgArray}
-          stimulus={stimulus}
-        />
+        <TrialGrid stimulus={stimulus} />
       </Grid>
     </Grid>
   )
 }
-
-const refreshGridArray = ['HL', 'HD', 'IL', 'ID']
 
 export default Step4

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
+import { Box, Grid, Card } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
@@ -19,6 +18,7 @@ const Tutorial = ({}) => {
   useEffect(() => {
     changeTitle('Tutorial')
     changeOutletWidth(8)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const renderStep = () => {

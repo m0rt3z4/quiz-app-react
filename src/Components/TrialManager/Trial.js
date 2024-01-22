@@ -39,7 +39,6 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
     })
   }
 
-  console.log(`step => ${step}`)
   const renderSteps = () => {
     switch (step) {
       case 0: {
