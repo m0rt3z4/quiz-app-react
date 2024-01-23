@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
+import RecognitionSlide from './RecognitionSlide'
 
 const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
@@ -19,6 +20,10 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
       },
     })
     setStep(2)
+    setTimeout(() => {
+      setStep(3)
+      return clearTimeout()
+    }, 5000)
   }
   const onFinishRecognition = (resp) => {
     const result = {
@@ -53,6 +58,9 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
         )
       }
       case 2: {
+        return <RecognitionSlide />
+      }
+      case 3: {
         return (
           <Step3
             background={background}
@@ -61,6 +69,7 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
           />
         )
       }
+
       default:
         break
     }

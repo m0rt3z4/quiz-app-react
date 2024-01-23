@@ -12,7 +12,7 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
   const { showArrows, changeTitle } = useTrialContext()
 
   useEffect(() => {
-    changeTitle('Recognition Step\nWas this Stimulus Shown?')
+    changeTitle('Recognition')
   }, [])
   useEffect(() => {
 
