@@ -4,10 +4,11 @@ import {
   pickRandomDirection,
 } from './letterHelper'
 import { recognitionTypes } from '../consts'
+import shuffleArray from './shuffleArray'
 
 const createTrialParams = (letter) => {
   // choose random location for surprize
-  const suripizeLocation = pickSurprizeLocation()
+  const suripizeLocation = pickSurprizeLocation(letter)
   // choose random directions
   const randomDirections = pickRandomDirection(6)
   // create onLetter Stimuli
@@ -68,18 +69,27 @@ const createTrialParams = (letter) => {
 
   let result = {
     surpize: {
-      location: { i: suripizeLocation[0], j: suripizeLocation[1] },
+      i: suripizeLocation[0],
+      j: suripizeLocation[1],
+      iconType: 'SURPRIZE',
+      isOnLetter: suripizeLocation[2],
     },
-    stimuli: {
-      onLetters,
-      offLetters,
-    },
-    recognition: [
+    stimuli: shuffleArray([
+      ...onLetters,
+      ...offLetters,
+      {
+        i: suripizeLocation[0],
+        j: suripizeLocation[1],
+        iconType: 'SURPRIZE',
+        isOnLetter: suripizeLocation[2],
+      },
+    ]),
+    recognition: shuffleArray([
       correctOnLetter,
       correctOffLetter,
       incorrectOnLetter,
       incorrectOffLetter,
-    ],
+    ]),
   }
   return result
 }
