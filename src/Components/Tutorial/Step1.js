@@ -44,11 +44,14 @@ const Step1 = ({ onNext }) => {
         }}
       >
         <Box>
-          <Typography fontSize={'30px'}>
+          <Typography fontSize={'25px'}>
             At the begining of the test,
           </Typography>
-          <Typography fontSize={'30px'} sx={{ paddingTop: 2 }}>
+          <Typography fontSize={'25px'} sx={{ paddingTop: 2 }}>
             you will be asked to imagine the letter 'H' or 'I' on the Grid.
+          </Typography>{' '}
+          <Typography fontSize={'25px'} sx={{ paddingTop: 4 }}>
+            Press Space to continue.
           </Typography>
         </Box>
       </Grid>

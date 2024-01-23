@@ -37,6 +37,9 @@ const Step2 = ({ onNext }) => {
           </Typography>
           <Typography fontSize={'25px'} sx={{ paddingTop: 5 }}>
             {'Note that they vary in direction'}
+          </Typography>{' '}
+          <Typography fontSize={'25px'} sx={{ paddingTop: 4 }}>
+            Press Space to continue.
           </Typography>
         </Box>
       </Grid>

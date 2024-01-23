@@ -42,6 +42,9 @@ const Step4 = ({ onNext }) => {
             {
               "we'll ask if you remember the location and direction of the stimulis"
             }
+          </Typography>{' '}
+          <Typography fontSize={'25px'} sx={{ paddingTop: 5 }}>
+            Press Space to continue.
           </Typography>
         </Box>
       </Grid>
