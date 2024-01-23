@@ -80,3 +80,10 @@ export const pickRandomStimulus = () => {
   const direction = pickRandomDirection(1)[0]
   return { i: location[0], j: location[1], iconType: `STIMULUS_${direction}` }
 }
+
+export const pickRandomTrialConfig = () => {
+  const arr = ['HL', 'HD', 'ID', 'IL']
+  const rnd = arr[Math.floor(Math.random() * arr.length)]
+  console.log(rnd)
+  return { letter: rnd[0], background: rnd[1] }
+}

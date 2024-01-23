@@ -6,6 +6,7 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 
 const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
+  console.log({ background, letter, trialParams })
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
@@ -32,11 +33,13 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
     setStep(2)
   }
   const onFinishRecognition = (resp) => {
-    onFinishTrial({
+    const result = {
       ...results,
       stimuli: trialParams.stimuli,
       recognition: resp,
-    })
+    }
+    console.log(result)
+    onFinishTrial(result)
   }
 
   const renderSteps = () => {

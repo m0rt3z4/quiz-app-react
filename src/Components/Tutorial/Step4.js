@@ -46,7 +46,7 @@ const Step4 = ({ onNext }) => {
         </Box>
       </Grid>
       <Grid item xs={7}>
-        <TrialGrid stimulus={stimulus} />
+        <TrialGrid isWhiteThemed={true} stimulus={stimulus} />
       </Grid>
     </Grid>
   )

@@ -59,6 +59,6 @@ const Step1 = ({ onNext }) => {
   )
 }
 
-const refreshGridArray = ['HL', 'HD', 'IL', 'ID']
+const refreshGridArray = ['HL', 'IL']
 
 export default Step1

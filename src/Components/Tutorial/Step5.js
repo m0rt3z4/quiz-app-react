@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Box, Grid, Typography, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
+import Trial from '../TrialManager/Trial'
+import { pickRandomTrialConfig } from '../../helpers/letterHelper'
+import createTrialParams from '../../helpers/createTrialParams'
 
 const Step5 = ({ onNext }) => {
+  const [inPractice, setInPractice] = useState(false)
+  const [background, setBackground] = useState()
+  const [letter, setLetter] = useState()
+  const [params, setParams] = useState({})
+
   const { changeOutletWidth } = useTrialContext()
 
   useEffect(() => {
@@ -10,7 +18,17 @@ const Step5 = ({ onNext }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return (
+  const onClickPractice = () => {
+    // Create new Trial params
+    const newTrial = pickRandomTrialConfig()
+    setLetter(newTrial.letter)
+    setBackground(newTrial.background)
+    setParams(createTrialParams(newTrial.letter))
+
+    setInPractice(true)
+  }
+
+  const StepFiveCard = () => (
     <Grid container sx={{ paddingTop: '20px' }}>
       <Grid item xs={12} justifyContent={'center'}>
         <Box
@@ -28,7 +46,8 @@ const Step5 = ({ onNext }) => {
       </Grid>
       <Grid item xs={12} sx={{ paddingTop: '35px' }}>
         <Button
-          href="/"
+          // href="/"
+          onClick={onClickPractice}
           size="large"
           sx={{
             width: '60%',
@@ -51,6 +70,21 @@ const Step5 = ({ onNext }) => {
         </Button>
       </Grid>
     </Grid>
+  )
+
+  const onFinishPractice = () => {
+    setInPractice(false)
+  }
+
+  return !inPractice ? (
+    StepFiveCard()
+  ) : (
+    <Trial
+      letter={letter}
+      background={background}
+      trialParams={params}
+      onFinishTrial={onFinishPractice}
+    />
   )
 }
 
