@@ -24,7 +24,7 @@ const Step5 = ({ onNext }) => {
     setLetter(newTrial.letter)
     setBackground(newTrial.background)
     setParams(createTrialParams(newTrial.letter))
-
+    changeOutletWidth(6)
     setInPractice(true)
   }
 
@@ -73,6 +73,7 @@ const Step5 = ({ onNext }) => {
   )
 
   const onFinishPractice = () => {
+    changeOutletWidth(4)
     setInPractice(false)
   }
 
