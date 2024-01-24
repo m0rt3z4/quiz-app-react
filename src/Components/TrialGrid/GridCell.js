@@ -7,6 +7,8 @@ const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
   const Icon = (iconType) => {
     if (iconType === 'SURPRIZE') {
       return <Typography fontSize={'30px'}>*</Typography>
+    } else if (iconType === 'CENTER_DOT') {
+      return <Typography fontSize={'18px'}>.</Typography>
     } else {
       return (
         <img
