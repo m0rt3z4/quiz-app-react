@@ -1,24 +1,14 @@
 import React, { useState } from 'react'
-import shuffleArray from '../../helpers/shuffleArray'
 
 import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
+import RecognitionSlide from './RecognitionSlide'
 
 const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-
-  const stimuliArray = shuffleArray([
-    ...trialParams.stimuli.onLetters,
-    ...trialParams.stimuli.offLetters,
-    {
-      i: trialParams.surpize.location.i,
-      j: trialParams.surpize.location.j,
-      iconType: 'SURPRIZE',
-    },
-  ])
 
   const onFinishFirstStep = (resp) => {
     setResults({
@@ -30,13 +20,19 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
       },
     })
     setStep(2)
+    setTimeout(() => {
+      setStep(3)
+      return clearTimeout()
+    }, 5000)
   }
   const onFinishRecognition = (resp) => {
-    onFinishTrial({
+    const result = {
       ...results,
       stimuli: trialParams.stimuli,
       recognition: resp,
-    })
+    }
+    console.log(result)
+    onFinishTrial(result)
   }
 
   const renderSteps = () => {
@@ -56,20 +52,24 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
         return (
           <Step2
             background={background}
-            stimuliArray={stimuliArray}
+            stimuliArray={trialParams.stimuli}
             onFinishStep={onFinishFirstStep}
           />
         )
       }
       case 2: {
+        return <RecognitionSlide />
+      }
+      case 3: {
         return (
           <Step3
             background={background}
-            stimuliArray={shuffleArray(trialParams.recognition)}
+            stimuliArray={trialParams.recognition}
             onFinishStep={onFinishRecognition}
           />
         )
       }
+
       default:
         break
     }

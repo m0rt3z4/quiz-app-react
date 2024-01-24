@@ -23,11 +23,19 @@ export const TrialGrid = ({
         let showStimulus =
           !!stimulus && i === stimulus.i && j === stimulus.j ? true : false
         cells.push(
-          <GridCell
-            backgroundColor={bgColor ? 'white' : 'lightGray'}
-            showStimulus={showStimulus}
-            iconType={showStimulus ? stimulus.iconType : null}
-          />
+          i === 2 && j === 2 ? (
+            <GridCell
+              backgroundColor={bgColor ? 'white' : 'lightGray'}
+              showStimulus={true}
+              iconType={'CENTER_DOT'}
+            />
+          ) : (
+            <GridCell
+              backgroundColor={bgColor ? 'white' : 'lightGray'}
+              showStimulus={showStimulus}
+              iconType={showStimulus ? stimulus.iconType : null}
+            />
+          )
         )
       }
       rows.push(

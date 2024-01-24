@@ -32,7 +32,7 @@ export const TrialLayout = () => {
   //   return () => clearTimeout(timeout)
   // }, [])
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
         container
         justifyContent={'center'}

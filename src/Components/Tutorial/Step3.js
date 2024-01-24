@@ -63,11 +63,14 @@ const Step3 = ({ onNext }) => {
           </Typography>
           <Typography fontSize={'25px'}>
             {
-              'you must answer whether the icon is on the imagined letter or not'
+              'you must answer whether the Surprize icon is on the imagined letter or not'
             }
+          </Typography>{' '}
+          <Typography fontSize={'25px'} sx={{ paddingTop: '25px' }}>
+            {'by pressing right for yes and left for no'}
           </Typography>
           <Typography fontSize={'25px'} sx={{ paddingTop: '45px' }}>
-            {'On your keyboard, press right arrow for Yes or left arrow for No'}
+            {'Press space to continue'}
           </Typography>
         </Box>
       </Grid>

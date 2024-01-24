@@ -71,12 +71,26 @@ export const pickRandomDirection = (n, exclude = []) => {
   return pickRandomFromArray(arr, n)
 }
 
-export const pickSurprizeLocation = () => {
-  return pickRandomFromArray([...iOnLetters, ...hOnLetters], 1)[0]
+export const pickSurprizeLocation = (letter) => {
+  return pickRandomFromArray(
+    [
+      // add isOnLetter? value
+      ...iOnLetters.map((loc) => [...loc, letter === 'I' ? true : false]),
+      ...hOnLetters.map((loc) => [...loc, letter === 'H' ? true : false]),
+    ],
+    1
+  )[0]
 }
 
 export const pickRandomStimulus = () => {
   const location = pickRandomFromArray([...iOnLetters, ...hOnLetters], 1)[0]
   const direction = pickRandomDirection(1)[0]
   return { i: location[0], j: location[1], iconType: `STIMULUS_${direction}` }
+}
+
+export const pickRandomTrialConfig = () => {
+  const arr = ['HL', 'HD', 'ID', 'IL']
+  const rnd = arr[Math.floor(Math.random() * arr.length)]
+  console.log(rnd)
+  return { letter: rnd[0], background: rnd[1] }
 }

@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import useKeyboard from '../../helpers/useKeyboard'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
 const Step1 = ({ background, letter, onStartTrial }) => {
   const { changeTitle } = useTrialContext()
-  changeTitle(
-    `Imagin the letter '${letter}' on the grid.\nPress 'Space' Key to start.`
-  )
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === ' ') onStartTrial()
-  }
-  useKeyboard(Date.now(), [' '], keyboardCallback)
+  changeTitle(`Imagin the letter '${letter}' on the grid.`)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onStartTrial()
+    }, 5000)
+    return () => {
+      clearTimeout(timer)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
   return Grid
