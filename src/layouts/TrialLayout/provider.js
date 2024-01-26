@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react'
+import { createNewExperiment } from '../../helpers/trialManagerHelper'
 import { TrialContext } from './context'
 
 export const TrialProvider = ({ children }) => {
-  const [step, setStep] = useState(0)
+  const [experiment, setExperiment] = useState(createNewExperiment())
   const [title, setTitle] = useState()
   const [outletWidth, setOutletWidth] = useState(4)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
@@ -40,6 +41,9 @@ export const TrialProvider = ({ children }) => {
 
   const value = useMemo(() => {
     return {
+      experiment,
+      setExperiment,
+
       outletWidth,
       changeOutletWidth,
       title,
@@ -55,6 +59,8 @@ export const TrialProvider = ({ children }) => {
       rightBarWarning,
     }
   }, [
+    experiment,
+    setExperiment,
     outletWidth,
     changeOutletWidth,
     title,

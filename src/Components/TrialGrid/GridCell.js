@@ -12,7 +12,7 @@ const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
     } else {
       return (
         <img
-          src={iconLoader(iconType)}
+          src={iconLoader(iconType, backgroundColor === 'white' ? true : false)}
           alt="fireSpot"
           style={{ display: 'flex', width: '40px', height: '40px' }}
         />

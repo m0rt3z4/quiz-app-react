@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import createTrialParams from '../helpers/createTrialParams'
 import shuffleArray from '../helpers/shuffleArray'
 import Trial from './TrialManager/Trial'
+import { generateTrials } from '../helpers/trialManagerHelper'
 
 const trialBlocks = [
   ['HL', 'HD', 'IL', 'ID'],
@@ -13,20 +14,28 @@ const trialBlocks = [
 
 const MainTest = () => {
   const [results, setResults] = useState([])
-  const [params, setParams] = useState({})
-  useEffect(() => {
-    setParams(createTrialParams('H'))
-  }, [])
+  const [currentTrial, setCurrentTrial] = useState({})
+  const [trialIndex, setTrialIndex] = useState(0)
+  const trialsArray = generateTrials().map((trial) => {
+    return {
+      background: trial[1] === 'L' ? 'Light' : 'Dark',
+      letter: trial[0],
+      params: createTrialParams(trial[0]),
+    }
+  })
+  console.log(trialsArray)
+  // useEffect(() => {
+  //   setParams(createTrialParams('H'))
+  // }, [])
   const shuffledTrialBlocks = shuffleArray(trialBlocks)
   let trialArray = []
   shuffledTrialBlocks.forEach((arr) => {
     trialArray = [...trialArray, ...arr]
   })
-  const [trialIndex, setTrialIndex] = useState(0)
   const saveTrialResults = (result) => {
     setResults([...results, result])
     if (results.length < shuffledTrialBlocks.length) {
-      setTrialIndex(trialIndex+1)
+      setTrialIndex(trialIndex + 1)
     } else {
       finishTest()
     }
@@ -34,12 +43,12 @@ const MainTest = () => {
   const finishTest = (resp) => {
     console.log(resp)
   }
-  const trialParams = createTrialParams('H')
+
   return (
     <Trial
-      background={'L'}
-      letter={'H'}
-      trialParams={trialParams}
+      background={trialsArray[trialIndex].background}
+      letter={trialsArray[trialIndex].letter}
+      trialParams={trialsArray[trialIndex].params}
       onFinishTrial={finishTest}
     />
   )

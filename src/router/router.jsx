@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
       {
         id: 'trial-page',
         path: hierarchy.main.trial.path,
-        element: <MainTest />,
+        element: <TrialPage />,
       },
       {
         id: 'main-page',
