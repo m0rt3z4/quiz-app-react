@@ -1,4 +1,3 @@
-import React from 'react'
 import STIMULUS_0 from '../../assets/STIMULUS_0.png'
 import STIMULUS_1 from '../../assets/STIMULUS_1.png'
 import STIMULUS_2 from '../../assets/STIMULUS_2.png'
