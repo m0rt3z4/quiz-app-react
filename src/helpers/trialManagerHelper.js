@@ -1,3 +1,5 @@
+import createTrialParams from './createTrialParams'
+
 const HL = ['HL', 'HD', 'IL', 'ID', 'IL', 'ID', 'HL', 'HD']
 const HD = ['HD', 'HL', 'ID', 'IL', 'ID', 'IL', 'HD', 'HL']
 const IL = ['IL', 'ID', 'HL', 'HD', 'HL', 'HD', 'IL', 'ID']
@@ -11,4 +13,14 @@ export const generateTrials = () => {
   return isLightFirst
     ? [...randomLightFirst, ...randomDarkFirst]
     : [...randomDarkFirst, ...randomLightFirst]
+}
+
+export const createNewExperiment = () => {
+  return generateTrials().map((trial) => {
+    return {
+      background: trial[1],
+      letter: trial[0],
+      trialParams: createTrialParams(trial[0]),
+    }
+  })
 }

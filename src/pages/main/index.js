@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
+import { generateTrials } from '../../helpers/trialManagerHelper'
 
 export const MainPage = () => {
   const { changeTitle } = useTrialContext()
+  console.log(generateTrials())
   changeTitle('Welcome')
   const TrialLink = () => <Link to={'/trial'} />
   return (

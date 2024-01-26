@@ -15,7 +15,6 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
     changeTitle('Recognition')
   }, [])
   useEffect(() => {
-
     // Function to handle keydown events
     const handleKeyDown = (event) => {
       if (['ArrowRight', 'ArrowLeft'].includes(event.key)) {
@@ -39,7 +38,7 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
       setStartTime(Date.now())
       setStimulus(stimuliArray[index])
     } else {
-      changeTitle('Trial Finished!')
+      changeTitle('Next Trial')
       setStimulus({})
       onFinishStep(results)
     }
