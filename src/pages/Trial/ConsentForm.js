@@ -18,7 +18,7 @@ import { pickRandomStimulus } from '../../helpers/letterHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../../Components/TrialGrid/TrialGrid'
 
-const InfoForm = ({ onNext }) => {
+const ConsentForm = ({ onNext }) => {
   const [stimulus, setStimulus] = useState({})
   const { changeTitle } = useTrialContext()
   const [checked, setChecked] = React.useState(true)
@@ -98,4 +98,4 @@ const InfoForm = ({ onNext }) => {
   )
 }
 
-export default InfoForm
+export default ConsentForm

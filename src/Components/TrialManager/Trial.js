@@ -4,6 +4,7 @@ import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import RecognitionSlide from './RecognitionSlide'
+import Exit from './Exit'
 
 const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
@@ -26,13 +27,18 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
     }, 5000)
   }
   const onFinishRecognition = (resp) => {
-    const result = {
+    const res = {
       ...results,
       stimuli: trialParams.stimuli,
       recognition: resp,
     }
-    console.log(result)
-    onFinishTrial(result)
+    console.log(res)
+    setResults(res)
+    setStep(4)
+  }
+
+  const onNext = () => {
+    return onFinishTrial(results)
   }
 
   const renderSteps = () => {
@@ -68,6 +74,9 @@ const Trial = ({ background, letter, trialParams, onFinishTrial }) => {
             onFinishStep={onFinishRecognition}
           />
         )
+      }
+      case 4: {
+        return <Exit background={background} onFinishStep={onNext} />
       }
 
       default:
