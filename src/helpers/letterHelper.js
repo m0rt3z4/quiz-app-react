@@ -1,14 +1,14 @@
 const hOnLetters = [
-  [0, 0],
+  // [0, 0],
   [1, 0],
   [2, 0],
   [3, 0],
-  [4, 0],
-  [0, 4],
+  // [4, 0],
+  // [0, 4],
   [1, 4],
   [2, 4],
   [3, 4],
-  [4, 4],
+  // [4, 4],
   [2, 1],
   [2, 3],
 ]
@@ -21,6 +21,21 @@ const iOnLetters = [
   [4, 1],
   [4, 2],
   [4, 3],
+]
+
+export const hLetterArray = [
+  [true, false, false, false, true],
+  [true, false, false, false, true],
+  [true, true, true, true, true],
+  [true, false, false, false, true],
+  [true, false, false, false, true],
+]
+export const iLetterArray = [
+  [false, true, true, true, false],
+  [false, false, true, false, false],
+  [false, false, true, false, false],
+  [false, false, true, false, false],
+  [false, true, true, true, false],
 ]
 
 /**
@@ -93,4 +108,18 @@ export const pickRandomTrialConfig = () => {
   const rnd = arr[Math.floor(Math.random() * arr.length)]
   console.log(rnd)
   return { letter: rnd[0], background: rnd[1] }
+}
+
+export const pickSurprize = (letter) => {
+  const randomI = Math.floor(Math.random() * 5)
+  const randomJ = Math.floor(Math.random() * 5)
+  return {
+    i: randomI,
+    j: randomJ,
+    isOnLetter: checkOnLetter(randomI, randomJ, letter),
+  }
+}
+
+const checkOnLetter = (i, j, letter) => {
+  return letter === 'H' ? hLetterArray[i][j] : iLetterArray[i][j]
 }
