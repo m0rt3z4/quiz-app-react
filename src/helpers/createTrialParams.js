@@ -13,7 +13,7 @@ const createTrialParams = (letter) => {
     return {
       i: loc[0],
       j: loc[1],
-      iconType: `STIMULUS_${randomDirections[index]}`,
+      iconType: 'CIRCLE',
     }
   })
   // create offLetter Stimuli
@@ -22,18 +22,24 @@ const createTrialParams = (letter) => {
     return {
       i: loc[0],
       j: loc[1],
-      iconType: `STIMULUS_${randomDirections[index + 2]}`,
+      iconType: 'CIRCLE',
     }
   })
 
   // Recognition Task:
   // choose randomly from previesly shown stimuli
+  const randomCorrectOnLetter = onLetters[Math.floor(Math.random() * 2)]
   const correctOnLetter = {
-    ...onLetters[Math.floor(Math.random() * 2)],
+    i: randomCorrectOnLetter.i,
+    j: randomCorrectOnLetter.j,
+    iconType: 'QUESTION',
     taskType: recognitionTypes.CORRECT_ON_LETTER,
   }
+  const randomCorrectOffLetter = offLetters[Math.floor(Math.random() * 2)]
   const correctOffLetter = {
-    ...offLetters[Math.floor(Math.random() * 2)],
+    i: randomCorrectOffLetter.i,
+    j: randomCorrectOffLetter.j,
+    iconType: 'QUESTION',
     taskType: recognitionTypes.CORRECT_OFF_LETTER,
   }
 
@@ -47,7 +53,7 @@ const createTrialParams = (letter) => {
   const incorrectOnLetter = {
     i: incorrectOnLetterLocation[0][0],
     j: incorrectOnLetterLocation[0][1],
-    iconType: `STIMULUS_${randomDirections[4]}`,
+    iconType: 'QUESTION',
     taskType: recognitionTypes.INCORRECT_ON_LETTER,
   }
   const incorrectOffLetterLocation = pickElement(
@@ -59,7 +65,7 @@ const createTrialParams = (letter) => {
   const incorrectOffLetter = {
     i: incorrectOffLetterLocation[0][0],
     j: incorrectOffLetterLocation[0][1],
-    iconType: `STIMULUS_${randomDirections[5]}`,
+    iconType: 'QUESTION',
     taskType: recognitionTypes.INCORRECT_OFF_LETTER,
   }
 
