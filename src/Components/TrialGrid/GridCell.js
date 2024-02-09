@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Typography } from '@mui/material'
 import CircleIcon from '@mui/icons-material/Circle'
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
+import TagIcon from '@mui/icons-material/Tag'
 
 const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
   const Icon = (iconType) => {
@@ -14,6 +15,8 @@ const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
         return <CircleIcon fontSize="small" />
       case 'QUESTION':
         return <QuestionMarkIcon fontSize="medium" />
+      case 'TAG':
+        return <TagIcon fontSize="small" />
       default:
         return null
     }

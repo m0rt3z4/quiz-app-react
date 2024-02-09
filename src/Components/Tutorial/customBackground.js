@@ -12,3 +12,10 @@ export const iLetterArray = [
   [false, false, true, false, false],
   [false, true, true, true, false],
 ]
+export const maskArray = [
+  [false, true, false, true, false],
+  [true, false, true, false, true],
+  [false, true, false, true, false],
+  [true, false, true, false, true],
+  [false, true, false, true, false],
+]
