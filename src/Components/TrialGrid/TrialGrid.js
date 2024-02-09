@@ -7,6 +7,7 @@ export const TrialGrid = ({
   cutomBgArray = [],
   isWhiteThemed,
   stimulus = {},
+  isMask = false,
 }) => {
   const renderGrid = () => {
     let rows = []
@@ -22,6 +23,14 @@ export const TrialGrid = ({
             : isWhiteThemed
         let showStimulus =
           !!stimulus && i === stimulus.i && j === stimulus.j ? true : false
+
+        const iconType = isMask
+          ? bgColor
+            ? null
+            : 'TAG'
+          : showStimulus
+          ? stimulus.iconType
+          : null
         cells.push(
           i === 2 && j === 2 ? (
             <GridCell
@@ -32,8 +41,8 @@ export const TrialGrid = ({
           ) : (
             <GridCell
               backgroundColor={bgColor ? 'white' : 'lightGray'}
-              showStimulus={showStimulus}
-              iconType={showStimulus ? stimulus.iconType : null}
+              showStimulus={isMask ? !!iconType : showStimulus}
+              iconType={iconType}
             />
           )
         )

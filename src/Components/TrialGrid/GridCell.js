@@ -1,24 +1,27 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
-
-import { iconLoader } from './iconLoader'
+import CircleIcon from '@mui/icons-material/Circle'
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
+import TagIcon from '@mui/icons-material/Tag'
 
 const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
   const Icon = (iconType) => {
-    if (iconType === 'SURPRIZE') {
-      return <Typography fontSize={'30px'}>*</Typography>
-    } else if (iconType === 'CENTER_DOT') {
-      return <Typography fontSize={'18px'}>.</Typography>
-    } else {
-      return (
-        <img
-          src={iconLoader(iconType, backgroundColor === 'white' ? true : false)}
-          alt="fireSpot"
-          style={{ display: 'flex', width: '40px', height: '40px' }}
-        />
-      )
+    switch (iconType) {
+      case 'SURPRIZE':
+        return <Typography fontSize={'30px'}>*</Typography>
+      case 'CENTER_DOT':
+        return <Typography fontSize={'30px'}>.</Typography>
+      case 'CIRCLE':
+        return <CircleIcon fontSize="small" />
+      case 'QUESTION':
+        return <QuestionMarkIcon fontSize="medium" />
+      case 'TAG':
+        return <TagIcon fontSize="small" />
+      default:
+        return null
     }
   }
+
   const content = showStimulus ? <span>{Icon(iconType)}</span> : null
   return (
     <Box
