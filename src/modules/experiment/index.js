@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 
-import Trial from '../../Components/TrialManager/Trial'
+// import Trial from '../../Components/TrialManager/Trial'
+import Trial2 from '../../Components/Trial2/Trial'
 
 const Experiment = ({ experiment, onFinishExperiment }) => {
   const [results, setResults] = useState([])
@@ -34,7 +35,7 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
     toggleBreake()
   }
 
-  return toggle ? <></> : <Trial {...current} onFinishTrial={onFinishTrial} />
+  return toggle ? <></> : <Trial2 {...current} onFinishTrial={onFinishTrial} />
 }
 
 export default Experiment
