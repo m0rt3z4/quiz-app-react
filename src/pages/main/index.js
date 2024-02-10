@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { Box, Grid, Card, Stack, Typography, Button } from '@mui/material'
-import { useTrialContext } from '../../layouts/TrialLayout/context'
-import { generateTrials } from '../../helpers/trialManagerHelper'
+import { useNavigate } from 'react-router-dom'
+import { Box, Grid, Card, Typography, Button } from '@mui/material'
 
 export const MainPage = () => {
-  const { changeTitle } = useTrialContext()
-  console.log(generateTrials())
-  changeTitle('Welcome')
-  const TrialLink = () => <Link to={'/trial'} />
+  const navigate = useNavigate()
+
+  const redirectUrl = (url) => {
+    navigate(url)
+  }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -47,7 +47,7 @@ export const MainPage = () => {
               </Grid>
               <Grid item xs={12} sx={{ paddingTop: '25px' }}>
                 <Button
-                  href="/tutorial"
+                  onClick={() => redirectUrl('/tutorial')}
                   size="large"
                   sx={{
                     width: '60%',
@@ -58,7 +58,7 @@ export const MainPage = () => {
                   Tutorial
                 </Button>
                 <Button
-                  href="/trial"
+                  onClick={() => redirectUrl('/trial')}
                   size="large"
                   sx={{
                     width: '60%',
