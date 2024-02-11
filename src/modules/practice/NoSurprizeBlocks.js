@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 // import Trial from '../../Components/TrialManager/Trial'
 import Trial2 from '../../Components/Trial2/Trial'
 
-const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
+const NoSurprizeBlocks = ({ experiment, onFinishStep }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -21,7 +21,7 @@ const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
-      onFinishExperiment(results)
+      onFinishStep(results)
     }
   }, [trialIndex])
 
@@ -41,9 +41,10 @@ const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
     <Trial2
       {...current}
       onFinishTrial={onFinishTrial}
-      showFeedback={showFeedback}
+      showFeedback={true}
+      dontShowLetter={true}
     />
   )
 }
 
-export default Experiment
+export default NoSurprizeBlocks

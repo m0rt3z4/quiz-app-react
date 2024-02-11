@@ -7,7 +7,7 @@ import Step3 from './Step3'
 import Step4 from './Step4'
 import Step5 from './Step5'
 
-const Tutorial = () => {
+const Tutorial = ({onPractice}) => {
   const [step, setStep] = useState(0)
   const { changeTitle, changeOutletWidth } = useTrialContext()
 
@@ -32,7 +32,7 @@ const Tutorial = () => {
       case 3:
         return <Step4 onNext={onNextStep} />
       case 4:
-        return <Step5 onNext={onNextStep} />
+        return <Step5 onNext={onPractice} />
       default:
         break
     }

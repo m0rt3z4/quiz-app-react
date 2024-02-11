@@ -78,5 +78,3 @@ const pickRandom8TrialsFrom16 = (trials) => {
   }
   return res
 }
-
-const createSurprizePractice = () => {}
