@@ -2,7 +2,7 @@ import { pickElement, pickRandomDirection, pickSurprize } from './letterHelper'
 import { recognitionTypes } from '../consts'
 import shuffleArray from './shuffleArray'
 
-const createTrialParams = (letter) => {
+const createTrialParams = (letter, noSurprize = false) => {
   // choose random location for surprize
   const surprizeInfo = pickSurprize(letter)
   // choose random directions
@@ -68,24 +68,17 @@ const createTrialParams = (letter) => {
     iconType: 'QUESTION',
     taskType: recognitionTypes.INCORRECT_OFF_LETTER,
   }
-
+  const surpize = {
+    i: surprizeInfo.i,
+    j: surprizeInfo.j,
+    iconType: 'SURPRIZE',
+    isOnLetter: surprizeInfo.isOnLetter,
+  }
+  const stimuli = [...onLetters, ...offLetters]
+  if (!noSurprize) stimuli.push(surpize)
   let result = {
-    surpize: {
-      i: surprizeInfo.i,
-      j: surprizeInfo.j,
-      iconType: 'SURPRIZE',
-      isOnLetter: surprizeInfo.isOnLetter,
-    },
-    stimuli: shuffleArray([
-      ...onLetters,
-      ...offLetters,
-      {
-        i: surprizeInfo.i,
-        j: surprizeInfo.j,
-        iconType: 'SURPRIZE',
-        isOnLetter: surprizeInfo.isOnLetter,
-      },
-    ]),
+    surpize,
+    stimuli: shuffleArray(stimuli),
     recognition: shuffleArray([
       correctOnLetter,
       correctOffLetter,
