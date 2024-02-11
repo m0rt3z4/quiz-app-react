@@ -6,17 +6,15 @@ import { TrialGrid } from '../TrialGrid/TrialGrid'
 
 const TIME_WAIT_FOR_SURPRIZE_ANSWER = 3000
 
-const SurprizeStep = ({ background, startTime, stimulus, onFinishStep }) => {
-  const { changeTitle, showArrows } = useTrialContext()
+const TimedStep = ({ background, startTime, stimulus, onFinishStep }) => {
+  const { showArrows } = useTrialContext()
 
   const onFinishSurprizeStep = (resp) => {
-    changeTitle('Focus')
     showArrows(false)
     onFinishStep(resp)
   }
 
   useEffect(() => {
-    changeTitle('Surprize')
     showArrows(true)
     const timer = setTimeout(() => {
       console.log('Timeout excecution started')
@@ -43,7 +41,7 @@ const SurprizeStep = ({ background, startTime, stimulus, onFinishStep }) => {
       window.removeEventListener('keydown', handleKeyDown)
       clearTimeout(timer)
     }
-  }, [])
+  }, [startTime])
 
   const Grid = (
     <TrialGrid
@@ -54,4 +52,4 @@ const SurprizeStep = ({ background, startTime, stimulus, onFinishStep }) => {
   return Grid
 }
 
-export default SurprizeStep
+export default TimedStep
