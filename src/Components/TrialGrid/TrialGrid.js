@@ -32,7 +32,7 @@ export const TrialGrid = ({
         //   ? stimulus.iconType
         //   : null
         cells.push(
-          i === 2 && j === 2 ? (
+          i === 2 && j === 2 && (stimulus.i !== 2 || stimulus.j !== 2) ? (
             <GridCell
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={true}
