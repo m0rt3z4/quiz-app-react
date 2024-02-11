@@ -10,7 +10,8 @@ const Trial2 = ({
   background,
   letter,
   trialParams,
-  // trialNumber = 0,
+  showFeedback = false,
+  dontShowLetter = false,
   onFinishTrial,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
@@ -23,14 +24,15 @@ const Trial2 = ({
   }, [background, letter, trialParams])
 
   const onFinishFirstStep = (resp) => {
-    setResults({
-      ...results,
-      surprize: {
-        ...trialParams.surpize,
-        responseTime: resp.responseTime,
-        userAnswer: resp.userAnswer,
-      },
-    })
+    if (!!resp)
+      setResults({
+        ...results,
+        surprize: {
+          ...trialParams.surpize,
+          responseTime: resp.responseTime,
+          userAnswer: resp.userAnswer,
+        },
+      })
     setStep(2)
     setTimeout(() => {
       setStep(3)
@@ -59,6 +61,7 @@ const Trial2 = ({
         <Step1
           background={background}
           letter={letter}
+          dontShowLetter={dontShowLetter}
           onStartTrial={() => {
             setStep(1)
           }}
@@ -71,6 +74,7 @@ const Trial2 = ({
           background={background}
           stimuliArray={trialParams.stimuli}
           onFinishStep={onFinishFirstStep}
+          showFeedback={showFeedback}
         />
       )
     }
@@ -83,6 +87,7 @@ const Trial2 = ({
           background={background}
           stimuliArray={trialParams.recognition}
           onFinishStep={onFinishRecognition}
+          showFeedback={showFeedback}
         />
       )
     }

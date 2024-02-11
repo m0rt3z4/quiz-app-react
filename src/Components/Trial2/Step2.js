@@ -7,7 +7,12 @@ import TimedStep from './TimedStep'
 
 const TIME_WAIT_BETWEEN_STIMULI = 1000
 
-const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
+const Step2 = ({
+  background,
+  onFinishStep,
+  showFeedback = false,
+  stimuliArray = [],
+}) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [surprize, setSurprize] = useState({})
@@ -55,6 +60,7 @@ const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
       stimulus={surprize}
       startTime={startTime}
       onFinishStep={onFinishSurprize}
+      showFeedback={showFeedback}
     />
   ) : (
     Grid

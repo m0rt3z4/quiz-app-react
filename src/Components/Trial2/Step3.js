@@ -4,7 +4,12 @@ import React, { useState, useEffect } from 'react'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import TimedStep from './TimedStep'
 
-const Step3 = ({ background, stimuliArray, onFinishStep }) => {
+const Step3 = ({
+  background,
+  stimuliArray,
+  showFeedback = false,
+  onFinishStep,
+}) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [startTime, setStartTime] = useState(0)
@@ -42,6 +47,7 @@ const Step3 = ({ background, stimuliArray, onFinishStep }) => {
       stimulus={stimulus}
       startTime={startTime}
       onFinishStep={onUserResp}
+      showFeedback={showFeedback}
     />
   )
 
