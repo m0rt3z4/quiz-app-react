@@ -8,29 +8,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 export const TrialLayout = () => {
   const {
     title,
-    // changeTitle,
     outletWidth,
     leftBarVisible,
     rightBarVisible,
-    // showArrows,
     rightBarWarning,
     leftBarWarning,
-    changeLeftbarVisiblity,
-    changeRightbarVisiblity,
   } = useTrialContext()
 
-  // useEffect(() => {
-  //   changeTitle('Title2')
-  // }, [])
-
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     changeLeftbarVisiblity(true)
-  //     changeRightbarVisiblity(true)
-  //   }, 2000)
-
-  //   return () => clearTimeout(timeout)
-  // }, [])
   return (
     <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
@@ -96,18 +80,25 @@ export const TrialLayout = () => {
           </Grid>
           <Grid item xs={1}>
             {rightBarVisible && (
-              <Card
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  height: '150px',
-                  borderRadius: '35px',
-                  border: '1px solid black',
-                }}
-              >
-                <ArrowForwardIcon fontSize="large" />
-              </Card>
+              <Grid item>
+                {rightBarWarning && (
+                  <Typography color={'red'} sx={{ marginBottom: 1 }}>
+                    Incorrect
+                  </Typography>
+                )}
+                <Card
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '150px',
+                    borderRadius: '35px',
+                    border: `1px solid ${rightBarWarning ? 'red' : 'black'}`,
+                  }}
+                >
+                  <ArrowForwardIcon fontSize="large" />
+                </Card>
+              </Grid>
             )}
           </Grid>
         </Grid>
