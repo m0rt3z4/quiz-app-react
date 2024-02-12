@@ -1,3 +1,5 @@
+import { iLetterArray, hLetterArray } from './customBackground'
+
 const hOnLetters = [
   // [0, 0],
   [1, 0],
@@ -23,20 +25,6 @@ const iOnLetters = [
   [4, 3],
 ]
 
-export const hLetterArray = [
-  [true, false, false, false, true],
-  [true, false, false, false, true],
-  [true, true, true, true, true],
-  [true, false, false, false, true],
-  [true, false, false, false, true],
-]
-export const iLetterArray = [
-  [false, true, true, true, false],
-  [false, false, true, false, false],
-  [false, false, true, false, false],
-  [false, false, true, false, false],
-  [false, true, true, true, false],
-]
 
 /**
  * Creates a new Response from user submission.
