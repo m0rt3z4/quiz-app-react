@@ -10,6 +10,7 @@ export const TrialProvider = ({ children }) => {
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState(false)
   const [rightBarWarning, setRightBarWarning] = useState(false)
+  const [feedbackStatus, setFeedbackStatus] = useState('')
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -39,6 +40,14 @@ export const TrialProvider = ({ children }) => {
     setLeftBarWarning(isWarning)
   }, [])
 
+  const changeFeedbackStatus = useCallback((feedback) => {
+    if (feedback === 'SUCCESS') {
+      setFeedbackStatus('SUCCESS')
+    } else if (feedback === 'ERROR') {
+      setFeedbackStatus('ERROR')
+    } else return null
+  }, [])
+
   const value = useMemo(() => {
     return {
       experiment,
@@ -57,10 +66,11 @@ export const TrialProvider = ({ children }) => {
       changeLeftBarWarning,
       leftBarWarning,
       rightBarWarning,
+      feedbackStatus,
+      changeFeedbackStatus,
     }
   }, [
     experiment,
-    setExperiment,
     outletWidth,
     changeOutletWidth,
     title,
@@ -74,6 +84,8 @@ export const TrialProvider = ({ children }) => {
     changeLeftBarWarning,
     leftBarWarning,
     rightBarWarning,
+    feedbackStatus,
+    changeFeedbackStatus,
   ])
 
   return <TrialContext.Provider value={value}>{children}</TrialContext.Provider>

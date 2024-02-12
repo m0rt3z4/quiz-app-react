@@ -18,6 +18,7 @@ const TimedStep = ({
     showArrows,
     changeRightBarWarning,
     changeLeftBarWarning,
+    changeFeedbackStatus,
   } = useTrialContext()
 
   const isAnswerCorrect = (userAnswer) => {
@@ -46,6 +47,23 @@ const TimedStep = ({
     onFinishStep(resp)
   }
 
+  const delayedFeedback = (answer, isCorrect, callback) => {
+    changeFeedbackStatus(isCorrect ? 'SUCCESS' : 'ERROR')
+    if (answer === 'ArrowRight') {
+      changeRightBarWarning(true)
+    } else {
+      changeLeftBarWarning(true)
+    }
+    setTimeout(() => {
+      if (answer === 'ArrowRight') {
+        changeRightBarWarning(false)
+      } else {
+        changeLeftBarWarning(false)
+      }
+      callback()
+    }, 1000)
+  }
+
   useEffect(() => {
     showArrows(true)
     const timer = setTimeout(() => {
@@ -67,24 +85,9 @@ const TimedStep = ({
         }
         const isCorrect = isAnswerCorrect(event.key)
         if (showFeedback) {
-          if (isCorrect) {
-            //handle correct feedback
+          delayedFeedback(event.key, isCorrect, () => {
             onFinishSurprizeStep(response)
-          } else {
-            if (event.key === 'ArrowRight') {
-              changeRightBarWarning(true)
-            } else {
-              changeLeftBarWarning(true)
-            }
-            setTimeout(() => {
-              if (event.key === 'ArrowRight') {
-                changeRightBarWarning(false)
-              } else {
-                changeLeftBarWarning(false)
-              }
-              onFinishSurprizeStep(response)
-            }, 1000)
-          }
+          })
         } else {
           onFinishSurprizeStep(response)
         }
