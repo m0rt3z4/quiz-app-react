@@ -16,7 +16,7 @@ const NoSurprizeBlocksSlide = ({ onNext }) => {
         justifyContent={'center'}
         // alignItems={'baseline'}
         spacing={2}
-        sx={{ paddingTop: 1 }}
+        // sx={{ paddingTop: 1 }}
       >
         <Grid container item xs={12}>
           <Card
@@ -24,14 +24,26 @@ const NoSurprizeBlocksSlide = ({ onNext }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
             }}
           >
-            <Typography fontSize={'25px'}>{'NoSurprizeBlocksSlide'}</Typography>
+            <Box>
+              <Typography fontSize={'25px'} marginBottom={10}>
+                {'NoSurprizeBlocksSlide.'}
+              </Typography>
+              <Typography fontSize={'25px'}>
+                {
+                  "Answer if a Dot was in the '?' position or not by pressing Right for Yes and Left for No."
+                }
+              </Typography>
+              <Typography fontSize={'25px'} paddingTop={10}>
+                {'press space to continue.'}
+              </Typography>
+            </Box>
           </Card>
         </Grid>
       </Grid>

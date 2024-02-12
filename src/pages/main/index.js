@@ -24,7 +24,7 @@ export const MainPage = () => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
-              minHeight: 310,
+              minHeight: 420,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
@@ -45,29 +45,31 @@ export const MainPage = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item xs={12} sx={{ paddingTop: '25px' }}>
-                <Button
-                  onClick={() => redirectUrl('/tutorial')}
-                  size="large"
-                  sx={{
-                    width: '60%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  Tutorial
-                </Button>
-                <Button
-                  onClick={() => redirectUrl('/trial')}
-                  size="large"
-                  sx={{
-                    width: '60%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  Start Trial
-                </Button>
+              <Grid container justifyContent={'center'} xs={12} paddingTop={15}>
+                <Grid item xs={8}>
+                  <Button
+                    onClick={() => redirectUrl('/tutorial')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Tutorial
+                  </Button>
+                  <Button
+                    onClick={() => redirectUrl('/trial')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Start Trial
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Card>

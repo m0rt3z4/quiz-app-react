@@ -16,7 +16,7 @@ const RecognitionSlide = () => {
         justifyContent={'center'}
         // alignItems={'baseline'}
         spacing={2}
-        sx={{ paddingTop: 1 }}
+        // sx={{ paddingTop: 1 }}
       >
         <Grid container item xs={12}>
           <Card
@@ -24,8 +24,8 @@ const RecognitionSlide = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',

@@ -72,6 +72,7 @@ export const TrialGrid = ({
         backgroundColor: isWhiteThemed ? 'white' : 'lightGray',
         justifyContent: 'center',
         alignItems: 'center',
+        minHeight: 450,
         padding: 6,
         borderRadius: '35px',
         border: '1px solid black',

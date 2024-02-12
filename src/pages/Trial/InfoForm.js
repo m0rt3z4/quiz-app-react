@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Grid,
@@ -11,13 +11,9 @@ import {
   MenuItem,
   Button,
 } from '@mui/material'
-import useKeyboard from '../../helpers/useKeyboard'
-import { pickRandomStimulus } from '../../helpers/letterHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-import { TrialGrid } from '../../Components/TrialGrid/TrialGrid'
 
 const InfoForm = ({ onNext }) => {
-  const [stimulus, setStimulus] = useState({})
   const { changeTitle } = useTrialContext()
 
   useEffect(() => {
@@ -38,9 +34,7 @@ const InfoForm = ({ onNext }) => {
       <Select
         labelId="demo-simple-select-label"
         id="demo-simple-select"
-        // value={age}
         label="Age"
-        // onChange={handleChange}
         sx={{ width: '100%' }}
       >
         {renderOptions()}
@@ -52,11 +46,8 @@ const InfoForm = ({ onNext }) => {
     return (
       <Select
         labelId="demo-simple-select-label"
-        //   id="demo-simple-select"
-        // value={age}
         label="Gender"
         variant="outlined"
-        // onChange={handleChange}
         sx={{ width: '100%' }}
       >
         <MenuItem value={1}>Male</MenuItem>
@@ -76,7 +67,6 @@ const InfoForm = ({ onNext }) => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
@@ -86,8 +76,8 @@ const InfoForm = ({ onNext }) => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
@@ -95,12 +85,7 @@ const InfoForm = ({ onNext }) => {
           >
             <Grid container padding={2} spacing={2}>
               <Grid container item xs={3} alignItems={'center'}>
-                <InputLabel
-                  id="demo-simple-select-label"
-                  //   sx={{ paddingTop: 1 }}
-                >
-                  Name:
-                </InputLabel>
+                <InputLabel id="demo-simple-select-label">Name:</InputLabel>
               </Grid>
               <Grid item xs={8}>
                 <TextField
@@ -109,7 +94,6 @@ const InfoForm = ({ onNext }) => {
                   required
                   fullWidth
                   id="firstName"
-                  //   label="First Name"
                   autoFocus
                 />
               </Grid>
@@ -129,14 +113,20 @@ const InfoForm = ({ onNext }) => {
               <Grid item xs={8}>
                 <GenderSelect />
               </Grid>
-              <Grid item xs={12}>
-                <Button
-                  sx={{ width: '50%' }}
-                  color="primary"
-                  onClick={onClickNext}
-                >
-                  Submit
-                </Button>
+              <Grid container justifyContent={'center'} xs={12}>
+                <Grid item xs={8} paddingTop={11}>
+                  <Button
+                    sx={{
+                      width: '70%',
+                      height: 50,
+                      backgroundColor: 'lightgray',
+                    }}
+                    color="primary"
+                    onClick={onClickNext}
+                  >
+                    Submit
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Card>

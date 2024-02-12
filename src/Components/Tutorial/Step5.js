@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Grid, Typography, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-import Trial from '../TrialManager/Trial'
 
 const Step5 = ({ onNext }) => {
-  const [inPractice, setInPractice] = useState(false)
-  const [background, setBackground] = useState()
-  const [letter, setLetter] = useState()
-  const [params, setParams] = useState({})
-
   const { changeOutletWidth } = useTrialContext()
 
   useEffect(() => {
-    changeOutletWidth(4)
+    changeOutletWidth(5)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // const onClickPractice = () => {
-  //   // Create new Trial params
-  //   const newTrial = pickRandomTrialConfig()
-  //   setLetter(newTrial.letter)
-  //   setBackground(newTrial.background)
-  //   setParams(createTrialParams(newTrial.letter))
-  //   changeOutletWidth(6)
-  //   setInPractice(true)
-  // }
-
-  const StepFiveCard = () => (
+  return (
     <Grid container sx={{ paddingTop: '20px' }}>
       <Grid item xs={12} justifyContent={'center'}>
         <Box
@@ -42,47 +26,33 @@ const Step5 = ({ onNext }) => {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12} sx={{ paddingTop: '35px' }}>
-        <Button
-          onClick={onNext}
-          size="large"
-          sx={{
-            width: '60%',
-            backgroundColor: 'lightgray',
-            margin: '5px',
-          }}
-        >
-          Practice Trial
-        </Button>
-        <Button
-          href="/"
-          size="large"
-          sx={{
-            width: '60%',
-            backgroundColor: 'lightgray',
-            margin: '5px',
-          }}
-        >
-          Main Page
-        </Button>
+      <Grid container xs={12} justifyContent={'center'} paddingTop={15}>
+        <Grid item xs={8} sx={{ paddingTop: '35px' }}>
+          <Button
+            onClick={onNext}
+            size="large"
+            sx={{
+              width: '60%',
+              backgroundColor: 'lightgray',
+              margin: '5px',
+            }}
+          >
+            Practice Trial
+          </Button>
+          <Button
+            href="/"
+            size="large"
+            sx={{
+              width: '60%',
+              backgroundColor: 'lightgray',
+              margin: '5px',
+            }}
+          >
+            Main Page
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
-  )
-
-  const onFinishPractice = () => {
-    changeOutletWidth(4)
-    setInPractice(false)
-  }
-
-  return !inPractice ? (
-    StepFiveCard()
-  ) : (
-    <Trial
-      letter={letter}
-      background={background}
-      trialParams={params}
-      onFinishTrial={onFinishPractice}
-    />
   )
 }
 

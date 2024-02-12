@@ -16,7 +16,7 @@ const MainPracticeSlide = ({ onNext }) => {
         justifyContent={'center'}
         // alignItems={'baseline'}
         spacing={2}
-        sx={{ paddingTop: 1 }}
+        // sx={{ paddingTop: 1 }}
       >
         <Grid container item xs={12}>
           <Card
@@ -24,14 +24,25 @@ const MainPracticeSlide = ({ onNext }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              width: '100%',
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
             }}
           >
-            <Typography fontSize={'25px'}>{'MainPracticeSlide'}</Typography>
+            <Box>
+              <Typography fontSize={'25px'} marginBottom={10}>
+                {'MainPracticeSlide.'}
+              </Typography>
+              <Typography fontSize={'25px'}>
+                {"Now, let's practice the main trial."}
+              </Typography>
+              <Typography fontSize={'25px'} paddingTop={10}>
+                {'press space to continue.'}
+              </Typography>
+            </Box>
           </Card>
         </Grid>
       </Grid>

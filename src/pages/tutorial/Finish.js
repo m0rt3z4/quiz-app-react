@@ -35,8 +35,8 @@ const Finish = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
@@ -51,8 +51,20 @@ const Finish = () => {
               <Grid item xs={8}>
                 <Typography>Now let's head to the main trial.</Typography>
               </Grid>
-              <Grid item xs={8}>
-                <Button onClick={onClick}>Main Trial</Button>
+              <Grid container justifyContent={'center'} xs={12}>
+                <Grid item xs={8} paddingTop={11}>
+                  <Button
+                    sx={{
+                      width: '70%',
+                      height: 50,
+                      backgroundColor: 'lightgray',
+                    }}
+                    color="primary"
+                    onClick={onClick}
+                  >
+                    Main Trial
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Card>

@@ -1,13 +1,11 @@
-import { Box, Grid, Card, Stack, Typography } from '@mui/material'
+import { Box, Grid, Card, Typography } from '@mui/material'
 import { Outlet } from 'react-router'
 import { useTrialContext } from './context'
-import { useEffect } from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 export const TrialLayout = () => {
   const {
-    title,
     outletWidth,
     leftBarVisible,
     rightBarVisible,
@@ -24,27 +22,11 @@ export const TrialLayout = () => {
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
-        <Grid item xs={6}>
-          <Card
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: 125,
-              borderRadius: '35px',
-              border: '1px solid black',
-            }}
-          >
-            <Stack p={1} py={2}>
-              <Typography fontSize={'25px'}>{title}</Typography>
-            </Stack>
-          </Card>
-        </Grid>
         <Grid
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={{ paddingTop: '10px' }}
+          sx={{ paddingTop: 5 }}
           spacing={2}
         >
           <Grid item xs={1}>
