@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 // import Trial from '../../Components/TrialManager/Trial'
-import Trial2 from '../../Components/Trial2/Trial'
 import Experiment from '../experiment'
 import MainPracticeSlide from './MainPracticeSlide'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
@@ -35,7 +34,7 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 1:
       return (
         <SurprizeBlocks
-          experiment={practice.surprizeBlocks.slice(0, 1)}
+          experiment={practice.surprizeBlocks}
           onFinishStep={saveSurprizeBlocksResult}
         />
       )
@@ -44,7 +43,7 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 3:
       return (
         <NoSurprizeBlocks
-          experiment={practice.stimuliBlocks.slice(0, 1)}
+          experiment={practice.stimuliBlocks}
           onFinishStep={saveStimuliBlocksResult}
         />
       )
@@ -53,7 +52,7 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 5:
       return (
         <Experiment
-          experiment={practice.fullBlocks.slice(0, 1)}
+          experiment={practice.fullBlocks}
           onFinishExperiment={saveMainBlocksResult}
           showFeedback={true}
         />
