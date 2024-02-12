@@ -11,24 +11,19 @@ const Step3 = ({ onNext }) => {
   const [background, setBackground] = useState(true)
   const [customBgArray, setCustomBgArray] = useState([])
 
-  const { showArrows, changeLeftBarWarning } = useTrialContext()
+  const { showArrows } = useTrialContext()
   useEffect(() => {
     showArrows(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onResponse = (resp) => {
-    console.log(resp)
-    if (!!resp && resp.keyPressed === 'ArrowLeft') {
-      console.log('ss')
-      changeLeftBarWarning(true)
-    } else if (!!resp && resp.keyPressed === 'ArrowRight') {
+  const keyboardCallback = (resp) => {
+    if (!!resp && resp.keyPressed === ' ') {
       showArrows(false)
-      changeLeftBarWarning(false)
       onNext()
     }
   }
-  useKeyboard(Date.now(), ['ArrowLeft', 'ArrowRight'], onResponse)
+  useKeyboard(Date.now(), [' '], keyboardCallback)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
