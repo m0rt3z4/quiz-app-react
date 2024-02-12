@@ -4,7 +4,7 @@ import useKeyboard from '../../helpers/useKeyboard'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import { hLetterArray, iLetterArray } from './customBackground'
+import { hLetterArray, iLetterArray } from '../../helpers/customBackground'
 
 const Step3 = ({ onNext }) => {
   const [index, setIndex] = useState(0)
