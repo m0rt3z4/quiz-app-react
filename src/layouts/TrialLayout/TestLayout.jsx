@@ -11,8 +11,10 @@ export const TrialLayout = () => {
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
+    feedbackStatus,
   } = useTrialContext()
 
+  console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
     <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
@@ -33,8 +35,11 @@ export const TrialLayout = () => {
             {leftBarVisible && (
               <Grid item>
                 {leftBarWarning && (
-                  <Typography color={'red'} sx={{ marginBottom: 1 }}>
-                    Incorrect
+                  <Typography
+                    color={feedbackStatus === 'SUCCESS' ? 'green' : 'red'}
+                    sx={{ marginBottom: 1 }}
+                  >
+                    {feedbackStatus === 'SUCCESS' ? 'Correct' : 'Incorrect'}
                   </Typography>
                 )}
                 <Card
@@ -44,7 +49,13 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    border: `1px solid ${leftBarWarning ? 'red' : 'black'}`,
+                    border: `1px solid ${
+                      leftBarWarning
+                        ? feedbackStatus === 'SUCCESS'
+                          ? 'green'
+                          : 'red'
+                        : 'black'
+                    }`,
                   }}
                 >
                   <ArrowBackIcon fontSize="large" />
@@ -64,8 +75,11 @@ export const TrialLayout = () => {
             {rightBarVisible && (
               <Grid item>
                 {rightBarWarning && (
-                  <Typography color={'red'} sx={{ marginBottom: 1 }}>
-                    Incorrect
+                  <Typography
+                    color={feedbackStatus === 'SUCCESS' ? 'green' : 'red'}
+                    sx={{ marginBottom: 1 }}
+                  >
+                    {feedbackStatus === 'SUCCESS' ? 'Correct' : 'Incorrect'}
                   </Typography>
                 )}
                 <Card
@@ -75,7 +89,13 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    border: `1px solid ${rightBarWarning ? 'red' : 'black'}`,
+                    border: `1px solid ${
+                      rightBarWarning
+                        ? feedbackStatus === 'SUCCESS'
+                          ? 'green'
+                          : 'red'
+                        : 'black'
+                    }`,
                   }}
                 >
                   <ArrowForwardIcon fontSize="large" />
