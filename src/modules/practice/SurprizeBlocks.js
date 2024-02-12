@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 
 // import Trial from '../../Components/TrialManager/Trial'
-import Trial2 from '../../Components/Trial2/Trial'
+import PracticeSurprize from '../../Components/Trial2/PracticeSurprize'
 
-const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
+const SurprizeBlocks = ({ experiment, onFinishStep }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -21,7 +21,7 @@ const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
-      onFinishExperiment(results)
+      onFinishStep(results)
     }
   }, [trialIndex])
 
@@ -38,12 +38,8 @@ const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
   return toggle ? (
     <></>
   ) : (
-    <Trial2
-      {...current}
-      onFinishTrial={onFinishTrial}
-      showFeedback={showFeedback}
-    />
+    <PracticeSurprize {...current} onFinishTrial={onFinishTrial} />
   )
 }
 
-export default Experiment
+export default SurprizeBlocks

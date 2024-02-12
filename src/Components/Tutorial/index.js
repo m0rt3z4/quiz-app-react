@@ -7,7 +7,7 @@ import Step3 from './Step3'
 import Step4 from './Step4'
 import Step5 from './Step5'
 
-const Tutorial = () => {
+const Tutorial = ({onPractice}) => {
   const [step, setStep] = useState(0)
   const { changeTitle, changeOutletWidth } = useTrialContext()
 
@@ -32,7 +32,7 @@ const Tutorial = () => {
       case 3:
         return <Step4 onNext={onNextStep} />
       case 4:
-        return <Step5 onNext={onNextStep} />
+        return <Step5 onNext={onPractice} />
       default:
         break
     }
@@ -44,7 +44,7 @@ const Tutorial = () => {
         justifyContent={'center'}
         // alignItems={'baseline'}
         spacing={2}
-        sx={{ paddingTop: 1 }}
+        // sx={{ paddingTop: 1 }}
       >
         <Grid item xs={12}>
           <Card
@@ -52,8 +52,8 @@ const Tutorial = () => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',

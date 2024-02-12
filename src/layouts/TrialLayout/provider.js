@@ -5,7 +5,7 @@ import { TrialContext } from './context'
 export const TrialProvider = ({ children }) => {
   const [experiment, setExperiment] = useState(createNewExperiment())
   const [title, setTitle] = useState()
-  const [outletWidth, setOutletWidth] = useState(4)
+  const [outletWidth, setOutletWidth] = useState(5)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState(false)

@@ -3,16 +3,22 @@ import React, { useState, useEffect } from 'react'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import SurprizeStep from './Surprize'
+import TimedStep from './TimedStep'
 
 const TIME_WAIT_BETWEEN_STIMULI = 1000
 
-const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
+const Step2 = ({
+  background,
+  onFinishStep,
+  showFeedback = false,
+  stimuliArray = [],
+}) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [surprize, setSurprize] = useState({})
   const [result, setResult] = useState({})
-  const [surprizeResp, setSurprizeResp] = useState(false)
+  const [toggleSurprize, setToggleSurprize] = useState(false)
+  const [startTime, setStartTime] = useState(0)
   const { changeTitle } = useTrialContext()
 
   useEffect(() => {
@@ -20,7 +26,8 @@ const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
     if (index < stimuliArray.length) {
       if (stimuliArray[index].iconType === 'SURPRIZE') {
         setSurprize(stimuliArray[index])
-        setSurprizeResp(true)
+        setStartTime(Date.now())
+        setToggleSurprize(true)
       } else {
         setStimulus(stimuliArray[index])
         setTimeout(() => {
@@ -43,16 +50,17 @@ const Step2 = ({ background, onFinishStep, stimuliArray = [] }) => {
 
   const onFinishSurprize = (resp) => {
     setResult(resp)
-    setSurprizeResp(false)
+    setToggleSurprize(false)
     setIndex(index + 1)
   }
 
-  return surprizeResp ? (
-    <SurprizeStep
+  return toggleSurprize ? (
+    <TimedStep
       background={background}
       stimulus={surprize}
-      startTime={Date.now()}
+      startTime={startTime}
       onFinishStep={onFinishSurprize}
+      showFeedback={showFeedback}
     />
   ) : (
     Grid

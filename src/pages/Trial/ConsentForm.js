@@ -1,25 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Grid,
   Card,
-  Typography,
-  TextField,
-  InputLabel,
-  Select,
-  MenuItem,
   Button,
   Checkbox,
   FormControlLabel,
 } from '@mui/material'
-import useKeyboard from '../../helpers/useKeyboard'
-import { pickRandomStimulus } from '../../helpers/letterHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-import { TrialGrid } from '../../Components/TrialGrid/TrialGrid'
 
 const ConsentForm = ({ onNext }) => {
-  const [stimulus, setStimulus] = useState({})
   const { changeTitle } = useTrialContext()
   const [checked, setChecked] = React.useState(true)
   const handleChange = (event) => {
@@ -39,7 +30,6 @@ const ConsentForm = ({ onNext }) => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
@@ -49,8 +39,8 @@ const ConsentForm = ({ onNext }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              minHeight: 310,
-              maxHeight: 430,
+              minHeight: 450,
+              maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',

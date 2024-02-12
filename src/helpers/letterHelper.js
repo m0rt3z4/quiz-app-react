@@ -63,7 +63,7 @@ export const pickElement = (letter, onLetter, n, exclude = []) => {
   return pickRandomFromArray(arr, n)
 }
 
-const pickRandomFromArray = (arr, n) => {
+export const pickRandomFromArray = (arr, n) => {
   let result = new Array(n),
     len = arr.length,
     taken = new Array(len)
@@ -122,4 +122,22 @@ export const pickSurprize = (letter) => {
 
 const checkOnLetter = (i, j, letter) => {
   return letter === 'H' ? hLetterArray[i][j] : iLetterArray[i][j]
+}
+
+export const pickMultipleSurprizes = (letter, n = 4) => {
+  const range = []
+  for (let i = 0; i < 25; i++) {
+    range.push(i)
+  }
+  const surprizes = pickRandomFromArray(range, n).map((x) => {
+    const i = Math.floor(x / 5)
+    const j = x % 5
+    return {
+      i,
+      j,
+      iconType: 'SURPRIZE',
+      isOnLetter: checkOnLetter(i, j, letter),
+    }
+  })
+  return surprizes
 }

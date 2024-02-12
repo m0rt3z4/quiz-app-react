@@ -9,21 +9,31 @@ import {
   maskArray,
 } from '../../helpers/customBackground'
 
-const Step1 = ({ background, letter, onStartTrial }) => {
+const Step1 = ({
+  background,
+  letter,
+  dontShowLetter = false,
+  onStartTrial,
+}) => {
   const [isMask, setIsMask] = useState(false)
   const [customBackground, setCustomBackground] = useState([])
   const { changeTitle } = useTrialContext()
 
   useEffect(() => {
     changeTitle(`Imagin the letter '${letter}' on the grid.`)
-    setCustomBackground(letter === 'H' ? hLetterArray : iLetterArray)
-    const timer = setTimeout(() => {
-      setCustomBackground(maskArray)
-      setIsMask(true)
-    }, 3000)
+    let timer
+    if (!dontShowLetter) {
+      setCustomBackground(letter === 'H' ? hLetterArray : iLetterArray)
+      timer = setTimeout(() => {
+        setCustomBackground(maskArray)
+        setIsMask(true)
+      }, 3000)
+    } else {
+      waitBeforeStart()
+    }
 
     return () => {
-      clearTimeout(timer)
+      if (!!timer) clearTimeout(timer)
     }
   }, [background, letter])
 
