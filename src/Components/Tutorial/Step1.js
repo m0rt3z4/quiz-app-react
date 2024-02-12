@@ -3,7 +3,7 @@ import { Box, Grid, Typography } from '@mui/material'
 
 import useKeyboard from '../../helpers/useKeyboard'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import { hLetterArray, iLetterArray } from './customBackground'
+import { hLetterArray, iLetterArray } from '../../helpers/customBackground'
 
 const Step1 = ({ onNext }) => {
   const [index, setIndex] = useState(0)
