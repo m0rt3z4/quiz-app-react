@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
-import { hLetterArray, iLetterArray } from '../../helpers/customBackground'
+import { hLetterArray } from '../../helpers/customBackground'
 
 const Step3 = ({ onNext }) => {
-  const [index, setIndex] = useState(0)
-  const [background, setBackground] = useState(true)
-  const [customBgArray, setCustomBgArray] = useState([])
+  // const [index, setIndex] = useState(0)
+  // const [background, setBackground] = useState(true)
+  // const [customBgArray, setCustomBgArray] = useState([])
 
   const { showArrows } = useTrialContext()
   useEffect(() => {
@@ -25,21 +25,21 @@ const Step3 = ({ onNext }) => {
   }
   useKeyboard(Date.now(), [' '], keyboardCallback)
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (index < refreshGridArray.length) {
-        console.log(refreshGridArray[index][0])
-        setCustomBgArray(
-          refreshGridArray[index][0] === 'H' ? hLetterArray : iLetterArray
-        )
-        setBackground(refreshGridArray[index][1] === 'L' ? true : false)
-        setIndex(index + 1)
-      } else {
-        setIndex(0)
-      }
-    }, 1500)
-    return () => clearInterval(timeout)
-  }, [index])
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (index < refreshGridArray.length) {
+  //       console.log(refreshGridArray[index][0])
+  //       setCustomBgArray(
+  //         refreshGridArray[index][0] === 'H' ? hLetterArray : iLetterArray
+  //       )
+  //       setBackground(refreshGridArray[index][1] === 'L' ? true : false)
+  //       setIndex(index + 1)
+  //     } else {
+  //       setIndex(0)
+  //     }
+  //   }, 1500)
+  //   return () => clearInterval(timeout)
+  // }, [index])
 
   return (
     <Grid container xs={12} spacing={3}>
@@ -71,8 +71,8 @@ const Step3 = ({ onNext }) => {
       </Grid>
       <Grid item xs={7}>
         <TrialGrid
-          isWhiteThemed={background}
-          cutomBgArray={customBgArray}
+          isWhiteThemed={true}
+          cutomBgArray={hLetterArray}
           stimulus={{ i: 3, j: 0, iconType: 'SURPRIZE' }}
         />
       </Grid>
@@ -80,6 +80,6 @@ const Step3 = ({ onNext }) => {
   )
 }
 
-const refreshGridArray = ['HL', 'HD']
+// const refreshGridArray = ['HL', 'HD']
 
 export default Step3

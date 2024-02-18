@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
+import useKeyboard from '../../helpers/useKeyboard'
 
 const Finish = () => {
   const { changeTitle, showArrows } = useTrialContext()
@@ -17,8 +18,13 @@ const Finish = () => {
   }, [])
 
   const onClick = () => {
-    return redirectUrl('/trial')
+    return redirectUrl('/')
   }
+
+  const keyboardCallback = (resp) => {
+    if (!!resp && resp.keyPressed === 'ArrowRight') redirectUrl('/trial')
+  }
+  useKeyboard(Date.now(), ['ArrowRight'], keyboardCallback)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -49,7 +55,9 @@ const Finish = () => {
               spacing={2}
             >
               <Grid item xs={8}>
-                <Typography>Now let's head to the main trial.</Typography>
+                <Typography>
+                  Press right arrow to forward to the main trials.
+                </Typography>
               </Grid>
               <Grid container justifyContent={'center'} xs={12}>
                 <Grid item xs={8} paddingTop={11}>
@@ -62,7 +70,7 @@ const Finish = () => {
                     color="primary"
                     onClick={onClick}
                   >
-                    Main Trial
+                    Home Page
                   </Button>
                 </Grid>
               </Grid>

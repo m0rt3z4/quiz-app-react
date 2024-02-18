@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
 import Practice from '../../modules/practice'
-
+import StartSlide from '../Trial/StartSlide'
 import Finish from './Finish'
+import InfoForm from './InfoForm'
+import ConsentForm from './ConsentForm'
 
 import Tutorial from '../../Components/Tutorial'
 export const TutorialPage = () => {
@@ -19,20 +21,26 @@ export const TutorialPage = () => {
 
   const submitExperimentResults = (resp) => {
     console.log('experiment result => ', resp)
-    setStep(3)
+    onNext()
   }
 
   switch (step) {
     case 0:
       return <Tutorial onPractice={onNext} />
     case 1:
+      return <InfoForm onNext={onNext} />
+    case 2:
+      return <ConsentForm onNext={onNext} />
+    case 3:
+      return <StartSlide header={'Practice'} onNext={onNext} />
+    case 4:
       return (
         <Practice
           practice={practice}
           onFinishPractice={submitExperimentResults}
         />
       )
-    case 3:
+    case 5:
       return <Finish />
     default:
       break
