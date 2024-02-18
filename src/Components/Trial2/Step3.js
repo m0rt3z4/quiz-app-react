@@ -48,6 +48,7 @@ const Step3 = ({
       startTime={startTime}
       onFinishStep={onUserResp}
       showFeedback={showFeedback}
+      noTimeout={true}
     />
   )
 
