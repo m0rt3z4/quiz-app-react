@@ -24,7 +24,7 @@ export const MainLayout = () => {
               background: 'rgb(247, 241, 241)',
             }}
           >
-            <img src={Header} alt="MU Unviersity" />
+            <img src={Header} alt="MU Unviersity" style={{ width: '100%' }} />
             {/* <Stack p={1} py={2}>
               <Typography fontSize={'25px'}>Welcome</Typography>
             </Stack> */}
