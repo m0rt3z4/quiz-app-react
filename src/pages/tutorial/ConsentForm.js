@@ -9,10 +9,11 @@ import {
   FormControlLabel,
 } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
+import ConsentText from './ConsentText'
 
 const ConsentForm = ({ onNext }) => {
   const { changeTitle } = useTrialContext()
-  const [checked, setChecked] = React.useState(true)
+  const [checked, setChecked] = React.useState(false)
   const handleChange = (event) => {
     setChecked(event.target.checked)
   }
@@ -47,20 +48,8 @@ const ConsentForm = ({ onNext }) => {
             }}
           >
             <Grid container justifyContent={'center'} spacing={2}>
-              <Grid item xs={12}>
-                <Card
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    justifyContent: 'center',
-                    minHeight: 310,
-                    width: '100%',
-                    borderRadius: '5px',
-                    border: '1px solid black',
-                  }}
-                >
-                  {'Lorrem ipsum'}
-                </Card>{' '}
+              <Grid item container xs={12}>
+                <ConsentText />
               </Grid>
 
               <Grid item xs={10}>
@@ -76,6 +65,7 @@ const ConsentForm = ({ onNext }) => {
                   sx={{ width: '50%' }}
                   color="primary"
                   onClick={onClickNext}
+                  disabled={!checked}
                 >
                   Submit
                 </Button>{' '}

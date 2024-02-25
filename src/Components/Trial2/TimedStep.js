@@ -12,6 +12,7 @@ const TimedStep = ({
   startTime,
   stimulus,
   showFeedback = false,
+  noTimeout = false,
   onFinishStep,
 }) => {
   const {
@@ -66,18 +67,24 @@ const TimedStep = ({
 
   useEffect(() => {
     showArrows(true)
-    const timer = setTimeout(() => {
-      console.log('Timeout excecution started')
-      window.removeEventListener('keydown', handleKeyDown)
-      onFinishSurprizeStep({
-        responseTime: TIME_WAIT_FOR_SURPRIZE_ANSWER,
-        userAnswer: 'NO_ANSWER',
-      })
-    }, TIME_WAIT_FOR_SURPRIZE_ANSWER)
+    let timer
+    if (!noTimeout) {
+      timer = setTimeout(() => {
+        console.log('Timeout excecution started')
+        window.removeEventListener('keydown', handleKeyDown)
+        onFinishSurprizeStep({
+          responseTime: TIME_WAIT_FOR_SURPRIZE_ANSWER,
+          userAnswer: 'NO_ANSWER',
+        })
+      }, TIME_WAIT_FOR_SURPRIZE_ANSWER)
+    }
 
     const handleKeyDown = (event) => {
       if (['ArrowRight', 'ArrowLeft'].includes(event.key)) {
-        clearTimeout(timer)
+        if (!noTimeout) {
+          clearTimeout(timer)
+        }
+
         const endTime = Date.now()
         const response = {
           responseTime: endTime - startTime,
@@ -97,7 +104,9 @@ const TimedStep = ({
     window.addEventListener('keydown', handleKeyDown)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
-      clearTimeout(timer)
+      if (!noTimeout) {
+        clearTimeout(timer)
+      }
     }
   }, [startTime])
 

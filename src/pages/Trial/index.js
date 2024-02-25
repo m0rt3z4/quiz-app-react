@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { createNewExperiment } from '../../helpers/trialManagerHelper'
 import Experiment from '../../modules/experiment'
-import InfoForm from './InfoForm'
-import ConsentForm from './ConsentForm'
+import StartSlide from './StartSlide'
 import Finish from './Finish'
 
 export const TrialPage = () => {
@@ -25,17 +24,15 @@ export const TrialPage = () => {
 
   switch (step) {
     case 0:
-      return <InfoForm onNext={onNext} />
+      return <StartSlide header='Main Trial' onNext={onNext} />
     case 1:
-      return <ConsentForm onNext={onNext} />
-    case 2:
       return (
         <Experiment
           experiment={experiment}
           onFinishExperiment={submitExperimentResults}
         />
       )
-    case 3:
+    case 2:
       return <Finish />
     default:
       break

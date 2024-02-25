@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
-import { pickRandomStimulus } from '../../helpers/letterHelper'
+import { pickSurprize } from '../../helpers/letterHelper'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
 const Step2 = ({ onNext }) => {
@@ -14,7 +14,7 @@ const Step2 = ({ onNext }) => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      setStimulus(pickRandomStimulus())
+      setStimulus(pickSurprize())
     }, 1500)
     return () => clearInterval(timeout)
   }, [stimulus])
@@ -35,16 +35,16 @@ const Step2 = ({ onNext }) => {
           <Typography fontSize={'25px'}>
             {'A series of stimuli will be shown on the Grid\n'}
           </Typography>
-          <Typography fontSize={'25px'} sx={{ paddingTop: 5 }}>
-            {'Note that they vary in direction'}
-          </Typography>{' '}
           <Typography fontSize={'25px'} sx={{ paddingTop: 4 }}>
             Press Space to continue.
           </Typography>
         </Box>
       </Grid>
       <Grid item xs={7}>
-        <TrialGrid isWhiteThemed={true} stimulus={stimulus} />
+        <TrialGrid
+          isWhiteThemed={true}
+          stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'CIRCLE' }}
+        />
       </Grid>
     </Grid>
   )

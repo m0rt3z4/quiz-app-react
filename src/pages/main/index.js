@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
+import Lab from '../../assets/Lab.jpg'
 
 export const MainPage = () => {
   const navigate = useNavigate()
@@ -41,11 +42,11 @@ export const MainPage = () => {
                   }}
                 >
                   <Typography fontSize={'25px'}>
-                    It's recommended to complete the tutorial before the trial.
+                    Please read through the Tutorial before starting the task.
                   </Typography>
                 </Box>
               </Grid>
-              <Grid container justifyContent={'center'} xs={12} paddingTop={15}>
+              <Grid container justifyContent={'center'} xs={12} paddingTop={8} spacing={3}>
                 <Grid item xs={8}>
                   <Button
                     onClick={() => redirectUrl('/tutorial')}
@@ -58,7 +59,8 @@ export const MainPage = () => {
                   >
                     Tutorial
                   </Button>
-                  <Button
+                  <img src={Lab} alt="lab" style={{paddingTop: 30}} />
+                  {/* <Button
                     onClick={() => redirectUrl('/trial')}
                     size="large"
                     sx={{
@@ -68,7 +70,7 @@ export const MainPage = () => {
                     }}
                   >
                     Start Trial
-                  </Button>
+                  </Button> */}
                 </Grid>
               </Grid>
             </Grid>

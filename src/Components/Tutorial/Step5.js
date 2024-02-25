@@ -37,9 +37,9 @@ const Step5 = ({ onNext }) => {
               margin: '5px',
             }}
           >
-            Practice Trial
+            Practice
           </Button>
-          <Button
+          {/* <Button
             href="/"
             size="large"
             sx={{
@@ -49,7 +49,7 @@ const Step5 = ({ onNext }) => {
             }}
           >
             Main Page
-          </Button>
+          </Button> */}
         </Grid>
       </Grid>
     </Grid>

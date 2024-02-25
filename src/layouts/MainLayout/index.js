@@ -1,8 +1,8 @@
 import { Box, Grid, Card, Stack, Typography } from '@mui/material'
 import { Outlet } from 'react-router'
+import Header from '../../assets/Header.jpg'
 
 export const MainLayout = () => {
-
   return (
     <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
@@ -12,7 +12,7 @@ export const MainLayout = () => {
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
-        <Grid item xs={6}>
+        <Grid item xs={8}>
           <Card
             sx={{
               display: 'flex',
@@ -21,11 +21,13 @@ export const MainLayout = () => {
               minHeight: 125,
               borderRadius: '35px',
               border: '1px solid black',
+              background: 'rgb(247, 241, 241)',
             }}
           >
-            <Stack p={1} py={2}>
+            <img src={Header} alt="MU Unviersity" style={{ width: '100%' }} />
+            {/* <Stack p={1} py={2}>
               <Typography fontSize={'25px'}>Welcome</Typography>
-            </Stack>
+            </Stack> */}
           </Card>
         </Grid>
         <Grid
