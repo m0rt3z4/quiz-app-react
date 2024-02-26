@@ -45,7 +45,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       changeOutletWidth(5)
       return (
         <SurprizeBlocks
-          experiment={practice.surprizeBlocks.slice(0, 1)}
+          experiment={practice.surprizeBlocks}
           onFinishStep={saveSurprizeBlocksResult}
         />
       )
@@ -65,7 +65,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       changeOutletWidth(5)
       return (
         <NoSurprizeBlocks
-          experiment={practice.stimuliBlocks.slice(0, 1)}
+          experiment={practice.stimuliBlocks}
           onFinishStep={saveStimuliBlocksResult}
         />
       )
@@ -97,7 +97,7 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 12:
       return (
         <Experiment
-          experiment={practice.fullBlocks.slice(0, 1)}
+          experiment={practice.fullBlocks}
           onFinishExperiment={saveMainBlocksResult}
           showFeedback={true}
         />
