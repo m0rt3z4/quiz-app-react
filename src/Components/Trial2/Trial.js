@@ -37,7 +37,7 @@ const Trial2 = ({
     setTimeout(() => {
       setStep(3)
       return clearTimeout()
-    }, 5000)
+    }, 6000)
   }
   const onFinishRecognition = (resp) => {
     const res = {
