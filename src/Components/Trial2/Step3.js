@@ -14,7 +14,7 @@ const Step3 = ({
   const [stimulus, setStimulus] = useState({})
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState([])
-  const { showArrows, changeTitle } = useTrialContext()
+  const { changeTitle } = useTrialContext()
 
   useEffect(() => {
     changeTitle('Recognition')
@@ -22,9 +22,15 @@ const Step3 = ({
 
   useEffect(() => {
     if (index < stimuliArray.length) {
-      showArrows(true)
-      setStartTime(Date.now())
-      setStimulus(stimuliArray[index])
+      setTimeout(
+        () => {
+          // showArrows(true)
+          setStartTime(Date.now())
+          setStimulus(stimuliArray[index])
+          return clearTimeout()
+        },
+        index === 0 ? 1500 : 500
+      )
     } else {
       changeTitle('Next Trial')
       setStimulus({})
@@ -36,9 +42,7 @@ const Step3 = ({
     const akbar = { ...stimuliArray[index], ...resp }
 
     setRseults([...results, akbar])
-    setTimeout(() => {
-      setIndex(index + 1)
-    }, 500)
+    setIndex(index + 1)
   }
 
   const Grid = (

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 
@@ -7,7 +7,7 @@ import { TrialGrid } from '../TrialGrid/TrialGrid'
 import { hLetterArray } from '../../helpers/customBackground'
 
 const Step3 = ({ onNext }) => {
-  // const [index, setIndex] = useState(0)
+  const [surprize, setSurprize] = useState({ i: 3, j: 0, iconType: 'SURPRIZE' })
   // const [background, setBackground] = useState(true)
   // const [customBgArray, setCustomBgArray] = useState([])
 
@@ -25,21 +25,16 @@ const Step3 = ({ onNext }) => {
   }
   useKeyboard(Date.now(), [' '], keyboardCallback)
 
-  // useEffect(() => {
-  //   const timeout = setTimeout(() => {
-  //     if (index < refreshGridArray.length) {
-  //       console.log(refreshGridArray[index][0])
-  //       setCustomBgArray(
-  //         refreshGridArray[index][0] === 'H' ? hLetterArray : iLetterArray
-  //       )
-  //       setBackground(refreshGridArray[index][1] === 'L' ? true : false)
-  //       setIndex(index + 1)
-  //     } else {
-  //       setIndex(0)
-  //     }
-  //   }, 1500)
-  //   return () => clearInterval(timeout)
-  // }, [index])
+  useEffect(() => {
+    const timeout = setInterval(() => {
+      setSurprize({
+        i: Math.floor(Math.random() * 5),
+        j: Math.floor(Math.random() * 5),
+        iconType: 'SURPRIZE',
+      })
+    }, 1500)
+    return () => clearInterval(timeout)
+  }, [])
 
   return (
     <Grid container xs={12} spacing={3}>
@@ -53,19 +48,15 @@ const Step3 = ({ onNext }) => {
         }}
       >
         <Box>
-          <Typography fontSize={'25px'} sx={{ paddingTop: '45px' }}>
-            {'Any time the Surprize stimulus is showed'}
+          <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+            While you are visualizing the required letter on the grid, some
+            asterisks (*) will also be shown in multiple cells. If the asterisk
+            falls within the area of the grid where you are visualizing the
+            letter, press the (→) key. If it falls outside of the visualized
+            letter, press the (←) key. Try to be as fast as you can.
           </Typography>
-          <Typography fontSize={'25px'}>
-            {
-              'you must answer whether the Surprize icon is on the imagined letter or not'
-            }
-          </Typography>{' '}
-          <Typography fontSize={'25px'} sx={{ paddingTop: '25px' }}>
-            {'by pressing right for yes and left for no'}
-          </Typography>
-          <Typography fontSize={'25px'} sx={{ paddingTop: '45px' }}>
-            {'Press space to continue'}
+          <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+            {'press the (→) key to start the trials.'}
           </Typography>
         </Box>
       </Grid>
@@ -73,7 +64,7 @@ const Step3 = ({ onNext }) => {
         <TrialGrid
           isWhiteThemed={true}
           cutomBgArray={hLetterArray}
-          stimulus={{ i: 3, j: 0, iconType: 'SURPRIZE' }}
+          stimulus={surprize}
         />
       </Grid>
     </Grid>
