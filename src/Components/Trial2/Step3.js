@@ -14,7 +14,7 @@ const Step3 = ({
   const [stimulus, setStimulus] = useState({})
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState([])
-  const { showArrows, changeTitle } = useTrialContext()
+  const { changeTitle } = useTrialContext()
 
   useEffect(() => {
     changeTitle('Recognition')
@@ -24,7 +24,7 @@ const Step3 = ({
     if (index < stimuliArray.length) {
       setTimeout(
         () => {
-          showArrows(true)
+          // showArrows(true)
           setStartTime(Date.now())
           setStimulus(stimuliArray[index])
           return clearTimeout()

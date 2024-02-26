@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography } from '@mui/material'
 
 import useKeyboard from '../../helpers/useKeyboard'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
 import { hLetterArray, iLetterArray } from '../../helpers/customBackground'
+import { keyboardKeys } from '../../consts'
+import { TrialGrid } from '../TrialGrid/TrialGrid'
 
 const Step1 = ({ onNext }) => {
   const [index, setIndex] = useState(0)
@@ -12,12 +13,12 @@ const Step1 = ({ onNext }) => {
 
   //press space to continue
   const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === ' ') onNext()
+    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
   }
-  useKeyboard(Date.now(), [' '], keyboardCallback)
+  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const timeout = setInterval(() => {
       if (index < refreshGridArray.length) {
         setCustomBgArray(
           refreshGridArray[index][0] === 'H' ? hLetterArray : iLetterArray
@@ -27,7 +28,7 @@ const Step1 = ({ onNext }) => {
       } else {
         setIndex(0)
       }
-    }, 1500)
+    }, 2000)
     return () => clearInterval(timeout)
   }, [index])
 
@@ -44,14 +45,15 @@ const Step1 = ({ onNext }) => {
         }}
       >
         <Box>
-          <Typography fontSize={'25px'}>
-            At the begining of the test,
+          <Typography fontSize={'20px'}>
+            In the following, you will be presented with a grid on which a
+            random letter—either 'I' or 'H'—will appear at the beginning of each
+            trial. Your task is to visualize this letter on a blank grid that
+            will be shown subsequently. Please keep your focus fixed on the
+            center of the grid throughout the entire trial.
           </Typography>
-          <Typography fontSize={'25px'} sx={{ paddingTop: 2 }}>
-            you will be asked to imagine the letter 'H' or 'I' on the Grid.
-          </Typography>{' '}
-          <Typography fontSize={'25px'} sx={{ paddingTop: 4 }}>
-            Press Space to continue.
+          <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
+            To move forward, press the (→) key.
           </Typography>
         </Box>
       </Grid>

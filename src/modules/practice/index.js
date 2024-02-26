@@ -1,17 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
-
+import { useTrialContext } from '../../layouts/TrialLayout/context'
 // import Trial from '../../Components/TrialManager/Trial'
+import Slide from '../../Components/Slide'
+import Strings from '../../Components/Slide/Strings'
+import Slide1 from './Slide1'
+import Slide2 from './Slide2'
+import Slide3 from './Slide3'
+import Slide4 from './Slide4'
 import Experiment from '../experiment'
-import MainPracticeSlide from './MainPracticeSlide'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
-import NoSurprizeBlocksSlide from './NoSurprizeBlocksSlide'
 import SurprizeBlocks from './SurprizeBlocks'
-import SurprizeBlocksSlide from './SurprizeBlocksSlide'
+// import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const Practice = ({ practice, onFinishPractice }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState([])
+  const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
   }
@@ -29,30 +34,70 @@ const Practice = ({ practice, onFinishPractice }) => {
   }
 
   switch (step) {
-    case 0:
-      return <SurprizeBlocksSlide onNext={nextStep} />
-    case 1:
+    case 0: {
+      changeOutletWidth(8)
+      return <Slide1 onNext={nextStep} />
+    }
+    case 1: {
+      return <Slide2 onNext={nextStep} />
+    }
+    case 2: {
+      changeOutletWidth(5)
       return (
         <SurprizeBlocks
-          experiment={practice.surprizeBlocks}
+          experiment={practice.surprizeBlocks.slice(0, 1)}
           onFinishStep={saveSurprizeBlocksResult}
         />
       )
-    case 2:
-      return <NoSurprizeBlocksSlide onNext={nextStep} />
-    case 3:
+    }
+    // Rest Slide
+    case 3: {
+      return <Slide content={Strings.restSlide} onNext={nextStep} />
+    }
+    case 4: {
+      changeOutletWidth(8)
+      return <Slide3 onNext={nextStep} />
+    }
+    case 5: {
+      return <Slide4 onNext={nextStep} />
+    }
+    case 6: {
+      changeOutletWidth(5)
       return (
         <NoSurprizeBlocks
-          experiment={practice.stimuliBlocks}
+          experiment={practice.stimuliBlocks.slice(0, 1)}
           onFinishStep={saveStimuliBlocksResult}
         />
       )
-    case 4:
-      return <MainPracticeSlide onNext={nextStep} />
-    case 5:
+    }
+    case 7: {
+      return <Slide content={Strings.restSlide} onNext={nextStep} />
+    }
+    case 8: {
+      changeOutletWidth(5)
+      return (
+        <Slide content={Strings.tutorial.mainSlides.slide1} onNext={nextStep} />
+      )
+    }
+    case 9: {
+      return (
+        <Slide content={Strings.tutorial.mainSlides.slide2} onNext={nextStep} />
+      )
+    }
+    case 10: {
+      return (
+        <Slide content={Strings.tutorial.mainSlides.slide3} onNext={nextStep} />
+      )
+    }
+    case 11: {
+      return (
+        <Slide content={Strings.tutorial.mainSlides.slide4} onNext={nextStep} />
+      )
+    }
+    case 12:
       return (
         <Experiment
-          experiment={practice.fullBlocks}
+          experiment={practice.fullBlocks.slice(0, 1)}
           onFinishExperiment={saveMainBlocksResult}
           showFeedback={true}
         />

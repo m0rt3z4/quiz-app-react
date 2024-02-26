@@ -44,7 +44,17 @@ const Finish = () => {
               spacing={2}
             >
               <Grid item xs={8}>
-                <Typography>We appriciate your participation.</Typography>
+                <Typography fontSize={'25px'}>
+                  Thanks for your participation in this study!
+                </Typography>
+                <Typography fontSize={'25px'}>
+                  Remember to pick up a debrief sheet and feel free to inquire
+                  about any questions with the experimenter prior to exiting the
+                  lab.
+                </Typography>
+                <Typography fontSize={'25px'}>
+                  Wishing you an excellent day!
+                </Typography>
               </Grid>
               <Grid item xs={8}>
                 <Button onClick={onClickNext}>Main Page</Button>

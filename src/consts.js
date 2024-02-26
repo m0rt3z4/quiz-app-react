@@ -4,3 +4,9 @@ export const recognitionTypes = {
   INCORRECT_ON_LETTER: 'INCORRECT_ON_LETTER',
   INCORRECT_OFF_LETTER: 'INCORRECT_OFF_LETTER',
 }
+
+export const keyboardKeys = {
+  RIGHT_ARROW: 'ArrowRight',
+  LEFT_ARROW: 'ArrowLeft',
+  SPACE: ' ',
+}

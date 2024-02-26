@@ -33,7 +33,7 @@ const RecognitionSlide = () => {
           >
             <Typography fontSize={'25px'}>
               {
-                'Which of the following stimuli were presented.\n Press right for yes and left for no.'
+                'If you recall seeing a dot in the cell where the question mark now appears, press the (→) key. If you think a dot was not presented in the cell, press the (←) key.'
               }
             </Typography>
           </Card>
