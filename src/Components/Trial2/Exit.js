@@ -1,22 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
-
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import React from 'react'
+import useKeyboard from '../../helpers/useKeyboard'
+import { keyboardKeys } from '../../consts'
+import Slide from '../Slide'
+import Strings from '../Slide/Strings'
 
 const Exit = ({ background, onFinishStep }) => {
+  //press space to continue
+  const keyboardCallback = (resp) => {
+    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onFinishStep()
+  }
+  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
-  useEffect(() => {
-    onFinishStep()
-  }, [])
-  // //press space to continue
-  // const keyboardCallback = (resp) => {
-  //   if (!!resp && resp.keyPressed === ' ') onFinishStep()
-  // }
-  // useKeyboard(Date.now(), [' '], keyboardCallback)
-
-  const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
-
-  return Grid
+  return <Slide content={Strings.trial.exit} onNext={onFinishStep} />
 }
 
 export default Exit

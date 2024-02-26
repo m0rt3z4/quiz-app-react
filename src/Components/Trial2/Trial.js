@@ -40,17 +40,18 @@ const Trial2 = ({
     }, 6000)
   }
   const onFinishRecognition = (resp) => {
-    const res = {
+    setResults({
       ...results,
       stimuli: trialParams.stimuli,
       recognition: resp,
-    }
+    })
     // console.log(res)
-    onFinishTrial(res)
-    // setStep(4)
+    // onFinishTrial(res)
+    setStep(4)
   }
 
   const onNext = () => {
+    // console.log(results)
     return onFinishTrial(results)
   }
 
