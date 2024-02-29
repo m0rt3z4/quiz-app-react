@@ -31,16 +31,16 @@ export const TutorialPage = () => {
       return <InfoForm onNext={onNext} />
     case 2:
       return <ConsentForm onNext={onNext} />
-    // case 3:
-    //   return <Tutorial onPractice={onNext} />
     case 3:
+      return <Slide content={Strings.tutorial.slide2} onNext={onNext} />
+    case 4:
       return (
         <Practice
           practice={practice}
           onFinishPractice={submitExperimentResults}
         />
       )
-    case 4:
+    case 5:
       return <Slide content={Strings.restSlide} onNext={onNext} />
     default:
       break
