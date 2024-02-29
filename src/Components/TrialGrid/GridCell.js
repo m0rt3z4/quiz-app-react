@@ -4,7 +4,12 @@ import CircleIcon from '@mui/icons-material/Circle'
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
 import TagIcon from '@mui/icons-material/Tag'
 
-const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
+const GridCell = ({
+  showStimulus,
+  iconType,
+  backgroundColor,
+  isBold = false,
+}) => {
   const Icon = (iconType) => {
     switch (iconType) {
       case 'SURPRIZE':
@@ -30,7 +35,7 @@ const GridCell = ({ showStimulus, iconType, backgroundColor }) => {
         backgroundColor: backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        border: '1px solid black',
+        border: `${isBold ? '2' : '1'}px solid black`,
         width: 70,
         height: 70,
       }}

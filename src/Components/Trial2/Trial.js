@@ -5,6 +5,7 @@ import Step2 from './Step2'
 import Step3 from './Step3'
 import RecognitionSlide from './RecognitionSlide'
 import Exit from './Exit'
+import { TrialGrid } from '../TrialGrid/TrialGrid'
 
 const Trial2 = ({
   background,
@@ -37,7 +38,7 @@ const Trial2 = ({
     setTimeout(() => {
       setStep(3)
       return clearTimeout()
-    }, 6000)
+    }, 2500)
   }
   const onFinishRecognition = (resp) => {
     setResults({
@@ -80,7 +81,7 @@ const Trial2 = ({
       )
     }
     case 2: {
-      return <RecognitionSlide />
+      return <TrialGrid background={background} isBold={true} />
     }
     case 3: {
       return (

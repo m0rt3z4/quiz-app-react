@@ -22,12 +22,12 @@ const Step3 = ({
 
   useEffect(() => {
     if (index < stimuliArray.length) {
-      setTimeout(() => {
-        // showArrows(true)
-        setStimulus(stimuliArray[index])
-        setStartTime(Date.now())
-        return clearTimeout()
-      }, 500)
+      // setTimeout(() => {
+      // showArrows(true)
+      setStimulus(stimuliArray[index])
+      setStartTime(Date.now())
+      //   return clearTimeout()
+      // }, 500)
     } else {
       changeTitle('Next Trial')
       setStimulus({})
@@ -39,7 +39,10 @@ const Step3 = ({
     const akbar = { ...stimuliArray[index], ...resp }
 
     setRseults([...results, akbar])
-    setIndex(index + 1)
+    setTimeout(() => {
+      setIndex(index + 1)
+      return clearTimeout()
+    }, 500)
   }
 
   const Grid = (

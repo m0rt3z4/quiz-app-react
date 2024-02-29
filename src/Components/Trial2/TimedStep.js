@@ -113,6 +113,7 @@ const TimedStep = ({
     <TrialGrid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
+      isBold={stimulus.iconType === 'QUESTION' ? true : false}
     />
   )
   return Grid

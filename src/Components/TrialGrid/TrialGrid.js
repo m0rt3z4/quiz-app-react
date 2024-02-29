@@ -7,6 +7,7 @@ export const TrialGrid = ({
   cutomBgArray = [],
   isWhiteThemed,
   stimulus = {},
+  isBold = false,
   isMask = false,
 }) => {
   const renderGrid = () => {
@@ -37,12 +38,14 @@ export const TrialGrid = ({
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={true}
               iconType={'CENTER_DOT'}
+              isBold={isBold}
             />
           ) : (
             <GridCell
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={showStimulus}
               iconType={showStimulus ? stimulus.iconType : null}
+              isBold={isBold}
             />
           )
         )
