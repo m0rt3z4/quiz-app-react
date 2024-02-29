@@ -34,12 +34,12 @@ export const TrialLayout = () => {
           <Grid item xs={1}>
             {leftBarVisible && (
               <Grid item>
-                {leftBarWarning && (
+                {!!leftBarWarning && (
                   <Typography
-                    color={feedbackStatus === 'SUCCESS' ? 'green' : 'red'}
+                    color={leftBarWarning === 'SUCCESS' ? 'green' : 'red'}
                     sx={{ marginBottom: 1 }}
                   >
-                    {feedbackStatus === 'SUCCESS' ? 'Correct' : 'Incorrect'}
+                    {leftBarWarning === 'SUCCESS' ? 'Correct' : 'Incorrect'}
                   </Typography>
                 )}
                 <Card
@@ -50,8 +50,8 @@ export const TrialLayout = () => {
                     height: '150px',
                     borderRadius: '35px',
                     border: `1px solid ${
-                      leftBarWarning
-                        ? feedbackStatus === 'SUCCESS'
+                      !!leftBarWarning
+                        ? leftBarWarning === 'SUCCESS'
                           ? 'green'
                           : 'red'
                         : 'black'
@@ -74,12 +74,12 @@ export const TrialLayout = () => {
           <Grid item xs={1}>
             {rightBarVisible && (
               <Grid item>
-                {rightBarWarning && (
+                {!!rightBarWarning && (
                   <Typography
-                    color={feedbackStatus === 'SUCCESS' ? 'green' : 'red'}
+                    color={rightBarWarning === 'SUCCESS' ? 'green' : 'red'}
                     sx={{ marginBottom: 1 }}
                   >
-                    {feedbackStatus === 'SUCCESS' ? 'Correct' : 'Incorrect'}
+                    {rightBarWarning === 'SUCCESS' ? 'Correct' : 'Incorrect'}
                   </Typography>
                 )}
                 <Card
@@ -90,8 +90,8 @@ export const TrialLayout = () => {
                     height: '150px',
                     borderRadius: '35px',
                     border: `1px solid ${
-                      rightBarWarning
-                        ? feedbackStatus === 'SUCCESS'
+                      !!rightBarWarning
+                        ? rightBarWarning === 'SUCCESS'
                           ? 'green'
                           : 'red'
                         : 'black'

@@ -19,7 +19,6 @@ const TimedStep = ({
     showArrows,
     changeRightBarWarning,
     changeLeftBarWarning,
-    changeFeedbackStatus,
   } = useTrialContext()
 
   const isAnswerCorrect = (userAnswer) => {
@@ -49,17 +48,18 @@ const TimedStep = ({
   }
 
   const delayedFeedback = (answer, isCorrect, callback) => {
-    changeFeedbackStatus(isCorrect ? 'SUCCESS' : 'ERROR')
+    const status = isCorrect ? 'SUCCESS' : 'ERROR'
+    // changeFeedbackStatus(isCorrect ? 'SUCCESS' : 'ERROR')
     if (answer === 'ArrowRight') {
-      changeRightBarWarning(true)
+      changeRightBarWarning(status)
     } else {
-      changeLeftBarWarning(true)
+      changeLeftBarWarning(status)
     }
     setTimeout(() => {
       if (answer === 'ArrowRight') {
-        changeRightBarWarning(false)
+        changeRightBarWarning('')
       } else {
-        changeLeftBarWarning(false)
+        changeLeftBarWarning('')
       }
       callback()
     }, 1000)
@@ -70,7 +70,6 @@ const TimedStep = ({
     let timer
     if (!noTimeout) {
       timer = setTimeout(() => {
-        console.log('Timeout excecution started')
         window.removeEventListener('keydown', handleKeyDown)
         onFinishSurprizeStep({
           responseTime: TIME_WAIT_FOR_SURPRIZE_ANSWER,
@@ -114,6 +113,7 @@ const TimedStep = ({
     <TrialGrid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
+      isBold={stimulus.iconType === 'QUESTION' ? true : false}
     />
   )
   return Grid

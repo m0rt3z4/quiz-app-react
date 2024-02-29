@@ -8,8 +8,8 @@ export const TrialProvider = ({ children }) => {
   const [outletWidth, setOutletWidth] = useState(5)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
-  const [leftBarWarning, setLeftBarWarning] = useState(false)
-  const [rightBarWarning, setRightBarWarning] = useState(false)
+  const [leftBarWarning, setLeftBarWarning] = useState('')
+  const [rightBarWarning, setRightBarWarning] = useState('')
   const [feedbackStatus, setFeedbackStatus] = useState('')
 
   const changeTitle = useCallback((newTitle) => {
