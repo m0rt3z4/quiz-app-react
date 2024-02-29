@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
 import Practice from '../../modules/practice'
 import Slide from '../../Components/Slide'
@@ -10,6 +12,13 @@ import ConsentForm from './ConsentForm'
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
   const [practice, setPractice] = useState()
+
+  const navigate = useNavigate()
+
+  const redirectUrl = (url) => {
+    navigate(url)
+  }
+
   useEffect(() => {
     const exp = createPracticeParams()
     setPractice(exp)
@@ -41,7 +50,14 @@ export const TutorialPage = () => {
         />
       )
     case 5:
-      return <Slide content={Strings.restSlide} onNext={onNext} />
+      return (
+        <Slide
+          content={Strings.tutorial.finish}
+          onNext={() => {
+            redirectUrl('/trial')
+          }}
+        />
+      )
     default:
       break
   }
