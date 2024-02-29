@@ -81,7 +81,7 @@ const Trial2 = ({
       )
     }
     case 2: {
-      return <TrialGrid background={background} isBold={true} />
+      return <TrialGrid isWhiteThemed={background === 'L' ? true : false} isBold={true} />
     }
     case 3: {
       return (

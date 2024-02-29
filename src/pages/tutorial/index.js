@@ -5,8 +5,9 @@ import { createPracticeParams } from '../../helpers/trialManagerHelper'
 import Practice from '../../modules/practice'
 import Slide from '../../Components/Slide'
 import Strings from '../../Components/Slide/Strings'
+import InfoForm from '../../Components/InfoForm'
 
-import InfoForm from './InfoForm'
+// import InfoForm from './InfoForm'
 import ConsentForm from './ConsentForm'
 
 export const TutorialPage = () => {
