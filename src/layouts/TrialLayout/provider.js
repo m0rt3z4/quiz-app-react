@@ -41,11 +41,7 @@ export const TrialProvider = ({ children }) => {
   }, [])
 
   const changeFeedbackStatus = useCallback((feedback) => {
-    if (feedback === 'SUCCESS') {
-      setFeedbackStatus('SUCCESS')
-    } else if (feedback === 'ERROR') {
-      setFeedbackStatus('ERROR')
-    } else return null
+    setFeedbackStatus(feedback)
   }, [])
 
   const value = useMemo(() => {

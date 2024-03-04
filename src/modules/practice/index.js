@@ -11,6 +11,7 @@ import Slide4 from './Slide4'
 import Experiment from '../experiment'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
 import SurprizeBlocks from './SurprizeBlocks'
+import PictureSlide from '../../Components/PictureSlide'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const Practice = ({ practice, onFinishPractice }) => {
@@ -42,6 +43,9 @@ const Practice = ({ practice, onFinishPractice }) => {
       return <Slide2 onNext={nextStep} />
     }
     case 2: {
+      return <PictureSlide content={'Surprize'} onNext={nextStep} />
+    }
+    case 3: {
       changeOutletWidth(5)
       return (
         <SurprizeBlocks
@@ -51,17 +55,20 @@ const Practice = ({ practice, onFinishPractice }) => {
       )
     }
     // Rest Slide
-    case 3: {
+    case 4: {
       return <Slide content={Strings.restSlide} onNext={nextStep} />
     }
-    case 4: {
+    case 5: {
       changeOutletWidth(8)
       return <Slide3 onNext={nextStep} />
     }
-    case 5: {
+    case 6: {
       return <Slide4 onNext={nextStep} />
     }
-    case 6: {
+    case 7: {
+      return <PictureSlide content={'Memorandum'} onNext={nextStep} />
+    }
+    case 8: {
       changeOutletWidth(5)
       return (
         <NoSurprizeBlocks
@@ -70,31 +77,36 @@ const Practice = ({ practice, onFinishPractice }) => {
         />
       )
     }
-    case 7: {
+    case 9: {
       return <Slide content={Strings.restSlide} onNext={nextStep} />
     }
-    case 8: {
+    case 10: {
       changeOutletWidth(5)
       return (
         <Slide content={Strings.tutorial.mainSlides.slide1} onNext={nextStep} />
       )
     }
-    case 9: {
+    case 11: {
       return (
         <Slide content={Strings.tutorial.mainSlides.slide2} onNext={nextStep} />
       )
     }
-    case 10: {
+    case 12: {
       return (
         <Slide content={Strings.tutorial.mainSlides.slide3} onNext={nextStep} />
       )
     }
-    case 11: {
+    case 13: {
       return (
         <Slide content={Strings.tutorial.mainSlides.slide4} onNext={nextStep} />
       )
     }
-    case 12:
+    case 14: {
+      changeOutletWidth(8)
+      return <PictureSlide content={'Both'} onNext={nextStep} />
+    }
+    case 15: {
+      changeOutletWidth(5)
       return (
         <Experiment
           experiment={practice.fullBlocks}
@@ -102,6 +114,7 @@ const Practice = ({ practice, onFinishPractice }) => {
           showFeedback={true}
         />
       )
+    }
     default:
       break
   }

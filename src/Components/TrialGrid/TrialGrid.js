@@ -38,14 +38,14 @@ export const TrialGrid = ({
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={true}
               iconType={'CENTER_DOT'}
-              isBold={isBold}
+              // isBold={isBold}
             />
           ) : (
             <GridCell
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={showStimulus}
               iconType={showStimulus ? stimulus.iconType : null}
-              isBold={isBold}
+              // isBold={isBold}
             />
           )
         )
@@ -83,11 +83,10 @@ export const TrialGrid = ({
     >
       <Box
         sx={{
-          display: 'flex',
+          display: 'block',
           flexWrap: 'wrap',
           maxWidth: 620,
-          width: '100%',
-          alignSelf: 'center',
+          border: `${isBold ? '4' : '1'}px solid black`,
         }}
       >
         {renderGrid()}

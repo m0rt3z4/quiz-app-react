@@ -8,7 +8,6 @@ import { hierarchy } from './routes'
 import TrialPage from '../pages/Trial'
 import MainPage from '../pages/main'
 import TutorialPage from '../pages/tutorial'
-import MainTest from '../Components/MainTest'
 export const router = createBrowserRouter([
   {
     element: (

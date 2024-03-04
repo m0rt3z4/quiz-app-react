@@ -1,4 +1,4 @@
-import { Box, Grid, Card, Stack, Typography } from '@mui/material'
+import { Box, Grid, Card } from '@mui/material'
 import { Outlet } from 'react-router'
 import Header from '../../assets/Header.jpg'
 
