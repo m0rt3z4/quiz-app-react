@@ -17,8 +17,9 @@ const TimedStep = ({
 }) => {
   const {
     showArrows,
-    changeRightBarWarning,
-    changeLeftBarWarning,
+    // changeRightBarWarning,
+    // changeLeftBarWarning,
+    changeFeedbackStatus
   } = useTrialContext()
 
   const isAnswerCorrect = (userAnswer) => {
@@ -48,19 +49,20 @@ const TimedStep = ({
   }
 
   const delayedFeedback = (answer, isCorrect, callback) => {
-    const status = isCorrect ? 'SUCCESS' : 'ERROR'
-    // changeFeedbackStatus(isCorrect ? 'SUCCESS' : 'ERROR')
-    if (answer === 'ArrowRight') {
-      changeRightBarWarning(status)
-    } else {
-      changeLeftBarWarning(status)
-    }
+    // const status = isCorrect ? 'SUCCESS' : 'ERROR'
+    changeFeedbackStatus(isCorrect ? 'success' : 'error')
+    // if (answer === 'ArrowRight') {
+    //   changeRightBarWarning(status)
+    // } else {
+    //   changeLeftBarWarning(status)
+    // }
     setTimeout(() => {
-      if (answer === 'ArrowRight') {
-        changeRightBarWarning('')
-      } else {
-        changeLeftBarWarning('')
-      }
+      changeFeedbackStatus('')
+      // if (answer === 'ArrowRight') {
+      //   changeRightBarWarning('')
+      // } else {
+      //   changeLeftBarWarning('')
+      // }
       callback()
     }, 1000)
   }
