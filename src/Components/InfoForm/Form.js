@@ -160,10 +160,18 @@ const Form = ({ onNext }) => {
               variant="outlined"
               sx={{ width: '100%' }}
             >
-              <MenuItem value={0}>High School</MenuItem>
-              <MenuItem value={1}>Bachelor’s or equivalent level</MenuItem>
-              <MenuItem value={2}>Master’s or equivalent level</MenuItem>
-              <MenuItem value={3}>Doctoral or equivalent level</MenuItem>
+              <MenuItem value={0}>
+                Some secondary education/high school
+              </MenuItem>
+              <MenuItem value={1}>
+                Completed secondary education/high school
+              </MenuItem>
+              <MenuItem value={2}>Some college/university</MenuItem>
+              <MenuItem value={3}>Bachelor's degree</MenuItem>
+              <MenuItem value={4}>Some postgraduate study</MenuItem>
+              <MenuItem value={5}>Master's degree</MenuItem>
+              <MenuItem value={6}>Professional degree</MenuItem>
+              <MenuItem value={7}>Doctorate degree</MenuItem>
             </Select>
           </Grid>
         </Grid>
@@ -197,7 +205,7 @@ const Form = ({ onNext }) => {
               }}
               color="primary"
               onClick={onClickNext}
-            //   type="submit"
+              //   type="submit"
             >
               Submit
             </Button>
