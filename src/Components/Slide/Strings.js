@@ -8,7 +8,7 @@ const Strings = {
       {
         fontSize: 25,
         text:
-          "Please place your index fingers on the keyboard's arrow keys (← →). Keep in mind that during the task, the (→) key means YES, and the (←) key means NO.",
+          "Please place both your index fingers on the keyboard's arrow keys (← →). Keep in mind that during the task, the (→) key means YES, and the (←) key means NO.",
       },
       { fontSize: 25, text: 'To move forward, press the (→) key.' },
     ],

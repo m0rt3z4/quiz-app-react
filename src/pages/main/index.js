@@ -59,7 +59,7 @@ export const MainPage = () => {
                   >
                     Tutorial
                   </Button>
-                  <img src={Lab} alt="lab" style={{paddingTop: 30}} />
+                  {/* <img src={Lab} alt="lab" style={{paddingTop: 30}} /> */}
                   {/* <Button
                     onClick={() => redirectUrl('/trial')}
                     size="large"

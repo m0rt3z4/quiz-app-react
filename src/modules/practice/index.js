@@ -8,6 +8,10 @@ import Slide1 from './Slide1'
 import Slide2 from './Slide2'
 import Slide3 from './Slide3'
 import Slide4 from './Slide4'
+import Slide5 from './Slide5'
+import Slide6 from './Slide6'
+import Slide7 from './Slide7'
+import Slide8 from './Slide8'
 import Experiment from '../experiment'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
 import SurprizeBlocks from './SurprizeBlocks'
@@ -19,6 +23,7 @@ const Practice = ({ practice, onFinishPractice }) => {
   const [results, setResults] = useState([])
   const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
+    console.log(step)
     setStep(step + 1)
   }
   const saveSurprizeBlocksResult = (resp) => {
@@ -49,7 +54,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       changeOutletWidth(5)
       return (
         <SurprizeBlocks
-          experiment={practice.surprizeBlocks}
+          experiment={practice.surprizeBlocks.slice(0, 1)}
           onFinishStep={saveSurprizeBlocksResult}
         />
       )
@@ -72,7 +77,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       changeOutletWidth(5)
       return (
         <NoSurprizeBlocks
-          experiment={practice.stimuliBlocks}
+          experiment={practice.stimuliBlocks.slice(0, 1)}
           onFinishStep={saveStimuliBlocksResult}
         />
       )
@@ -83,22 +88,34 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 10: {
       changeOutletWidth(5)
       return (
-        <Slide content={Strings.tutorial.mainSlides.slide1} onNext={nextStep} />
+        <Slide5
+          content={Strings.tutorial.mainSlides.slide1}
+          onNext={nextStep}
+        />
       )
     }
     case 11: {
       return (
-        <Slide content={Strings.tutorial.mainSlides.slide2} onNext={nextStep} />
+        <Slide6
+          content={Strings.tutorial.mainSlides.slide2}
+          onNext={nextStep}
+        />
       )
     }
     case 12: {
       return (
-        <Slide content={Strings.tutorial.mainSlides.slide3} onNext={nextStep} />
+        <Slide7
+          content={Strings.tutorial.mainSlides.slide3}
+          onNext={nextStep}
+        />
       )
     }
     case 13: {
       return (
-        <Slide content={Strings.tutorial.mainSlides.slide4} onNext={nextStep} />
+        <Slide8
+          content={Strings.tutorial.mainSlides.slide4}
+          onNext={nextStep}
+        />
       )
     }
     case 14: {
@@ -109,7 +126,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       changeOutletWidth(5)
       return (
         <Experiment
-          experiment={practice.fullBlocks}
+          experiment={practice.fullBlocks.slice(0, 1)}
           onFinishExperiment={saveMainBlocksResult}
           showFeedback={true}
         />

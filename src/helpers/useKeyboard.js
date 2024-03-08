@@ -26,7 +26,7 @@ const useKeyboard = (startTime, keyArray = [], callback) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [])
+  }, [keyArray, startTime])
 
   return callback({ keyPressed, responseTime })
 }
