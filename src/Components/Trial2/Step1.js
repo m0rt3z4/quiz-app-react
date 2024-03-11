@@ -50,7 +50,7 @@ const Step1 = ({
   const waitBeforeStart = () => {
     const timer = setTimeout(() => {
       onStartTrial()
-    }, 1500)
+    }, 300)
     return () => {
       clearTimeout(timer)
     }
