@@ -4,6 +4,7 @@ import { useTrialContext } from '../../../layouts/TrialLayout/context'
 import Slide1 from './Slide1'
 import Slide2 from './Slide2'
 import Slide3 from './Slide3'
+import Slide4 from './Slide4'
 import Feedback from './Feedback'
 import SurprizeBlocks from './SurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
@@ -36,17 +37,22 @@ const SurprizeBlock = ({ practice, onNext }) => {
     }
 
     case 2: {
-      return <Slide2 onNext={nextStep} />
+      changeOutletWidth(5)
+      return <Slide4 onNext={nextStep} />
     }
     case 3: {
+      changeOutletWidth(8)
+      return <Slide2 onNext={nextStep} />
+    }
+    case 4: {
       changeOutletWidth(5)
       return <Feedback onNext={nextStep} />
     }
-    case 4: {
+    case 5: {
       changeOutletWidth(8)
       return <PictureSlide content={'Surprize'} onNext={nextStep} />
     }
-    case 5: {
+    case 6: {
       changeOutletWidth(5)
       return (
         <SurprizeBlocks

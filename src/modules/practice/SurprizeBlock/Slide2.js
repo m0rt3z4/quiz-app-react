@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 import useKeyboard from '../../../helpers/useKeyboard'
 
-import { useTrialContext } from '../../../layouts/TrialLayout/context'
 import { hLetterArray } from '../../../helpers/customBackground'
 import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
@@ -12,15 +11,8 @@ const Slide2 = ({ onNext }) => {
   // const [background, setBackground] = useState(true)
   // const [customBgArray, setCustomBgArray] = useState([])
 
-  const { showArrows } = useTrialContext()
-  useEffect(() => {
-    showArrows(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) {
-      showArrows(false)
       onNext()
     }
   }
@@ -63,12 +55,7 @@ const Slide2 = ({ onNext }) => {
           >
             <Box>
               <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
-                While you are visualizing the required letter on the grid, some
-                asterisks (*) will also be shown in multiple cells. If the
-                asterisk falls within the area of the grid where you are
-                visualizing the letter, press the (→) key. If it falls outside
-                of the visualized letter, press the (←) key. Try to be as fast
-                as you can.
+                Here is the example
               </Typography>
               <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
                 {'press the (→) key to start the trials.'}
