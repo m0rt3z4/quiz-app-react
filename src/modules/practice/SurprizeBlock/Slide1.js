@@ -59,13 +59,9 @@ const Slide1 = ({ onNext }) => {
           >
             <Box>
               <Typography fontSize={'20px'}>
-                In the following, you will be presented with a grid on which a
-                random letter—either 'I' or 'H'—will appear at the beginning of
-                each trial. Your task is to visualize this letter on a blank
-                grid that will be shown subsequently. Please keep your focus
-                fixed on the center of the grid throughout the entire trial.
+                Here is the example
               </Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: 8 }}>
                 To move forward, press the (→) key.
               </Typography>
             </Box>

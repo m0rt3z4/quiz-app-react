@@ -16,11 +16,11 @@ const Slide3 = ({ onNext }) => {
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setStimulus(pickSurprize())
-    }, 1500)
-    return () => clearTimeout(timeout)
-  }, [stimulus])
+    // const timeout = setTimeout(() => {
+    setStimulus(pickSurprize())
+    // }, 1500)
+    // return () => clearTimeout(timeout)
+  }, [])
 
   return (
     <Grid container xs={12} justifyContent={'center'} spacing={2}>
