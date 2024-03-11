@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
 import Step1 from './Step1'
+import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
@@ -31,6 +32,16 @@ const PracticeSurprize = ({
     }
     case 1: {
       return (
+        <ReadtToStart
+          background={background}
+          onNext={() => {
+            setStep(2)
+          }}
+        />
+      )
+    }
+    case 2: {
+      return (
         <Step3
           background={background}
           stimuliArray={trialParams}
@@ -39,7 +50,7 @@ const PracticeSurprize = ({
         />
       )
     }
-    case 2: {
+    case 3: {
       return <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
     }
 

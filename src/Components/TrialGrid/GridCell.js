@@ -5,6 +5,7 @@ import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
 import StarRateIcon from '@mui/icons-material/StarRate'
 import TagIcon from '@mui/icons-material/Tag'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
+import './style.css'
 
 const GridCell = ({
   showStimulus,
@@ -20,7 +21,11 @@ const GridCell = ({
           // <Typography color={'lightgreen'} fontSize={'40px'}>
           //   *
           // </Typography>
-          <StarRateIcon fontSize="medium" color={feedbackStatus} />
+          <StarRateIcon
+            fontSize="medium"
+            color={feedbackStatus}
+            className="blink"
+          />
         )
       case 'CENTER_DOT':
         return <Typography fontSize={'30px'}>.</Typography>

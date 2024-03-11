@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 
-import useKeyboard from '../../helpers/useKeyboard'
-import { pickSurprize } from '../../helpers/letterHelper'
-import { keyboardKeys } from '../../consts'
-import { TrialGrid } from '../../Components/TrialGrid/TrialGrid'
+import useKeyboard from '../../../helpers/useKeyboard'
+import { pickSurprize } from '../../../helpers/letterHelper'
+import { keyboardKeys } from '../../../consts'
+import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide4 = ({ onNext }) => {
+const Slide3 = ({ onNext }) => {
   const [stimulus, setStimulus] = useState({})
 
   //press space to continue
@@ -16,14 +16,14 @@ const Slide4 = ({ onNext }) => {
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      setStimulus(pickSurprize())
-    }, 1500)
-    return () => clearTimeout(timeout)
-  }, [stimulus])
+    // const timeout = setTimeout(() => {
+    setStimulus(pickSurprize())
+    // }, 1500)
+    // return () => clearTimeout(timeout)
+  }, [])
 
   return (
-    <Grid container xs={12} justifyContent={'center'} spacing={3}>
+    <Grid container xs={12} justifyContent={'center'} spacing={2}>
       <Grid item xs={12}>
         <Card
           sx={{
@@ -49,20 +49,21 @@ const Slide4 = ({ onNext }) => {
           >
             <Box>
               <Typography fontSize={'20px'}>
-                Following this, question marks will appear in some cells of the
-                grid. If you recall seeing a dot in the cell where the question
-                mark now appears, press the (→) key. If you think a dot was not
-                presented in that cell, press the (←) key.
+                In the following, you will be presented with a grid. then
+                several dots will appear briefly in some cells of the grid. Try
+                to memorize the cells where the dots were presented while
+                keeping your eyes on the center of the grid—resist the urge to
+                look away from the center.
               </Typography>
               <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
-                Press the (→) key to start the next trials.
+                To move forward, press the (→) key.
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={7}>
             <TrialGrid
               isWhiteThemed={true}
-              stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'QUESTION' }}
+              stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'CIRCLE' }}
             />
           </Grid>
         </Card>
@@ -71,4 +72,4 @@ const Slide4 = ({ onNext }) => {
   )
 }
 
-export default Slide4
+export default Slide3

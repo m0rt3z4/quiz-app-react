@@ -32,6 +32,11 @@ export const TrialProvider = ({ children }) => {
     setRightBarVisible(isVisible)
   }, [])
 
+  const showRightArrow = useCallback((isVisible) => {
+    setRightBarVisible(isVisible)
+    setRightBarWarning(isVisible)
+  }, [])
+
   const changeRightBarWarning = useCallback((isWarning) => {
     setRightBarWarning(isWarning)
   }, [])
@@ -64,6 +69,7 @@ export const TrialProvider = ({ children }) => {
       rightBarWarning,
       feedbackStatus,
       changeFeedbackStatus,
+      showRightArrow,
     }
   }, [
     experiment,
@@ -82,6 +88,7 @@ export const TrialProvider = ({ children }) => {
     rightBarWarning,
     feedbackStatus,
     changeFeedbackStatus,
+    showRightArrow,
   ])
 
   return <TrialContext.Provider value={value}>{children}</TrialContext.Provider>

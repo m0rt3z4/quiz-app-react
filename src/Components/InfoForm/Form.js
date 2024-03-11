@@ -70,7 +70,7 @@ const Form = ({ onNext }) => {
         <Grid container xs={12} padding={2}>
           <Grid container item xs={3} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">
-              <Typography>Year of birth:</Typography>
+              <Typography>Date of birth:</Typography>
             </InputLabel>
           </Grid>
           <Grid item xs={8}>
@@ -114,7 +114,9 @@ const Form = ({ onNext }) => {
         <Grid container xs={12} padding={2}>
           <Grid container item xs={6} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">
-              <Typography>Do you have healthy or corrected vision?</Typography>
+              <Typography>
+                Do you have a normal or corrected to normal vision?
+              </Typography>
             </InputLabel>
           </Grid>
           <Grid item xs={5}>
@@ -124,15 +126,18 @@ const Form = ({ onNext }) => {
               variant="outlined"
               sx={{ width: '100%' }}
             >
-              <MenuItem value={'Healthy'}>Healthy</MenuItem>
-              <MenuItem value={'Corrected'}>Corrected</MenuItem>
+              <MenuItem value={'Healthy'}>Normal</MenuItem>
+              <MenuItem value={'Corrected'}>Corrected To Normal</MenuItem>
+              <MenuItem value={'Neither'}>Not normal or corrected</MenuItem>
             </Select>
           </Grid>
         </Grid>
         <Grid container xs={12} padding={2}>
           <Grid container item xs={6} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">
-              <Typography>Do you have any hearing problems?</Typography>
+              <Typography>
+                Do you have a normal or corrected to normal hearing?
+              </Typography>
             </InputLabel>
           </Grid>
           <Grid item xs={5}>
@@ -142,8 +147,9 @@ const Form = ({ onNext }) => {
               variant="outlined"
               sx={{ width: '100%' }}
             >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
+              <MenuItem value={'Healthy'}>Normal</MenuItem>
+              <MenuItem value={'Corrected'}>Corrected To Normal</MenuItem>
+              <MenuItem value={'Neither'}>Not normal or corrected</MenuItem>
             </Select>
           </Grid>
         </Grid>
@@ -160,18 +166,19 @@ const Form = ({ onNext }) => {
               variant="outlined"
               sx={{ width: '100%' }}
             >
-              <MenuItem value={0}>
+              <MenuItem value={0}>No secondary education</MenuItem>
+              <MenuItem value={1}>
                 Some secondary education/high school
               </MenuItem>
-              <MenuItem value={1}>
+              <MenuItem value={2}>
                 Completed secondary education/high school
               </MenuItem>
-              <MenuItem value={2}>Some college/university</MenuItem>
-              <MenuItem value={3}>Bachelor's degree</MenuItem>
-              <MenuItem value={4}>Some postgraduate study</MenuItem>
-              <MenuItem value={5}>Master's degree</MenuItem>
-              <MenuItem value={6}>Professional degree</MenuItem>
-              <MenuItem value={7}>Doctorate degree</MenuItem>
+              <MenuItem value={3}>Some college/university</MenuItem>
+              <MenuItem value={4}>Bachelor's degree</MenuItem>
+              <MenuItem value={5}>Some postgraduate study</MenuItem>
+              <MenuItem value={6}>Master's degree</MenuItem>
+              <MenuItem value={7}>Professional degree</MenuItem>
+              <MenuItem value={8}>Doctorate degree</MenuItem>
             </Select>
           </Grid>
         </Grid>

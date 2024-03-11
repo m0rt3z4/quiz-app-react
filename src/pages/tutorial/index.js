@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
+import { useTrialContext } from '../../layouts/TrialLayout/context'
 import Practice from '../../modules/practice'
 import Slide from '../../Components/Slide'
 import Strings from '../../Components/Slide/Strings'
@@ -13,6 +14,7 @@ import ConsentForm from './ConsentForm'
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
   const [practice, setPractice] = useState()
+  const { changeOutletWidth } = useTrialContext()
 
   const navigate = useNavigate()
 
@@ -37,10 +39,13 @@ export const TutorialPage = () => {
   switch (step) {
     case 0:
       return <Slide content={Strings.tutorial.slide1} onNext={onNext} />
-    case 1:
-      return <InfoForm onNext={onNext} />
+    case 1:{
+      changeOutletWidth(8)
+      return <InfoForm onNext={onNext} />}
     case 2:
-      return <ConsentForm onNext={onNext} />
+      {
+        changeOutletWidth(5)
+        return <ConsentForm onNext={onNext} />}
     case 3:
       return <Slide content={Strings.tutorial.slide2} onNext={onNext} />
     case 4:

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Step1 from './Step1'
+import ReadtToStart from './ReadyToStart'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Exit from './Exit'
@@ -33,9 +34,9 @@ const Trial2 = ({
           userAnswer: resp.userAnswer,
         },
       })
-    setStep(2)
+    setStep(3)
     setTimeout(() => {
-      setStep(3)
+      setStep(4)
       return clearTimeout()
     }, 2500)
   }
@@ -47,7 +48,7 @@ const Trial2 = ({
     })
     // console.log(res)
     // onFinishTrial(res)
-    setStep(4)
+    setStep(5)
   }
 
   const onNext = () => {
@@ -71,6 +72,16 @@ const Trial2 = ({
     }
     case 1: {
       return (
+        <ReadtToStart
+          background={background}
+          onNext={() => {
+            setStep(2)
+          }}
+        />
+      )
+    }
+    case 2: {
+      return (
         <Step2
           background={background}
           stimuliArray={trialParams.stimuli}
@@ -79,10 +90,15 @@ const Trial2 = ({
         />
       )
     }
-    case 2: {
-      return <TrialGrid isWhiteThemed={background === 'L' ? true : false} isBold={true} />
-    }
     case 3: {
+      return (
+        <TrialGrid
+          isWhiteThemed={background === 'L' ? true : false}
+          isBold={true}
+        />
+      )
+    }
+    case 4: {
       return (
         <Step3
           background={background}
@@ -92,7 +108,7 @@ const Trial2 = ({
         />
       )
     }
-    case 4: {
+    case 5: {
       return <Exit background={background} onFinishStep={onNext} />
     }
 

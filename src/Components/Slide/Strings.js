@@ -8,12 +8,20 @@ const Strings = {
       {
         fontSize: 25,
         text:
-          "Please place your index fingers on the keyboard's arrow keys (← →). Keep in mind that during the task, the (→) key means YES, and the (←) key means NO.",
+          "Please place both your index fingers on the keyboard's arrow keys (← →). Keep in mind that during the task, the (→) key means YES, and the (←) key means NO.",
       },
       { fontSize: 25, text: 'To move forward, press the (→) key.' },
     ],
     finish: [
       { fontSize: 25, text: 'Practice finished! feel free to take some rest.' },
+      { fontSize: 25, text: 'Press the (→) key to start main trials.' },
+    ],
+    feedback: [
+      {
+        fontSize: 25,
+        text:
+          'Throughout this task, you will receive feedback on your responses. When the "*" or "?" signs turn red, it indicates that your response was incorrect. Green indicates that your response was correct.',
+      },
       { fontSize: 25, text: 'Press the (→) key to start main trials.' },
     ],
     mainSlides: {
