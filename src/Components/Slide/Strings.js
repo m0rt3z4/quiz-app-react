@@ -16,6 +16,14 @@ const Strings = {
       { fontSize: 25, text: 'Practice finished! feel free to take some rest.' },
       { fontSize: 25, text: 'Press the (→) key to start main trials.' },
     ],
+    feedback: [
+      {
+        fontSize: 25,
+        text:
+          'Throughout this task, you will receive feedback on your responses. When the "*" or "?" signs turn red, it indicates that your response was incorrect. Green indicates that your response was correct.',
+      },
+      { fontSize: 25, text: 'Press the (→) key to start main trials.' },
+    ],
     mainSlides: {
       slide1: [
         {

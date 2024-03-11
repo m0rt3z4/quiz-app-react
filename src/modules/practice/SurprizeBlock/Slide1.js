@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 
-import useKeyboard from '../../helpers/useKeyboard'
-import { hLetterArray, iLetterArray } from '../../helpers/customBackground'
-import { keyboardKeys } from '../../consts'
-import { TrialGrid } from '../../Components/TrialGrid/TrialGrid'
+import useKeyboard from '../../../helpers/useKeyboard'
+import { hLetterArray, iLetterArray } from '../../../helpers/customBackground'
+import { keyboardKeys } from '../../../consts'
+import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
 const Slide1 = ({ onNext }) => {
   const [index, setIndex] = useState(0)

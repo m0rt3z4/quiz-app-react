@@ -1,9 +1,9 @@
 import React from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
-import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
+import useKeyboard from '../../../helpers/useKeyboard'
+import { keyboardKeys } from '../../../consts'
 
-const Slide5 = ({ content = [], onNext }) => {
+const Slide6 = ({ content = [], onNext }) => {
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
@@ -52,4 +52,4 @@ const Slide5 = ({ content = [], onNext }) => {
   )
 }
 
-export default Slide5
+export default Slide6

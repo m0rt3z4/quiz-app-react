@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
-import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
+import useKeyboard from '../../../helpers/useKeyboard'
+import { keyboardKeys } from '../../../consts'
 
 const Slide7 = ({ content = [], onNext }) => {
   //press space to continue

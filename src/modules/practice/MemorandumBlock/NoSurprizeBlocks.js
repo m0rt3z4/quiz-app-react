@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 // import Trial from '../../Components/TrialManager/Trial'
-import Trial2 from '../../Components/Trial2/Trial'
+import Trial2 from '../../../Components/Trial2/Trial'
 
 const NoSurprizeBlocks = ({ experiment, onFinishStep }) => {
   const [results, setResults] = useState([])
