@@ -23,8 +23,13 @@ const GridCell = ({
           // </Typography>
           <StarRateIcon
             fontSize="medium"
-            color={feedbackStatus}
-            className="blink"
+            className={
+              !!feedbackStatus
+                ? feedbackStatus === 'success'
+                  ? 'blink-success'
+                  : 'blink-error'
+                : 'blink-black'
+            }
           />
         )
       case 'CENTER_DOT':
