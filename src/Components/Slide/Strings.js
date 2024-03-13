@@ -55,7 +55,7 @@ const Strings = {
           text:
             'Following this, question marks will appear in some cells of the grid. If you recall seeing a dot in the cell where the question mark now appears, press the (→) key. If you think a dot was not presented in that cell, press the (←) key. In this phase, you are not required to keep visualizing the letter and focusing on the center of the grid. At the end of each trial, if you feel you need to take a break, please do so.',
         },
-        { fontSize: 25, text: 'press the (→) key to start the next trials.' },
+        { fontSize: 25, text: 'press the (→) key to start the next trial.' },
       ],
     },
   },
@@ -65,7 +65,7 @@ const Strings = {
   ],
   trial: {
     exit: [
-      { fontSize: 25, text: 'Press the (→) key to start the next trials.' },
+      { fontSize: 25, text: 'Press the (→) key to start the next trial.' },
     ],
   },
 }

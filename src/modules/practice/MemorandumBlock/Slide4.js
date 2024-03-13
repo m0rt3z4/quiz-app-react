@@ -55,7 +55,7 @@ const Slide4 = ({ onNext }) => {
                 presented in that cell, press the (←) key.
               </Typography>
               <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
-                Press the (→) key to start the next trials.
+                Press the (→) key to start the next trial.
               </Typography>
             </Box>
           </Grid>
