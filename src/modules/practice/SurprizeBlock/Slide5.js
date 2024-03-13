@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 import useKeyboard from '../../../helpers/useKeyboard'
-
+import { useTrialContext } from '../../../layouts/TrialLayout/context'
 import { hLetterArray } from '../../../helpers/customBackground'
 import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide2 = ({ onNext }) => {
-  const [surprize, setSurprize] = useState({ i: 3, j: 0, iconType: 'SURPRIZE' })
-  // const [background, setBackground] = useState(true)
-  // const [customBgArray, setCustomBgArray] = useState([])
-
+const Slide5 = ({ onNext }) => {
+  const [surprize, setSurprize] = useState({
+    i: Math.floor(Math.random() * 5),
+    j: Math.floor(Math.random() * 5),
+    iconType: 'SURPRIZE',
+  })
+  const [index, setIndex] = useState(0)
+  const { changeFeedbackStatus } = useTrialContext()
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) {
+      changeFeedbackStatus('')
       onNext()
     }
   }
@@ -20,14 +24,11 @@ const Slide2 = ({ onNext }) => {
 
   useEffect(() => {
     const timeout = setInterval(() => {
-      setSurprize({
-        i: Math.floor(Math.random() * 5),
-        j: Math.floor(Math.random() * 5),
-        iconType: 'SURPRIZE',
-      })
+      setIndex(index + 1)
+      changeFeedbackStatus(refreshGridArray[index % 3])
     }, 1500)
     return () => clearInterval(timeout)
-  }, [])
+  }, [index])
 
   return (
     <Grid container xs={12} justifyContent={'center'} spacing={2}>
@@ -55,7 +56,7 @@ const Slide2 = ({ onNext }) => {
           >
             <Box>
               <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
-                Here is the example
+                Here is the example of feedback colors
               </Typography>
               <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
                 {'press the (→) key to continue'}
@@ -75,6 +76,6 @@ const Slide2 = ({ onNext }) => {
   )
 }
 
-// const refreshGridArray = ['HL', 'HD']
+const refreshGridArray = ['', 'success', 'error']
 
-export default Slide2
+export default Slide5

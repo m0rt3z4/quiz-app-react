@@ -5,6 +5,7 @@ import Slide1 from './Slide1'
 import Slide2 from './Slide2'
 import Slide3 from './Slide3'
 import Slide4 from './Slide4'
+import Slide5 from './Slide5'
 import Feedback from './Feedback'
 import SurprizeBlocks from './SurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
@@ -50,9 +51,12 @@ const SurprizeBlock = ({ practice, onNext }) => {
     }
     case 5: {
       changeOutletWidth(8)
-      return <PictureSlide content={'Surprize'} onNext={nextStep} />
+      return <Slide5 onNext={nextStep} />
     }
     case 6: {
+      return <PictureSlide content={'Surprize'} onNext={nextStep} />
+    }
+    case 7: {
       changeOutletWidth(5)
       return (
         <SurprizeBlocks
