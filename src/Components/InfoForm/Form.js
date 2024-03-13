@@ -53,10 +53,10 @@ const Form = ({ onNext }) => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Grid container padding={2} spacing={2}>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={3} alignItems={'center'}>
+          <Grid container item xs={4} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">Name:</InputLabel>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <TextField
               autoComplete="given-name"
               name="firstName"
@@ -68,12 +68,12 @@ const Form = ({ onNext }) => {
           </Grid>
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={3} alignItems={'center'}>
+          <Grid container item xs={4} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">
-              <Typography>Date of birth:</Typography>
+              <Typography>Date of birth (Click to Change):</Typography>
             </InputLabel>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <DatePicker
               value={dateValue}
               setValue={(newValue) => {
@@ -84,12 +84,12 @@ const Form = ({ onNext }) => {
           </Grid>
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={3} alignItems={'center'}>
+          <Grid container item xs={4} alignItems={'center'}>
             <InputLabel id="demo-simple-select-label">
               <Typography>Gender:</Typography>
             </InputLabel>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             <GenderSelect />
           </Grid>
         </Grid>
