@@ -6,6 +6,7 @@ import Slide from '../../../Components/Slide'
 import Strings from '../../../Components/Slide/Strings'
 import Slide3 from './Slide3'
 import Slide4 from './Slide4'
+import Feedback from './Feedback'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
@@ -34,9 +35,14 @@ const MemorandumBlock = ({ practice, onNext }) => {
       return <Slide4 onNext={nextStep} />
     }
     case 3: {
-      return <PictureSlide content={'Memorandum'} onNext={nextStep} />
+      changeOutletWidth(5)
+      return <Feedback onNext={nextStep} />
     }
     case 4: {
+      changeOutletWidth(8)
+      return <PictureSlide content={'Memorandum'} onNext={nextStep} />
+    }
+    case 5: {
       changeOutletWidth(5)
       return (
         <NoSurprizeBlocks

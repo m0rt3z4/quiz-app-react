@@ -14,15 +14,23 @@ const Strings = {
     ],
     finish: [
       { fontSize: 25, text: 'Practice finished! feel free to take some rest.' },
-      { fontSize: 25, text: 'Press the (→) key to start main trials.' },
+      { fontSize: 25, text: 'Press the (→) key to start main trial.' },
     ],
     feedback: [
       {
         fontSize: 25,
         text:
-          'Throughout this task, you will receive feedback on your responses. When the "*" or "?" signs turn red, it indicates that your response was incorrect. Green indicates that your response was correct.',
+          'Please pay attention to the feedback you receive after responding to each asterisk stimulus. A red asterisk indicates that your response was incorrect, while a green asterisk signifies that you provided the correct answer.',
       },
-      { fontSize: 25, text: 'Press the (→) key to start main trials.' },
+      { fontSize: 25, text: 'Press the (→) key to continue' },
+    ],
+    feedback2: [
+      {
+        fontSize: 25,
+        text:
+          'After providing your answer the question mark in each cell, you will receive feedback. A red question mark in the cell indicates that your response was incorrect, while a green question mark signifies that you answered correctly.',
+      },
+      { fontSize: 25, text: 'Press the (→) key to continue' },
     ],
     mainSlides: {
       slide1: [
