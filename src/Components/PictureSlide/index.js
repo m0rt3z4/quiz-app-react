@@ -1,8 +1,10 @@
 import React from 'react'
 import { Grid, Card, Typography } from '@mui/material'
-import Tutorial_Both_Block from '../../assets/Tutorial_Both_Block.jpg'
+// import Tutorial_Both_Block from '../../assets/Tutorial_Both_Block.jpg'
 import Tutorial_Memorandum_Block from '../../assets/Tutorial_Memorandum_Block.jpg'
-import Tutorial_Surprize_Block from '../../assets/Tutorial_Surprize_Block.jpg'
+// import Tutorial_Surprize_Block from '../../assets/Tutorial_Surprize_Block.jpg'
+import Tutorial_Surprize_Block_V2 from '../../assets/Tutorial_Surprize_Block_V2.jpg'
+import Tutorial_Both_Block_V2 from '../../assets/Tutorial_Both_Block_V2.jpg'
 
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
@@ -17,13 +19,13 @@ const PictureSlide = ({ content = null, onNext }) => {
   const picLoader = (img) => {
     switch (img) {
       case 'Surprize': {
-        return Tutorial_Surprize_Block
+        return Tutorial_Surprize_Block_V2
       }
       case 'Memorandum': {
         return Tutorial_Memorandum_Block
       }
       case 'Both': {
-        return Tutorial_Both_Block
+        return Tutorial_Both_Block_V2
       }
       default:
         break
@@ -44,7 +46,7 @@ const PictureSlide = ({ content = null, onNext }) => {
             justifyContent: 'center',
             width: '100%',
             minHeight: 450,
-            maxHeight: 540,
+            // maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
             border: '1px solid black',

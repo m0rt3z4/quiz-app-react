@@ -8,6 +8,7 @@ import Slide5 from './Slide5'
 import Slide6 from './Slide6'
 import Slide7 from './Slide7'
 import Slide8 from './Slide8'
+import Feedback from './Feedback'
 import Experiment from '../../experiment'
 import PictureSlide from '../../../Components/PictureSlide'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
@@ -60,10 +61,13 @@ const TrialBlock = ({ practice, onNext }) => {
       )
     }
     case 5: {
+      return <Feedback onNext={nextStep} />
+    }
+    case 6: {
       changeOutletWidth(8)
       return <PictureSlide content={'Both'} onNext={nextStep} />
     }
-    case 6: {
+    case 7: {
       changeOutletWidth(5)
       return (
         <Experiment
