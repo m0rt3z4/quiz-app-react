@@ -22,7 +22,7 @@ const GridCell = ({
           //   *
           // </Typography>
           <StarRateIcon
-            fontSize="medium"
+            fontSize="large"
             className={
               !!feedbackStatus
                 ? feedbackStatus === 'success'
