@@ -44,7 +44,7 @@ const PictureSlide = ({ content = null, onNext }) => {
             justifyContent: 'center',
             width: '100%',
             minHeight: 450,
-            maxHeight: 540,
+            // maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
             border: '1px solid black',
