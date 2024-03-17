@@ -7,6 +7,7 @@ import { TrialProvider } from '../layouts/TrialLayout/provider'
 import { hierarchy } from './routes'
 import TrialPage from '../pages/Trial'
 import MainPage from '../pages/main'
+import SettingPage from '../pages/setting'
 import TutorialPage from '../pages/tutorial'
 export const router = createBrowserRouter([
   {
@@ -21,11 +22,11 @@ export const router = createBrowserRouter([
         path: hierarchy.main.trial.path,
         element: <TrialPage />,
       },
-      // {
-      //   id: 'main-page',
-      //   path: hierarchy.main.path,
-      //   element: <MainPage />,
-      // },
+      {
+        id: 'setting-page',
+        path: hierarchy.main.setting.path,
+        element: <SettingPage />,
+      },
       {
         id: 'tutorial-page',
         path: hierarchy.main.tutorial.path,

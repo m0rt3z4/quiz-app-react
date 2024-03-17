@@ -1,5 +1,4 @@
-import { defineRoutes } from "../lib/defineRoutes";
-
+import { defineRoutes } from '../lib/defineRoutes'
 
 export const { collection, hierarchy } = defineRoutes([
   {
@@ -14,7 +13,10 @@ export const { collection, hierarchy } = defineRoutes([
         key: 'tutorial',
         path: '/tutorial',
       },
-    ]
+      {
+        key: 'setting',
+        path: '/setting',
+      },
+    ],
   },
-  
-] )
+])

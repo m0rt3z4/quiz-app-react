@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
-import Lab from '../../assets/Lab.jpg'
 
 export const MainPage = () => {
   const navigate = useNavigate()
@@ -46,7 +45,13 @@ export const MainPage = () => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid container justifyContent={'center'} xs={12} paddingTop={8} spacing={3}>
+              <Grid
+                container
+                justifyContent={'center'}
+                xs={12}
+                paddingTop={8}
+                spacing={3}
+              >
                 <Grid item xs={8}>
                   <Button
                     onClick={() => redirectUrl('/tutorial')}
@@ -59,18 +64,19 @@ export const MainPage = () => {
                   >
                     Tutorial
                   </Button>
-                  {/* <img src={Lab} alt="lab" style={{paddingTop: 30}} /> */}
-                  {/* <Button
-                    onClick={() => redirectUrl('/trial')}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Start Trial
-                  </Button> */}
+                  <Grid item xs={8}>
+                    <Button
+                      onClick={() => redirectUrl('/setting')}
+                      size="large"
+                      sx={{
+                        width: '70%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                    >
+                      Settings
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>

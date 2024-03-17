@@ -11,6 +11,7 @@ export const TrialProvider = ({ children }) => {
   const [leftBarWarning, setLeftBarWarning] = useState('')
   const [rightBarWarning, setRightBarWarning] = useState('')
   const [feedbackStatus, setFeedbackStatus] = useState('')
+  const [preview, setPreview] = useState(false)
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -49,11 +50,14 @@ export const TrialProvider = ({ children }) => {
     setFeedbackStatus(feedback)
   }, [])
 
+  const changePreviewMode = useCallback((isPreview) => {
+    setPreview(isPreview)
+  }, [])
+
   const value = useMemo(() => {
     return {
       experiment,
       setExperiment,
-
       outletWidth,
       changeOutletWidth,
       title,
@@ -70,6 +74,8 @@ export const TrialProvider = ({ children }) => {
       feedbackStatus,
       changeFeedbackStatus,
       showRightArrow,
+      preview,
+      changePreviewMode,
     }
   }, [
     experiment,
@@ -89,6 +95,8 @@ export const TrialProvider = ({ children }) => {
     feedbackStatus,
     changeFeedbackStatus,
     showRightArrow,
+    preview,
+    changePreviewMode,
   ])
 
   return <TrialContext.Provider value={value}>{children}</TrialContext.Provider>
