@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
 // import Trial from '../../Components/TrialManager/Trial'
+import { useTrialContext } from '../../layouts/TrialLayout/context'
 import SurprizeBlock from './SurprizeBlock'
 import MemorandumBlock from './MemorandumBlock'
 import TrialBlock from './TrialBlock'
@@ -9,6 +10,7 @@ import TrialBlock from './TrialBlock'
 const Practice = ({ practice, onFinishPractice }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState([])
+  const { preview } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
   }
@@ -29,7 +31,11 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 0: {
       return (
         <SurprizeBlock
-          practice={practice.surprizeBlocks}
+          practice={
+            preview
+              ? practice.surprizeBlocks.slice(0, 1)
+              : practice.surprizeBlocks
+          }
           onNext={saveSurprizeBlocksResult}
         />
       )
@@ -37,7 +43,11 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 1: {
       return (
         <MemorandumBlock
-          practice={practice.stimuliBlocks}
+          practice={
+            preview
+              ? practice.stimuliBlocks.slice(0, 1)
+              : practice.stimuliBlocks
+          }
           onNext={saveStimuliBlocksResult}
         />
       )
@@ -45,7 +55,9 @@ const Practice = ({ practice, onFinishPractice }) => {
     case 2: {
       return (
         <TrialBlock
-          practice={practice.fullBlocks}
+          practice={
+            preview ? practice.fullBlocks.slice(0, 1) : practice.fullBlocks
+          }
           onNext={saveMainBlocksResult}
         />
       )
