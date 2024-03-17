@@ -65,6 +65,14 @@ const Strings = {
         },
         { fontSize: 25, text: 'press the (→) key to start the next trial.' },
       ],
+      slide5: [
+        {
+          fontSize: 25,
+          text:
+            'While you are visualizing the required letter on the grid, some asterisks (*) will also be shown in multiple cells. If the asterisk falls within the area of the grid where you are visualizing the letter, press the (→) key. If it falls outside of the visualized letter, press the (←) key. Try to be as fast as you can.',
+        },
+        { fontSize: 25, text: 'Press the (→) key.' },
+      ],
     },
   },
   restSlide: [

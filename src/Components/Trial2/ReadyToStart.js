@@ -6,14 +6,18 @@ import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
-const ReadtToStart = ({ background, onNext }) => {
+const ReadtToStart = ({ background, dontShowLetter = false, onNext }) => {
   const { showRightArrow } = useTrialContext()
 
   useEffect(() => {
-    showRightArrow(true)
+    showRightArrow(
+      dontShowLetter
+        ? 'press → to Start!'
+        : 'Visualize the letter and press → to Start!'
+    )
   }, [])
   const onClickStart = () => {
-    showRightArrow(false)
+    showRightArrow('')
     setTimeout(() => {
       onNext()
       return clearTimeout()

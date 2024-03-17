@@ -37,7 +37,18 @@ const GridCell = ({
       case 'CIRCLE':
         return <CircleIcon fontSize="small" />
       case 'QUESTION':
-        return <QuestionMarkIcon fontSize="medium" color={feedbackStatus} />
+        return (
+          <QuestionMarkIcon
+            fontSize="medium"
+            className={
+              !!feedbackStatus
+                ? feedbackStatus === 'success'
+                  ? 'question-success'
+                  : 'question-error'
+                : 'question-black'
+            }
+          />
+        )
       case 'TAG':
         return <TagIcon fontSize="small" />
       default:

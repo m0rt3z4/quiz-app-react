@@ -76,7 +76,7 @@ export const TrialLayout = () => {
               <Grid item>
                 {!!rightBarWarning && (
                   <Typography color={'black'} sx={{ marginBottom: 1 }}>
-                    Visualize the letter and press → to Start!
+                    {rightBarWarning}
                   </Typography>
                 )}
                 <Card

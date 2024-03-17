@@ -74,6 +74,7 @@ const Trial2 = ({
       return (
         <ReadtToStart
           background={background}
+          dontShowLetter={dontShowLetter}
           onNext={() => {
             setStep(2)
           }}
