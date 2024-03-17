@@ -32,9 +32,9 @@ export const TrialProvider = ({ children }) => {
     setRightBarVisible(isVisible)
   }, [])
 
-  const showRightArrow = useCallback((isVisible) => {
-    setRightBarVisible(isVisible)
-    setRightBarWarning(isVisible)
+  const showRightArrow = useCallback((content) => {
+    setRightBarVisible(!!content)
+    setRightBarWarning(content)
   }, [])
 
   const changeRightBarWarning = useCallback((isWarning) => {
