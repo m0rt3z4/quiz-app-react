@@ -4,7 +4,7 @@ import useKeyboard from '../../../helpers/useKeyboard'
 import { keyboardKeys } from '../../../consts'
 import Strings from '../../../Components/Slide/Strings'
 
-const Slide4 = ({ content = Strings.tutorial.mainSlides.slide2, onNext }) => {
+const Slide4 = ({ content = Strings.tutorial.mainSlides.slide5, onNext }) => {
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
