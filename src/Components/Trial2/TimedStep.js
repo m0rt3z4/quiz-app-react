@@ -5,7 +5,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { recognitionTypes } from '../../consts'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
-const TIME_WAIT_FOR_SURPRIZE_ANSWER = 3000
+// const TIME_WAIT_FOR_SURPRIZE_ANSWER = 3000
 
 const TimedStep = ({
   background,
@@ -19,8 +19,9 @@ const TimedStep = ({
     showArrows,
     // changeRightBarWarning,
     // changeLeftBarWarning,
-    changeFeedbackStatus
+    changeFeedbackStatus,
   } = useTrialContext()
+  const timeToWait = stimulus.iconType === 'SURPRIZE' ? 4000 : 3000
 
   const isAnswerCorrect = (userAnswer) => {
     if (stimulus.iconType === 'SURPRIZE') {
@@ -74,10 +75,10 @@ const TimedStep = ({
       timer = setTimeout(() => {
         window.removeEventListener('keydown', handleKeyDown)
         onFinishSurprizeStep({
-          responseTime: TIME_WAIT_FOR_SURPRIZE_ANSWER,
+          responseTime: timeToWait,
           userAnswer: 'NO_ANSWER',
         })
-      }, TIME_WAIT_FOR_SURPRIZE_ANSWER)
+      }, timeToWait)
     }
 
     const handleKeyDown = (event) => {

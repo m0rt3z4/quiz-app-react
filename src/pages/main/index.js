@@ -62,22 +62,23 @@ export const MainPage = () => {
                       margin: '5px',
                     }}
                   >
-                    Tutorial
+                    Start
                   </Button>
-                  <Grid item xs={8}>
-                    <Button
-                      onClick={() => redirectUrl('/setting')}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                    >
-                      Settings
-                    </Button>
-                  </Grid>
                 </Grid>
+                <Grid item xs={8}>
+                  <Button
+                    onClick={() => redirectUrl('/setting')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Settings
+                  </Button>
+                </Grid>
+                {/* </Grid> */}
               </Grid>
             </Grid>
           </Card>
