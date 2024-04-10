@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
@@ -7,6 +7,8 @@ import Practice from '../../modules/practice'
 import Slide from '../../Components/Slide'
 import Strings from '../../Components/Slide/Strings'
 import InfoForm from '../../Components/InfoForm'
+import TrialPage from '../Trial'
+import Finish from './Finish'
 
 // import InfoForm from './InfoForm'
 import ConsentForm from './ConsentForm'
@@ -14,13 +16,14 @@ import ConsentForm from './ConsentForm'
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
   const [practice, setPractice] = useState()
+  const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const redirectUrl = (url) => {
-    navigate(url)
-  }
+  // const redirectUrl = (url) => {
+  //   navigate(url)
+  // }
 
   useEffect(() => {
     const exp = createPracticeParams()
@@ -30,40 +33,64 @@ export const TutorialPage = () => {
   const onNext = () => {
     setStep(step + 1)
   }
+  const downloadQuizDataAsJson = (data) => {
+    // Convert data object to JSON string
+    const jsonString = JSON.stringify(data)
+
+    // Create a Blob from the JSON String
+    const blob = new Blob([jsonString], { type: 'application/json' })
+
+    // Create a URL for the blob
+    const url = URL.createObjectURL(blob)
+
+    // Create a temporary anchor element and trigger download
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'quiz-results.json' // Name of the file to be downloaded
+    document.body.appendChild(a) // Append to the document
+    a.click() // Trigger the download
+
+    // Clean up by revoking the object URL and removing the anchor element
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  const savePracticeResults = (resp) => {
+    setResults(resp)
+    onNext()
+  }
 
   const submitExperimentResults = (resp) => {
-    console.log('experiment result => ', resp)
+    downloadQuizDataAsJson({ practice: { ...results }, mainTrial: { ...resp } })
+    // console.log('experiment result => ', resp)
     onNext()
   }
 
   switch (step) {
     case 0:
       return <Slide content={Strings.tutorial.slide1} onNext={onNext} />
-    case 1:{
+    case 1: {
       changeOutletWidth(8)
-      return <InfoForm onNext={onNext} />}
-    case 2:
-      {
-        changeOutletWidth(5)
-        return <ConsentForm onNext={onNext} />}
+      return <InfoForm onNext={onNext} />
+    }
+    case 2: {
+      changeOutletWidth(5)
+      return <ConsentForm onNext={onNext} />
+    }
     case 3:
       return <Slide content={Strings.tutorial.slide2} onNext={onNext} />
     case 4:
       return (
-        <Practice
-          practice={practice}
-          onFinishPractice={submitExperimentResults}
-        />
+        <Practice practice={practice} onFinishPractice={savePracticeResults} />
       )
     case 5:
-      return (
-        <Slide
-          content={Strings.tutorial.finish}
-          onNext={() => {
-            redirectUrl('/trial')
-          }}
-        />
-      )
+      return <Slide content={Strings.tutorial.finish} onNext={onNext} />
+    case 6: {
+      return <TrialPage onFinishTrial={submitExperimentResults} />
+    }
+    case 7: {
+      return <Finish />
+    }
     default:
       break
   }
