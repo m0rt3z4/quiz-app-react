@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 // import { useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
@@ -43,10 +44,15 @@ export const TutorialPage = () => {
     // Create a URL for the blob
     const url = URL.createObjectURL(blob)
 
+    // get time for file name
+    const date = moment.utc().format('YYYY-MM-DD HH:mm')
+    const stillUtc = moment.utc(date).toDate()
+    const local = moment(stillUtc).local().format('YYYY-MM-DD HH:mm')
+
     // Create a temporary anchor element and trigger download
     const a = document.createElement('a')
     a.href = url
-    a.download = 'quiz-results.json' // Name of the file to be downloaded
+    a.download = `Result_${local}.json` // Name of the file to be downloaded
     document.body.appendChild(a) // Append to the document
     a.click() // Trigger the download
 
