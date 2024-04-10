@@ -43,7 +43,7 @@ const Trial2 = ({
   const onFinishRecognition = (resp) => {
     setResults({
       ...results,
-      stimuli: trialParams.stimuli,
+      // stimuli: trialParams.stimuli,
       recognition: resp,
     })
     // console.log(res)
