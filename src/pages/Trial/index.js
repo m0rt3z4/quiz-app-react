@@ -4,13 +4,13 @@ import { createNewExperiment } from '../../helpers/trialManagerHelper'
 import Experiment from '../../modules/experiment'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import StartSlide from './StartSlide'
-import Finish from './Finish'
+// import Finish from './Finish'
 import PictureSlide from '../../Components/PictureSlide'
 
-export const TrialPage = () => {
+export const TrialPage = ({ onFinishTrial }) => {
   const [step, setStep] = useState(0)
   const [experiment, setExperiment] = useState()
-  const { changeOutletWidth } = useTrialContext()
+  const { changeOutletWidth, preview } = useTrialContext()
   useEffect(() => {
     const exp = createNewExperiment()
     setExperiment(exp)
@@ -21,8 +21,9 @@ export const TrialPage = () => {
   }
 
   const submitExperimentResults = (resp) => {
-    console.log('experiment result => ', resp)
-    setStep(3)
+    onFinishTrial(resp)
+    // console.log('experiment result => ', resp)
+    // setStep(3)
   }
 
   switch (step) {
@@ -42,12 +43,12 @@ export const TrialPage = () => {
     case 2:
       return (
         <Experiment
-          experiment={experiment}
+          experiment={preview ? experiment.slice(0, 2) : experiment}
           onFinishExperiment={submitExperimentResults}
         />
       )
-    case 3:
-      return <Finish />
+    // case 3:
+    //   return <Finish />
     default:
       break
   }

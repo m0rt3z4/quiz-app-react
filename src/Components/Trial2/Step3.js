@@ -36,9 +36,9 @@ const Step3 = ({
   }, [index])
 
   const onUserResp = (resp) => {
-    const akbar = { ...stimuliArray[index], ...resp }
+    // const akbar = { ...stimuliArray[index], ...resp }
 
-    setRseults([...results, akbar])
+    setRseults([...results, resp])
     setTimeout(() => {
       setIndex(index + 1)
       return clearTimeout()

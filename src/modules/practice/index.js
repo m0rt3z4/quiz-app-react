@@ -33,7 +33,7 @@ const Practice = ({ practice, onFinishPractice }) => {
         <SurprizeBlock
           practice={
             preview
-              ? practice.surprizeBlocks.slice(0, 1)
+              ? practice.surprizeBlocks.slice(0, 2)
               : practice.surprizeBlocks
           }
           onNext={saveSurprizeBlocksResult}
@@ -45,7 +45,7 @@ const Practice = ({ practice, onFinishPractice }) => {
         <MemorandumBlock
           practice={
             preview
-              ? practice.stimuliBlocks.slice(0, 1)
+              ? practice.stimuliBlocks.slice(0, 2)
               : practice.stimuliBlocks
           }
           onNext={saveStimuliBlocksResult}
@@ -56,7 +56,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       return (
         <TrialBlock
           practice={
-            preview ? practice.fullBlocks.slice(0, 1) : practice.fullBlocks
+            preview ? practice.fullBlocks.slice(0, 2) : practice.fullBlocks
           }
           onNext={saveMainBlocksResult}
         />
