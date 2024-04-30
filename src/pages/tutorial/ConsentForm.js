@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Box,
   Grid,
@@ -7,19 +7,27 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
+  Typography,
 } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import ConsentText from './ConsentText'
+import Consent1 from '../../assets/Consent1.txt'
 
 const ConsentForm = ({ onNext }) => {
   const { changeTitle } = useTrialContext()
   const [checked, setChecked] = React.useState(false)
+  const [text, setText] = useState('')
   const handleChange = (event) => {
     setChecked(event.target.checked)
   }
 
   useEffect(() => {
     changeTitle('Consent Form')
+    fetch(Consent1)
+      .then((r) => r.text())
+      .then((text) => {
+        setText(text)
+      })
   }, [])
 
   const onClickNext = () => {
@@ -49,6 +57,7 @@ const ConsentForm = ({ onNext }) => {
           >
             <Grid container justifyContent={'center'} spacing={2}>
               <Grid item container xs={12}>
+                {/* <Typography>{text}</Typography> */}
                 <ConsentText />
               </Grid>
 
