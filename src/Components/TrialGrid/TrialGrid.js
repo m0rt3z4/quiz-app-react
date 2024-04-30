@@ -56,7 +56,7 @@ export const TrialGrid = ({
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            maxWidth: 620,
+            maxWidth: 420,
             width: '100%',
             alignSelf: 'center',
           }}
@@ -75,7 +75,7 @@ export const TrialGrid = ({
         backgroundColor: isWhiteThemed ? 'white' : 'lightGray',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: 450,
+        minHeight: 350,
         padding: 6,
         borderRadius: '35px',
         border: '1px solid black',
@@ -85,7 +85,7 @@ export const TrialGrid = ({
         sx={{
           display: 'block',
           flexWrap: 'wrap',
-          maxWidth: 620,
+          maxWidth: 420,
           border: `${isBold ? '4' : '1'}px solid black`,
         }}
       >

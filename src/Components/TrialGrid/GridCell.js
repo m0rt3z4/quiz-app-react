@@ -22,7 +22,7 @@ const GridCell = ({
           //   *
           // </Typography>
           <StarRateIcon
-            fontSize="large"
+            fontSize="medium"
             className={
               !!feedbackStatus
                 ? feedbackStatus === 'success'
@@ -39,7 +39,7 @@ const GridCell = ({
       case 'QUESTION':
         return (
           <QuestionMarkIcon
-            fontSize="medium"
+            fontSize="small"
             className={
               !!feedbackStatus
                 ? feedbackStatus === 'success'
@@ -66,8 +66,8 @@ const GridCell = ({
         alignItems: 'center',
         border: `${isBold ? '2' : '1'}px solid black`,
         borderCollapse: 'collapse',
-        width: 70,
-        height: 70,
+        width: 34,
+        height: 34,
       }}
     >
       {content}
