@@ -10,12 +10,27 @@ import {
   Select,
   MenuItem,
   Button,
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  FormLabel,
+  FormControl,
 } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import DatePicker from './DatePicker'
+import RadioSelect from './RadioSelect'
+import { InfoFormStrings } from './Strings'
+import Intro from './Intro'
 
 const Form = ({ onNext }) => {
   const [dateValue, setDateValue] = useState(moment(now))
+  const [userNumber] = useState(
+    Math.floor(100000 + Math.random() * 900000).toString()
+  )
+  const [gender, setGender] = useState()
+
   const { changeTitle } = useTrialContext()
   const {
     register,
@@ -29,40 +44,24 @@ const Form = ({ onNext }) => {
     changeTitle('Information Form')
   }, [])
 
-  const GenderSelect = () => {
-    return (
-      <Select
-        labelId="demo-simple-select-label"
-        label="Gender"
-        variant="outlined"
-        sx={{ width: '100%' }}
-      >
-        <MenuItem value={1}>Male</MenuItem>
-        <MenuItem value={2}>Female</MenuItem>
-        <MenuItem value={3}>Non-Binary</MenuItem>
-        <MenuItem value={4}>Prefer Not to Say</MenuItem>
-      </Select>
-    )
-  }
-
   const onClickNext = () => {
     return onNext()
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <Intro />
       <Grid container padding={2} spacing={2}>
         <Grid container xs={12} padding={2}>
           <Grid container item xs={4} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">Name:</InputLabel>
+            <InputLabel id="demo-simple-select-label">User Number:</InputLabel>
           </Grid>
           <Grid item xs={7}>
             <TextField
               autoComplete="given-name"
-              name="firstName"
-              required
+              value={userNumber}
+              disabled
               fullWidth
-              id="firstName"
               autoFocus
             />
           </Grid>
@@ -83,124 +82,105 @@ const Form = ({ onNext }) => {
             />
           </Grid>
         </Grid>
-        <Grid container xs={12} padding={2}>
-          <Grid container item xs={4} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
-              <Typography>Gender:</Typography>
-            </InputLabel>
-          </Grid>
-          <Grid item xs={7}>
-            <GenderSelect />
-          </Grid>
+        <Grid container item xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[1].answers}
+            questionText={InfoFormStrings[1].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings.other}
+          />
+          {/* </Grid> */}
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={6} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
-              <Typography>Are you a native English speaker?</Typography>
-            </InputLabel>
-          </Grid>
-          <Grid item xs={5}>
-            <Select
-              labelId="demo-simple-select-label"
-              label="Gender"
-              variant="outlined"
-              sx={{ width: '100%' }}
-            >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
-            </Select>
-          </Grid>
+          <RadioSelect
+            valueList={InfoFormStrings[2].answers}
+            questionText={InfoFormStrings[2].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings.other}
+          />
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={6} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
-              <Typography>
-                Do you have a normal or corrected to normal vision?
-              </Typography>
-            </InputLabel>
-          </Grid>
-          <Grid item xs={5}>
-            <Select
-              labelId="demo-simple-select-label"
-              label="Gender"
-              variant="outlined"
-              sx={{ width: '100%' }}
-            >
-              <MenuItem value={'Healthy'}>Normal</MenuItem>
-              <MenuItem value={'Corrected'}>Corrected To Normal</MenuItem>
-              <MenuItem value={'Neither'}>Not normal or corrected</MenuItem>
-            </Select>
-          </Grid>
+          <RadioSelect
+            valueList={InfoFormStrings[3].answers}
+            questionText={InfoFormStrings[3].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[3].otherText}
+          />
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={6} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
-              <Typography>
-                Do you have a normal or corrected to normal hearing?
-              </Typography>
-            </InputLabel>
-          </Grid>
-          <Grid item xs={5}>
-            <Select
-              labelId="demo-simple-select-label"
-              label="Gender"
-              variant="outlined"
-              sx={{ width: '100%' }}
-            >
-              <MenuItem value={'Healthy'}>Normal</MenuItem>
-              <MenuItem value={'Corrected'}>Corrected To Normal</MenuItem>
-              <MenuItem value={'Neither'}>Not normal or corrected</MenuItem>
-            </Select>
-          </Grid>
+          <RadioSelect
+            valueList={InfoFormStrings[4].answers}
+            questionText={InfoFormStrings[4].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings.other}
+          />
         </Grid>
         <Grid container xs={12} padding={2}>
-          <Grid container item xs={6} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
-              <Typography>Education</Typography>
-            </InputLabel>
-          </Grid>
-          <Grid item xs={5}>
-            <Select
-              labelId="demo-simple-select-label"
-              label="Gender"
-              variant="outlined"
-              sx={{ width: '100%' }}
+          <FormControl>
+            <FormLabel
+              sx={{ display: 'flex', paddingTop: '5px' }}
+              id="demo-controlled-radio-buttons-group"
             >
-              <MenuItem value={0}>No secondary education</MenuItem>
-              <MenuItem value={1}>
-                Some secondary education/high school
-              </MenuItem>
-              <MenuItem value={2}>
-                Completed secondary education/high school
-              </MenuItem>
-              <MenuItem value={3}>Some college/university</MenuItem>
-              <MenuItem value={4}>Bachelor's degree</MenuItem>
-              <MenuItem value={5}>Some postgraduate study</MenuItem>
-              <MenuItem value={6}>Master's degree</MenuItem>
-              <MenuItem value={7}>Professional degree</MenuItem>
-              <MenuItem value={8}>Doctorate degree</MenuItem>
-            </Select>
-          </Grid>
+              {InfoFormStrings[5].question}
+            </FormLabel>
+            <TextField
+              id="outlined-controlled"
+              value={gender}
+              sx={{ paddingTop: '5px', maxWidth: '400px' }}
+              onChange={(event) => {
+                setGender(event.target.value)
+              }}
+            />
+          </FormControl>
         </Grid>
-        <Grid container xs={12} justifyContent={'flex-end'} padding={2}>
-          <Grid container item xs={12} justifyContent={'center'}>
-            <Typography>
-              Are you currently taking any medications, including prescription
-              drugs, over-the-counter remedies, or dietary supplements, that may
-              affect your alertness, attention, or other cognitive functions?
-            </Typography>
-          </Grid>
-          <Grid item xs={5} paddingTop={3}>
-            <Select
-              labelId="demo-simple-select-label"
-              label="Gender"
-              variant="outlined"
-              sx={{ width: '100%' }}
-            >
-              <MenuItem value={'Yes'}>Yes</MenuItem>
-              <MenuItem value={'No'}>No</MenuItem>
-            </Select>
-          </Grid>
+        <Grid container xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[6].answers}
+            questionText={InfoFormStrings[6].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[6].otherText}
+          />
+        </Grid>
+        <Grid container xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[7].answers}
+            questionText={InfoFormStrings[7].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[7].otherText}
+          />
+        </Grid>
+        <Grid container xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[8].answers}
+            questionText={InfoFormStrings[8].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[8].otherText}
+          />
+        </Grid>
+        <Grid container xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[9].answers}
+            questionText={InfoFormStrings[9].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[9].otherText}
+          />
+        </Grid>
+        <Grid container xs={12} padding={2}>
+          <RadioSelect
+            valueList={InfoFormStrings[10].answers}
+            questionText={InfoFormStrings[10].question}
+            value={gender}
+            setValue={setGender}
+            followUp={InfoFormStrings[10].otherText}
+          />
         </Grid>
         <Grid container justifyContent={'center'} xs={12}>
           <Grid item xs={8} paddingTop={11}>
