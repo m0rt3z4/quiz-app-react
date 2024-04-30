@@ -59,7 +59,7 @@ const Slide4 = ({ onNext }) => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={6}>
             <TrialGrid
               isWhiteThemed={true}
               stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'QUESTION' }}

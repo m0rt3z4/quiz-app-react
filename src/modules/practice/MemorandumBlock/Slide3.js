@@ -23,7 +23,7 @@ const Slide3 = ({ onNext }) => {
   }, [])
 
   return (
-    <Grid container xs={12} justifyContent={'center'} spacing={2}>
+    <Grid container xs={12} justifyContent={'center'} spacing={1}>
       <Grid item xs={12}>
         <Card
           sx={{
@@ -44,7 +44,7 @@ const Slide3 = ({ onNext }) => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
-              padding: 2,
+              padding: 1,
             }}
           >
             <Box>
@@ -60,7 +60,7 @@ const Slide3 = ({ onNext }) => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={6}>
             <TrialGrid
               isWhiteThemed={true}
               stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'CIRCLE' }}
