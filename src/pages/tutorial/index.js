@@ -10,27 +10,27 @@ import Strings from '../../Components/Slide/Strings'
 import InfoForm from '../../Components/InfoForm'
 import TrialPage from '../Trial'
 import Finish from './Finish'
+import Start from './Start'
 
 // import InfoForm from './InfoForm'
 import ConsentForm from './ConsentForm'
 
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
+  const [userType, setUserType] = useState('')
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
-  const { changeOutletWidth } = useTrialContext()
-
-  // const navigate = useNavigate()
-
-  // const redirectUrl = (url) => {
-  //   navigate(url)
-  // }
+  const { changeOutletWidth, showArrows } = useTrialContext()
 
   useEffect(() => {
     const exp = createPracticeParams()
     setPractice(exp)
   }, [])
 
+  const onStart = (consentType) => {
+    setUserType(consentType)
+    onNext()
+  }
   const onNext = () => {
     setStep(step + 1)
   }
@@ -74,16 +74,18 @@ export const TutorialPage = () => {
 
   switch (step) {
     case 0:
-      return <Slide content={Strings.tutorial.slide1} onNext={onNext} />
+      return <Start onNext={onStart} />
     case 1: {
+      changeOutletWidth(8)
+      return <ConsentForm onNext={onNext} consentType={userType} />
+    }
+    case 2: {
       changeOutletWidth(8)
       return <InfoForm onNext={onNext} />
     }
-    case 2: {
-      changeOutletWidth(5)
-      return <ConsentForm onNext={onNext} />
-    }
     case 3:
+      changeOutletWidth(5)
+      showArrows(true)
       return <Slide content={Strings.tutorial.slide2} onNext={onNext} />
     case 4:
       return (

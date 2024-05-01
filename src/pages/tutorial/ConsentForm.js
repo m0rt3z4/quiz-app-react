@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Grid,
@@ -7,27 +7,24 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  Typography,
 } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-import ConsentText from './ConsentText'
-import Consent1 from '../../assets/Consent1.txt'
+import { consentTypes } from '../../consts'
+import ConsentText1 from './ConsentText1'
+import ConsentText2 from './ConsentText2'
 
-const ConsentForm = ({ onNext }) => {
-  const { changeTitle } = useTrialContext()
+const ConsentForm = ({
+  onNext,
+  consentType = consentTypes.ADULT_PARTICIPANT,
+}) => {
+  const { showArrows } = useTrialContext()
   const [checked, setChecked] = React.useState(false)
-  const [text, setText] = useState('')
   const handleChange = (event) => {
     setChecked(event.target.checked)
   }
 
   useEffect(() => {
-    changeTitle('Consent Form')
-    fetch(Consent1)
-      .then((r) => r.text())
-      .then((text) => {
-        setText(text)
-      })
+    showArrows(false)
   }, [])
 
   const onClickNext = () => {
@@ -57,8 +54,11 @@ const ConsentForm = ({ onNext }) => {
           >
             <Grid container justifyContent={'center'} spacing={2}>
               <Grid item container xs={12}>
-                {/* <Typography>{text}</Typography> */}
-                <ConsentText />
+                {consentType === consentTypes.PSYCH1000_STUDENT ? (
+                  <ConsentText2 />
+                ) : consentType === consentTypes.ADULT_PARTICIPANT ? (
+                  <ConsentText1 />
+                ) : null}
               </Grid>
 
               <Grid item xs={10}>
@@ -77,7 +77,7 @@ const ConsentForm = ({ onNext }) => {
                   disabled={!checked}
                 >
                   Submit
-                </Button>{' '}
+                </Button>
               </Grid>
             </Grid>
           </Card>
