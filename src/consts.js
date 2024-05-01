@@ -10,3 +10,8 @@ export const keyboardKeys = {
   LEFT_ARROW: 'ArrowLeft',
   SPACE: ' ',
 }
+
+export const consentTypes = {
+  ADULT_PARTICIPANT: 'ADULT_PARTICIPANT',
+  PSYCH1000_STUDENT: 'PSYCH1000_STUDENT',
+}
