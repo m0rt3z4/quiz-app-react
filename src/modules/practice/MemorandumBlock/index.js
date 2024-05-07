@@ -9,17 +9,21 @@ import Slide4 from './Slide4'
 import Feedback from './Feedback'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
-// import SurprizeBlocksSlide from './SurprizeBlocksSlide'
+import PerformanceFeedback from '../../../Components/PerformanceFeedback'
 
-const MemorandumBlock = ({ practice, onNext }) => {
+const MemorandumBlock = ({ practice, onNext, showTutorial = true }) => {
   const [step, setStep] = useState(0)
+  const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
-    console.log(step)
-    setStep(step + 1)
+    !showTutorial && step === 0 ? setStep(4) : setStep(step + 1)
   }
   const saveStimuliBlocksResult = (resp) => {
-    onNext(resp)
+    setResults(resp)
+    nextStep()
+  }
+  const onSubmitFeedback = (feedback) => {
+    onNext({ results, userPerformanceFeedback: feedback })
   }
 
   switch (step) {
@@ -50,6 +54,9 @@ const MemorandumBlock = ({ practice, onNext }) => {
           onFinishStep={saveStimuliBlocksResult}
         />
       )
+    }
+    case 6: {
+      return <PerformanceFeedback onNext={onSubmitFeedback} />
     }
     default:
       break

@@ -43,7 +43,7 @@ const Start = ({ onNext }) => {
               <Grid item xs={8}>
                 <Typography variant="h3">Wellcome! </Typography>
                 <Typography variant="body1" paddingTop={12}>
-                  I Am a:
+                  I Am a/an:
                 </Typography>
               </Grid>
               <Grid item xs={6}>

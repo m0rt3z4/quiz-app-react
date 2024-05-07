@@ -11,16 +11,22 @@ import Slide8 from './Slide8'
 import Feedback from './Feedback'
 import Experiment from '../../experiment'
 import PictureSlide from '../../../Components/PictureSlide'
+import PerformanceFeedback from '../../../Components/PerformanceFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const TrialBlock = ({ practice, onNext }) => {
   const [step, setStep] = useState(0)
+  const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
   }
   const saveMainBlocksResult = (resp) => {
-    onNext(resp)
+    setResults(resp)
+    nextStep()
+  }
+  const onSubmitFeedback = (feedback) => {
+    onNext({ results, userPerformanceFeedback: feedback })
   }
 
   switch (step) {
@@ -76,6 +82,9 @@ const TrialBlock = ({ practice, onNext }) => {
           showFeedback={true}
         />
       )
+    }
+    case 8: {
+      return <PerformanceFeedback onNext={onSubmitFeedback} />
     }
     default:
       break

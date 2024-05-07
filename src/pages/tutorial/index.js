@@ -14,10 +14,12 @@ import Start from './Start'
 
 // import InfoForm from './InfoForm'
 import ConsentForm from './ConsentForm'
+import Practice2 from '../../modules/practice/Practice2'
 
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
   const [userType, setUserType] = useState('')
+  // const [userInfo, setUserInfo] = useState({})
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
   const { changeOutletWidth, showArrows } = useTrialContext()
@@ -62,12 +64,17 @@ export const TutorialPage = () => {
   }
 
   const savePracticeResults = (resp) => {
-    setResults(resp)
+    setResults({ practice: resp })
     onNext()
   }
 
-  const submitExperimentResults = (resp) => {
-    downloadQuizDataAsJson({ practice: { ...results }, mainTrial: { ...resp } })
+  const saveMainTrialResults = (resp) => {
+    setResults({ ...results, mainTrial: { ...resp } })
+    // console.log('experiment result => ', resp)
+    onNext()
+  }
+  const onFinishSecondPractice = (resp) => {
+    downloadQuizDataAsJson({ ...results, practice2: { ...resp } })
     // console.log('experiment result => ', resp)
     onNext()
   }
@@ -94,9 +101,17 @@ export const TutorialPage = () => {
     case 5:
       return <Slide content={Strings.tutorial.finish} onNext={onNext} />
     case 6: {
-      return <TrialPage onFinishTrial={submitExperimentResults} />
+      return <TrialPage onFinishTrial={saveMainTrialResults} />
     }
     case 7: {
+      return (
+        <Practice2
+          practice={practice}
+          onFinishPractice={onFinishSecondPractice}
+        />
+      )
+    }
+    case 8: {
       return <Finish />
     }
     default:
