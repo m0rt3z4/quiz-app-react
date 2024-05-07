@@ -5,6 +5,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import SurprizeBlock from './SurprizeBlock'
 import MemorandumBlock from './MemorandumBlock'
 import TrialBlock from './TrialBlock'
+// import PerformanceFeedback from '../../Components/PerformanceFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const Practice = ({ practice, onFinishPractice }) => {
@@ -15,16 +16,16 @@ const Practice = ({ practice, onFinishPractice }) => {
     setStep(step + 1)
   }
   const saveSurprizeBlocksResult = (resp) => {
-    setResults({ ...results, surprizeBlocks: resp })
+    setResults({ ...results, surprizeBlock1: resp })
     nextStep()
   }
   const saveStimuliBlocksResult = (resp) => {
-    setResults({ ...results, stimuliBlocks: resp })
+    setResults({ ...results, stimuliBlock1: resp })
     nextStep()
   }
   const saveMainBlocksResult = (resp) => {
     console.log(resp)
-    onFinishPractice({ ...results, fullBlocks: resp })
+    onFinishPractice({ ...results, mixedBlock: resp })
   }
 
   switch (step) {
@@ -33,8 +34,8 @@ const Practice = ({ practice, onFinishPractice }) => {
         <SurprizeBlock
           practice={
             preview
-              ? practice.surprizeBlocks.slice(0, 2)
-              : practice.surprizeBlocks
+              ? practice.surprizeBlock1.slice(0, 2)
+              : practice.surprizeBlock1
           }
           onNext={saveSurprizeBlocksResult}
         />
@@ -45,8 +46,8 @@ const Practice = ({ practice, onFinishPractice }) => {
         <MemorandumBlock
           practice={
             preview
-              ? practice.stimuliBlocks.slice(0, 2)
-              : practice.stimuliBlocks
+              ? practice.stimuliBlock1.slice(0, 2)
+              : practice.stimuliBlock1
           }
           onNext={saveStimuliBlocksResult}
         />
@@ -56,7 +57,7 @@ const Practice = ({ practice, onFinishPractice }) => {
       return (
         <TrialBlock
           practice={
-            preview ? practice.fullBlocks.slice(0, 2) : practice.fullBlocks
+            preview ? practice.mixedBlock.slice(0, 2) : practice.mixedBlock
           }
           onNext={saveMainBlocksResult}
         />

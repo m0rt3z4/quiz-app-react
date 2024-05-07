@@ -6,9 +6,11 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import StartSlide from './StartSlide'
 // import Finish from './Finish'
 import PictureSlide from '../../Components/PictureSlide'
+import PerformanceFeedback from '../../Components/PerformanceFeedback'
 
 export const TrialPage = ({ onFinishTrial }) => {
   const [step, setStep] = useState(0)
+  const [results, setResults] = useState({})
   const [experiment, setExperiment] = useState()
   const { changeOutletWidth, preview } = useTrialContext()
   useEffect(() => {
@@ -21,9 +23,12 @@ export const TrialPage = ({ onFinishTrial }) => {
   }
 
   const submitExperimentResults = (resp) => {
-    onFinishTrial(resp)
-    // console.log('experiment result => ', resp)
-    // setStep(3)
+    setResults(resp)
+    onNext()
+  }
+
+  const onSubmitFeedback = (feedback) => {
+    onFinishTrial({ results, userPerformanceFeedback: feedback })
   }
 
   switch (step) {
@@ -47,8 +52,9 @@ export const TrialPage = ({ onFinishTrial }) => {
           onFinishExperiment={submitExperimentResults}
         />
       )
-    // case 3:
-    //   return <Finish />
+    case 3: {
+      return <PerformanceFeedback onNext={onSubmitFeedback} />
+    }
     default:
       break
   }

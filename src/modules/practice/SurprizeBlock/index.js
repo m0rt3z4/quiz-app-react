@@ -10,16 +10,22 @@ import Feedback from './Feedback'
 import SurprizeBlocks from './SurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
 import Strings from '../../../Components/Slide/Strings'
+import PerformanceFeedback from '../../../Components/PerformanceFeedback'
 
-const SurprizeBlock = ({ practice, onNext }) => {
-  const [step, setStep] = useState(0)
+const SurprizeBlock = ({ practice, onNext, showTutorial = true }) => {
+  const [step, setStep] = useState(showTutorial ? 0 : 6)
+  const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
     console.log(step)
     setStep(step + 1)
   }
   const saveSurprizeBlocksResult = (resp) => {
-    onNext(resp)
+    setResults(resp)
+    nextStep()
+  }
+  const onSubmitFeedback = (feedback) => {
+    onNext({ results, userPerformanceFeedback: feedback })
   }
 
   switch (step) {
@@ -64,6 +70,9 @@ const SurprizeBlock = ({ practice, onNext }) => {
           onFinishStep={saveSurprizeBlocksResult}
         />
       )
+    }
+    case 8: {
+      return <PerformanceFeedback onNext={onSubmitFeedback} />
     }
     default:
       break

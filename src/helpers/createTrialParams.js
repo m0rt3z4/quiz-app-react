@@ -75,7 +75,6 @@ const createTrialParams = (letter, noSurprize = false) => {
   const stimuli = [...onLetters, ...offLetters]
   if (!noSurprize) stimuli.push(surpize)
   let result = {
-    surpize,
     stimuli: shuffleArray(stimuli),
     recognition: shuffleArray([
       correctOnLetter,
@@ -84,6 +83,7 @@ const createTrialParams = (letter, noSurprize = false) => {
       incorrectOffLetter,
     ]),
   }
+  if (!noSurprize) result = {...result, surpize}
   return result
 }
 
