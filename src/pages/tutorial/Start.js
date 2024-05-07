@@ -41,7 +41,7 @@ const Start = ({ onNext }) => {
               spacing={2}
             >
               <Grid item xs={8}>
-                <Typography variant="h3">Wellcome! </Typography>
+                <Typography variant="h3">Welcome! </Typography>
                 <Typography variant="body1" paddingTop={12}>
                   I Am a/an:
                 </Typography>
