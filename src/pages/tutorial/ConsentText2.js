@@ -33,7 +33,7 @@ const ConsentText2 = () => {
             (FOR RESEARCH CREDIT)
           </Typography>
           <Typography variant="h6" align="center">
-            UNIVERSITY OF MISSOURI: IRB PROJECT #{' '}
+            UNIVERSITY OF MISSOURI: IRB PROJECT #2101803
           </Typography>
           <Typography variant="h6" align="center">
             PRINCIPAL INVESTIGATOR: NELSON COWAN

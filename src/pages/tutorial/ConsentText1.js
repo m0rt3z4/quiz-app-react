@@ -30,7 +30,7 @@ const ConsentText1 = () => {
             ADULT CONSENT FORM FOR IN-LAB/IN-PERSON RESEARCH STUDY
           </Typography>
           <Typography variant="h6" align="center">
-            UNIVERSITY OF MISSOURI: IRB PROJECT #2099340
+            UNIVERSITY OF MISSOURI: IRB PROJECT #2101803
           </Typography>
           <Typography variant="h6" align="center">
             PRINCIPAL INVESTIGATOR: NELSON COWAN
