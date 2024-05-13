@@ -5,7 +5,6 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { recognitionTypes } from '../../consts'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
-// const TIME_WAIT_FOR_SURPRIZE_ANSWER = 3000
 
 const TimedStep = ({
   background,
@@ -17,8 +16,6 @@ const TimedStep = ({
 }) => {
   const {
     showArrows,
-    // changeRightBarWarning,
-    // changeLeftBarWarning,
     changeFeedbackStatus,
   } = useTrialContext()
   const timeToWait = stimulus.iconType === 'SURPRIZE' ? 4000 : 3000
@@ -50,20 +47,9 @@ const TimedStep = ({
   }
 
   const delayedFeedback = (answer, isCorrect, callback) => {
-    // const status = isCorrect ? 'SUCCESS' : 'ERROR'
     changeFeedbackStatus(isCorrect ? 'success' : 'error')
-    // if (answer === 'ArrowRight') {
-    //   changeRightBarWarning(status)
-    // } else {
-    //   changeLeftBarWarning(status)
-    // }
     setTimeout(() => {
       changeFeedbackStatus('')
-      // if (answer === 'ArrowRight') {
-      //   changeRightBarWarning('')
-      // } else {
-      //   changeLeftBarWarning('')
-      // }
       callback()
     }, 1000)
   }

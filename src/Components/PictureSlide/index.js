@@ -36,7 +36,6 @@ const PictureSlide = ({ content = null, onNext }) => {
       container
       justifyContent={'center'}
       spacing={2}
-      // sx={{ paddingTop: 1 }}
     >
       <Grid container item xs={12}>
         <Card
@@ -46,7 +45,6 @@ const PictureSlide = ({ content = null, onNext }) => {
             justifyContent: 'center',
             width: '100%',
             minHeight: 450,
-            // maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
             border: '1px solid black',

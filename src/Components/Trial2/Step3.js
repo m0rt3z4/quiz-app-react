@@ -22,12 +22,8 @@ const Step3 = ({
 
   useEffect(() => {
     if (index < stimuliArray.length) {
-      // setTimeout(() => {
-      // showArrows(true)
       setStimulus(stimuliArray[index])
       setStartTime(Date.now())
-      //   return clearTimeout()
-      // }, 500)
     } else {
       changeTitle('Next Trial')
       setStimulus({})
@@ -36,8 +32,6 @@ const Step3 = ({
   }, [index])
 
   const onUserResp = (resp) => {
-    // const akbar = { ...stimuliArray[index], ...resp }
-
     setRseults([...results, resp])
     setTimeout(() => {
       setIndex(index + 1)

@@ -94,7 +94,6 @@ export const pickRandomStimulus = () => {
 export const pickRandomTrialConfig = () => {
   const arr = ['HL', 'HD', 'ID', 'IL']
   const rnd = arr[Math.floor(Math.random() * arr.length)]
-  console.log(rnd)
   return { letter: rnd[0], background: rnd[1] }
 }
 

@@ -24,7 +24,6 @@ const Practice = ({ practice, onFinishPractice }) => {
     nextStep()
   }
   const saveMainBlocksResult = (resp) => {
-    console.log(resp)
     onFinishPractice({ ...results, mixedBlock: resp })
   }
 

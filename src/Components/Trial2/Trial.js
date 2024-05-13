@@ -43,20 +43,15 @@ const Trial2 = ({
   const onFinishRecognition = (resp) => {
     setResults({
       ...results,
-      // stimuli: trialParams.stimuli,
       recognition: resp,
     })
-    // console.log(res)
-    // onFinishTrial(res)
     setStep(5)
   }
 
   const onNext = () => {
-    // console.log(results)
     return onFinishTrial(results)
   }
 
-  // const renderSteps = () => {
   switch (step) {
     case 0: {
       return (
@@ -116,8 +111,6 @@ const Trial2 = ({
     default:
       break
   }
-  // }
-  // return re/nderSteps()
 }
 
 export default Trial2

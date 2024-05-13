@@ -17,7 +17,6 @@ const SurprizeBlock = ({ practice, onNext, showTutorial = true }) => {
   const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
   const nextStep = () => {
-    console.log(step)
     setStep(step + 1)
   }
   const saveSurprizeBlocksResult = (resp) => {
