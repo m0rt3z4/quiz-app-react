@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Grid, Card, Typography, Slider, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
-// import { consentTypes } from '../../consts'
 
 const PerformanceFeedback = ({ onNext }) => {
   const [value, setValue] = useState(0)
@@ -33,7 +32,6 @@ const PerformanceFeedback = ({ onNext }) => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >

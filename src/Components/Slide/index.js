@@ -32,9 +32,6 @@ const Slide = ({ content = [], onNext }) => {
           }}
         >
           <Box>
-            {/* <Typography fontSize={'25px'} marginBottom={10}>
-              {'SurprizeBlocksSlide.'}
-            </Typography> */}
             {content.length > 0 && (
               <Typography fontSize={content[0].fontSize}>
                 {content[0].text}

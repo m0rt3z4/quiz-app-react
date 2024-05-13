@@ -19,7 +19,6 @@ const InfoForm = ({ onNext }) => {
               alignItems: 'baseline',
               justifyContent: 'center',
               minHeight: 450,
-              //   maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',

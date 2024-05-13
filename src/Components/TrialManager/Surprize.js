@@ -19,7 +19,7 @@ const SurprizeStep = ({ background, startTime, stimulus, onFinishStep }) => {
     changeTitle('Surprize')
     showArrows(true)
     const timer = setTimeout(() => {
-      console.log('Timeout excecution started')
+      // console.log('Timeout excecution started')
       window.removeEventListener('keydown', handleKeyDown)
       onFinishSurprizeStep({
         responseTime: TIME_WAIT_FOR_SURPRIZE_ANSWER,

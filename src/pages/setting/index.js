@@ -14,7 +14,6 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 
 export const SettingPage = () => {
   const { preview, changePreviewMode } = useTrialContext()
-  console.log(preview)
   const [checked, setChecked] = useState(preview)
 
   const navigate = useNavigate()

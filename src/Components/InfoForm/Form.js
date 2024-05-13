@@ -31,7 +31,6 @@ const Form = ({ onNext }) => {
   const [qestion4, setQuestion4] = useState()
   const [qestion4FollowUp, setQestion4FollowUp] = useState()
   const [qestion5, setQuestion5] = useState()
-  // const [qestion5FollowUp, setQestion5FollowUp] = useState()
   const [qestion6, setQuestion6] = useState()
   const [qestion6FollowUp, setQestion6FollowUp] = useState()
   const [qestion7, setQuestion7] = useState()
@@ -45,9 +44,7 @@ const Form = ({ onNext }) => {
 
   const { changeTitle } = useTrialContext()
   const {
-    // register,
     handleSubmit,
-    // formState: { errors },
   } = useForm()
   const onSubmit = (data) => {
     console.log(data)
@@ -72,7 +69,6 @@ const Form = ({ onNext }) => {
       question9: { answer: qestion9, followUp: qestion9FollowUp },
       question10: { answer: qestion10, followUp: qestion10FollowUp },
     }
-    // console.log(data)
     return onNext(data)
   }
 
@@ -105,7 +101,6 @@ const Form = ({ onNext }) => {
               value={dateValue}
               setValue={(newValue) => {
                 setDateValue(newValue)
-                // console.log(dateValue.toString())
               }}
             />
           </Grid>
@@ -120,7 +115,6 @@ const Form = ({ onNext }) => {
             followUpResponse={qestion1FollowUp}
             setFollowUpResponse={setQestion1FollowUp}
           />
-          {/* </Grid> */}
         </Grid>
         <Grid container xs={12} padding={2}>
           <RadioSelect
@@ -238,7 +232,6 @@ const Form = ({ onNext }) => {
               }}
               color="primary"
               onClick={onClickNext}
-              //   type="submit"
             >
               Submit
             </Button>
