@@ -2,11 +2,11 @@ export const InfoFormStrings = {
   other:
     'If you selected "Other", you may provide additional information if desired:',
   1: {
-    question: 'Gender:',
+    question: '1. Gender:',
     answers: ['Male', 'Female', 'Other', 'Prefer Not to Say'],
   },
   2: {
-    question: 'Ethnicity:',
+    question: '2. Ethnicity:',
     answers: [
       'Hispanic or Latino',
       'Not Hispanic or Latino',
@@ -15,7 +15,7 @@ export const InfoFormStrings = {
     ],
   },
   3: {
-    question: 'Race:',
+    question: '3. Race:',
     answers: [
       'American Indian',
       'Alaska Native',
@@ -32,7 +32,7 @@ export const InfoFormStrings = {
       'If you selected "More Than One Race, Unknown, or Other", you may provide additional information if desired:',
   },
   4: {
-    question: 'Highest Level of Education Completed:',
+    question: '4. Highest Level of Education Completed:',
     answers: [
       'High School',
       'GED or High School Diploma',
@@ -48,22 +48,22 @@ export const InfoFormStrings = {
   },
   5: {
     question:
-      'First Language(s) Learned - If more than one language learned simultaneously, separate with ; when listing:',
+      '5. First Language(s) Learned - If more than one language learned simultaneously, separate with ; when listing:',
   },
   6: {
     question:
-      'If English was not your first language, are you fluent in English?',
+      '6. If English was not your first language, are you fluent in English?',
     answers: ['Yes', 'No', 'Somewhat', 'Prefer Not to Say'],
     otherText:
       'If you selected "No" or "Somewhat", you may provide additional information if desired:',
   },
   7: {
-    question: 'Do you currently have any hearing difficulties?',
+    question: '7. Do you currently have any hearing difficulties?',
     answers: ['Yes', 'No', 'Somewhat', 'Prefer Not to Say'],
     otherText: 'If you currently have hearing difficulties, please describe:',
   },
   8: {
-    question: 'Vision (check all that apply):',
+    question: '8. Vision (check all that apply):',
     answers: [
       '20/20 Vision - Do Not Need Glasses or Contacts',
       'Assisted Vision - Require Glasses or Contacts',
@@ -76,14 +76,14 @@ export const InfoFormStrings = {
   },
   9: {
     question:
-      'If you selected "Assisted Vision", will you be wearing your glasses or contacts for your online or onsite session?',
+      '9. If you selected "Assisted Vision", will you be wearing your glasses or contacts for your online or onsite session?',
     answers: ['Yes', 'No', 'Prefer Not to Say'],
     otherText:
       'If you selected "No", you may provide additional information if desired:',
   },
   10: {
     question:
-      'Have you taken any medication that could potentially affect your ability to perform a memory-based task?',
+      '10. Have you taken any medication that could potentially affect your ability to perform a memory-based task?',
     answers: ['Yes', 'No', 'Prefer Not to Say'],
     otherText:
       'If yes, please explain HOW the medication may effect your expression, affect, movement, mood, speech, vision, hearing, concentration or participation. We are not asking for the name or dosage of medication(s).',

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-// import { useNavigate } from 'react-router-dom'
 import moment from 'moment'
 
 import { createPracticeParams } from '../../helpers/trialManagerHelper'
@@ -12,14 +11,13 @@ import TrialPage from '../Trial'
 import Finish from './Finish'
 import Start from './Start'
 
-// import InfoForm from './InfoForm'
 import ConsentForm from './ConsentForm'
 import Practice2 from '../../modules/practice/Practice2'
 
 export const TutorialPage = () => {
   const [step, setStep] = useState(0)
   const [userType, setUserType] = useState('')
-  // const [userInfo, setUserInfo] = useState({})
+  const [userInfo, setUserInfo] = useState({})
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
   const { changeOutletWidth, showArrows } = useTrialContext()
@@ -31,6 +29,10 @@ export const TutorialPage = () => {
 
   const onStart = (consentType) => {
     setUserType(consentType)
+    onNext()
+  }
+  const onSubmitInfo = (data) => {
+    setUserInfo(data)
     onNext()
   }
   const onNext = () => {
@@ -74,7 +76,11 @@ export const TutorialPage = () => {
     onNext()
   }
   const onFinishSecondPractice = (resp) => {
-    downloadQuizDataAsJson({ ...results, practice2: { ...resp } })
+    downloadQuizDataAsJson({
+      info: { userType, ...userInfo },
+      ...results,
+      practice2: { ...resp },
+    })
     // console.log('experiment result => ', resp)
     onNext()
   }
@@ -88,7 +94,7 @@ export const TutorialPage = () => {
     }
     case 2: {
       changeOutletWidth(8)
-      return <InfoForm onNext={onNext} />
+      return <InfoForm onNext={onSubmitInfo} />
     }
     case 3:
       changeOutletWidth(5)
