@@ -37,16 +37,17 @@ const Step3 = ({
     } else {
       changeTitle('Next Trial')
       setStimulus({})
+      // console.log(results)
       onFinishStep(results)
     }
   }, [index])
 
   const onUserResp = (resp) => {
-    setRseults([...results, resp])
+    setRseults([...results, { ...resp, ...stimulus }])
     setTimeout(() => {
       setIndex(index + 1)
       return clearTimeout()
-    }, 500)
+    }, 400)
   }
 
   const Grid = () => (
