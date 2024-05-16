@@ -1,5 +1,7 @@
 import { iLetterArray, hLetterArray } from './customBackground'
 
+const hOnLetters2 = [5, 10, 15, 9, 14, 19, 11, 13]
+const iOnLetters2 = [1, 2, 3, 7, 17, 21, 22, 23]
 const hOnLetters = [
   // [0, 0],
   [1, 0],
@@ -25,7 +27,6 @@ const iOnLetters = [
   [4, 3],
 ]
 
-
 /**
  * Creates a new Response from user submission.
  * @param {String} letter - ['H', 'I'].
@@ -38,17 +39,19 @@ export const pickElement = (letter, onLetter, n, exclude = []) => {
   let temp =
     letter === 'H'
       ? onLetter
-        ? hOnLetters
-        : iOnLetters
+        ? hOnLetters2
+        : iOnLetters2
       : onLetter
-      ? iOnLetters
-      : hOnLetters
+      ? iOnLetters2
+      : hOnLetters2
 
   let arr = [...temp]
   if (!!exclude) {
     exclude.forEach((exc) => arr.splice(arr.indexOf(exc), 1))
   }
-  return pickRandomFromArray(arr, n)
+  return pickRandomFromArray(arr, n).map((location) => {
+    return { i: Math.floor(location / 5), j: location % 5, cellId: location }
+  })
 }
 
 export const pickRandomFromArray = (arr, n) => {
@@ -107,7 +110,7 @@ export const pickSurprize = (letter) => {
   }
 }
 
-const checkOnLetter = (i, j, letter) => {
+export const checkOnLetter = (i, j, letter) => {
   return letter === 'H' ? hLetterArray[i][j] : iLetterArray[i][j]
 }
 

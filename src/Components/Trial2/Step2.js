@@ -51,7 +51,11 @@ const Step2 = ({
   const onFinishSurprize = (resp) => {
     setResult(resp)
     setToggleSurprize(false)
-    setIndex(index + 1)
+    const timeout = setTimeout(() => {
+      setToggleSurprize(false)
+      setIndex(index + 1)
+      return clearTimeout(timeout)
+    }, 200)
   }
 
   return toggleSurprize ? (

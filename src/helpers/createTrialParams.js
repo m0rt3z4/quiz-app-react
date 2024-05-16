@@ -1,25 +1,33 @@
-import { pickElement, pickSurprize } from './letterHelper'
+import { pickElement } from './letterHelper'
 import { recognitionTypes } from '../consts'
 import shuffleArray from './shuffleArray'
 
-const createTrialParams = (letter, noSurprize = false) => {
+const createTrialParams = (letter, surprizeOnLetter) => {
   // choose random location for surprize
-  const surprizeInfo = pickSurprize(letter)
+  const surprizeInfo = pickElement(letter, surprizeOnLetter.isOnLetter)
   // create onLetter Stimuli
-  const onLetterLocations = pickElement(letter, true, 2)
-  const onLetters = onLetterLocations.map((loc, index) => {
+  const onLetterLocations = pickElement(
+    letter,
+    true,
+    2,
+    !!surprizeOnLetter ? [surprizeInfo.cellId] : []
+  )
+  const onLetters = onLetterLocations.map((loc) => {
     return {
-      i: loc[0],
-      j: loc[1],
+      ...loc,
       iconType: 'CIRCLE',
     }
   })
   // create offLetter Stimuli
-  const offLetterLocations = pickElement(letter, false, 2)
-  const offLetters = offLetterLocations.map((loc, index) => {
+  const offLetterLocations = pickElement(
+    letter,
+    false,
+    2,
+    !surprizeInfo.isOnLetter ? [surprizeInfo.cellId] : []
+  )
+  const offLetters = offLetterLocations.map((loc) => {
     return {
-      i: loc[0],
-      j: loc[1],
+      ...loc,
       iconType: 'CIRCLE',
     }
   })
@@ -66,14 +74,16 @@ const createTrialParams = (letter, noSurprize = false) => {
     iconType: 'QUESTION',
     taskType: recognitionTypes.INCORRECT_OFF_LETTER,
   }
-  const surpize = {
-    i: surprizeInfo.i,
-    j: surprizeInfo.j,
-    iconType: 'SURPRIZE',
-    isOnLetter: surprizeInfo.isOnLetter,
-  }
   const stimuli = [...onLetters, ...offLetters]
-  if (!noSurprize) stimuli.push(surpize)
+  if (!!surprizeInfo) {
+    const surpize = {
+      i: surprizeInfo.i,
+      j: surprizeInfo.j,
+      iconType: 'SURPRIZE',
+      isOnLetter: surprizeInfo.isOnLetter,
+    }
+    stimuli.push(surpize)
+  }
   let result = {
     stimuli: shuffleArray(stimuli),
     recognition: shuffleArray([
@@ -83,7 +93,7 @@ const createTrialParams = (letter, noSurprize = false) => {
       incorrectOffLetter,
     ]),
   }
-  if (!noSurprize) result = {...result, surpize}
+  // if (!noSurprize) result = { ...result, surpize }
   return result
 }
 
