@@ -15,3 +15,9 @@ export const consentTypes = {
   ADULT_PARTICIPANT: 'ADULT_PARTICIPANT',
   PSYCH1000_STUDENT: 'PSYCH1000_STUDENT',
 }
+
+export const blockTypes = {
+  SURPRIZE_BLOCK: 'SURPRIZE_BLOCK',
+  MEMORANDUM_BLOCK: 'Memorandum_Block',
+  MIXED_BLOCK: 'MIXED_BLOCK',
+}
