@@ -11,10 +11,10 @@ export const TrialLayout = () => {
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
-    feedbackStatus,
+    // feedbackStatus,
   } = useTrialContext()
 
-  console.log(rightBarWarning, leftBarWarning, feedbackStatus)
+  // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
     <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
