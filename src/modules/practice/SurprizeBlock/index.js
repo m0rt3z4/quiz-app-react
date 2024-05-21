@@ -8,11 +8,17 @@ import Slide4 from './Slide4'
 import Slide5 from './Slide5'
 import Feedback from './Feedback'
 import SurprizeBlocks from './SurprizeBlocks'
+import { blockTypes } from '../../../consts'
 import PictureSlide from '../../../Components/PictureSlide'
 import Strings from '../../../Components/Slide/Strings'
-import PerformanceFeedback from '../../../Components/PerformanceFeedback'
+import BlockFeedback from '../../../Components/BlockFeedback'
 
-const SurprizeBlock = ({ practice, onNext, showTutorial = true }) => {
+const SurprizeBlock = ({
+  practice,
+  onNext,
+  showTutorial = true,
+  isSecondRound = false,
+}) => {
   const [step, setStep] = useState(showTutorial ? 0 : 6)
   const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
@@ -24,7 +30,7 @@ const SurprizeBlock = ({ practice, onNext, showTutorial = true }) => {
     nextStep()
   }
   const onSubmitFeedback = (feedback) => {
-    onNext({ results, userPerformanceFeedback: feedback })
+    onNext({ results, userFeedback: feedback })
   }
 
   switch (step) {
@@ -71,7 +77,12 @@ const SurprizeBlock = ({ practice, onNext, showTutorial = true }) => {
       )
     }
     case 8: {
-      return <PerformanceFeedback onNext={onSubmitFeedback} />
+      return (
+        <BlockFeedback
+          onNext={onSubmitFeedback}
+          blockType={isSecondRound ? blockTypes.SURPRIZE_BLOCK : ''}
+        />
+      )
     }
     default:
       break
