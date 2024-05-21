@@ -6,7 +6,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import StartSlide from './StartSlide'
 // import Finish from './Finish'
 import PictureSlide from '../../Components/PictureSlide'
-import PerformanceFeedback from '../../Components/PerformanceFeedback'
+import BlockFeedback from '../../Components/BlockFeedback'
 
 export const TrialPage = ({ onFinishTrial }) => {
   const [step, setStep] = useState(0)
@@ -53,7 +53,7 @@ export const TrialPage = ({ onFinishTrial }) => {
         />
       )
     case 3: {
-      return <PerformanceFeedback onNext={onSubmitFeedback} />
+      return <BlockFeedback onNext={onSubmitFeedback} />
     }
     default:
       break

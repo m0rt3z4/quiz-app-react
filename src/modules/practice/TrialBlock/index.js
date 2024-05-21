@@ -11,7 +11,7 @@ import Slide8 from './Slide8'
 import Feedback from './Feedback'
 import Experiment from '../../experiment'
 import PictureSlide from '../../../Components/PictureSlide'
-import PerformanceFeedback from '../../../Components/PerformanceFeedback'
+import BlockFeedback from '../../../Components/BlockFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const TrialBlock = ({ practice, onNext }) => {
@@ -84,7 +84,7 @@ const TrialBlock = ({ practice, onNext }) => {
       )
     }
     case 8: {
-      return <PerformanceFeedback onNext={onSubmitFeedback} />
+      return <BlockFeedback onNext={onSubmitFeedback} />
     }
     default:
       break

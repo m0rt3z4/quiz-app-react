@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { useTrialContext } from '../../../layouts/TrialLayout/context'
 // import Trial from '../../Components/TrialManager/Trial'
+import { blockTypes } from '../../../consts'
 import Slide from '../../../Components/Slide'
 import Strings from '../../../Components/Slide/Strings'
 import Slide3 from './Slide3'
@@ -9,9 +10,14 @@ import Slide4 from './Slide4'
 import Feedback from './Feedback'
 import NoSurprizeBlocks from './NoSurprizeBlocks'
 import PictureSlide from '../../../Components/PictureSlide'
-import PerformanceFeedback from '../../../Components/PerformanceFeedback'
+import BlockFeedback from '../../../Components/BlockFeedback'
 
-const MemorandumBlock = ({ practice, onNext, showTutorial = true }) => {
+const MemorandumBlock = ({
+  practice,
+  onNext,
+  showTutorial = true,
+  isSecondRound = false,
+}) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
   const { changeOutletWidth } = useTrialContext()
@@ -56,7 +62,12 @@ const MemorandumBlock = ({ practice, onNext, showTutorial = true }) => {
       )
     }
     case 6: {
-      return <PerformanceFeedback onNext={onSubmitFeedback} />
+      return (
+        <BlockFeedback
+          onNext={onSubmitFeedback}
+          blockType={isSecondRound ? blockTypes.MEMORANDUM_BLOCK : ''}
+        />
+      )
     }
     default:
       break

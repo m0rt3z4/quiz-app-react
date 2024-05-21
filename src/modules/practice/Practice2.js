@@ -30,6 +30,7 @@ const Practice2 = ({ practice, onFinishPractice }) => {
           }
           onNext={saveSurprizeBlocksResult}
           showTutorial={false}
+          isSecondRound={true}
         />
       )
     }
@@ -43,6 +44,7 @@ const Practice2 = ({ practice, onFinishPractice }) => {
           }
           onNext={saveStimuliBlocksResult}
           showTutorial={false}
+          isSecondRound={true}
         />
       )
     }

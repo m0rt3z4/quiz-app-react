@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   Box,
@@ -7,31 +7,31 @@ import {
   Typography,
   Button,
   InputLabel,
-  Checkbox,
+  // Checkbox,
 } from '@mui/material'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
 export const SettingPage = () => {
-  const { preview, changePreviewMode } = useTrialContext()
-  const [checked, setChecked] = useState(preview)
+  const { changePreviewMode } = useTrialContext()
+  // const [checked, setChecked] = useState(preview)
 
   const navigate = useNavigate()
 
   const redirectUrl = (url) => {
     navigate(url)
   }
-  const handleChange = (event) => {
-    setChecked(event.target.checked)
-  }
+  // const handleChange = (event) => {
+  //   setChecked(event.target.checked)
+  // }
 
   const onClickSaveButton = () => {
     changePreviewMode(true)
     redirectUrl('/tutorial')
   }
-  const onClickDefaultButton = () => {
-    changePreviewMode(false)
-  }
+  // const onClickDefaultButton = () => {
+  //   changePreviewMode(false)
+  // }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
