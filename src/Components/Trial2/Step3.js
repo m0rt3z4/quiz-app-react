@@ -10,6 +10,7 @@ const Step3 = ({
   stimuliArray,
   showFeedback = false,
   onFinishStep,
+  isPracticeSurprize = false,
 }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
@@ -61,7 +62,10 @@ const Step3 = ({
     />
   )
   const EmptyGrid = () => (
-    <TrialGrid isWhiteThemed={background === 'L' ? true : false} isBold />
+    <TrialGrid
+      isWhiteThemed={background === 'L' ? true : false}
+      isBold={isPracticeSurprize ? false : true}
+    />
   )
 
   return toggle ? <EmptyGrid /> : <Grid />

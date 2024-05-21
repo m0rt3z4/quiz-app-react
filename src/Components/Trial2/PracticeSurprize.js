@@ -47,6 +47,7 @@ const PracticeSurprize = ({
           stimuliArray={trialParams}
           onFinishStep={onFinishFirstStep}
           showFeedback={true}
+          isPracticeSurprize={true}
         />
       )
     }
