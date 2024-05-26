@@ -12,7 +12,7 @@ export const keyboardKeys = {
 }
 
 export const consentTypes = {
-  ADULT_PARTICIPANT: 'ADULT_PARTICIPANT',
+  NON_STUDENT_PARTICIPANT: 'NON_STUDENT_PARTICIPANT',
   PSYCH1000_STUDENT: 'PSYCH1000_STUDENT',
 }
 
