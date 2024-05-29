@@ -5,7 +5,6 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { recognitionTypes } from '../../consts'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
-
 const TimedStep = ({
   background,
   startTime,
@@ -14,11 +13,8 @@ const TimedStep = ({
   noTimeout = false,
   onFinishStep,
 }) => {
-  const {
-    showArrows,
-    changeFeedbackStatus,
-  } = useTrialContext()
-  const timeToWait = stimulus.iconType === 'SURPRIZE' ? 4000 : 3000
+  const { showArrows, changeFeedbackStatus } = useTrialContext()
+  const timeToWait = 3000
 
   const isAnswerCorrect = (userAnswer) => {
     if (stimulus.iconType === 'SURPRIZE') {

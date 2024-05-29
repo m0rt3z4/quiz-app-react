@@ -58,7 +58,7 @@ const Step3 = ({
       startTime={startTime}
       onFinishStep={onUserResp}
       showFeedback={showFeedback}
-      noTimeout={true}
+      // noTimeout={true}
     />
   )
   const EmptyGrid = () => (
