@@ -22,7 +22,7 @@ export const pickSurprizeBlock = (letter, n = 4) => {
       return createStimulus(x, iconTypes.SURPRIZE, false)
     }),
   ]
-  return res
+  return shuffleArray(res)
 }
 
 export const pickNormalBlock = (
@@ -37,7 +37,7 @@ export const pickNormalBlock = (
     numOnLetters,
     numOffLetters
   )
-  
+
   // handle surprize in mixed blocks
   let surprize = {}
   if (isMixedBlock) {
