@@ -24,6 +24,9 @@ const MemorandumBlock = ({
   const nextStep = () => {
     !showTutorial && step === 0 ? setStep(4) : setStep(step + 1)
   }
+  const previousStep = () => {
+    setStep((step) => step - 1)
+  }
   const saveStimuliBlocksResult = (resp) => {
     setResults(resp)
     nextStep()
@@ -42,15 +45,27 @@ const MemorandumBlock = ({
       return <Slide3 onNext={nextStep} />
     }
     case 2: {
-      return <Slide4 onNext={nextStep} />
+      return <Slide4 onNext={nextStep} onPrevious={previousStep} />
     }
     case 3: {
       changeOutletWidth(5)
-      return <Feedback onNext={nextStep} />
+      return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 4: {
       changeOutletWidth(8)
-      return <PictureSlide content={'Memorandum'} onNext={nextStep} />
+      return (
+        <PictureSlide
+          content={'Memorandum'}
+          onNext={nextStep}
+          onPrevious={
+            !showTutorial
+              ? () => {
+                  return
+                }
+              : previousStep
+          }
+        />
+      )
     }
     case 5: {
       changeOutletWidth(5)

@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 
-import useKeyboard from '../../../helpers/useKeyboard'
+import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { pickSurprize } from '../../../helpers/letterHelper'
-import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide4 = ({ onNext }) => {
+const Slide4 = ({ onNext, onPrevious }) => {
   const [stimulus, setStimulus] = useState({})
 
-  //press space to continue
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+  useKeyboardNavigation(onNext, onPrevious)
 
   useEffect(() => {
     // const timeout = setTimeout(() => {
-      setStimulus(pickSurprize())
+    setStimulus(pickSurprize())
     // }, 1500)
     // return () => clearTimeout(timeout)
   }, [])
