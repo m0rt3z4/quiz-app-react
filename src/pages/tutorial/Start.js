@@ -43,18 +43,18 @@ const Start = ({ onNext }) => {
               <Grid item xs={8}>
                 <Typography variant="h3">Welcome! </Typography>
                 <Typography variant="body1" paddingTop={12}>
-                  I Am a/an:
+                  I Am a:
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Button
                   variant="outlined"
                   onClick={() => {
-                    onNext(consentTypes.ADULT_PARTICIPANT)
+                    onNext(consentTypes.NON_STUDENT_PARTICIPANT)
                   }}
                   sx={{ minHeight: '90px' }}
                 >
-                  Adult Participant
+                  Non-Student Participant
                 </Button>
               </Grid>
               <Grid item xs={6}>

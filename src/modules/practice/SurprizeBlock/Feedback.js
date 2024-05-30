@@ -1,15 +1,14 @@
 import React from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
-import useKeyboard from '../../../helpers/useKeyboard'
-import { keyboardKeys } from '../../../consts'
+import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import Strings from '../../../Components/Slide/Strings'
 
-const Feedback = ({ content = Strings.tutorial.feedback, onNext }) => {
-  //press space to continue
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+const Feedback = ({
+  content = Strings.tutorial.feedback,
+  onNext,
+  onPrevious,
+}) => {
+  useKeyboardNavigation(onNext, onPrevious)
 
   return (
     <Grid

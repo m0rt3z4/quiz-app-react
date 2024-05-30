@@ -15,7 +15,7 @@ import ConsentText2 from './ConsentText2'
 
 const ConsentForm = ({
   onNext,
-  consentType = consentTypes.ADULT_PARTICIPANT,
+  consentType = consentTypes.NON_STUDENT_PARTICIPANT,
 }) => {
   const { showArrows } = useTrialContext()
   const [checked, setChecked] = React.useState(false)
@@ -56,7 +56,7 @@ const ConsentForm = ({
               <Grid item container xs={12}>
                 {consentType === consentTypes.PSYCH1000_STUDENT ? (
                   <ConsentText2 />
-                ) : consentType === consentTypes.ADULT_PARTICIPANT ? (
+                ) : consentType === consentTypes.NON_STUDENT_PARTICIPANT ? (
                   <ConsentText1 />
                 ) : null}
               </Grid>

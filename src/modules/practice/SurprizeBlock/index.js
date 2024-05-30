@@ -25,6 +25,9 @@ const SurprizeBlock = ({
   const nextStep = () => {
     setStep(step + 1)
   }
+  const previousStep = () => {
+    setStep((step) => step - 1)
+  }
   const saveSurprizeBlocksResult = (resp) => {
     setResults(resp)
     nextStep()
@@ -45,27 +48,39 @@ const SurprizeBlock = ({
     }
     case 1: {
       changeOutletWidth(8)
-      return <Slide1 onNext={nextStep} />
+      return <Slide1 onNext={nextStep} onPrevious={previousStep} />
     }
 
     case 2: {
       changeOutletWidth(5)
-      return <Slide4 onNext={nextStep} />
+      return <Slide4 onNext={nextStep} onPrevious={previousStep} />
     }
     case 3: {
       changeOutletWidth(8)
-      return <Slide2 onNext={nextStep} />
+      return <Slide2 onNext={nextStep} onPrevious={previousStep} />
     }
     case 4: {
       changeOutletWidth(5)
-      return <Feedback onNext={nextStep} />
+      return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 5: {
       changeOutletWidth(8)
-      return <Slide5 onNext={nextStep} />
+      return <Slide5 onNext={nextStep} onPrevious={previousStep} />
     }
     case 6: {
-      return <PictureSlide content={'Surprize'} onNext={nextStep} />
+      return (
+        <PictureSlide
+          content={'Surprize'}
+          onNext={nextStep}
+          onPrevious={
+            !showTutorial
+              ? () => {
+                  return
+                }
+              : previousStep
+          }
+        />
+      )
     }
     case 7: {
       changeOutletWidth(5)

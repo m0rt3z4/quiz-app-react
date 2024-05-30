@@ -21,6 +21,9 @@ const TrialBlock = ({ practice, onNext }) => {
   const nextStep = () => {
     setStep(step + 1)
   }
+  const previousStep = () => {
+    setStep((step) => step - 1)
+  }
   const saveMainBlocksResult = (resp) => {
     setResults(resp)
     nextStep()
@@ -35,6 +38,7 @@ const TrialBlock = ({ practice, onNext }) => {
       return <Slide content={Strings.restSlide} onNext={nextStep} />
     }
     case 1: {
+      changeOutletWidth(5)
       return (
         <Slide5
           content={Strings.tutorial.mainSlides.slide1}
@@ -43,35 +47,48 @@ const TrialBlock = ({ practice, onNext }) => {
       )
     }
     case 2: {
+      changeOutletWidth(5)
       return (
         <Slide6
           content={Strings.tutorial.mainSlides.slide2}
           onNext={nextStep}
+          onPrevious={previousStep}
         />
       )
     }
     case 3: {
+      changeOutletWidth(5)
       return (
         <Slide7
           content={Strings.tutorial.mainSlides.slide3}
           onNext={nextStep}
+          onPrevious={previousStep}
         />
       )
     }
     case 4: {
+      changeOutletWidth(5)
       return (
         <Slide8
           content={Strings.tutorial.mainSlides.slide4}
           onNext={nextStep}
+          onPrevious={previousStep}
         />
       )
     }
     case 5: {
-      return <Feedback onNext={nextStep} />
+      changeOutletWidth(5)
+      return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 6: {
       changeOutletWidth(8)
-      return <PictureSlide content={'Both'} onNext={nextStep} />
+      return (
+        <PictureSlide
+          content={'Both'}
+          onNext={nextStep}
+          onPrevious={previousStep}
+        />
+      )
     }
     case 7: {
       changeOutletWidth(5)
@@ -84,6 +101,7 @@ const TrialBlock = ({ practice, onNext }) => {
       )
     }
     case 8: {
+      changeOutletWidth(5)
       return <BlockFeedback onNext={onSubmitFeedback} />
     }
     default:
