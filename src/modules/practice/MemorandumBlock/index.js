@@ -38,6 +38,7 @@ const MemorandumBlock = ({
   switch (step) {
     // Rest Slide
     case 0: {
+      changeOutletWidth(5)
       return <Slide content={Strings.restSlide} onNext={nextStep} />
     }
     case 1: {
@@ -45,6 +46,7 @@ const MemorandumBlock = ({
       return <Slide3 onNext={nextStep} />
     }
     case 2: {
+      changeOutletWidth(8)
       return <Slide4 onNext={nextStep} onPrevious={previousStep} />
     }
     case 3: {
@@ -77,6 +79,7 @@ const MemorandumBlock = ({
       )
     }
     case 6: {
+      changeOutletWidth(5)
       return (
         <BlockFeedback
           onNext={onSubmitFeedback}

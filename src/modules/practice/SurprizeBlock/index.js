@@ -72,7 +72,13 @@ const SurprizeBlock = ({
         <PictureSlide
           content={'Surprize'}
           onNext={nextStep}
-          onPrevious={previousStep}
+          onPrevious={
+            !showTutorial
+              ? () => {
+                  return
+                }
+              : previousStep
+          }
         />
       )
     }
