@@ -6,15 +6,10 @@ import Tutorial_Memorandum_Block from '../../assets/Tutorial_Memorandum_Block.jp
 import Tutorial_Surprize_Block_V3 from '../../assets/Tutorial_Surprize_Block_V3.jpg'
 import Tutorial_Both_Block_V3 from '../../assets/Tutorial_Both_Block_V3.jpg'
 
-import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
+import useKeyboardNavigation from '../../helpers/useKeyboardNavigation'
 
-const PictureSlide = ({ content = null, onNext }) => {
-  //press space to continue
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+const PictureSlide = ({ content = null, onNext, onPrevious }) => {
+  useKeyboardNavigation(onNext, onPrevious)
 
   const picLoader = (img) => {
     switch (img) {
@@ -32,11 +27,7 @@ const PictureSlide = ({ content = null, onNext }) => {
     }
   }
   return (
-    <Grid
-      container
-      justifyContent={'center'}
-      spacing={2}
-    >
+    <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12}>
         <Card
           sx={{

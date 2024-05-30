@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 
-import useKeyboard from '../../../helpers/useKeyboard'
+import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { hLetterArray, iLetterArray } from '../../../helpers/customBackground'
-import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide1 = ({ onNext }) => {
+const Slide1 = ({ onNext, onPrevious }) => {
   const [index, setIndex] = useState(0)
   const [background, setBackground] = useState(true)
   const [customBgArray, setCustomBgArray] = useState([])
 
-  //press space to continue
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+  useKeyboardNavigation(onNext, onPrevious)
 
   useEffect(() => {
     const timeout = setInterval(() => {
@@ -58,9 +53,7 @@ const Slide1 = ({ onNext }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'}>
-                Here is the example
-              </Typography>
+              <Typography fontSize={'20px'}>Here is the example</Typography>
               <Typography fontSize={'20px'} sx={{ paddingTop: 8 }}>
                 To move forward, press the (→) key.
               </Typography>

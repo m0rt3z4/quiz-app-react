@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
-import useKeyboard from '../../../helpers/useKeyboard'
+import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { useTrialContext } from '../../../layouts/TrialLayout/context'
 import { hLetterArray } from '../../../helpers/customBackground'
-import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide5 = ({ onNext }) => {
-  const [surprize, setSurprize] = useState({
+const Slide5 = ({ onNext, onPrevious }) => {
+  const [surprize] = useState({
     i: Math.floor(Math.random() * 5),
     j: Math.floor(Math.random() * 5),
     iconType: 'SURPRIZE',
   })
   const [index, setIndex] = useState(0)
   const { changeFeedbackStatus } = useTrialContext()
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) {
-      changeFeedbackStatus('')
-      onNext()
-    }
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+  useKeyboardNavigation(onNext, onPrevious)
 
   useEffect(() => {
     const timeout = setInterval(() => {
@@ -28,7 +21,7 @@ const Slide5 = ({ onNext }) => {
       changeFeedbackStatus(refreshGridArray[index % 3])
     }, 1500)
     return () => clearInterval(timeout)
-  }, [index])
+  }, [changeFeedbackStatus, index])
 
   return (
     <Grid container xs={12} justifyContent={'center'} spacing={2}>
