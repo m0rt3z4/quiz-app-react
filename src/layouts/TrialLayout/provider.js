@@ -38,6 +38,11 @@ export const TrialProvider = ({ children }) => {
     setRightBarWarning(content)
   }, [])
 
+  const showLeftArrow = useCallback((content) => {
+    setLeftBarVisible(!!content)
+    setLeftBarWarning(content)
+  }, [])
+
   const changeRightBarWarning = useCallback((isWarning) => {
     setRightBarWarning(isWarning)
   }, [])
@@ -74,6 +79,7 @@ export const TrialProvider = ({ children }) => {
       feedbackStatus,
       changeFeedbackStatus,
       showRightArrow,
+      showLeftArrow,
       preview,
       changePreviewMode,
     }
@@ -95,6 +101,7 @@ export const TrialProvider = ({ children }) => {
     feedbackStatus,
     changeFeedbackStatus,
     showRightArrow,
+    showLeftArrow,
     preview,
     changePreviewMode,
   ])

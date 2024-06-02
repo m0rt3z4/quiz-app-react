@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
+import { useTrialContext } from '../../layouts/TrialLayout/context'
 import Step1 from './Step1'
 import ReadtToStart from './ReadyToStart'
 import Step2 from './Step2'
@@ -18,6 +19,7 @@ const Trial2 = ({
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
+  const { showRightArrow, showLeftArrow } = useTrialContext()
 
   useEffect(() => {
     setStep(0)
@@ -66,11 +68,17 @@ const Trial2 = ({
       )
     }
     case 1: {
+      showRightArrow(
+        dontShowLetter
+          ? 'press → to Start!'
+          : 'Visualize the letter and press → to Start!'
+      )
       return (
         <ReadtToStart
           background={background}
           dontShowLetter={dontShowLetter}
           onNext={() => {
+            showRightArrow('')
             setStep(2)
           }}
         />
