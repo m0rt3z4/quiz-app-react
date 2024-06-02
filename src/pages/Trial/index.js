@@ -50,6 +50,7 @@ export const TrialPage = ({ onFinishTrial }) => {
         <Experiment
           experiment={preview ? experiment.slice(0, 2) : experiment}
           onFinishExperiment={submitExperimentResults}
+          showFeedback={true}
         />
       )
     case 3: {
