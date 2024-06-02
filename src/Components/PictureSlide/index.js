@@ -1,9 +1,9 @@
 import React from 'react'
 import { Grid, Card, Typography } from '@mui/material'
 // import Tutorial_Both_Block from '../../assets/Tutorial_Both_Block.jpg'
-import Tutorial_Memorandum_Block from '../../assets/Tutorial_Memorandum_Block.jpg'
+import Tutorial_Memorandum_Block_V2 from '../../assets/Tutorial_Memorandum_Block_V2.jpg'
 // import Tutorial_Surprize_Block from '../../assets/Tutorial_Surprize_Block.jpg'
-import Tutorial_Surprize_Block_V3 from '../../assets/Tutorial_Surprize_Block_V3.jpg'
+import Tutorial_Surprize_Block_V4 from '../../assets/Tutorial_Surprize_Block_V4.jpg'
 import Tutorial_Both_Block_V3 from '../../assets/Tutorial_Both_Block_V3.jpg'
 
 import useKeyboardNavigation from '../../helpers/useKeyboardNavigation'
@@ -14,10 +14,10 @@ const PictureSlide = ({ content = null, onNext, onPrevious }) => {
   const picLoader = (img) => {
     switch (img) {
       case 'Surprize': {
-        return Tutorial_Surprize_Block_V3
+        return Tutorial_Surprize_Block_V4
       }
       case 'Memorandum': {
-        return Tutorial_Memorandum_Block
+        return Tutorial_Memorandum_Block_V2
       }
       case 'Both': {
         return Tutorial_Both_Block_V3

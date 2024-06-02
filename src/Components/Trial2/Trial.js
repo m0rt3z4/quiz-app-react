@@ -19,7 +19,7 @@ const Trial2 = ({
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-  const { showRightArrow, showLeftArrow } = useTrialContext()
+  const { showRightArrow } = useTrialContext()
 
   useEffect(() => {
     setStep(0)
