@@ -17,7 +17,7 @@ import BlockFeedback from '../../../Components/BlockFeedback'
 const TrialBlock = ({ practice, onNext }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-  const { changeOutletWidth } = useTrialContext()
+  const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
   }
@@ -39,6 +39,8 @@ const TrialBlock = ({ practice, onNext }) => {
     }
     case 1: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('')
       return (
         <Slide5
           content={Strings.tutorial.mainSlides.slide1}
@@ -48,6 +50,8 @@ const TrialBlock = ({ practice, onNext }) => {
     }
     case 2: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
       return (
         <Slide6
           content={Strings.tutorial.mainSlides.slide2}
@@ -78,10 +82,14 @@ const TrialBlock = ({ practice, onNext }) => {
     }
     case 5: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
       return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 6: {
       changeOutletWidth(8)
+      showRightArrow('')
+      showLeftArrow('Previous Slide')
       return (
         <PictureSlide
           content={'Both'}
@@ -92,6 +100,8 @@ const TrialBlock = ({ practice, onNext }) => {
     }
     case 7: {
       changeOutletWidth(5)
+      showRightArrow('')
+      showLeftArrow('')
       return (
         <Experiment
           experiment={practice}

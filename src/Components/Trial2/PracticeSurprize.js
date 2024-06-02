@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import { useTrialContext } from '../../layouts/TrialLayout/context'
 import Step1 from './Step1'
 import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
@@ -13,6 +14,7 @@ const PracticeSurprize = ({
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
+  const { showRightArrow, showLeftArrow } = useTrialContext()
 
   const onFinishFirstStep = (resp) => {
     onFinishTrial(resp)
@@ -31,6 +33,7 @@ const PracticeSurprize = ({
       )
     }
     case 1: {
+      showRightArrow('Visualize the letter and press → to Start!')
       return (
         <ReadtToStart
           background={background}
@@ -41,6 +44,8 @@ const PracticeSurprize = ({
       )
     }
     case 2: {
+      showLeftArrow('Off Letter')
+      showRightArrow('On Letter')
       return (
         <Step3
           background={background}
@@ -52,6 +57,8 @@ const PracticeSurprize = ({
       )
     }
     case 3: {
+      showLeftArrow('')
+      showRightArrow('')
       return <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
     }
 

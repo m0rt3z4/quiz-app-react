@@ -33,7 +33,7 @@ const GridCell = ({
           />
         )
       case 'CENTER_DOT':
-        return <Typography fontSize={'20px'} sx={{paddingBottom:'6px'}}>.</Typography>
+        return <Typography fontSize={'35px'} sx={{paddingBottom:'19px'}}>.</Typography>
       case 'CIRCLE':
         return <CircleIcon fontSize="10px" sx={{paddingTop:'3px'}} />
       case 'QUESTION':

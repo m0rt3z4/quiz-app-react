@@ -20,7 +20,7 @@ const MemorandumBlock = ({
 }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-  const { changeOutletWidth } = useTrialContext()
+  const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
   const nextStep = () => {
     !showTutorial && step === 0 ? setStep(4) : setStep(step + 1)
   }
@@ -39,22 +39,33 @@ const MemorandumBlock = ({
     // Rest Slide
     case 0: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('')
       return <Slide content={Strings.restSlide} onNext={nextStep} />
     }
     case 1: {
       changeOutletWidth(8)
+      showRightArrow('Next Slide')
+      showLeftArrow('')
       return <Slide3 onNext={nextStep} />
     }
     case 2: {
       changeOutletWidth(8)
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
+
       return <Slide4 onNext={nextStep} onPrevious={previousStep} />
     }
     case 3: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
       return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 4: {
       changeOutletWidth(8)
+      showRightArrow('')
+      showLeftArrow(!showTutorial ? '' : 'Previous Slide')
       return (
         <PictureSlide
           content={'Memorandum'}
@@ -71,6 +82,8 @@ const MemorandumBlock = ({
     }
     case 5: {
       changeOutletWidth(5)
+      showRightArrow('')
+      showLeftArrow('')
       return (
         <NoSurprizeBlocks
           experiment={practice}

@@ -21,7 +21,7 @@ const SurprizeBlock = ({
 }) => {
   const [step, setStep] = useState(showTutorial ? 0 : 6)
   const [results, setResults] = useState({})
-  const { changeOutletWidth } = useTrialContext()
+  const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
   }
@@ -39,6 +39,8 @@ const SurprizeBlock = ({
   switch (step) {
     case 0: {
       changeOutletWidth(5)
+      showRightArrow('Next Slide')
+      showLeftArrow('')
       return (
         <Slide3
           content={Strings.tutorial.mainSlides.slide1}
@@ -48,6 +50,8 @@ const SurprizeBlock = ({
     }
     case 1: {
       changeOutletWidth(8)
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
       return <Slide1 onNext={nextStep} onPrevious={previousStep} />
     }
 
@@ -64,10 +68,14 @@ const SurprizeBlock = ({
       return <Feedback onNext={nextStep} onPrevious={previousStep} />
     }
     case 5: {
+      showRightArrow('Next Slide')
+      showLeftArrow('Previous Slide')
       changeOutletWidth(8)
       return <Slide5 onNext={nextStep} onPrevious={previousStep} />
     }
     case 6: {
+      showRightArrow('')
+      showLeftArrow(!showTutorial ? '' : 'Previous Slide')
       return (
         <PictureSlide
           content={'Surprize'}
@@ -83,6 +91,8 @@ const SurprizeBlock = ({
       )
     }
     case 7: {
+      showRightArrow('')
+      showLeftArrow('')
       changeOutletWidth(5)
       return (
         <SurprizeBlocks

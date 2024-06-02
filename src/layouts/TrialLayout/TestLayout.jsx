@@ -35,11 +35,8 @@ export const TrialLayout = () => {
             {leftBarVisible && (
               <Grid item>
                 {!!leftBarWarning && (
-                  <Typography
-                    color={leftBarWarning === 'SUCCESS' ? 'green' : 'red'}
-                    sx={{ marginBottom: 1 }}
-                  >
-                    {leftBarWarning === 'SUCCESS' ? 'Correct' : 'Incorrect'}
+                  <Typography color={'black'} sx={{ marginBottom: 1 }}>
+                    {leftBarWarning}
                   </Typography>
                 )}
                 <Card
@@ -49,13 +46,14 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    border: `1px solid ${
-                      !!leftBarWarning
-                        ? leftBarWarning === 'SUCCESS'
-                          ? 'green'
-                          : 'red'
-                        : 'black'
-                    }`,
+                    // border: `1px solid ${
+                    //   !!leftBarWarning
+                    //     ? leftBarWarning === 'SUCCESS'
+                    //       ? 'green'
+                    //       : 'red'
+                    //     : 'black'
+                    // }`,
+                    border: '1px solid black',
                   }}
                 >
                   <ArrowBackIcon fontSize="large" />
