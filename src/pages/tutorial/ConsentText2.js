@@ -27,7 +27,7 @@ const ConsentText2 = () => {
       >
         <Box>
           <Typography variant="h5" align="center">
-            ADULT CONSENT FORM FOR IN-LAB/IN-PERSON RESEARCH STUDY
+            STUDENT CONSENT FORM FOR IN-LAB/IN-PERSON RESEARCH STUDY
           </Typography>
           <Typography variant="h6" align="center">
             (FOR RESEARCH CREDIT)
@@ -100,7 +100,7 @@ const ConsentText2 = () => {
           <Typography variant="body2" align="left" paddingTop={1}>
             • Although we may request demographic information such as age,
             gender, race, ethnicity, this information is not required in order
-            to participate.{' '}
+            to participate.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You may be presented with visual and/or auditory information such
@@ -114,9 +114,8 @@ const ConsentText2 = () => {
             soft or loud, high or low, irregular or repetitive.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
-            • The studies that we post can be 30 to 75 minutes long depending on
-            the study. The duration of THIS specific study will be indicated in
-            the SONA study listing.
+            • This study can be 40 to 90 minutes long depending on your
+            performance.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You will receive the following for your participation: 1 SONA
@@ -131,6 +130,14 @@ const ConsentText2 = () => {
             number of SONA Research Credits will be prorated (equivalent to the
             TOTAL amount of time participated) which may result in fewer, or
             zero credits awarded.
+          </Typography>
+          <Typography variant="body2" align="left" paddingTop={1}>
+            Please note that will be collecting birthdate only for research
+            purposes and name and mailing address to provide compensation.
+          </Typography>
+          <Typography variant="body2" align="left" paddingTop={1}>
+            All the data and the information you provide will be kept
+            confidential and only the researchers will have access.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • If you need additional information, please contact the Lead
@@ -152,7 +159,7 @@ const ConsentText2 = () => {
             • The Impact of Visual Imagery on Spatial Working Memory Recall
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            WHY IS THIS STUDY BEING DONE?{' '}
+            WHY IS THIS STUDY BEING DONE?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • The aim of these studies is to investigate the functioning and
@@ -161,26 +168,24 @@ const ConsentText2 = () => {
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
             {' '}
-            WHO IS CONDUCTING THIS RESEARCH?{' '}
+            WHO IS CONDUCTING THIS RESEARCH?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • The Working Memory Lab, University of Missouri, Department of
             Psychological Sciences, under the direction of Dr. Nelson Cowan,
-            Principal Investigator and Director, via a grant provided by The
-            National Institute of Child Health and Human Development.{' '}
+            Principal Investigator and Director, via departmental funding.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
             WHO WILL BE PARTICIPATING IN THIS STUDY?{' '}
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
-            • Psych 1000 adult students 18 to 30 years of age at the University
+            • Psych 1000 adult students 18 to 40 years of age at the University
             of Missouri who have been determined to meet the eligibility
             requirements. Please refer to the specific study listing for age
             range requirements to determine if you are eligible.{' '}
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            {' '}
-            ELIGIBILITY REQUIREMENTS{' '}
+            ELIGIBILITY REQUIREMENTS
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Due to the location of the study, Participants must be able to
@@ -221,15 +226,15 @@ const ConsentText2 = () => {
             and tint of color.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            IF YOU DECIDE TO PARTICIPATE, WHAT WILL YOU BE ASKED TO DO?{' '}
+            IF YOU DECIDE TO PARTICIPATE, WHAT WILL YOU BE ASKED TO DO?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Participate in a single study session on location at the
             University of Missouri Working Memory Lab in the McAlester Annex
-            Building for a duration of 30 to 75 minutes. The duration of THIS
+            Building for a duration of 40 to 90 minutes. The duration of THIS
             specific study will be indicated in the SONA study listing and
             provided verbally by the Researcher during the consent process and
-            prior to your participation.{' '}
+            prior to your participation.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • While participating or waiting to participate, you will be asked
@@ -269,30 +274,30 @@ const ConsentText2 = () => {
             Researcher prior to your participation.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            WHAT YOU NEED TO KNOW REGARDING PARTICIPATION:{' '}
+            WHAT YOU NEED TO KNOW REGARDING PARTICIPATION:
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Although you may be asked to return for one or more sessions,
             depending on the study, participating in THIS session will not
-            obligate you to return for additional sessions.{' '}
+            obligate you to return for additional sessions.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • One Researcher will be present for the duration of your session.
             In some instances, we may request your permission to have additional
             Researchers present for data collection, observation and/or training
-            purposes.{' '}
+            purposes.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You understand that your participation is voluntary meaning you
             have the right to refuse or discontinue participation at any time
             without penalty or loss of benefit to which you are otherwise
-            entitled.{' '}
+            entitled.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You understand that your responses will be collected using a
             randomly assigned number and/or letter combination, so that your
             name and personal details will not be linked to any data that we
-            collect.{' '}
+            collect.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You understand that the data resulting from your participation may
@@ -302,7 +307,7 @@ const ConsentText2 = () => {
             that could identify you as a participant. It will only be utilized,
             shared, and/or saved using a randomly assigned number that is not
             connected to you or any personal private information that you
-            provide.{' '}
+            provide.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You understand that this study is not expected to involve risks or
@@ -310,7 +315,7 @@ const ConsentText2 = () => {
             You also understand that it is not possible to identify all
             potential risks in any experimental procedure, but that all
             reasonable safeguards have been taken to minimize the known and
-            unknown potential risks associated with participation.{' '}
+            unknown potential risks associated with participation.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Some study applications require observation, audio recording,
@@ -319,7 +324,7 @@ const ConsentText2 = () => {
             memory, and/or for data collection purposes. If this applies to THIS
             specific study, it will be indicated in the SONA study listing
             and/or you will be informed by the Researcher prior to your
-            participation.{' '}
+            participation.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • If you do not approve of the applications indicated in the SONA
@@ -340,7 +345,7 @@ const ConsentText2 = () => {
             of participation.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            • If you choose to discontinue participation before completion:{' '}
+            • If you choose to discontinue participation before completion:
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             The number of SONA Research Credits will be prorated (equivalent to
@@ -383,7 +388,7 @@ const ConsentText2 = () => {
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
             WHAT ARE THE BENEFITS OF THIS STUDY TO YOU AND TO THE PUBLIC IN
-            GENERAL?{' '}
+            GENERAL?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You will be involved in and become familiar with the research
@@ -391,7 +396,7 @@ const ConsentText2 = () => {
             human behavior and, in this case, working memory and/or language.
             Not only may you derive some personal satisfaction regarding your
             contribution, but you may also learn useful and effective memory
-            strategies and techniques that can be applied in other settings.{' '}
+            strategies and techniques that can be applied in other settings.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Although the collected data is not used to examine individual
@@ -404,10 +409,10 @@ const ConsentText2 = () => {
             the distribution and delivery of informational resources across
             fields of discipline, such as education, health, linguistics, and
             child development so that findings can be materialized into
-            practical application that benefits all.{' '}
+            practical application that benefits all.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            WHO DO YOU CONTACT IF YOU HAVE QUESTIONS, CONCERNS OR COMPLAINTS?{' '}
+            WHO DO YOU CONTACT IF YOU HAVE QUESTIONS, CONCERNS OR COMPLAINTS?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Hamid Nourbakhshi, lead researcher, via email at
@@ -421,10 +426,10 @@ const ConsentText2 = () => {
             participant, please contact the University of Missouri Institutional
             Review Board (IRB) at 573- 882-3181 or muresearchirb@missouri.edu.
             The IRB is a group of people who review research studies to make
-            sure the rights and welfare of participants are protected.{' '}
+            sure the rights and welfare of participants are protected.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
-            STATEMENT OF CONSENT:{' '}
+            STATEMENT OF CONSENT:
           </Typography>
           <Typography variant="body2" align="left" paddingTop={3}>
             By reviewing this consent, you are acknowledging your intent to
@@ -433,7 +438,7 @@ const ConsentText2 = () => {
             questions and obtain information prior to participating; and that
             you are aware of your right to decline participation by simply
             cancelling your appointment or deciding not to participate at any
-            time.{' '}
+            time.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={3}>
             Please be advised that failure to appear for your onsite session
