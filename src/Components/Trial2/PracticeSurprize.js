@@ -5,6 +5,7 @@ import Step1 from './Step1'
 import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
+import Exit from './Exit'
 
 const PracticeSurprize = ({
   background,
@@ -50,7 +51,9 @@ const PracticeSurprize = ({
         <Step3
           background={background}
           stimuliArray={trialParams}
-          onFinishStep={onFinishFirstStep}
+          onFinishStep={() => {
+            setStep(3)
+          }}
           showFeedback={true}
           isPracticeSurprize={true}
         />
@@ -59,7 +62,7 @@ const PracticeSurprize = ({
     case 3: {
       showLeftArrow('')
       showRightArrow('')
-      return <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
+      return <Exit background={background} onFinishStep={onFinishFirstStep} />
     }
 
     default:
