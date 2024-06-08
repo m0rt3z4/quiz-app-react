@@ -5,7 +5,7 @@ export const BlockFeedbackStrings = {
   },
   q2: {
     question: '2.	The task in THIS block was:',
-    answers: ['Very Poor', 'Poor', 'Average', 'Good', 'Excellent'],
+    answers: ['Easy', 'Moderate or Medium', 'Challenging', 'Hard', 'Very Hard'],
   },
   q3: {
     question:

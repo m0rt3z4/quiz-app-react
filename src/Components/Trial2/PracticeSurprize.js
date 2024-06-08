@@ -4,7 +4,6 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import Step1 from './Step1'
 import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
 import Exit from './Exit'
 
 const PracticeSurprize = ({
