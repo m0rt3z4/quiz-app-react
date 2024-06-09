@@ -52,8 +52,9 @@ const pick8TrialBlock = () => {
 }
 
 const generateSurprizes = (size) => {
-  const half = new Array(size / 2)
-  return shuffleArray([...half.map((x) => true), ...half.map((x) => false)])
+  const halfSize = size / 2
+  const array = Array(halfSize).fill(true).concat(Array(halfSize).fill(false))
+  return shuffleArray(array)
 }
 //populating the generated blocks, blockTypes => ['surprizeBlock', 'stimuliBlock', 'mixedBlocks']
 const populateBlock = (trialsArray = [], blockType) => {
@@ -73,10 +74,7 @@ const populateBlock = (trialsArray = [], blockType) => {
     return {
       background: trial[1],
       letter: trial[0],
-      trialParams: params[blockType](
-        trial[0],
-        surprizeList[index]
-      ),
+      trialParams: params[blockType](trial[0], surprizeList[index]),
     }
   })
 }
