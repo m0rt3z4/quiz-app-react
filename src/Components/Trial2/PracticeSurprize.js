@@ -4,7 +4,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import Step1 from './Step1'
 import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import Exit from './Exit'
 
 const PracticeSurprize = ({
   background,
@@ -14,10 +14,20 @@ const PracticeSurprize = ({
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
+  const [imaginationTime, setImaginationTime] = useState(0)
+  const [results, setResults] = useState({})
   const { showRightArrow, showLeftArrow } = useTrialContext()
 
-  const onFinishFirstStep = (resp) => {
-    onFinishTrial(resp)
+  const onFinishImagination = (resp) => {
+    setImaginationTime(resp)
+    setStep(2)
+  }
+  const onFinishSurprizePractice = (resp) => {
+    setResults(resp)
+    setStep(3)
+  }
+  const onFinishFirstStep = () => {
+    onFinishTrial({ results: [...results], imaginationTime })
   }
 
   switch (step) {
@@ -35,12 +45,7 @@ const PracticeSurprize = ({
     case 1: {
       showRightArrow('Visualize the letter and press → to Start!')
       return (
-        <ReadtToStart
-          background={background}
-          onNext={() => {
-            setStep(2)
-          }}
-        />
+        <ReadtToStart background={background} onNext={onFinishImagination} />
       )
     }
     case 2: {
@@ -50,7 +55,7 @@ const PracticeSurprize = ({
         <Step3
           background={background}
           stimuliArray={trialParams}
-          onFinishStep={onFinishFirstStep}
+          onFinishStep={onFinishSurprizePractice}
           showFeedback={true}
           isPracticeSurprize={true}
         />
@@ -59,7 +64,7 @@ const PracticeSurprize = ({
     case 3: {
       showLeftArrow('')
       showRightArrow('')
-      return <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
+      return <Exit background={background} onFinishStep={onFinishFirstStep} />
     }
 
     default:

@@ -13,7 +13,7 @@ const Strings = {
       { fontSize: 25, text: 'To move forward, press the (→) key.' },
     ],
     finish: [
-      { fontSize: 25, text: 'Practice finished! feel free to take some rest.' },
+      { fontSize: 25, text: 'Feel free to take some rest.' },
       { fontSize: 25, text: 'Press the (→) key to start main trial.' },
     ],
     feedback: [

@@ -42,6 +42,13 @@ const Trial2 = ({
       return clearTimeout()
     }, 2500)
   }
+  const onFinishImagination = (resp) => {
+    showRightArrow('')
+    if (!dontShowLetter) {
+      setResults({ ...results, imaginationTime: resp })
+    }
+    setStep(2)
+  }
   const onFinishRecognition = (resp) => {
     setResults({
       ...results,
@@ -51,6 +58,7 @@ const Trial2 = ({
   }
 
   const onNext = () => {
+    // console.log(results)
     return onFinishTrial(results)
   }
 
@@ -77,10 +85,7 @@ const Trial2 = ({
         <ReadtToStart
           background={background}
           dontShowLetter={dontShowLetter}
-          onNext={() => {
-            showRightArrow('')
-            setStep(2)
-          }}
+          onNext={onFinishImagination}
         />
       )
     }

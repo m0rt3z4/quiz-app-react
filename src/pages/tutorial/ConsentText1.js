@@ -27,7 +27,7 @@ const ConsentText1 = () => {
       >
         <Box>
           <Typography variant="h5" align="center">
-            ADULT CONSENT FORM FOR IN-LAB/IN-PERSON RESEARCH STUDY
+            NON-STUDENT CONSENT FORM FOR IN-LAB/IN-PERSON RESEARCH STUDY
           </Typography>
           <Typography variant="h6" align="center">
             UNIVERSITY OF MISSOURI: IRB PROJECT #2101803
@@ -84,15 +84,16 @@ const ConsentText1 = () => {
             can be soft or loud, high or low, irregular or repetitive.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
-            • The studies that we post can be 40 to 75 minutes long depending on
-            the study. The duration of THIS specific study will be indicated in
-            the study listing provided at sign-up.
+            • This study can be 40 to 90 minutes long depending on your
+            performance.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • You will receive the following for your participation: $20.00 per
             hour of participation with an additional $5.00 for every 15 minutes
             after the hour. Payment will be provided immediately following
-            participation and after completion of a payment form.
+            participation and after completion of a payment form. Please note
+            that we will be collecting name and mailing address to provide
+            compensation.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • Participation is voluntary meaning you can choose to discontinue
@@ -102,6 +103,14 @@ const ConsentText1 = () => {
             • If you choose to discontinue participation before completion: The
             amount of compensation will be prorated (equivalent to the TOTAL
             amount of time that you participated).
+          </Typography>
+          <Typography variant="body2" align="left" paddingTop={1}>
+            Please note that will be collecting birthdate only for research
+            purposes and name and mailing address to provide compensation.
+          </Typography>
+          <Typography variant="body2" align="left" paddingTop={1}>
+            All the data and the information you provide will be kept
+            confidential and only the researchers will have access.
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
             • If you need additional information, please contact the Lead
@@ -136,14 +145,13 @@ const ConsentText1 = () => {
           <Typography variant="body2" align="left" paddingTop={1}>
             • The Working Memory Lab, University of Missouri, Department of
             Psychological Sciences, under the direction of Dr. Nelson Cowan,
-            Principal Investigator and Director, via a grant provided by The
-            National Institute of Child Health and Human Development.
+            Principal Investigator and Director, via departmental funding.
           </Typography>
           <Typography variant="subtitle1" align="left" paddingTop={3}>
             WHO WILL BE PARTICIPATING IN THIS STUDY?
           </Typography>
           <Typography variant="body2" align="left" paddingTop={1}>
-            • Adults 18 to 30 years of age who have been determined to meet the
+            • Adults 18 to 40 years of age who have been determined to meet the
             eligibility requirements. Please refer to the specific study listing
             for age range requirements to determine if you are eligible.
           </Typography>
