@@ -28,7 +28,7 @@ const SurprizeBlocks = ({ experiment, onFinishStep }) => {
   const onFinishTrial = (resp) => {
     const trialResult = {
       ...experiment[trialIndex],
-      results: resp,
+      ...resp,
     }
     setResults([...results, trialResult])
     setTrialIndex(trialIndex + 1)
