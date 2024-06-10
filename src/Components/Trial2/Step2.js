@@ -19,7 +19,7 @@ const Step2 = ({
   const [result, setResult] = useState({})
   const [toggleSurprize, setToggleSurprize] = useState(false)
   const [startTime, setStartTime] = useState(0)
-  const { changeTitle } = useTrialContext()
+  const { changeTitle, changeUserResp } = useTrialContext()
 
   useEffect(() => {
     changeTitle('Focus')
@@ -51,6 +51,7 @@ const Step2 = ({
   const onFinishSurprize = (resp) => {
     setResult(resp)
     setToggleSurprize(false)
+    changeUserResp(false)
     const timeout = setTimeout(() => {
       setToggleSurprize(false)
       setIndex(index + 1)

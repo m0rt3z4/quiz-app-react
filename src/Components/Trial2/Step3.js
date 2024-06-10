@@ -17,7 +17,7 @@ const Step3 = ({
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState([])
   const [toggle, setToggle] = useState(false)
-  const { changeTitle } = useTrialContext()
+  const { changeTitle, changeUserResp } = useTrialContext()
 
   useEffect(() => {
     changeTitle('Recognition')
@@ -46,6 +46,7 @@ const Step3 = ({
   const onUserResp = (resp) => {
     setRseults([...results, { ...resp, ...stimulus }])
     setTimeout(() => {
+      changeUserResp(false)
       setIndex(index + 1)
       return clearTimeout()
     }, 400)
@@ -58,7 +59,6 @@ const Step3 = ({
       startTime={startTime}
       onFinishStep={onUserResp}
       showFeedback={showFeedback}
-      // noTimeout={true}
     />
   )
   const EmptyGrid = () => (
