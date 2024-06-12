@@ -202,7 +202,7 @@ const ConsentText1 = () => {
           <Typography variant="body2" align="left" paddingTop={1}>
             • Participate in a single study session on location at the
             University of Missouri Working Memory Lab in the McAlester Annex
-            Building for a duration of 40 to 75 minutes. The duration of THIS
+            Building for a duration of 40 to 90 minutes. The duration of THIS
             specific study will be indicated in the study listing provided at
             sign-up and provided verbally by the Researcher during the consent
             process and prior to your participation.
