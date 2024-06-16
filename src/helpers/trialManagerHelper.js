@@ -62,11 +62,9 @@ const populateBlock = (trialsArray = [], blockType) => {
       return pickSurprizeBlock(letter, stimuliArray)
     },
     stimuliBlock: (letter, stimuliArray) => {
-      console.log(stimuliArray)
       return pickNormalBlock(letter, stimuliArray, false)
     },
     mixedBlocks: (letter, stimuliArray, isOnLetter) => {
-      console.log(stimuliArray)
       return pickNormalBlock(letter, stimuliArray, true, isOnLetter)
     },
   }
