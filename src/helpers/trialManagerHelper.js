@@ -9,14 +9,7 @@ export const createNewExperiment = () => {
     ...generateTrials(16),
     ...generateTrials(16),
   ]
-  const surprizeList = generateSurprizes(64)
-  return trials.map((trial, index) => {
-    return {
-      background: trial[1],
-      letter: trial[0],
-      trialParams: pickNormalBlock(trial[0], true, surprizeList[index]),
-    }
-  })
+  return populateBlock(trials, 'mixedBlocks')
 }
 
 // const blockTypes = {
@@ -56,25 +49,36 @@ const generateSurprizes = (size) => {
   const array = Array(halfSize).fill(true).concat(Array(halfSize).fill(false))
   return shuffleArray(array)
 }
+const generateStimuli = (size) => {
+  const array = Array(size * 2)
+    .fill(true)
+    .concat(Array(size * 2).fill(false))
+  return shuffleArray(array)
+}
 //populating the generated blocks, blockTypes => ['surprizeBlock', 'stimuliBlock', 'mixedBlocks']
 const populateBlock = (trialsArray = [], blockType) => {
   const params = {
-    surprizeBlock: (letter) => {
-      return pickSurprizeBlock(letter)
+    surprizeBlock: (letter, stimuliArray) => {
+      return pickSurprizeBlock(letter, stimuliArray)
     },
-    stimuliBlock: (letter) => {
-      return pickNormalBlock(letter, false)
+    stimuliBlock: (letter, stimuliArray) => {
+      return pickNormalBlock(letter, stimuliArray, false)
     },
-    mixedBlocks: (letter, isOnLetter) => {
-      return pickNormalBlock(letter, true, isOnLetter)
+    mixedBlocks: (letter, stimuliArray, isOnLetter) => {
+      return pickNormalBlock(letter, stimuliArray, true, isOnLetter)
     },
   }
   const surprizeList = generateSurprizes(trialsArray.length)
+  const stimuliList = generateStimuli(trialsArray.length)
   return trialsArray.map((trial, index) => {
     return {
       background: trial[1],
       letter: trial[0],
-      trialParams: params[blockType](trial[0], surprizeList[index]),
+      trialParams: params[blockType](
+        trial[0],
+        stimuliList.splice(0, 4),
+        surprizeList[index]
+      ),
     }
   })
 }

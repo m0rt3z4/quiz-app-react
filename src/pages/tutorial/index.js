@@ -90,12 +90,12 @@ export const TutorialPage = () => {
       return (
         <Practice practice={practice} onFinishPractice={savePracticeResults} />
       )
-    case 5:
-      return <Slide content={Strings.tutorial.finish} onNext={onNext} />
-    case 6: {
+    // case 5:
+    //   return <Slide content={Strings.tutorial.finish} onNext={onNext} />
+    case 5: {
       return <TrialPage onFinishTrial={saveMainTrialResults} />
     }
-    case 7: {
+    case 6: {
       return (
         <Practice2
           practice={practice}
@@ -103,10 +103,10 @@ export const TutorialPage = () => {
         />
       )
     }
-    case 8: {
+    case 7: {
       return <FinalFeedback onNext={onFinishFeedback} />
     }
-    case 9: {
+    case 8: {
       return <Finish />
     }
 

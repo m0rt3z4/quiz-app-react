@@ -12,8 +12,23 @@ const createStimulus = (location, iconType, isOnLetter) => {
   return { i: Math.floor(location / 5), j: location % 5, iconType, isOnLetter }
 }
 
-export const pickSurprizeBlock = (letter, n = 4) => {
-  const cells = chooseGridElements(letter, 2, 2)
+export const countStimuli = (arr = []) => {
+  return arr.reduce(
+    (acc, curr) => {
+      if (curr) {
+        acc.onLettersCount++
+      } else {
+        acc.offLettersCount++
+      }
+      return acc
+    },
+    { onLettersCount: 0, offLettersCount: 0 }
+  )
+}
+
+export const pickSurprizeBlock = (letter, stimuliArray) => {
+  const { onLettersCount, offLettersCount } = countStimuli(stimuliArray)
+  const cells = chooseGridElements(letter, onLettersCount, offLettersCount)
   const res = [
     ...cells.onLetters.map((x) => {
       return createStimulus(x, iconTypes.SURPRIZE, true)
@@ -27,15 +42,27 @@ export const pickSurprizeBlock = (letter, n = 4) => {
 
 export const pickNormalBlock = (
   letter,
+  stimuliArray,
   isMixedBlock = false,
   isSurprizeOnLetter
 ) => {
-  const numOnLetters = isMixedBlock ? (isSurprizeOnLetter ? 4 : 3) : 3
-  const numOffLetters = isMixedBlock ? (isSurprizeOnLetter ? 3 : 4) : 3
+  const { onLettersCount, offLettersCount } = countStimuli(stimuliArray)
+  let numOnLetters = isMixedBlock
+    ? isSurprizeOnLetter
+      ? onLettersCount + 1
+      : onLettersCount
+    : onLettersCount
+  if (onLettersCount === 0) numOnLetters++
+  let numOffLetters = isMixedBlock
+    ? isSurprizeOnLetter
+      ? offLettersCount
+      : offLettersCount + 1
+    : offLettersCount
+  if (offLettersCount === 0) numOffLetters++
   const { offLetters, onLetters } = chooseGridElements(
     letter,
-    numOnLetters,
-    numOffLetters
+    numOnLetters + 1,
+    numOffLetters + 1
   )
 
   // handle surprize in mixed blocks
@@ -56,24 +83,46 @@ export const pickNormalBlock = (
     }
   }
   let stimuli = []
-  const onLetterStimuli = onLetters.splice(0, 2).map((location) => {
-    return createStimulus(location, iconTypes.CIRCLE, true)
-  })
-  const offLetterStimuli = offLetters.splice(0, 2).map((location) => {
-    return createStimulus(location, iconTypes.CIRCLE, false)
-  })
+  const onLetterStimuli =
+    !!onLetters &&
+    onLetters.splice(0, onLettersCount).map((location) => {
+      return createStimulus(location, iconTypes.CIRCLE, true)
+    })
+  const offLetterStimuli =
+    !!onLetters &&
+    offLetters.splice(0, offLettersCount).map((location) => {
+      return createStimulus(location, iconTypes.CIRCLE, false)
+    })
   stimuli = [...onLetterStimuli, ...offLetterStimuli]
   if (isMixedBlock) stimuli.push(surprize)
 
   // handle recognition
-  const correctOnLetter = { ...onLetterStimuli[Math.floor(Math.random() * 2)] }
+  const correctOnLetter =
+    onLettersCount === 0
+      ? createStimulus(onLetters.splice(0, 1)[0], iconTypes.QUESTION, true)
+      : {
+          ...onLetterStimuli[
+            Math.floor(Math.random() * onLetterStimuli.length)
+          ],
+        }
   correctOnLetter.iconType = iconTypes.QUESTION
-  correctOnLetter.taskType = recognitionTypes.CORRECT_ON_LETTER
-  const correctOffLetter = {
-    ...offLetterStimuli[Math.floor(Math.random() * 2)],
-  }
+  correctOnLetter.taskType =
+    onLettersCount > 0
+      ? recognitionTypes.CORRECT_ON_LETTER
+      : recognitionTypes.INCORRECT_ON_LETTER
+  const correctOffLetter =
+    offLettersCount === 0
+      ? createStimulus(offLetters.splice(0, 1)[0], iconTypes.QUESTION, false)
+      : {
+          ...offLetterStimuli[
+            Math.floor(Math.random() * offLetterStimuli.length)
+          ],
+        }
   correctOffLetter.iconType = iconTypes.QUESTION
-  correctOffLetter.taskType = recognitionTypes.CORRECT_OFF_LETTER
+  correctOffLetter.taskType =
+    offLettersCount > 0
+      ? recognitionTypes.CORRECT_OFF_LETTER
+      : recognitionTypes.INCORRECT_OFF_LETTER
   const incorrectOnLetter = createStimulus(
     onLetters[0],
     iconTypes.QUESTION,

@@ -84,36 +84,46 @@ const TrialBlock = ({ practice, onNext }) => {
       changeOutletWidth(5)
       showRightArrow('Next Slide')
       showLeftArrow('Previous Slide')
-      return <Feedback onNext={nextStep} onPrevious={previousStep} />
-    }
-    case 6: {
-      changeOutletWidth(8)
-      showRightArrow('')
-      showLeftArrow('Previous Slide')
       return (
-        <PictureSlide
-          content={'Both'}
-          onNext={nextStep}
+        <Feedback
+          onNext={() => {
+            showRightArrow('')
+            showLeftArrow('')
+            onNext()
+          }}
           onPrevious={previousStep}
         />
       )
     }
-    case 7: {
-      changeOutletWidth(5)
-      showRightArrow('')
-      showLeftArrow('')
-      return (
-        <Experiment
-          experiment={practice}
-          onFinishExperiment={saveMainBlocksResult}
-          showFeedback={true}
-        />
-      )
-    }
-    case 8: {
-      changeOutletWidth(5)
-      return <BlockFeedback onNext={onSubmitFeedback} />
-    }
+    // case 6: {
+    //   changeOutletWidth(8)
+    //   showRightArrow('')
+    //   showLeftArrow('Previous Slide')
+    //   return (
+    //     <PictureSlide
+    //       content={'Both'}
+    //       onNext={nextStep}
+    //       onPrevious={previousStep}
+    //     />
+    //   )
+    // }
+    // case 6: {
+    //   // changeOutletWidth(5)
+    //   showRightArrow('')
+    //   showLeftArrow('')
+    //   return onNext()
+    //   // return (
+    //   //   <Experiment
+    //   //     experiment={practice}
+    //   //     onFinishExperiment={saveMainBlocksResult}
+    //   //     showFeedback={true}
+    //   //   />
+    //   // )
+    // }
+    // case 8: {
+    //   changeOutletWidth(5)
+    //   return <BlockFeedback onNext={onSubmitFeedback} />
+    // }
     default:
       break
   }
