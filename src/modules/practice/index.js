@@ -36,6 +36,7 @@ const Practice = ({ practice, onFinishPractice }) => {
               ? practice.surprizeBlock1.slice(0, 2)
               : practice.surprizeBlock1
           }
+          // showTutorial={!preview}
           onNext={saveSurprizeBlocksResult}
         />
       )

@@ -16,12 +16,12 @@ import Practice2 from '../../modules/practice/Practice2'
 import FinalFeedback from '../../modules/finalFeedback'
 
 export const TutorialPage = () => {
+  const { changeOutletWidth, showArrows, preview } = useTrialContext()
   const [step, setStep] = useState(0)
   const [userType, setUserType] = useState('')
   const [userInfo, setUserInfo] = useState({})
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
-  const { changeOutletWidth, showArrows } = useTrialContext()
 
   useEffect(() => {
     const exp = createPracticeParams()
@@ -31,6 +31,13 @@ export const TutorialPage = () => {
   const onStart = (consentType) => {
     setUserType(consentType)
     onNext()
+  }
+  const onConsent = () => {
+    if (preview) {
+      setStep(4)
+    } else {
+      onNext()
+    }
   }
   const onSubmitInfo = (data) => {
     setUserInfo(data)
@@ -76,7 +83,7 @@ export const TutorialPage = () => {
       return <Start onNext={onStart} />
     case 1: {
       changeOutletWidth(8)
-      return <ConsentForm onNext={onNext} consentType={userType} />
+      return <ConsentForm onNext={onConsent} consentType={userType} />
     }
     case 2: {
       changeOutletWidth(8)
