@@ -16,12 +16,12 @@ import Practice2 from '../../modules/practice/Practice2'
 import FinalFeedback from '../../modules/finalFeedback'
 
 export const TutorialPage = () => {
+  const { changeOutletWidth, showArrows, preview } = useTrialContext()
   const [step, setStep] = useState(0)
   const [userType, setUserType] = useState('')
   const [userInfo, setUserInfo] = useState({})
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
-  const { changeOutletWidth, showArrows } = useTrialContext()
 
   useEffect(() => {
     const exp = createPracticeParams()
@@ -38,7 +38,7 @@ export const TutorialPage = () => {
     onNext()
   }
   const onNext = () => {
-    setStep(step + 1)
+    setStep(preview ? 4 : step + 1)
   }
 
   const savePracticeResults = (resp) => {
