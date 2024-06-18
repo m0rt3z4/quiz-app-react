@@ -32,13 +32,20 @@ export const TutorialPage = () => {
     setUserType(consentType)
     onNext()
   }
+  const onConsent = () => {
+    if (preview) {
+      setStep(4)
+    } else {
+      onNext()
+    }
+  }
   const onSubmitInfo = (data) => {
     setUserInfo(data)
     downloadQuizDataAsJson(data, data.userNumber, 'Personal info')
     onNext()
   }
   const onNext = () => {
-    setStep(preview ? 4 : step + 1)
+    setStep(step + 1)
   }
 
   const savePracticeResults = (resp) => {
@@ -76,7 +83,7 @@ export const TutorialPage = () => {
       return <Start onNext={onStart} />
     case 1: {
       changeOutletWidth(8)
-      return <ConsentForm onNext={onNext} consentType={userType} />
+      return <ConsentForm onNext={onConsent} consentType={userType} />
     }
     case 2: {
       changeOutletWidth(8)
