@@ -45,7 +45,7 @@ const TimedStep = ({
   const onFinishSurprizeStep = (resp) => {
     showArrows(false)
     changeFeedbackStatus('')
-    onFinishStep(resp)
+    onFinishStep({ ...resp, ...stimulus })
   }
 
   const delayedFeedback = (answer, isCorrect, callback) => {

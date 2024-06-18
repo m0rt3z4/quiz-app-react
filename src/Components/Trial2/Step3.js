@@ -15,7 +15,7 @@ const Step3 = ({
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [startTime, setStartTime] = useState(0)
-  const [results, setRseults] = useState([])
+  const [results, setRseults] = useState({})
   const [toggle, setToggle] = useState(false)
   const { changeTitle, changeUserResp } = useTrialContext()
 
@@ -39,12 +39,18 @@ const Step3 = ({
       changeTitle('Next Trial')
       setStimulus({})
       // console.log(results)
-      onFinishStep(results)
+      onFinishStep(Object.values(results))
     }
   }, [index])
 
   const onUserResp = (resp) => {
-    setRseults([...results, { ...resp, ...stimulus }])
+    const stimulusLocation = stimulus.i * 5 + stimulus.j
+    if (Object.keys(results).includes(stimulusLocation)) return null
+    const response = { [stimulusLocation]: resp }
+    setRseults({
+      ...results,
+      ...response,
+    })
     setTimeout(() => {
       changeUserResp(false)
       setIndex(index + 1)
