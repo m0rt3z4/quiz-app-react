@@ -67,14 +67,15 @@ const Slide2 = ({ onNext }) => {
                 </Typography>
 
                 <Typography align="left" paddingTop={2}>
-                  <b>Strategies for the Memory-only blocks:</b>
+                  <b>Strategies for the Imagery-only blocks:</b>
                 </Typography>
                 <Typography align="left" paddingTop={1}>
                   For this part, you will be asked about the strategies that you
-                  used to memorize the dots’ locations in the simple memory
-                  task. Please respond according to how often you used the
-                  strategy. When you have answered all the questions, press
-                  CONTINUE.
+                  used to visualize the letters in the simple imagery task,
+                  where you were supposed to keep the letters in mind and react
+                  to the asterisks. Please respond according to how often you
+                  used the strategy. When you have answered all the questions,
+                  press CONTINUE.
                 </Typography>
               </Grid>
               <Grid container item xs={10} justifyContent={'flex-start'}>
