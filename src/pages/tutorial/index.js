@@ -26,6 +26,7 @@ export const TutorialPage = () => {
   useEffect(() => {
     const exp = createPracticeParams()
     setPractice(exp)
+    console.log('Experiment Data: ', exp)
   }, [])
 
   const onStart = (consentType) => {
@@ -100,7 +101,12 @@ export const TutorialPage = () => {
     // case 5:
     //   return <Slide content={Strings.tutorial.finish} onNext={onNext} />
     case 5: {
-      return <TrialPage onFinishTrial={saveMainTrialResults} />
+      return (
+        <TrialPage
+          experiment={practice.mixedBlock}
+          onFinishTrial={saveMainTrialResults}
+        />
+      )
     }
     case 6: {
       return (

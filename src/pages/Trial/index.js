@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react'
-import { createNewExperiment } from '../../helpers/trialManagerHelper'
+import React, { useState } from 'react'
+// import { createNewExperiment } from '../../helpers/trialManagerHelper'
 import Experiment from '../../modules/experiment'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import StartSlide from './StartSlide'
@@ -8,15 +8,15 @@ import StartSlide from './StartSlide'
 import PictureSlide from '../../Components/PictureSlide'
 import BlockFeedback from '../../Components/BlockFeedback'
 
-export const TrialPage = ({ onFinishTrial }) => {
+export const TrialPage = ({ experiment, onFinishTrial }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-  const [experiment, setExperiment] = useState()
+  // const [experiment, setExperiment] = useState()
   const { changeOutletWidth, preview } = useTrialContext()
-  useEffect(() => {
-    const exp = createNewExperiment()
-    setExperiment(exp)
-  }, [])
+  // useEffect(() => {
+  //   const exp = createNewExperiment()
+  //   setExperiment(exp)
+  // }, [])
 
   const onNext = () => {
     setStep(step + 1)

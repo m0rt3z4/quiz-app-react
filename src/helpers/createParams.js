@@ -1,5 +1,5 @@
 import { recognitionTypes } from '../consts'
-import { chooseGridElements } from './letterPicker'
+import { chooseGridElements, pickExtraSurprize } from './letterPicker'
 import shuffleArray from './shuffleArray'
 
 const iconTypes = {
@@ -8,11 +8,51 @@ const iconTypes = {
   QUESTION: 'QUESTION',
 }
 
-const createStimulus = (location, iconType, isOnLetter) => {
-  return { i: Math.floor(location / 5), j: location % 5, iconType, isOnLetter }
+const createStimulus = (location, iconType, isOnLetter, taskType) => {
+  const obj = {
+    i: Math.floor(location / 5),
+    j: location % 5,
+    iconType,
+    isOnLetter,
+  }
+  if (!!taskType) obj.taskType = taskType
+  return obj
 }
 
 export const countStimuli = (arr = []) => {
+  return arr.reduce(
+    (acc, curr) => {
+      switch (curr) {
+        case recognitionTypes.CORRECT_ON_LETTER: {
+          acc[recognitionTypes.CORRECT_ON_LETTER]++
+          return acc
+        }
+        case recognitionTypes.CORRECT_OFF_LETTER: {
+          acc[recognitionTypes.CORRECT_OFF_LETTER]++
+          return acc
+        }
+        case recognitionTypes.INCORRECT_ON_LETTER: {
+          acc[recognitionTypes.INCORRECT_ON_LETTER]++
+          return acc
+        }
+        case recognitionTypes.INCORRECT_OFF_LETTER: {
+          acc[recognitionTypes.INCORRECT_OFF_LETTER]++
+          return acc
+        }
+
+        default:
+          return acc
+      }
+    },
+    {
+      [recognitionTypes.CORRECT_ON_LETTER]: 0,
+      [recognitionTypes.CORRECT_OFF_LETTER]: 0,
+      [recognitionTypes.INCORRECT_ON_LETTER]: 0,
+      [recognitionTypes.INCORRECT_OFF_LETTER]: 0,
+    }
+  )
+}
+export const countSurprize = (arr = []) => {
   return arr.reduce(
     (acc, curr) => {
       if (curr) {
@@ -27,7 +67,7 @@ export const countStimuli = (arr = []) => {
 }
 
 export const pickSurprizeBlock = (letter, stimuliArray) => {
-  const { onLettersCount, offLettersCount } = countStimuli(stimuliArray)
+  const { onLettersCount, offLettersCount } = countSurprize(stimuliArray)
   const cells = chooseGridElements(letter, onLettersCount, offLettersCount)
   const res = [
     ...cells.onLetters.map((x) => {
@@ -46,102 +86,142 @@ export const pickNormalBlock = (
   isMixedBlock = false,
   isSurprizeOnLetter
 ) => {
-  const { onLettersCount, offLettersCount } = countStimuli(stimuliArray)
-  let numOnLetters = isMixedBlock
-    ? isSurprizeOnLetter
-      ? onLettersCount + 1
-      : onLettersCount
-    : onLettersCount
-  if (onLettersCount === 0) numOnLetters++
-  let numOffLetters = isMixedBlock
-    ? isSurprizeOnLetter
-      ? offLettersCount
-      : offLettersCount + 1
-    : offLettersCount
-  if (offLettersCount === 0) numOffLetters++
+  const countsArray = countStimuli(stimuliArray)
+  let numOnLetters =
+    countsArray[recognitionTypes.CORRECT_ON_LETTER] +
+    countsArray[recognitionTypes.INCORRECT_ON_LETTER] * 2
+  let numOffLetters =
+    countsArray[recognitionTypes.CORRECT_OFF_LETTER] +
+    countsArray[recognitionTypes.INCORRECT_OFF_LETTER] * 2
+  if (isMixedBlock && numOnLetters !== 8 && numOffLetters !== 8) {
+    if (isSurprizeOnLetter) {
+      numOnLetters++
+    } else {
+      numOffLetters++
+    }
+  }
+  // console.log({ countsArray })
+  // console.log({ isSurprizeOnLetter })
+  // console.log({ numOnLetters, numOffLetters })
   const { offLetters, onLetters } = chooseGridElements(
     letter,
-    numOnLetters + 1,
-    numOffLetters + 1
+    numOnLetters,
+    numOffLetters
   )
 
-  // handle surprize in mixed blocks
-  let surprize = {}
+  let stimuliList = []
+
   if (isMixedBlock) {
     if (isSurprizeOnLetter) {
-      surprize = createStimulus(
-        onLetters.splice(0, 1)[0],
-        iconTypes.SURPRIZE,
-        true
+      stimuliList.push(
+        createStimulus(
+          numOnLetters === 8
+            ? pickExtraSurprize(true)
+            : onLetters.splice(0, 1)[0],
+          iconTypes.SURPRIZE,
+          true
+        )
       )
     } else {
-      surprize = createStimulus(
-        offLetters.splice(0, 1)[0],
-        iconTypes.SURPRIZE,
-        false
+      stimuliList.push(
+        createStimulus(
+          numOffLetters === 8
+            ? pickExtraSurprize(false)
+            : offLetters.splice(0, 1)[0],
+          iconTypes.SURPRIZE,
+          false
+        )
       )
     }
   }
-  let stimuli = []
-  const onLetterStimuli =
-    !!onLetters &&
-    onLetters.splice(0, onLettersCount).map((location) => {
-      return createStimulus(location, iconTypes.CIRCLE, true)
-    })
-  const offLetterStimuli =
-    !!onLetters &&
-    offLetters.splice(0, offLettersCount).map((location) => {
-      return createStimulus(location, iconTypes.CIRCLE, false)
-    })
-  stimuli = [...onLetterStimuli, ...offLetterStimuli]
-  if (isMixedBlock) stimuli.push(surprize)
 
-  // handle recognition
-  const correctOnLetter =
-    onLettersCount === 0
-      ? createStimulus(onLetters.splice(0, 1)[0], iconTypes.QUESTION, true)
-      : {
-          ...onLetterStimuli[
-            Math.floor(Math.random() * onLetterStimuli.length)
-          ],
-        }
-  correctOnLetter.iconType = iconTypes.QUESTION
-  correctOnLetter.taskType =
-    onLettersCount > 0
-      ? recognitionTypes.CORRECT_ON_LETTER
-      : recognitionTypes.INCORRECT_ON_LETTER
-  const correctOffLetter =
-    offLettersCount === 0
-      ? createStimulus(offLetters.splice(0, 1)[0], iconTypes.QUESTION, false)
-      : {
-          ...offLetterStimuli[
-            Math.floor(Math.random() * offLetterStimuli.length)
-          ],
-        }
-  correctOffLetter.iconType = iconTypes.QUESTION
-  correctOffLetter.taskType =
-    offLettersCount > 0
-      ? recognitionTypes.CORRECT_OFF_LETTER
-      : recognitionTypes.INCORRECT_OFF_LETTER
-  const incorrectOnLetter = createStimulus(
-    onLetters[0],
-    iconTypes.QUESTION,
-    true
-  )
-  incorrectOnLetter.taskType = recognitionTypes.INCORRECT_ON_LETTER
-  const incorrectOffLetter = createStimulus(
-    offLetters[0],
-    iconTypes.QUESTION,
-    false
-  )
-  incorrectOffLetter.taskType = recognitionTypes.INCORRECT_OFF_LETTER
+  let recognitionList = []
+
+  if (countsArray[recognitionTypes.CORRECT_ON_LETTER] > 0) {
+    const items = onLetters.splice(
+      0,
+      countsArray[recognitionTypes.CORRECT_ON_LETTER]
+    )
+    items.map((location) => {
+      return recognitionList.push(
+        createStimulus(
+          location,
+          iconTypes.QUESTION,
+          true,
+          recognitionTypes.CORRECT_ON_LETTER
+        )
+      )
+    })
+    items.map((location) => {
+      return stimuliList.push(createStimulus(location, iconTypes.CIRCLE, true))
+    })
+  }
+
+  if (countsArray[recognitionTypes.CORRECT_OFF_LETTER] > 0) {
+    const items = offLetters.splice(
+      0,
+      countsArray[recognitionTypes.CORRECT_OFF_LETTER]
+    )
+    items.map((location) => {
+      return recognitionList.push(
+        createStimulus(
+          location,
+          iconTypes.QUESTION,
+          false,
+          recognitionTypes.CORRECT_OFF_LETTER
+        )
+      )
+    })
+    items.map((location) => {
+      return stimuliList.push(createStimulus(location, iconTypes.CIRCLE, false))
+    })
+  }
+
+  if (countsArray[recognitionTypes.INCORRECT_ON_LETTER] > 0) {
+    onLetters
+      .splice(0, countsArray[recognitionTypes.INCORRECT_ON_LETTER])
+      .map((location) => {
+        return recognitionList.push(
+          createStimulus(
+            location,
+            iconTypes.QUESTION,
+            true,
+            recognitionTypes.INCORRECT_ON_LETTER
+          )
+        )
+      })
+    onLetters
+      .splice(0, countsArray[recognitionTypes.INCORRECT_ON_LETTER])
+      .map((location) => {
+        return stimuliList.push(
+          createStimulus(location, iconTypes.CIRCLE, true)
+        )
+      })
+  }
+
+  if (countsArray[recognitionTypes.INCORRECT_OFF_LETTER] > 0) {
+    offLetters
+      .splice(0, countsArray[recognitionTypes.INCORRECT_OFF_LETTER])
+      .map((location) => {
+        return recognitionList.push(
+          createStimulus(
+            location,
+            iconTypes.QUESTION,
+            false,
+            recognitionTypes.INCORRECT_OFF_LETTER
+          )
+        )
+      })
+    offLetters
+      .splice(0, countsArray[recognitionTypes.INCORRECT_OFF_LETTER])
+      .map((location) => {
+        return stimuliList.push(
+          createStimulus(location, iconTypes.CIRCLE, false)
+        )
+      })
+  }
   return {
-    stimuli: shuffleArray(stimuli),
-    recognition: shuffleArray([
-      correctOnLetter,
-      correctOffLetter,
-      incorrectOnLetter,
-      incorrectOffLetter,
-    ]),
+    stimuli: shuffleArray(stimuliList),
+    recognition: shuffleArray(recognitionList),
   }
 }
