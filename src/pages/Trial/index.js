@@ -12,7 +12,12 @@ export const TrialPage = ({ experiment, onFinishTrial }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
   // const [experiment, setExperiment] = useState()
-  const { changeOutletWidth, preview } = useTrialContext()
+  const {
+    changeOutletWidth,
+    preview,
+    showRightArrow,
+    showLeftArrow,
+  } = useTrialContext()
   // useEffect(() => {
   //   const exp = createNewExperiment()
   //   setExperiment(exp)
@@ -45,14 +50,18 @@ export const TrialPage = ({ experiment, onFinishTrial }) => {
         />
       )
     }
-    case 2:
+    case 2: {
+      showRightArrow('')
+      showLeftArrow('')
       return (
         <Experiment
           experiment={preview ? experiment.slice(0, 2) : experiment}
           onFinishExperiment={submitExperimentResults}
           showFeedback={true}
+          showTracker={true}
         />
       )
+    }
     case 3: {
       return <BlockFeedback onNext={onSubmitFeedback} />
     }

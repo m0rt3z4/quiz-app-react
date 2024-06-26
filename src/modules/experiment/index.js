@@ -4,7 +4,12 @@ import React, { useEffect, useState } from 'react'
 // import Trial from '../../Components/TrialManager/Trial'
 import Trial2 from '../../Components/Trial2/Trial'
 
-const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
+const Experiment = ({
+  experiment,
+  showFeedback,
+  onFinishExperiment,
+  showTracker = false,
+}) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -42,6 +47,8 @@ const Experiment = ({ experiment, showFeedback, onFinishExperiment }) => {
       {...current}
       onFinishTrial={onFinishTrial}
       showFeedback={showFeedback}
+      showTracker={showTracker}
+      trackerIndex={trialIndex}
     />
   )
 }

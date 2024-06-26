@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
+// import Exit from '../../Components/Trial2/Exit'
 // import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
 export const MainPage = () => {

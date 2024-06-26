@@ -9,14 +9,14 @@ import Slide6 from './Slide6'
 import Slide7 from './Slide7'
 import Slide8 from './Slide8'
 import Feedback from './Feedback'
-import Experiment from '../../experiment'
-import PictureSlide from '../../../Components/PictureSlide'
-import BlockFeedback from '../../../Components/BlockFeedback'
+// import Experiment from '../../experiment'
+// import PictureSlide from '../../../Components/PictureSlide'
+// import BlockFeedback from '../../../Components/BlockFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const TrialBlock = ({ practice, onNext }) => {
   const [step, setStep] = useState(0)
-  const [results, setResults] = useState({})
+  // const [results, setResults] = useState({})
   const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
   const nextStep = () => {
     setStep(step + 1)
@@ -24,13 +24,13 @@ const TrialBlock = ({ practice, onNext }) => {
   const previousStep = () => {
     setStep((step) => step - 1)
   }
-  const saveMainBlocksResult = (resp) => {
-    setResults(resp)
-    nextStep()
-  }
-  const onSubmitFeedback = (feedback) => {
-    onNext({ results, userPerformanceFeedback: feedback })
-  }
+  // const saveMainBlocksResult = (resp) => {
+  //   setResults(resp)
+  //   nextStep()
+  // }
+  // const onSubmitFeedback = (feedback) => {
+  //   onNext({ results, userPerformanceFeedback: feedback })
+  // }
 
   switch (step) {
     case 0: {

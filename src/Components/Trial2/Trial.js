@@ -15,6 +15,8 @@ const Trial2 = ({
   showFeedback = false,
   dontShowLetter = false,
   onFinishTrial,
+  showTracker = false,
+  trackerIndex,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
@@ -118,7 +120,14 @@ const Trial2 = ({
       )
     }
     case 5: {
-      return <Exit background={background} onFinishStep={onNext} />
+      return (
+        <Exit
+          background={background}
+          onFinishStep={onNext}
+          showTracker={showTracker}
+          index={trackerIndex + 1}
+        />
+      )
     }
 
     default:
