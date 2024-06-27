@@ -5,7 +5,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 import TimedStep from './TimedStep'
 
-const TIME_WAIT_BETWEEN_STIMULI = 1000
+const TIME_WAIT_BETWEEN_STIMULI = 500
 
 const Step2 = ({
   background,
