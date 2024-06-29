@@ -10,8 +10,8 @@ const iconTypes = {
 
 const createStimulus = (location, iconType, isOnLetter, taskType) => {
   const obj = {
-    i: Math.floor(location / 5),
-    j: location % 5,
+    i: location === 0 ? 0 : Math.floor(location / 5),
+    j: location === 0 ? 0 : location % 5,
     iconType,
     isOnLetter,
   }
@@ -93,11 +93,12 @@ export const pickNormalBlock = (
   let numOffLetters =
     countsArray[recognitionTypes.CORRECT_OFF_LETTER] +
     countsArray[recognitionTypes.INCORRECT_OFF_LETTER] * 2
-  if (isMixedBlock && numOnLetters !== 8 && numOffLetters !== 8) {
+
+  if (isMixedBlock) {
     if (isSurprizeOnLetter) {
-      numOnLetters++
+      if (numOnLetters < 8) numOnLetters++
     } else {
-      numOffLetters++
+      if (numOffLetters < 8) numOffLetters++
     }
   }
   // console.log({ countsArray })
@@ -113,28 +114,39 @@ export const pickNormalBlock = (
 
   if (isMixedBlock) {
     if (isSurprizeOnLetter) {
-      stimuliList.push(
-        createStimulus(
-          numOnLetters === 8
-            ? pickExtraSurprize(true)
-            : onLetters.splice(0, 1)[0],
+      let extraSurprize
+      if (numOnLetters === 8) {
+        extraSurprize = createStimulus(
+          pickExtraSurprize(true),
           iconTypes.SURPRIZE,
           true
         )
+      }
+      stimuliList.push(
+        numOnLetters === 8
+          ? extraSurprize
+          : createStimulus(onLetters.splice(0, 1)[0], iconTypes.SURPRIZE, true)
       )
     } else {
-      stimuliList.push(
-        createStimulus(
-          numOffLetters === 8
-            ? pickExtraSurprize(false)
-            : offLetters.splice(0, 1)[0],
+      let extraSurprize
+      if (numOffLetters === 8) {
+        extraSurprize = createStimulus(
+          pickExtraSurprize(false),
           iconTypes.SURPRIZE,
           false
         )
+      }
+      stimuliList.push(
+        numOffLetters === 8
+          ? extraSurprize
+          : createStimulus(
+              offLetters.splice(0, 1)[0],
+              iconTypes.SURPRIZE,
+              false
+            )
       )
     }
   }
-
   let recognitionList = []
 
   if (countsArray[recognitionTypes.CORRECT_ON_LETTER] > 0) {

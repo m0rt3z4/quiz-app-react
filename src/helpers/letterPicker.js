@@ -2,14 +2,15 @@
 const hOnLetters2 = [5, 10, 15, 9, 14, 19, 11, 13]
 const iOnLetters2 = [1, 2, 3, 7, 17, 21, 22, 23]
 
-const extraSurprizeOnLetter = [1, 4, 20, 24]
+const extraSurprizeOnLetter = [0, 4, 20, 24]
 const extraSurprizeOffLetter = [6, 8, 16, 18]
 
 export function pickExtraSurprize(isOnLetter) {
   const index = Math.floor(Math.random() * 4)
-  return isOnLetter
+  const location = isOnLetter
     ? extraSurprizeOnLetter[index]
     : extraSurprizeOffLetter[index]
+  return location
 }
 
 function getRandomElements(array, numElements) {
