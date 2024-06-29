@@ -94,6 +94,7 @@ export const pickNormalBlock = (
     countsArray[recognitionTypes.CORRECT_OFF_LETTER] +
     countsArray[recognitionTypes.INCORRECT_OFF_LETTER] * 2
 
+  // const special = numOffLetters === 8 || numOnLetters === 8
   if (isMixedBlock) {
     if (isSurprizeOnLetter) {
       if (numOnLetters < 8) numOnLetters++
@@ -114,36 +115,24 @@ export const pickNormalBlock = (
 
   if (isMixedBlock) {
     if (isSurprizeOnLetter) {
-      let extraSurprize
-      if (numOnLetters === 8) {
-        extraSurprize = createStimulus(
-          pickExtraSurprize(true),
+      stimuliList.push(
+        createStimulus(
+          numOnLetters === 8
+            ? onLetters.slice(0, 1)[0]
+            : onLetters.splice(0, 1)[0],
           iconTypes.SURPRIZE,
           true
         )
-      }
-      stimuliList.push(
-        numOnLetters === 8
-          ? extraSurprize
-          : createStimulus(onLetters.splice(0, 1)[0], iconTypes.SURPRIZE, true)
       )
     } else {
-      let extraSurprize
-      if (numOffLetters === 8) {
-        extraSurprize = createStimulus(
-          pickExtraSurprize(false),
+      stimuliList.push(
+        createStimulus(
+          numOffLetters === 8
+            ? offLetters.slice(0, 1)[0]
+            : offLetters.splice(0, 1)[0],
           iconTypes.SURPRIZE,
           false
         )
-      }
-      stimuliList.push(
-        numOffLetters === 8
-          ? extraSurprize
-          : createStimulus(
-              offLetters.splice(0, 1)[0],
-              iconTypes.SURPRIZE,
-              false
-            )
       )
     }
   }
@@ -232,6 +221,7 @@ export const pickNormalBlock = (
         )
       })
   }
+  // if (special) console.log(stimuliList, recognitionList)
   return {
     stimuli: shuffleArray(stimuliList),
     recognition: shuffleArray(recognitionList),
