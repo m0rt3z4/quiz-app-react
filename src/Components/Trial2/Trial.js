@@ -42,7 +42,7 @@ const Trial2 = ({
     setTimeout(() => {
       setStep(4)
       return clearTimeout()
-    }, 2500)
+    }, 1000)
   }
   const onFinishImagination = (resp) => {
     showRightArrow('')

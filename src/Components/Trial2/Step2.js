@@ -5,7 +5,8 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 import TimedStep from './TimedStep'
 
-const TIME_WAIT_BETWEEN_STIMULI = 500
+const TIME_SHOW_STIMULI = 250
+const TIME_WAIT_BETWEEN_STIMULI = 250
 
 const Step2 = ({
   background,
@@ -32,8 +33,10 @@ const Step2 = ({
         setStimulus(stimuliArray[index])
         setTimeout(() => {
           setStimulus({})
-          setIndex(index + 1)
-        }, TIME_WAIT_BETWEEN_STIMULI)
+          setTimeout(() => {
+            setIndex((index) => index + 1)
+          }, TIME_WAIT_BETWEEN_STIMULI)
+        }, TIME_SHOW_STIMULI)
       }
     } else {
       onFinishStep(result)
@@ -56,7 +59,7 @@ const Step2 = ({
       setToggleSurprize(false)
       setIndex(index + 1)
       return clearTimeout(timeout)
-    }, 200)
+    }, 1000)
   }
 
   return toggleSurprize ? (
