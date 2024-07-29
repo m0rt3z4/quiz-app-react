@@ -18,11 +18,11 @@ const MemorandumBlock = ({
   showTutorial = true,
   isSecondRound = false,
 }) => {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(!showTutorial ? 4 : 1)
   const [results, setResults] = useState({})
   const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
   const nextStep = () => {
-    !showTutorial && step === 0 ? setStep(4) : setStep(step + 1)
+    setStep((step) => step + 1)
   }
   const previousStep = () => {
     setStep((step) => step - 1)
