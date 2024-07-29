@@ -12,29 +12,15 @@ const Practice2 = ({ practice, onFinishPractice }) => {
     setStep(step + 1)
   }
   const saveSurprizeBlocksResult = (resp) => {
-    setResults({ ...results, surprizeBlock2: resp })
-    nextStep()
+    onFinishPractice({ ...results, surprizeBlock2: resp })
   }
   const saveStimuliBlocksResult = (resp) => {
-    onFinishPractice({ ...results, stimuliBlock2: resp })
+    setResults({ ...results, stimuliBlock2: resp })
+    nextStep()
   }
 
   switch (step) {
     case 0: {
-      return (
-        <SurprizeBlock
-          practice={
-            preview
-              ? practice.surprizeBlock2.slice(0, 2)
-              : practice.surprizeBlock2
-          }
-          onNext={saveSurprizeBlocksResult}
-          showTutorial={false}
-          isSecondRound={true}
-        />
-      )
-    }
-    case 1: {
       return (
         <MemorandumBlock
           practice={
@@ -43,6 +29,20 @@ const Practice2 = ({ practice, onFinishPractice }) => {
               : practice.stimuliBlock2
           }
           onNext={saveStimuliBlocksResult}
+          showTutorial={false}
+          isSecondRound={true}
+        />
+      )
+    }
+    case 1: {
+      return (
+        <SurprizeBlock
+          practice={
+            preview
+              ? practice.surprizeBlock2.slice(0, 2)
+              : practice.surprizeBlock2
+          }
+          onNext={saveSurprizeBlocksResult}
           showTutorial={false}
           isSecondRound={true}
         />
