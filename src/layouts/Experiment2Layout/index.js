@@ -38,7 +38,7 @@ export const Experiment2Layout = () => {
           sx={{ paddingTop: '10px' }}
           spacing={2}
         >
-          <Grid item justifyContent="center" alignItems="center" xs={5}>
+          <Grid item justifyContent="center" alignItems="center" xs={6}>
             <Outlet />
           </Grid>
         </Grid>

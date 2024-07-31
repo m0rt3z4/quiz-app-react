@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Grid, Card, Typography, Button } from '@mui/material'
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
-// import Exit from '../../Components/Trial2/Exit'
-// import { createNewExperiment } from '../../helpers/trialManagerHelper'
+import { Box, Grid, Card, Typography, Button, Divider } from '@mui/material'
+import { useExperiment2Context } from '../../../layouts/Experiment2Layout/context'
+import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 
-export const Experiment2Page = () => {
+export const Experiment2PreviewPage = () => {
   const { changeTitle } = useExperiment2Context()
   useEffect(() => {
-    changeTitle('Welcome')
+    changeTitle('Preview Settings')
   }, [changeTitle])
   const navigate = useNavigate()
 
@@ -48,10 +47,12 @@ export const Experiment2Page = () => {
                   }}
                 >
                   <Typography fontSize={'25px'}>
-                    Please read through the Tutorial before starting the task.
+                    Please Rread through the Tutorial before starting the task.
                   </Typography>
                 </Box>
+                <Divider sx={{ paddingTop: 3 }} />
               </Grid>
+
               <Grid
                 container
                 justifyContent={'center'}
@@ -60,21 +61,11 @@ export const Experiment2Page = () => {
                 spacing={3}
               >
                 <Grid item xs={8}>
-                  <Button
-                    onClick={() => redirectUrl('trial')}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Start
-                  </Button>
+                  <Experiment2Grid />
                 </Grid>
                 <Grid item xs={8}>
                   <Button
-                    onClick={() => redirectUrl('preview')}
+                    onClick={() => redirectUrl('/setting')}
                     size="large"
                     sx={{
                       width: '70%',
@@ -82,7 +73,7 @@ export const Experiment2Page = () => {
                       margin: '5px',
                     }}
                   >
-                    preview
+                    Settings
                   </Button>
                 </Grid>
                 {/* </Grid> */}
@@ -95,4 +86,4 @@ export const Experiment2Page = () => {
   )
 }
 
-export default Experiment2Page
+export default Experiment2PreviewPage

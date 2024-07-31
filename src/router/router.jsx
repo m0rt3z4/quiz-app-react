@@ -12,7 +12,7 @@ import MainPage from '../pages/main'
 import SettingPage from '../pages/setting'
 import TutorialPage from '../pages/tutorial'
 import Experiment2Page from '../pages/Experiment2'
-import Experiment2PreviewPage from '../pages/Experiment2/preview'
+import Experiment2PreviewPage from '../pages/Experiment2/Preview/'
 
 export const router = createBrowserRouter([
   {
