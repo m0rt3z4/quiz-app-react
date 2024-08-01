@@ -94,18 +94,12 @@ export const PreviewGridPage = ({ onBack }) => {
               justifyContent: 'center',
               minHeight: 420,
               borderRadius: '35px',
-              padding: 7,
+              padding: 5,
               border: '1px solid black',
             }}
           >
-            <Grid container sx={{ paddingTop: '20px' }}>
-              <Grid
-                container
-                justifyContent={'center'}
-                xs={12}
-                paddingTop={8}
-                spacing={3}
-              >
+            <Grid container>
+              <Grid container justifyContent={'center'} xs={12} spacing={3}>
                 <Grid item xs={4}>
                   <Button
                     onClick={() => onBack()}
