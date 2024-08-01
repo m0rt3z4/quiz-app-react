@@ -2,27 +2,36 @@ import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 import { cellTypes, cornerTypes } from './consts'
-// const mock = {
-//   2: {
-//     cellType: cellTypes.FILLED,
-//   },
-//   3: {
-//     cellType: cellTypes.INQUIRY,
-//   },
-//   9: {
-//     cellType: cellTypes.FILLED,
-//   },
-// }
+const mock = {
+  2: {
+    cellType: cellTypes.FILLED,
+  },
+  3: {
+    cellType: cellTypes.INQUIRY,
+  },
+  9: {
+    cellType: cellTypes.FILLED,
+  },
+}
 
 export const Experiment2Grid = ({
   size = 6,
   stimuli = {
-    33: { cellType: cellTypes.IMAGINARY },
+    // 2: {
+    //   cellType: cellTypes.FILLED,
+    // },
+    3: {
+      cellType: cellTypes.INQUIRY,
+    },
+    9: {
+      cellType: cellTypes.FILLED,
+    },
   },
 }) => {
   const increasedSize = size + 2
   const stimuliCount = Object.keys(stimuli).length
   let imaginaryCellObj = {}
+  // handling singe imaginary stimulus
   if (
     stimuliCount === 1 &&
     (Object.values(stimuli)[0].cellType === cellTypes.IMAGINARY ||
@@ -59,6 +68,7 @@ export const Experiment2Grid = ({
     for (let i = 0; i < increasedSize; i++) {
       let cells = []
       for (let j = 0; j < increasedSize; j++) {
+        // handling corner cells
         if (
           i === 0 ||
           j === 0 ||
