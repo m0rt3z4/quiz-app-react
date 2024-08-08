@@ -2,17 +2,17 @@ import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 import { cellTypes, cornerTypes } from './consts'
-const mock = {
-  2: {
-    cellType: cellTypes.FILLED,
-  },
-  3: {
-    cellType: cellTypes.INQUIRY,
-  },
-  9: {
-    cellType: cellTypes.FILLED,
-  },
-}
+// const mock = {
+//   2: {
+//     cellType: cellTypes.FILLED,
+//   },
+//   3: {
+//     cellType: cellTypes.INQUIRY,
+//   },
+//   9: {
+//     cellType: cellTypes.FILLED,
+//   },
+// }
 
 export const Experiment2Grid = ({
   size = 6,
