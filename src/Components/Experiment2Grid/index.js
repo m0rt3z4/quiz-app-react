@@ -20,12 +20,12 @@ export const Experiment2Grid = ({
     // 2: {
     //   cellType: cellTypes.FILLED,
     // },
-    3: {
-      cellType: cellTypes.INQUIRY,
-    },
-    9: {
-      cellType: cellTypes.FILLED,
-    },
+    // 3: {
+    //   cellType: cellTypes.INQUIRY,
+    // },
+    // 9: {
+    //   cellType: cellTypes.FILLED,
+    // },
   },
 }) => {
   const increasedSize = size + 2
