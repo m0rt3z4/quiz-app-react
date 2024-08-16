@@ -4,7 +4,11 @@ import React from 'react'
 // import { useTrialContext } from '../../layouts/TrialLayout/context'
 import TimedStep from './TimedStep'
 
-const OneShotRecogniton = ({ stimuliArray, onFinishStep }) => {
+const OneShotRecogniton = ({
+  stimuliArray,
+  onFinishStep,
+  isInquiryCorrect,
+}) => {
   const onUserResp = (resp) => {
     console.log(resp)
 
@@ -15,6 +19,7 @@ const OneShotRecogniton = ({ stimuliArray, onFinishStep }) => {
       startTime={Date.now()}
       stimulus={stimuliArray}
       onFinishStep={onUserResp}
+      isInquiryCorrect={isInquiryCorrect}
     />
   )
 }

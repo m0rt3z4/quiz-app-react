@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 
-// import { useTrialContext } from '../../layouts/TrialLayout/context'
+import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
 import TimedStep from './TimedStep'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
+import { Experiment2Grid } from '../Experiment2Grid'
 
 const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
   const [index, setIndex] = useState(0)
@@ -11,16 +12,23 @@ const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState({})
   const [toggle, setToggle] = useState(false)
-  //   const {  changeUserResp } = useTrialContext()
+  const { showArrows } = useExperiment2Context()
+  console.log(stimuliArray)
 
   useEffect(() => {
     if (index === 0) {
-      setStimulus(stimuliArray[index])
+      const obj = {}
+      obj[stimuliArray[index].cellId] = stimuliArray[index]
+      setStimulus(obj)
       setStartTime(Date.now())
+      showArrows(true)
     } else if (index < stimuliArray.length) {
       setToggle(true)
       setTimeout(() => {
-        setStimulus(stimuliArray[index])
+        const obj = {}
+        obj[stimuliArray[index].cellId] = stimuliArray[index]
+        setStimulus(obj)
+        showArrows(true)
         setStartTime(Date.now())
         setToggle(false)
         return clearTimeout()
@@ -32,15 +40,15 @@ const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
   }, [index])
 
   const onUserResp = (resp) => {
-    const stimulusLocation = stimulus.i * 5 + stimulus.j
-    if (Object.keys(results).includes(stimulusLocation)) return null
-    const response = { [stimulusLocation]: resp }
+    // const stimulusLocation = stimulus.i * 5 + stimulus.j
+    if (Object.keys(results).includes(stimulus.cellType)) return null
+    const response = { [stimulus.cellType]: resp }
     setRseults({
       ...results,
       ...response,
     })
     setTimeout(() => {
-    //   changeUserResp(false)
+      //   changeUserResp(false)
       setIndex(index + 1)
       return clearTimeout()
     }, 400)
@@ -53,7 +61,7 @@ const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
       onFinishStep={onUserResp}
     />
   )
-  const EmptyGrid = () => <TrialGrid />
+  const EmptyGrid = () => <Experiment2Grid />
 
   return toggle ? <EmptyGrid /> : <Grid />
 }

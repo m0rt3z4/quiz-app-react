@@ -1,37 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
-// import Step1 from './Step1'
 import PrePresentationStep from './PrePresentationStep'
-// import Step2 from './Step2'
-// import Step3 from './Step3'
-// import Exit from './Exit'
 import { Experiment2Grid } from '../Experiment2Grid'
-import { cellTypes } from '../Experiment2Grid/consts'
 import PresentationStep from './PresentationStep'
 import RecognitionStep from './RecognitionStep'
 import OneShotRecogniton from './OneShotRecogniton'
+import Final from './Final'
 
 const recognitionTypes = {
   ONE_SHOT: 'ONE_SHOT',
   SEQUENTIAL: 'SEQUENTIAL',
-}
-const mockParams = {
-  presentation: [
-    { cellId: 9, cellType: cellTypes.FILLED },
-    { cellId: 32, cellType: cellTypes.FILLED },
-    { cellId: 23, cellType: cellTypes.FILLED },
-    { cellId: 5, cellType: cellTypes.FILLED },
-  ],
-  recognitionType: recognitionTypes.ONE_SHOT,
-  recogniton: {
-    12: { cellType: cellTypes.FILLED },
-    14: { cellType: cellTypes.FILLED },
-    25: { cellType: cellTypes.FILLED },
-    3: { cellType: cellTypes.FILLED },
-    31: { cellType: cellTypes.FILLED },
-    19: { cellType: cellTypes.INQUIRY },
-  },
 }
 const Experiment2Trial = ({
   trialParams,
@@ -44,10 +23,10 @@ const Experiment2Trial = ({
   const [results, setResults] = useState({})
   const { showRightArrow } = useExperiment2Context()
 
-  //   useEffect(() => {
-  //     setStep(0)
-  //     setResults({})
-  //   }, [background, letter, trialParams])
+  useEffect(() => {
+    setStep(1)
+    setResults({})
+  }, [trialParams])
 
   const onFinishFirstStep = (resp) => {
     setStep(3)
@@ -68,7 +47,7 @@ const Experiment2Trial = ({
       ...results,
       recognition: resp,
     })
-    onNext()
+    setStep(5)
   }
 
   const onNext = () => {
@@ -77,18 +56,6 @@ const Experiment2Trial = ({
   }
 
   switch (step) {
-    // case 0: {
-    //   return (
-    //     <Step1
-    //       background={background}
-    //       letter={letter}
-    //       dontShowLetter={dontShowLetter}
-    //       onStartTrial={() => {
-    //         setStep(1)
-    //       }}
-    //     />
-    //   )
-    // }
     case 1: {
       showRightArrow('press → to Start!')
       return <PrePresentationStep onNext={onFinishImagination} />
@@ -96,7 +63,7 @@ const Experiment2Trial = ({
     case 2: {
       return (
         <PresentationStep
-          stimuliArray={mockParams.presentation}
+          stimuliArray={trialParams.presentation}
           onFinishStep={onFinishFirstStep}
         />
       )
@@ -105,32 +72,34 @@ const Experiment2Trial = ({
       return <Experiment2Grid />
     }
     case 4: {
-      if (mockParams.recognitionType === recognitionTypes.ONE_SHOT) {
+      console.log('recogniton=> ', trialParams.recognition)
+
+      if (trialParams.recognitionType === recognitionTypes.ONE_SHOT) {
         return (
           <OneShotRecogniton
-            stimuliArray={mockParams.recogniton}
+            stimuliArray={trialParams.recognition}
             onFinishStep={onFinishRecognition}
+            isInquiryCorrect={trialParams.isInquiryCorrect}
           />
         )
       } else {
         return (
           <RecognitionStep
-            stimuliArray={mockParams.recogniton}
+            stimuliArray={trialParams.recognition}
             onFinishStep={onFinishRecognition}
           />
         )
       }
     }
-    // case 5: {
-    //   return (
-    //     <Exit
-    //       background={background}
-    //       onFinishStep={onNext}
-    //       showTracker={showTracker}
-    //       index={trackerIndex + 1}
-    //     />
-    //   )
-    // }
+    case 5: {
+      return (
+        <Final
+          onFinishStep={onNext}
+          showTracker={showTracker}
+          index={trackerIndex + 1}
+        />
+      )
+    }
 
     default:
       break
