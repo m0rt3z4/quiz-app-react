@@ -10,7 +10,7 @@ const TimedStep = ({ startTime, stimulus, onFinishStep, isInquiryCorrect }) => {
 
   const onFinishSurprizeStep = (resp) => {
     showArrows(false)
-    onFinishStep({ ...resp, ...stimulus })
+    onFinishStep(resp)
   }
 
   const delayedFeedback = (resp) => {

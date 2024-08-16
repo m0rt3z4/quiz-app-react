@@ -111,7 +111,7 @@ const GridCell = ({
       case cellTypes.INQUIRY: {
         const bgColor =
           feedbackStatus === 'success'
-            ? 'greenyellow'
+            ? 'rgba(13, 231, 46, 0.881)'
             : feedbackStatus === 'error'
             ? 'red'
             : 'black'

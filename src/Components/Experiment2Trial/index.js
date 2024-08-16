@@ -43,10 +43,7 @@ const Experiment2Trial = ({
     setStep(2)
   }
   const onFinishRecognition = (resp) => {
-    setResults({
-      ...results,
-      recognition: resp,
-    })
+    setResults(resp)
     setStep(5)
   }
 
