@@ -113,7 +113,7 @@ export const PreviewGridPage = ({ onBack }) => {
                     Back
                   </Button>
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={12}>
                   <Experiment2Grid stimuli={stimulus} />
                 </Grid>
                 <Grid item xs={4}>

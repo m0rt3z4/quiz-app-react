@@ -5,6 +5,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
 
 const GridCell = ({
   showStimulus,
@@ -15,6 +16,7 @@ const GridCell = ({
   leftBorder = false,
   rightBorder = false,
 }) => {
+  const { feedbackStatus } = useExperiment2Context()
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
@@ -60,7 +62,7 @@ const GridCell = ({
               backgroundColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid black`,
+              border: `1px solid gray`,
               borderCollapse: 'collapse',
               width: 34,
               height: 34,
@@ -69,13 +71,27 @@ const GridCell = ({
         )
       }
       case cellTypes.CORNER: {
+        let justify = 'center'
+        let align = 'center'
+        if (cornerType !== cornerTypes.EMPTY) {
+          if (cornerType === cornerTypes.DOWN) {
+            align = 'end'
+          } else if (cornerType === cornerTypes.UP) {
+            align = 'start'
+          }
+          if (cornerType === cornerTypes.RIGHT) {
+            justify = 'end'
+          } else if (cornerType === cornerTypes.LEFT) {
+            justify = 'start'
+          }
+        }
         return (
           <Box
             sx={{
               display: 'flex',
               backgroundColor: 'white',
-              justifyContent: 'center',
-              alignItems: 'center',
+              justifyContent: justify,
+              alignItems: align,
               borderStyle: 'solid',
               borderColor: 'black',
               borderWidth: `${topBorder ? 1 : 0}px ${rightBorder ? 1 : 0}px ${
@@ -93,6 +109,12 @@ const GridCell = ({
         )
       }
       case cellTypes.INQUIRY: {
+        const bgColor =
+          feedbackStatus === 'success'
+            ? 'rgba(13, 231, 46, 0.881)'
+            : feedbackStatus === 'error'
+            ? 'red'
+            : 'black'
         return (
           <Box
             sx={{
@@ -109,7 +131,7 @@ const GridCell = ({
             <Box
               sx={{
                 display: 'flex',
-                backgroundColor: 'black',
+                backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
                 border: `3px solid white`,

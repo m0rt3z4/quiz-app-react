@@ -46,13 +46,6 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    // border: `1px solid ${
-                    //   !!leftBarWarning
-                    //     ? leftBarWarning === 'SUCCESS'
-                    //       ? 'green'
-                    //       : 'red'
-                    //     : 'black'
-                    // }`,
                     border: '1px solid black',
                   }}
                 >
