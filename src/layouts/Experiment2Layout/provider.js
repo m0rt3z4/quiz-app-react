@@ -8,6 +8,7 @@ export const Experiment2Provider = ({ children }) => {
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState('')
   const [rightBarWarning, setRightBarWarning] = useState('')
+  const [feedbackStatus, setFeedbackStatus] = useState('')
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -39,6 +40,10 @@ export const Experiment2Provider = ({ children }) => {
     setLeftBarWarning(content)
   }, [])
 
+  const changeFeedbackStatus = useCallback((feedback) => {
+    setFeedbackStatus(feedback)
+  }, [])
+
   const value = useMemo(() => {
     return {
       title,
@@ -54,6 +59,8 @@ export const Experiment2Provider = ({ children }) => {
       rightBarWarning,
       showRightArrow,
       showLeftArrow,
+      feedbackStatus,
+      changeFeedbackStatus,
     }
   }, [
     title,
@@ -69,6 +76,8 @@ export const Experiment2Provider = ({ children }) => {
     rightBarWarning,
     showRightArrow,
     showLeftArrow,
+    feedbackStatus,
+    changeFeedbackStatus,
   ])
 
   return (

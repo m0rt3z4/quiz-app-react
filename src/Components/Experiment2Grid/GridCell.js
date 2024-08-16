@@ -5,6 +5,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
 
 const GridCell = ({
   showStimulus,
@@ -15,6 +16,7 @@ const GridCell = ({
   leftBorder = false,
   rightBorder = false,
 }) => {
+  const { feedbackStatus } = useExperiment2Context()
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
@@ -107,6 +109,12 @@ const GridCell = ({
         )
       }
       case cellTypes.INQUIRY: {
+        const bgColor =
+          feedbackStatus === 'success'
+            ? 'greenyellow'
+            : feedbackStatus === 'error'
+            ? 'red'
+            : 'black'
         return (
           <Box
             sx={{
@@ -123,7 +131,7 @@ const GridCell = ({
             <Box
               sx={{
                 display: 'flex',
-                backgroundColor: 'black',
+                backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
                 border: `3px solid white`,

@@ -5,19 +5,41 @@ import { useExperiment2Context } from '../../../layouts/Experiment2Layout/contex
 import { Experiment2Grid } from '../../Experiment2Grid'
 import useKeyboard from './useKeyboard'
 
-const TimedStep = ({ startTime, stimulus, onFinishStep }) => {
-  const { showArrows } = useExperiment2Context()
+const TimedStep = ({ startTime, stimulus, onFinishStep, isInquiryCorrect }) => {
+  const { showArrows, changeFeedbackStatus } = useExperiment2Context()
 
   const onFinishSurprizeStep = (resp) => {
     showArrows(false)
-    // changeFeedbackStatus('')
     onFinishStep({ ...resp, ...stimulus })
   }
 
+  const delayedFeedback = (resp) => {
+    const userAnswer = resp.userAnswer
+    let isAnswerCorrect
+
+    if (isInquiryCorrect) {
+      if (userAnswer === 'ArrowRight') {
+        isAnswerCorrect = true
+      } else if (userAnswer === 'ArrowLeft') {
+        isAnswerCorrect = false
+      }
+    } else {
+      if (userAnswer === 'ArrowRight') {
+        isAnswerCorrect = false
+      } else if (userAnswer === 'ArrowLeft') {
+        isAnswerCorrect = true
+      }
+    }
+    changeFeedbackStatus(isAnswerCorrect ? 'success' : 'error')
+    setTimeout(() => {
+      changeFeedbackStatus('')
+      onFinishSurprizeStep(resp)
+      return clearTimeout()
+    }, 700)
+  }
+
   const onResponse = (resp) => {
-    // if (!!respRef) return null
-    // changeUserResp(true)
-    onFinishSurprizeStep(resp)
+    delayedFeedback(resp)
   }
   useKeyboard(onResponse, startTime)
 
