@@ -7,6 +7,7 @@ import {
   createBlocks,
 } from '../../../modules/experiment2/createExperimentParams'
 import ExperimentModule from '../../../modules/experiment2/ExperimentModule'
+import PreviewTrialPage from './PreviewTrial'
 
 export const previewPages = {
   TRIAL_GRID: 1,
@@ -41,13 +42,14 @@ export const Experiment2PreviewPage = () => {
     case 2: {
       return (
         // <Experiment2Trial onFinishTrial={backButton} trialParams={params} />
-        <ExperimentModule
-          experiment={params}
-          onFinishExperiment={(resp) => {
-            console.log(resp)
-            backButton()
-          }}
-        />
+        <PreviewTrialPage onBack={backButton} />
+        // <ExperimentModule
+        //   experiment={params}
+        //   onFinishExperiment={(resp) => {
+        //     console.log(resp)
+        //     backButton()
+        //   }}
+        // />
       )
     }
     case 3: {
