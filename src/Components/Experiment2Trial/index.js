@@ -12,11 +12,19 @@ const recognitionTypes = {
   ONE_SHOT: 'ONE_SHOT',
   SEQUENTIAL: 'SEQUENTIAL',
 }
+const settingsDefault = {
+  timeBeforeRecognition: 6000,
+  timeToShowStimuli: 500,
+  timeBetweenStimuli: 500,
+  feedbackTime: 700,
+}
+
 const Experiment2Trial = ({
   trialParams,
   onFinishTrial,
   showTracker = false,
   trackerIndex,
+  trialSettings = settingsDefault,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(1)
@@ -33,7 +41,7 @@ const Experiment2Trial = ({
     setTimeout(() => {
       setStep(4)
       return clearTimeout()
-    }, 1000)
+    }, trialSettings.timeBeforeRecognition)
   }
   const onFinishImagination = (resp) => {
     showRightArrow('')
@@ -62,6 +70,8 @@ const Experiment2Trial = ({
         <PresentationStep
           stimuliArray={trialParams.presentation}
           onFinishStep={onFinishFirstStep}
+          timeBetweenStimuli={trialSettings.timeBetweenStimuli}
+          timeToShowStimuli={trialSettings.timeToShowStimuli}
         />
       )
     }
@@ -77,6 +87,7 @@ const Experiment2Trial = ({
             stimuliArray={trialParams.recognition}
             onFinishStep={onFinishRecognition}
             isInquiryCorrect={trialParams.isInquiryCorrect}
+            feedbackTime={trialSettings.feedbackTime}
           />
         )
       } else {

@@ -5,7 +5,13 @@ import { useExperiment2Context } from '../../../layouts/Experiment2Layout/contex
 import { Experiment2Grid } from '../../Experiment2Grid'
 import useKeyboard from './useKeyboard'
 
-const TimedStep = ({ startTime, stimulus, onFinishStep, isInquiryCorrect }) => {
+const TimedStep = ({
+  startTime,
+  stimulus,
+  onFinishStep,
+  isInquiryCorrect,
+  feedbackTime = 700,
+}) => {
   const { showArrows, changeFeedbackStatus } = useExperiment2Context()
 
   const onFinishSurprizeStep = (resp) => {
@@ -35,7 +41,7 @@ const TimedStep = ({ startTime, stimulus, onFinishStep, isInquiryCorrect }) => {
       changeFeedbackStatus('')
       onFinishSurprizeStep(resp)
       return clearTimeout()
-    }, 700)
+    }, feedbackTime)
   }
 
   const onResponse = (resp) => {

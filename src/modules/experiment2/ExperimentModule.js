@@ -7,6 +7,7 @@ const ExperimentModule = ({
   experiment,
   onFinishExperiment,
   showTracker = false,
+  trialSettings,
 }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
@@ -46,6 +47,7 @@ const ExperimentModule = ({
       onFinishTrial={onFinishTrial}
       showTracker={showTracker}
       trackerIndex={trialIndex}
+      trialSettings={trialSettings}
     />
   )
 }

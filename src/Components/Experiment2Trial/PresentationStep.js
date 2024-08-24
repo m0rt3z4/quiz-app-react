@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react'
 
 import { Experiment2Grid } from '../Experiment2Grid'
 
-const TIME_SHOW_STIMULI = 500
-const TIME_WAIT_BETWEEN_STIMULI = 250
-
-const PresentationStep = ({ onFinishStep, stimuliArray = [] }) => {
+const PresentationStep = ({
+  onFinishStep,
+  stimuliArray = [],
+  timeToShowStimuli = 500,
+  timeBetweenStimuli = 250,
+}) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
 
@@ -21,8 +23,8 @@ const PresentationStep = ({ onFinishStep, stimuliArray = [] }) => {
         setStimulus({})
         setTimeout(() => {
           setIndex((index) => index + 1)
-        }, TIME_WAIT_BETWEEN_STIMULI)
-      }, TIME_SHOW_STIMULI)
+        }, timeBetweenStimuli)
+      }, timeToShowStimuli)
     } else {
       onFinishStep()
     }

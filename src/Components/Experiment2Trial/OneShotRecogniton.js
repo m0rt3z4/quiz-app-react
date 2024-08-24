@@ -8,6 +8,7 @@ const OneShotRecogniton = ({
   stimuliArray,
   onFinishStep,
   isInquiryCorrect,
+  feedbackTime,
 }) => {
   const onUserResp = (resp) => {
     console.log(resp)
@@ -20,6 +21,7 @@ const OneShotRecogniton = ({
       stimulus={stimuliArray}
       onFinishStep={onUserResp}
       isInquiryCorrect={isInquiryCorrect}
+      feedbackTime={feedbackTime}
     />
   )
 }
