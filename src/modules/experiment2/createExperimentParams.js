@@ -1,5 +1,4 @@
 import { cellTypes } from '../../Components/Experiment2Grid/consts'
-// import { blockTypes, recognitionTypes } from '../../consts'
 import shuffleArray from '../../helpers/shuffleArray'
 
 export const getRandomElements = (n = 36, numElements) => {
