@@ -9,6 +9,12 @@ export const keyboardKeys = {
   RIGHT_ARROW: 'ArrowRight',
   LEFT_ARROW: 'ArrowLeft',
   SPACE: ' ',
+  m: 'm',
+  M: 'M',
+  v: 'v',
+  V: 'V',
+  z: 'z',
+  Z: 'Z',
 }
 
 export const consentTypes = {

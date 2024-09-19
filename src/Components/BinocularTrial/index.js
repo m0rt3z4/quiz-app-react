@@ -25,7 +25,14 @@ const BinocularTrial = ({
   switch (step) {
     case 1: {
       console.log('Step1')
-      return <Step4 />
+      return (
+        <Step4
+          onNext={(resp) => {
+            console.log(resp)
+            nextStep()
+          }}
+        />
+      )
       // return <Step1 onNext={nextStep} />
     }
     case 2: {

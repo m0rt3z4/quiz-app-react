@@ -8,17 +8,18 @@ import RED from '../../assets/Binocular/red.png'
 import MIXED_HORIZENTAL from '../../assets/Binocular/mixed_horizental.png'
 import MIXED_VERTICAL from '../../assets/Binocular/mixed_vertical.png'
 
-import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
+import useKeyboard from './useKeyboard'
 import { imaginationCueTypes } from './consts'
 
 // Question Step
-const Step4 = ({ onNext, imaginationCue = imaginationCueTypes.MIXED_VERTICAL }) => {
-  //press space to continue
-  //   const keyboardCallback = (resp) => {
-  //     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  //   }
-  //   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
+const Step4 = ({
+  onNext,
+  imaginationCue = imaginationCueTypes.MIXED_VERTICAL,
+}) => {
+  const keyboardCallback = (resp) => {
+    if (!!resp) onNext(resp)
+  }
+  useKeyboard(keyboardCallback, Date.now())
 
   const picLoader = (img) => {
     switch (img) {
@@ -60,7 +61,7 @@ const Step4 = ({ onNext, imaginationCue = imaginationCueTypes.MIXED_VERTICAL }) 
               <Typography fontSize={25}>
                 <img
                   src={picLoader(imaginationCue)}
-                  alt="MU Unviersity"
+                  alt="Rivalry"
                   style={{ width: '30%' }}
                 />
               </Typography>
