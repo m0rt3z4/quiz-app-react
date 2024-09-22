@@ -44,7 +44,8 @@ export const Experiment2Layout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={{ paddingTop: '10px' }}
+          // sx={{ paddingTop: '10' }}
+          paddingTop={!title ? 6 : 3}
           spacing={2}
         >
           <Grid item xs={1}>
