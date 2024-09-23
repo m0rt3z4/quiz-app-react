@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import { Grid, Typography, Card } from '@mui/material'
+import { Grid, Card } from '@mui/material'
 
 //assets
 import GREEN from '../../assets/Binocular/green.png'
@@ -8,19 +8,16 @@ import RED from '../../assets/Binocular/red.png'
 import MIXED_HORIZENTAL from '../../assets/Binocular/mixed_horizental.png'
 import MIXED_VERTICAL from '../../assets/Binocular/mixed_vertical.png'
 
-import useKeyboard from './useKeyboard'
 import { imaginationCueTypes } from './consts'
 
 // Question Step
 const Step4 = ({
-  onNext,
-  imaginationCue = imaginationCueTypes.MIXED_VERTICAL,
+  imaginationCueArray = [
+    imaginationCueTypes.MIXED_HORIZENTAL,
+    imaginationCueTypes.MIXED_VERTICAL,
+  ],
+  opacity = 100,
 }) => {
-  const keyboardCallback = (resp) => {
-    if (!!resp) onNext(resp)
-  }
-  useKeyboard(keyboardCallback, Date.now())
-
   const picLoader = (img) => {
     switch (img) {
       case imaginationCueTypes.GREEN: {
@@ -56,15 +53,26 @@ const Step4 = ({
             border: '1px solid black',
           }}
         >
-          <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25}>
-                <img
-                  src={picLoader(imaginationCue)}
-                  alt="Rivalry"
-                  style={{ width: '30%' }}
-                />
-              </Typography>
+          <Grid
+            container
+            item
+            xs={12}
+            justifyContent={'center'}
+            alignItems={'center'}
+          >
+            <Grid container item xs={6} marginTop={2} justifyContent={'center'}>
+              <img
+                src={picLoader(imaginationCueArray[0])}
+                alt="Rivalry1"
+                style={{ width: '40%', opacity: `${opacity}%` }}
+              />
+            </Grid>
+            <Grid container item xs={6} marginTop={2} justifyContent={'center'}>
+              <img
+                src={picLoader(imaginationCueArray[1])}
+                alt="Rivalry2"
+                style={{ width: '40%', opacity: `${opacity}%` }}
+              />
             </Grid>
           </Grid>
         </Card>

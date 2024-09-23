@@ -1,9 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Grid, Typography, Card } from '@mui/material'
+import useKeyboard from './useKeyboard'
 
 // Intro Step
-const Step1 = () => {
+const Step5 = ({ onNext }) => {
+  const keyboardCallback = (resp) => {
+    if (!!resp) onNext(resp)
+  }
+  useKeyboard(keyboardCallback, Date.now())
+
   const content = `.`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
@@ -32,4 +38,4 @@ const Step1 = () => {
   )
 }
 
-export default Step1
+export default Step5

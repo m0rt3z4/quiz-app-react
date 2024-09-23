@@ -3,20 +3,66 @@ import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
+import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import Step5 from './Step5'
+import { imaginationCueTypes, recallTypes } from './consts'
 
+const trialSettingsObj = {
+  slide1Time: 1000,
+  slide2Time: 1000,
+  slide3Time: 6000,
+  slide4Time: 750,
+  opacity: 100,
+}
+const trialParamsObj = {
+  imaginationCue: imaginationCueTypes.GREEN,
+  recallType: recallTypes.GR,
+}
 const BinocularTrial = ({
-  trialParams,
+  trialParams = trialParamsObj,
+  trialSettings = trialSettingsObj,
   onFinishTrial,
-  showTracker = false,
-  trackerIndex,
 }) => {
   const [step, setStep] = useState(1)
-  const [results, setResults] = useState({})
+  const { changeTitle } = useExperiment2Context()
+
+  const stepOne = () => {
+    return setTimeout(() => {
+      setStep(2)
+      stepTwo()
+      return clearTimeout()
+    }, trialSettings.slide1Time)
+  }
+  const stepTwo = () => {
+    return setTimeout(() => {
+      setStep(3)
+      stepThree()
+      return clearTimeout()
+    }, trialSettings.slide2Time)
+  }
+  const stepThree = () => {
+    return setTimeout(() => {
+      setStep(4)
+      stepFour()
+      return clearTimeout()
+    }, trialSettings.slide3Time)
+  }
+  const stepFour = () => {
+    return setTimeout(() => {
+      setStep(5)
+      return clearTimeout()
+    }, trialSettings.slide4Time)
+  }
+
+  const onFinishStep5 = (resp) => {
+    return onFinishTrial({ trialParams, results: resp })
+  }
 
   useEffect(() => {
-    setStep(1)
-    setResults({})
-  }, [trialParams])
+    changeTitle('')
+    stepOne()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeTitle, trialParams])
 
   const nextStep = () => {
     setStep((step) => step + 1)
@@ -24,33 +70,25 @@ const BinocularTrial = ({
 
   switch (step) {
     case 1: {
-      console.log('Step1')
-      return (
-        <Step4
-          onNext={(resp) => {
-            console.log(resp)
-            nextStep()
-          }}
-        />
-      )
-      // return <Step1 onNext={nextStep} />
+      return <Step1 onNext={nextStep} />
     }
     case 2: {
-      console.log('Step2')
-      return <Step2 />
+      return <Step2 imaginationCue={trialParams.imaginationCue} />
     }
     case 3: {
-      console.log('Step3')
       return <Step3 />
     }
     case 4: {
-      console.log('Step4')
-      return <Step4 />
+      return (
+        <Step4
+          imaginationCueArray={trialParams.recallType}
+          opacity={trialSettingsObj.opacity}
+        />
+      )
     }
-    // case 5: {
-    //   console.log('Step5')
-    //   return
-    // }
+    case 5: {
+      return <Step5 onNext={onFinishStep5} />
+    }
 
     default:
       break
