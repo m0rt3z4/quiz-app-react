@@ -1,18 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Grid, Typography, Card } from '@mui/material'
-import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
 import { imaginationCueTypes } from './consts'
 
 // Rivalry Step
 const Step3 = ({ onNext, imaginationCue = imaginationCueTypes.GREEN }) => {
-  //press space to continue
-  const keyboardCallback = (resp) => {
-    if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
-  }
-  useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
-
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -31,7 +23,7 @@ const Step3 = ({ onNext, imaginationCue = imaginationCueTypes.GREEN }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25}>{imaginationCue}</Typography>
+              <Typography fontSize={25}>.</Typography>
             </Grid>
           </Grid>
         </Card>

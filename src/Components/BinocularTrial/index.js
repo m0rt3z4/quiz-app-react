@@ -82,7 +82,7 @@ const BinocularTrial = ({
       return (
         <Step4
           imaginationCueArray={trialParams.recallType}
-          opacity={trialSettingsObj.opacity}
+          opacity={trialSettings.opacity}
         />
       )
     }
