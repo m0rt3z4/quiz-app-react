@@ -45,7 +45,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
         container
         item
         xs={12}
-        paddingTop={1}
+        paddingTop={2}
         alignItems={'center'}
         sx={{ maxHeight: '120px' }}
       >
@@ -61,7 +61,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             variant="outlined"
             sx={{ borderRadius: '20px' }}
           />
-          <Divider variant="fullWidth" sx={{ paddingTop: 2 }} />
+          {/* <Divider variant="fullWidth" sx={{ paddingTop: 2 }} /> */}
         </Grid>
       </Grid>
     )
@@ -101,6 +101,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   >
                     Back
                   </Button>
+                </Grid>
+                <Grid item xs={12}>
                   <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
                 </Grid>
                 <Grid container item xs={12}>
@@ -125,19 +127,22 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       value={slide2Time}
                       setValue={setSlide2Tiem}
                     />
+                  </Grid>
+                  <Grid container xs={6}>
                     <Item
                       text="Imagination Time"
                       value={slide3Time}
                       setValue={setSlide3Tiem}
                     />
-                  </Grid>
-                  <Grid container xs={6}>
                     <Item
                       text="Time to show Rivalry"
                       value={slide4Time}
                       setValue={setSlide4Tiem}
                     />
                   </Grid>
+                </Grid>
+                <Grid item xs={12}>
+                  <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
                 </Grid>
                 <Grid container item xs={12}>
                   <Typography variant="h6">Trial Params:</Typography>
@@ -150,7 +155,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                     setRecalType={setRivalry}
                   />
                 </Grid>
-
+                <Grid item xs={12}>
+                  <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
+                </Grid>
                 <Grid container item xs={12}>
                   <Typography variant="h6">Preview Luminance:</Typography>
                 </Grid>
@@ -161,7 +168,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                     rivalry={recallTypes[rivalry]}
                   />
                 </Grid>
-
+                <Grid item xs={12}>
+                  <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
+                </Grid>
                 <Grid container item xs={12}>
                   <Grid
                     container
