@@ -78,7 +78,7 @@ export const MainPage = ({ setPage }) => {
               </Grid>
               <Grid item xs={8}>
                 <Button
-                  onClick={() => setPage(previewPages.PERCEPTUAL_TRIAL_BLOCK)}
+                  onClick={() => setPage(previewPages.PREVIEW_BLOCKS)}
                   size="large"
                   sx={{
                     width: '70%',
@@ -90,7 +90,7 @@ export const MainPage = ({ setPage }) => {
                 </Button>
                 <Divider sx={{ paddingTop: 3 }} />
               </Grid>
-              {/* <Grid item xs={12} justifyContent={'center'}>
+              <Grid item xs={12} justifyContent={'center'}>
                 <Box
                   sx={{
                     display: 'flex',
@@ -100,13 +100,13 @@ export const MainPage = ({ setPage }) => {
                   }}
                 >
                   <Typography fontSize={'15px'}>
-                    Preview The Imaginary Trial Blocks:
+                    Preview The Binocular Trial:
                   </Typography>
                 </Box>
-              </Grid> */}
-              {/* <Grid item xs={8}>
+              </Grid>
+              <Grid item xs={8}>
                 <Button
-                  onClick={() => setPage(previewPages.IMAGINARY_TRIAL_BLOCK)}
+                  onClick={() => setPage(previewPages.BINOCULAR_TRIAL)}
                   size="large"
                   sx={{
                     width: '70%',
@@ -117,7 +117,7 @@ export const MainPage = ({ setPage }) => {
                   preview
                 </Button>
                 <Divider sx={{ paddingTop: 3 }} />
-              </Grid> */}
+              </Grid>
             </Grid>
           </Card>
         </Grid>

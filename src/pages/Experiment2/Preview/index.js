@@ -8,11 +8,12 @@ import {
 } from '../../../modules/experiment2/createExperimentParams'
 import ExperimentModule from '../../../modules/experiment2/ExperimentModule'
 import PreviewTrialPage from './PreviewTrial'
+import PreviewBinocularPage from './PreviewBinocular'
 
 export const previewPages = {
   TRIAL_GRID: 1,
-  PERCEPTUAL_TRIAL_BLOCK: 2,
-  IMAGINARY_TRIAL_BLOCK: 3,
+  PREVIEW_BLOCKS: 2,
+  BINOCULAR_TRIAL: 3,
 }
 
 export const Experiment2PreviewPage = () => {
@@ -40,28 +41,10 @@ export const Experiment2PreviewPage = () => {
       return <PreviewGridPage onBack={backButton} />
     }
     case 2: {
-      return (
-        // <Experiment2Trial onFinishTrial={backButton} trialParams={params} />
-        <PreviewTrialPage onBack={backButton} />
-        // <ExperimentModule
-        //   experiment={params}
-        //   onFinishExperiment={(resp) => {
-        //     console.log(resp)
-        //     backButton()
-        //   }}
-        // />
-      )
+      return <PreviewTrialPage onBack={backButton} />
     }
     case 3: {
-      return (
-        <ExperimentModule
-          experiment={imaginary}
-          onFinishExperiment={(resp) => {
-            console.log(resp)
-            backButton()
-          }}
-        />
-      )
+      return <PreviewBinocularPage onBack={backButton} />
     }
     default:
       break
