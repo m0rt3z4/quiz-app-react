@@ -16,7 +16,8 @@ const Slide4Revamped = ({
     imaginationCueTypes.MIXED_HORIZENTAL,
     imaginationCueTypes.MIXED_VERTICAL,
   ],
-  opacity = 100,
+  leftOpacity = 100,
+  rightOpacity = 100,
   stimulusWidth = 40,
   stimulusDistance = 80,
   degreeValue = 0,
@@ -99,7 +100,7 @@ const Slide4Revamped = ({
                   style={{
                     width: `${stimulusWidth}%`,
                     rotate: `-${degreeValue}deg`,
-                    opacity: `${opacity}%`,
+                    opacity: `${leftOpacity}%`,
                   }}
                 />
               </div>
@@ -122,7 +123,7 @@ const Slide4Revamped = ({
                   style={{
                     width: `${stimulusWidth}%`,
                     rotate: `-${degreeValue}deg`,
-                    opacity: `${opacity}%`,
+                    opacity: `${rightOpacity}%`,
                   }}
                 />
               </div>

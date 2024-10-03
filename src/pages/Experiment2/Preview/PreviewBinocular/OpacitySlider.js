@@ -6,8 +6,10 @@ import { Grid, Slider, Typography } from '@mui/material'
 import Slide4Revamped from '../../../../Components/BinocularTrial/Slide4Revamped'
 
 const OpacitySlider = ({
-  opacityValue,
-  setOpacityValue,
+  leftOpacity,
+  setLeftOpacity,
+  rightOpacity,
+  setRightOpacity,
   stimulusWidth,
   setStimulusWidth,
   stimulusDistance,
@@ -55,18 +57,34 @@ const OpacitySlider = ({
   ]
   return (
     <Grid container xs={10}>
-      <Grid container item xs={12} paddingTop={4}>
-        <Typography variant="h6">Opacity:</Typography>
-        <Slider
-          value={opacityValue}
-          onChange={(e, v) => {
-            setOpacityValue(v)
-          }}
-          color="success"
-          valueLabelDisplay="on"
-          marks={marks}
-          max={100}
-        />
+      <Grid container xs={12} spacing={2}>
+        {' '}
+        <Grid container item xs={6} paddingTop={4}>
+          <Typography variant="h6">Left Opacity:</Typography>
+          <Slider
+            value={leftOpacity}
+            onChange={(e, v) => {
+              setLeftOpacity(v)
+            }}
+            color="success"
+            valueLabelDisplay="on"
+            marks={marks}
+            max={100}
+          />
+        </Grid>
+        <Grid container item xs={6} paddingTop={4}>
+          <Typography variant="h6">Right Opacity:</Typography>
+          <Slider
+            value={rightOpacity}
+            onChange={(e, v) => {
+              setRightOpacity(v)
+            }}
+            color="success"
+            valueLabelDisplay="on"
+            marks={marks}
+            max={100}
+          />
+        </Grid>
       </Grid>
       <Grid container item xs={12} paddingTop={4}>
         <Typography variant="h6">Patch Size:</Typography>
@@ -113,7 +131,8 @@ const OpacitySlider = ({
       <Grid container item xs={12} paddingTop={2}>
         <Slide4Revamped
           imaginationCueArray={rivalry}
-          opacity={opacityValue}
+          leftOpacity={leftOpacity}
+          rightOpacity={rightOpacity}
           stimulusWidth={stimulusWidth}
           stimulusDistance={stimulusDistance}
           degreeValue={degreeValue}
