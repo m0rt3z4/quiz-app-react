@@ -14,15 +14,30 @@ import {
   imaginationCueTypes,
 } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
+import { createCalibrationSet } from '../../../../modules/experiment2/createBinocularParams'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [slide1Time, setSlide1Tiem] = useState(1000)
   const [slide2Time, setSlide2Tiem] = useState(750)
   const [slide3Time, setSlide3Tiem] = useState(6000)
   const [slide4Time, setSlide4Tiem] = useState(750)
-  const [opacity, setOpacity] = useState(100)
+  const [leftOpacity, setLeftOpacity] = useState(100)
+  const [rightOpacity, setRightOpacity] = useState(100)
+  const [stimulusWidth, setStimulusWidth] = useState(40)
+  const [stimulusDistance, setStimulusDistance] = useState(80)
+  const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
+  const arr = ['RED', 'GREEN', 'MIXED']
+
+  const trial = createCalibrationSet(8).map((trial) => {
+    trial.userAnswer = {
+      answer: arr[Math.floor(Math.random() * arr.length)],
+      time: Math.floor(Math.random() * 3000),
+    }
+    return trial
+  })
+  console.log(trial)
 
   const onClickPerceptual = () => {
     const settingObj = {
@@ -30,7 +45,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       slide2Time,
       slide3Time,
       slide4Time,
-      opacity,
+      leftOpacity,
+      rightOpacity,
     }
     const paramsObj = {
       imaginationCue: imgCue,
@@ -163,8 +179,16 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 </Grid>
                 <Grid container item xs={12} justifyContent={'center'}>
                   <OpacitySlider
-                    opacityValue={opacity}
-                    setOpacityValue={setOpacity}
+                    leftOpacity={leftOpacity}
+                    setLeftOpacity={setLeftOpacity}
+                    rightOpacity={rightOpacity}
+                    setRightOpacity={setRightOpacity}
+                    stimulusWidth={stimulusWidth}
+                    setStimulusWidth={setStimulusWidth}
+                    stimulusDistance={stimulusDistance}
+                    setStimulusDistance={setStimulusDistance}
+                    degreeValue={degreeValue}
+                    setDegreeValue={setDegreeValue}
                     rivalry={recallTypes[rivalry]}
                   />
                 </Grid>
