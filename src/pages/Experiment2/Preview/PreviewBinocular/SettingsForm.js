@@ -14,7 +14,8 @@ import {
   imaginationCueTypes,
 } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
-import { createCalibrationSet } from '../../../../modules/experiment2/createBinocularParams'
+import { pages } from '.'
+// import { createCalibrationSet } from '../../../../modules/experiment2/createBinocularParams'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [slide1Time, setSlide1Tiem] = useState(1000)
@@ -28,16 +29,16 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
-  const arr = ['RED', 'GREEN', 'MIXED']
+  // const arr = ['RED', 'GREEN', 'MIXED']
 
-  const trial = createCalibrationSet(8).map((trial) => {
-    trial.userAnswer = {
-      answer: arr[Math.floor(Math.random() * arr.length)],
-      time: Math.floor(Math.random() * 3000),
-    }
-    return trial
-  })
-  console.log(trial)
+  // const trial = createCalibrationSet(8).map((trial) => {
+  //   trial.userAnswer = {
+  //     answer: arr[Math.floor(Math.random() * arr.length)],
+  //     time: Math.floor(Math.random() * 3000),
+  //   }
+  //   return trial
+  // })
+  // console.log(trial)
 
   const onClickPerceptual = () => {
     const settingObj = {
@@ -52,7 +53,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       imaginationCue: imgCue,
       recallType: recallTypes[rivalry],
     }
-    onStartPreview(paramsObj, settingObj)
+    onStartPreview(pages.TRIAL, { params: paramsObj, settings: settingObj })
   }
 
   const Item = ({ text = '', value, setValue }) => {
@@ -218,7 +219,23 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       }}
                       color="inherit"
                     >
-                      Binocular
+                      Binocular Trial
+                    </Button>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      onClick={() => {
+                        onStartPreview(pages.CALLIBRATION)
+                      }}
+                      size="large"
+                      sx={{
+                        width: '70%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                      color="inherit"
+                    >
+                      CALLIBRATION
                     </Button>
                   </Grid>
                 </Grid>

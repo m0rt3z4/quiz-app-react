@@ -18,7 +18,7 @@ export const createBlocks = (size = 8, blockType = blockTypes.PERCEPTUAL) => {
   const blocks = sizeArray.map((value, index) => {
     return createTrial(6, inquiryArray[index], blockType, value)
   })
-  console.log(blocks)
+  // console.log(blocks)
   return blocks
 }
 const generateRandomBool = (size) => {
@@ -58,7 +58,7 @@ export const createTrial = (
     isInquiryCorrect,
     isHalfRecall ? 3 : 6
   )
-  console.log(recallObj)
+  // console.log(recallObj)
   return {
     presentation: shuffleArray(presentationStimuli),
     recognition: recallObj,
@@ -121,8 +121,8 @@ const createRecallArray = (
     resultCellIdArray.push(inquiryCellId)
     resultArray.push({ cellId: inquiryCellId, cellType: cellTypes.INQUIRY })
   }
-  console.log(resultArray)
-  console.log(resultCellIdArray)
+  // console.log(resultArray)
+  // console.log(resultCellIdArray)
   for (let i = 0; i < numOfRecallStimuli - 1; i++) {
     const possibleMoves = temp.splice(
       Math.floor(Math.random() * temp.length),
