@@ -12,6 +12,7 @@ const Step1 = () => {
           sx={{
             display: 'flex',
             alignItems: 'center',
+            backgroundColor: 'black',
             justifyContent: 'center',
             width: '100%',
             minHeight: 450,
@@ -23,7 +24,7 @@ const Step1 = () => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25}>{content}</Typography>
+              <Typography fontSize={25} sx={{ color: 'white' }}>{content}</Typography>
             </Grid>
           </Grid>
         </Card>

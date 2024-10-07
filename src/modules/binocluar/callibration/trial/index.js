@@ -9,7 +9,7 @@ const trialSettingsObj = {
   slide1Time: 1000,
   slide2Time: 750,
   slide3Time: 6000,
-  slide4Time: 500,
+  slide4Time: 4000,
   opacity: 100,
 }
 const BinocularCallibrationTrial = ({

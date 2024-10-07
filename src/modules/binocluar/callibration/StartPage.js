@@ -21,6 +21,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
             maxHeight: 540,
@@ -31,7 +32,9 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25}>{content}</Typography>
+              <Typography fontSize={25} sx={{ color: 'white' }}>
+                {content}
+              </Typography>
             </Grid>
           </Grid>
         </Card>

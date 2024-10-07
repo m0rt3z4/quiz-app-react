@@ -14,6 +14,7 @@ import {
   imaginationCueTypes,
 } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
+import { pages } from '.'
 // import { createCalibrationSet } from '../../../../modules/experiment2/createBinocularParams'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
@@ -52,7 +53,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       imaginationCue: imgCue,
       recallType: recallTypes[rivalry],
     }
-    onStartPreview(paramsObj, settingObj)
+    onStartPreview(pages.TRIAL, { params: paramsObj, settings: settingObj })
   }
 
   const Item = ({ text = '', value, setValue }) => {
@@ -218,7 +219,23 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       }}
                       color="inherit"
                     >
-                      Binocular
+                      Binocular Trial
+                    </Button>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      onClick={() => {
+                        onStartPreview(pages.CALLIBRATION)
+                      }}
+                      size="large"
+                      sx={{
+                        width: '70%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                      color="inherit"
+                    >
+                      CALLIBRATION
                     </Button>
                   </Grid>
                 </Grid>

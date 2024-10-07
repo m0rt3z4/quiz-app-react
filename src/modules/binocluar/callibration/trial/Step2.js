@@ -3,8 +3,8 @@ import React from 'react'
 import { Grid, Card } from '@mui/material'
 
 //assets
-import GREEN from '../../../../assets/Binocular/green.png'
-import RED from '../../../../assets/Binocular/red.png'
+import GREEN from '../../../../assets/Binocular/green2.PNG'
+import RED from '../../../../assets/Binocular/red2.PNG'
 
 const Step2 = ({
   isGreenFirst = true,
@@ -19,6 +19,7 @@ const Step2 = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
             maxHeight: 540,
