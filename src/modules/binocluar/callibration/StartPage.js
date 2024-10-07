@@ -1,24 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Grid, Typography, Card } from '@mui/material'
-import useKeyboard from './useKeyboard'
+import useKeyboard from './trial/useKeyboard'
 
 // Intro Step
-const Step3 = ({ onUserAnswer }) => {
+const StartPage = ({ onUserAnswer, isStart = false }) => {
   const keyboardCallback = (resp) => {
-    // console.log(resp)
-    let answer = null
     if (resp.userAnswer === 'ArrowRight') {
-      answer = 'GREEN'
-    } else if (resp.userAnswer === 'ArrowLeft') {
-      answer = 'RED'
+      onUserAnswer()
     }
-
-    onUserAnswer(answer)
   }
   useKeyboard(keyboardCallback, Date.now())
 
-  const content = `Which color was dominant? press <- for Red and -> for Green`
+  const content = `Press -> to start ${isStart ? '' : 'next trial'}`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -46,4 +40,4 @@ const Step3 = ({ onUserAnswer }) => {
   )
 }
 
-export default Step3
+export default StartPage

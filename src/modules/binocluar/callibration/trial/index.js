@@ -9,12 +9,15 @@ const trialSettingsObj = {
   slide1Time: 1000,
   slide2Time: 750,
   slide3Time: 6000,
-  slide4Time: 4000,
+  slide4Time: 500,
   opacity: 100,
 }
 const BinocularCallibrationTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
+  isGreenFirst = true,
+  greenOpacity = 100,
+  redOpacity = 100,
 }) => {
   const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('')
@@ -35,7 +38,7 @@ const BinocularCallibrationTrial = ({
     }, trialSettings.slide2Time)
   }
   const onUserAnswer = (answer) => {
-    console.log(answer)
+    // console.log(answer)
 
     setUserAnswer(answer)
     setStep(4)
@@ -44,14 +47,14 @@ const BinocularCallibrationTrial = ({
       return clearTimeout()
     }, trialSettings.slide4Time)
   }
-//   const stepFour = () => {
-//     return setTimeout(() => {
-//       console.log(userAnswer)
+  //   const stepFour = () => {
+  //     return setTimeout(() => {
+  //       console.log(userAnswer)
 
-//       onFinishTrial(userAnswer)
-//       return clearTimeout()
-//     }, trialSettings.slide4Time)
-//   }
+  //       onFinishTrial(userAnswer)
+  //       return clearTimeout()
+  //     }, trialSettings.slide4Time)
+  //   }
 
   useEffect(() => {
     changeTitle('')
@@ -64,7 +67,13 @@ const BinocularCallibrationTrial = ({
       return <Step1 />
     }
     case 2: {
-      return <Step2 isGreenFirst={true} greenOpacity={100} redOpacity={100} />
+      return (
+        <Step2
+          isGreenFirst={isGreenFirst}
+          greenOpacity={greenOpacity}
+          redOpacity={redOpacity}
+        />
+      )
     }
     case 3: {
       return <Step3 onUserAnswer={onUserAnswer} />
