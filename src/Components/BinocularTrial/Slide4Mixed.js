@@ -22,38 +22,6 @@ const Slide4Mixed = ({
   stimulusDistance = 80,
   degreeValue = 0,
 }) => {
-  //   const degreeToRadian = {
-  //     0: 0,
-  //     11.5: 0.2007129,
-  //     22.5: 0.3926991,
-  //     30: 0.523599,
-  //     37: 0.645772,
-  //   }
-  //   console.log(degreeValue)
-
-  //   const leftDistance =
-  //     (stimulusDistance / 2) * Math.cos(degreeToRadian[degreeValue])
-  //   const bottomDistance =
-  //     (stimulusDistance / 2) * Math.sin(degreeToRadian[degreeValue])
-  //   const picLoader = (img) => {
-  //     switch (img) {
-  //       case imaginationCueTypes.GREEN: {
-  //         return GREEN
-  //       }
-  //       case imaginationCueTypes.RED: {
-  //         return RED
-  //       }
-  //       case imaginationCueTypes.MIXED_HORIZENTAL: {
-  //         return MIXED_HORIZENTAL
-  //       }
-  //       case imaginationCueTypes.MIXED_VERTICAL: {
-  //         return MIXED_VERTICAL
-  //       }
-  //       default:
-  //         break
-  //     }
-  //   }
-
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -91,8 +59,8 @@ const Slide4Mixed = ({
                   display: 'flex',
                   position: 'relative',
                   justifyContent: 'end',
-                    // left: `1px`,
-                    // bottom: `-1px`,
+                  // left: `1px`,
+                  // bottom: `-1px`,
                 }}
               >
                 <img

@@ -13,7 +13,7 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
   const [toggle, setToggle] = useState(false)
   const [trialIndex, setTrialIndex] = useState(0)
 
-  console.log('experiment', experiment)
+  // console.log('experiment', experiment)
 
   const toggleBreake = () => {
     setToggle(true)
@@ -26,17 +26,36 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
-      onFinishExperiment(results)
+      onFinishExperiment({
+        results,
+        switchRatio: calculateRatio(results),
+        redOpacity,
+        greenOpacity,
+      })
     }
   }, [trialIndex])
 
+  const calculateRatio = (resultsArray = []) => {
+    return (
+      resultsArray
+        .map((res) => res.isSwitched)
+        .reduce((prev, cur) => {
+          if (cur) {
+            return prev + 1
+          } else return prev
+        }, 0) / resultsArray.length
+    )
+  }
   const onFinishTrial = (resp) => {
     const isSwitched = resp !== lastAnswer
-
-    setResults([
+    const savedResults = [
       ...results,
       { userResponse: resp, isSwitched, redOpacity, greenOpacity },
-    ])
+    ]
+    setResults(savedResults)
+    const ratio = calculateRatio(savedResults)
+    console.log(`Ratio is => ${ratio}`)
+
     setLastAnswer(resp)
     if (!isSwitched) handleOpacityChange(resp)
     setTrialIndex(trialIndex + 1)
