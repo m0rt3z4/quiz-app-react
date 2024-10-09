@@ -12,7 +12,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
   }
   useKeyboard(keyboardCallback, Date.now())
 
-  const content = `Press -> to start ${isStart ? '' : 'next trial'}`
+  const content = `${isStart ? 'Press -> to start' : '.'}`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>

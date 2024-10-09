@@ -4,28 +4,23 @@ import React, { useEffect, useState } from 'react'
 import BinocularCallibrationTrial from './trial'
 import StartPage from './StartPage'
 
-const Experiment = ({
-  experiment,
-  onFinishExperiment,
-  showTracker = false,
-  trialSettings,
-}) => {
+const Experiment = ({ experiment, onFinishExperiment }) => {
   const [results, setResults] = useState([])
   const [lastAnswer, setLastAnswer] = useState('')
   const [current, setCurrent] = useState({})
   const [redOpacity, setRedOpacity] = useState(80)
   const [greenOpacity, setGreenOpacity] = useState(80)
-  const [toggle, setToggle] = useState(true)
+  const [toggle, setToggle] = useState(false)
   const [trialIndex, setTrialIndex] = useState(0)
 
   console.log('experiment', experiment)
 
-  //   const toggleBreake = () => {
-  //     setToggle(true)
-  //     setTimeout(() => {
-  //       setToggle(false)
-  //     }, 500)
-  //   }
+  const toggleBreake = () => {
+    setToggle(true)
+    setTimeout(() => {
+      setToggle(false)
+    }, 500)
+  }
   useEffect(() => {
     if (trialIndex < experiment.length) {
       setCurrent(experiment[trialIndex])
@@ -36,10 +31,6 @@ const Experiment = ({
   }, [trialIndex])
 
   const onFinishTrial = (resp) => {
-    // const trialResult = {
-    //   ...experiment[trialIndex],
-    //   results: resp,
-    // }
     const isSwitched = resp !== lastAnswer
 
     setResults([
@@ -49,7 +40,7 @@ const Experiment = ({
     setLastAnswer(resp)
     if (!isSwitched) handleOpacityChange(resp)
     setTrialIndex(trialIndex + 1)
-    setToggle(true)
+    toggleBreake()
   }
   const handleOpacityChange = (color) => {
     setRedOpacity(color === 'RED' ? redOpacity - 2 : redOpacity + 2)
@@ -59,9 +50,9 @@ const Experiment = ({
   return toggle ? (
     <StartPage
       onUserAnswer={() => {
-        setToggle(false)
+        return null
       }}
-      isStart={!trialIndex}
+      isStart={false}
     />
   ) : (
     <BinocularCallibrationTrial
