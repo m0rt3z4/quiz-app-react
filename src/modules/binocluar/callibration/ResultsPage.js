@@ -10,37 +10,11 @@ import {
   TableCell,
   TableBody,
   Button,
+  Typography,
 } from '@mui/material'
 
-const mock = [
-  {
-    userResponse: 'GREEN',
-    isSwitched: true,
-    redOpacity: 80,
-    greenOpacity: 80,
-  },
-  {
-    userResponse: 'GREEN',
-    isSwitched: false,
-    redOpacity: 80,
-    greenOpacity: 80,
-  },
-  {
-    userResponse: 'GREEN',
-    isSwitched: false,
-    redOpacity: 82,
-    greenOpacity: 78,
-  },
-  {
-    userResponse: 'RED',
-    isSwitched: false,
-    redOpacity: 84,
-    greenOpacity: 76,
-  },
-]
-
 // ResultsPage
-const ResultsPage = ({ results = mock, onBack }) => {
+const ResultsPage = ({ results = {}, onBack }) => {
   const ResultsTable = () => {
     return (
       <TableContainer>
@@ -59,7 +33,7 @@ const ResultsPage = ({ results = mock, onBack }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {results.map((row, index) => (
+            {results.results.map((row, index) => (
               <TableRow key={index}>
                 <TableCell
                   align="center"
@@ -93,7 +67,7 @@ const ResultsPage = ({ results = mock, onBack }) => {
             backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
-            maxHeight: 540,
+            // maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
             border: '1px solid black',
@@ -111,6 +85,35 @@ const ResultsPage = ({ results = mock, onBack }) => {
               >
                 Back
               </Button>
+            </Grid>
+            <Grid item xs={8} paddingTop={5}>
+              <Typography
+                sx={{ color: 'white' }}
+              >{`Number of Trials: ${results.results.length}`}</Typography>
+            </Grid>
+            <Grid item xs={8} paddingTop={1}>
+              <Typography
+                sx={{ color: 'white' }}
+              >{`Switch Ratio: ${results.switchRatio}`}</Typography>
+            </Grid>
+            <Grid item xs={8} paddingTop={1}>
+              <Typography
+                sx={{ color: 'white' }}
+              >{`Green Opacity: ${results.greenOpacity}`}</Typography>
+            </Grid>
+            <Grid item xs={8} paddingTop={1}>
+              <Typography
+                sx={{ color: 'white' }}
+              >{`Red Opacity: ${results.redOpacity}`}</Typography>
+            </Grid>
+            <Grid item xs={8} paddingTop={1}>
+              <Typography
+                sx={{
+                  color: results.switchRatio >= 0.8 ? 'lightgreen' : 'red',
+                }}
+              >{`Callibration ${
+                results.switchRatio >= 0.8 ? 'Successful' : 'Failed'
+              }!`}</Typography>
             </Grid>
             <Grid item xs={8} paddingTop={5}>
               <ResultsTable />
