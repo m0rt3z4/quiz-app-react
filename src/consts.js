@@ -8,6 +8,7 @@ export const recognitionTypes = {
 export const keyboardKeys = {
   RIGHT_ARROW: 'ArrowRight',
   LEFT_ARROW: 'ArrowLeft',
+  DOWN_ARROW: 'ArrowDown',
   SPACE: ' ',
   m: 'm',
   M: 'M',

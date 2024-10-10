@@ -12,11 +12,15 @@ const trialSettingsObj = {
   slide2Time: 1000,
   slide3Time: 6000,
   slide4Time: 750,
-  opacity: 100,
+  redOpacity: 100,
+  greenOpacity: 100,
+  stimulusWidth: 40,
+  stimulusDistance: 80,
 }
 const trialParamsObj = {
   imaginationCue: imaginationCueTypes.GREEN,
   recallType: recallTypes.GR,
+  angle: 0,
 }
 const BinocularTrial = ({
   trialParams = trialParamsObj,
@@ -55,7 +59,11 @@ const BinocularTrial = ({
   }
 
   const onFinishStep5 = (resp) => {
-    return onFinishTrial({ trialParams, results: resp })
+    setStep(6)
+    return setTimeout(() => {
+      onFinishTrial({ trialParams, results: resp })
+      return clearTimeout()
+    }, 2000)
   }
 
   useEffect(() => {
@@ -64,13 +72,13 @@ const BinocularTrial = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeTitle, trialParams])
 
-  const nextStep = () => {
-    setStep((step) => step + 1)
-  }
+  // const nextStep = () => {
+  //   setStep((step) => step + 1)
+  // }
 
   switch (step) {
     case 1: {
-      return <Step1 onNext={nextStep} />
+      return <Step1 />
     }
     case 2: {
       return <Step2 imaginationCue={trialParams.imaginationCue} />
@@ -81,13 +89,20 @@ const BinocularTrial = ({
     case 4: {
       return (
         <Step4
-          imaginationCueArray={trialParams.recallType}
-          opacity={trialSettings.opacity}
+          degreeValue={trialParams.angle}
+          recallType={trialParams.recallType}
+          greenOpacity={trialSettings.greenOpacity}
+          redOpacity={trialSettings.redOpacity}
+          stimulusWidth={trialSettings.stimulusWidth}
+          stimulusDistance={trialSettings.stimulusDistance}
         />
       )
     }
     case 5: {
       return <Step5 onNext={onFinishStep5} />
+    }
+    case 6: {
+      return <Step1 />
     }
 
     default:

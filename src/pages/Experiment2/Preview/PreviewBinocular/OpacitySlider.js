@@ -3,13 +3,13 @@ import React from 'react'
 // import Slide4 from '../../../../Components/BinocularTrial/Step4'
 import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
-import Slide4Revamped from '../../../../Components/BinocularTrial/Slide4Revamped'
+import Step4 from '../../../../Components/BinocularTrial/Step4'
 
 const OpacitySlider = ({
-  leftOpacity,
-  setLeftOpacity,
-  rightOpacity,
-  setRightOpacity,
+  redOpacity,
+  setRedOpacity,
+  greenOpacity,
+  setGreenOpacity,
   stimulusWidth,
   setStimulusWidth,
   stimulusDistance,
@@ -60,11 +60,11 @@ const OpacitySlider = ({
       <Grid container xs={12} spacing={2}>
         {' '}
         <Grid container item xs={6} paddingTop={4}>
-          <Typography variant="h6">Left Opacity:</Typography>
+          <Typography variant="h6">Red Opacity:</Typography>
           <Slider
-            value={leftOpacity}
+            value={redOpacity}
             onChange={(e, v) => {
-              setLeftOpacity(v)
+              setRedOpacity(v)
             }}
             color="success"
             valueLabelDisplay="on"
@@ -73,11 +73,11 @@ const OpacitySlider = ({
           />
         </Grid>
         <Grid container item xs={6} paddingTop={4}>
-          <Typography variant="h6">Right Opacity:</Typography>
+          <Typography variant="h6">Green Opacity:</Typography>
           <Slider
-            value={rightOpacity}
+            value={greenOpacity}
             onChange={(e, v) => {
-              setRightOpacity(v)
+              setGreenOpacity(v)
             }}
             color="success"
             valueLabelDisplay="on"
@@ -129,10 +129,10 @@ const OpacitySlider = ({
         />
       </Grid>
       <Grid container item xs={12} paddingTop={2}>
-        <Slide4Revamped
-          imaginationCueArray={rivalry}
-          leftOpacity={leftOpacity}
-          rightOpacity={rightOpacity}
+        <Step4
+          recallType={rivalry}
+          redOpacity={redOpacity}
+          greenOpacity={greenOpacity}
           stimulusWidth={stimulusWidth}
           stimulusDistance={stimulusDistance}
           degreeValue={degreeValue}

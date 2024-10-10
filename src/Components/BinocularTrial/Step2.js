@@ -14,6 +14,7 @@ const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
             maxHeight: 540,
@@ -23,11 +24,10 @@ const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
           }}
         >
           <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={6} marginTop={2}>
-              <Typography fontSize={25}>{cue}</Typography>
-            </Grid>
-            <Grid item xs={6} marginTop={2}>
-              <Typography fontSize={25}>{cue}</Typography>
+            <Grid item xs={8}>
+              <Typography fontSize={25} sx={{ color: 'white' }}>
+                {cue}
+              </Typography>
             </Grid>
           </Grid>
         </Card>

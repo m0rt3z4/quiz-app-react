@@ -9,37 +9,40 @@ const keyboardKeysArray = [
   keyboardKeys.V,
   keyboardKeys.z,
   keyboardKeys.Z,
+  keyboardKeys.LEFT_ARROW,
+  keyboardKeys.RIGHT_ARROW,
+  keyboardKeys.DOWN_ARROW,
 ]
 
 function useKeyboard(onResponse, startTime, timeToWait = 3000) {
   useEffect(() => {
-    const timer = setTimeout(() => {
-      window.removeEventListener('keydown', handleKeyDown)
-      onResponse({
-        responseTime: timeToWait,
-        userAnswer: 'NO_ANSWER',
-      })
-    }, timeToWait)
-
     const handleUserAnswer = (key) => {
       switch (key) {
         case keyboardKeys.m:
           return imaginationCueTypes.RED
         case keyboardKeys.M:
           return imaginationCueTypes.RED
+        case keyboardKeys.RIGHT_ARROW:
+          return imaginationCueTypes.RED
         case keyboardKeys.z:
           return imaginationCueTypes.GREEN
         case keyboardKeys.Z:
           return imaginationCueTypes.GREEN
+        case keyboardKeys.LEFT_ARROW:
+          return imaginationCueTypes.GREEN
         case keyboardKeys.v:
           return imaginationCueTypes.MIXED
         case keyboardKeys.V:
+          return imaginationCueTypes.MIXED
+        case keyboardKeys.DOWN_ARROW:
           return imaginationCueTypes.MIXED
         default:
           return null
       }
     }
     const handleKeyDown = (event) => {
+      console.log(event.key)
+
       if (!keyboardKeysArray.includes(event.key)) {
         return
       }
@@ -56,7 +59,6 @@ function useKeyboard(onResponse, startTime, timeToWait = 3000) {
     // Cleanup event listeners on unmount
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
-      clearTimeout(timer)
     }
   }, [onResponse, startTime, timeToWait])
 
