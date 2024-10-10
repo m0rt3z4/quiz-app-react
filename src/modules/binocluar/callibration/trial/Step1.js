@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import { Grid, Typography, Card } from '@mui/material'
+import { Grid, Card } from '@mui/material'
+import BinocularBullseyeDot from '../../../../Components/BinocularBullseyeDot'
+// import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
 // Intro Step
 const Step1 = () => {
-  const content = `.`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -12,8 +13,8 @@ const Step1 = () => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            backgroundColor: 'black',
             justifyContent: 'center',
+            backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
             maxHeight: 540,
@@ -23,8 +24,8 @@ const Step1 = () => {
           }}
         >
           <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25} sx={{ color: 'white' }}>{content}</Typography>
+            <Grid item xs={8}>
+              <BinocularBullseyeDot width={3} />
             </Grid>
           </Grid>
         </Card>

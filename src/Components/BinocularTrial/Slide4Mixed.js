@@ -5,23 +5,17 @@ import { Grid, Card } from '@mui/material'
 //assets
 import GREEN from '../../assets/Binocular/green_mixed.png'
 import RED from '../../assets/Binocular/red_mixed.png'
-// import MIXED_HORIZENTAL from '../../assets/Binocular/mixed_horizental.png'
-// import MIXED_VERTICAL from '../../assets/Binocular/mixed_vertical.png'
-
-import { imaginationCueTypes } from './consts'
 
 // Question Step
 const Slide4Mixed = ({
-  imaginationCueArray = [
-    imaginationCueTypes.MIXED_HORIZENTAL,
-    imaginationCueTypes.MIXED_VERTICAL,
-  ],
+  patch = 'HV',
   greenOpacity = 100,
   redOpacity = 100,
   stimulusWidth = 45,
-  stimulusDistance = 80,
   degreeValue = 0,
 }) => {
+  const flip =
+    patch === 'HV' ? `${180 - degreeValue}deg` : `${0 - degreeValue}deg`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -51,7 +45,7 @@ const Slide4Mixed = ({
               style={{
                 alignItems: 'center',
                 display: 'flex',
-                rotate: '-90deg',
+                rotate: flip,
               }}
             >
               <div
@@ -68,7 +62,7 @@ const Slide4Mixed = ({
                   alt="Rivalry1"
                   style={{
                     width: `${stimulusWidth}%`,
-                    rotate: `-${degreeValue}deg`,
+                    // rotate: `-${degreeValue}deg`,
                     opacity: `${greenOpacity}%`,
                   }}
                 />
@@ -91,7 +85,7 @@ const Slide4Mixed = ({
                   alt="Rivalry2"
                   style={{
                     width: `${stimulusWidth}%`,
-                    rotate: `-${degreeValue}deg`,
+                    // rotate: `-${degreeValue}deg`,
                     opacity: `${redOpacity}%`,
                   }}
                 />

@@ -5,19 +5,13 @@ import { Grid, Card } from '@mui/material'
 //assets
 import GREEN from '../../assets/Binocular/green2.PNG'
 import RED from '../../assets/Binocular/red2.PNG'
-import MIXED_HORIZENTAL from '../../assets/Binocular/mixed_horizental.png'
-import MIXED_VERTICAL from '../../assets/Binocular/mixed_vertical.png'
-
-import { imaginationCueTypes } from './consts'
+import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
 // Question Step
 const Slide4Revamped = ({
-  imaginationCueArray = [
-    imaginationCueTypes.MIXED_HORIZENTAL,
-    imaginationCueTypes.MIXED_VERTICAL,
-  ],
-  leftOpacity = 100,
-  rightOpacity = 100,
+  rivalryType = 'RG',
+  greenOpacity = 100,
+  redOpacity = 100,
   stimulusWidth = 40,
   stimulusDistance = 80,
   degreeValue = 0,
@@ -29,30 +23,24 @@ const Slide4Revamped = ({
     30: 0.523599,
     37: 0.645772,
   }
-  console.log(degreeValue)
+  // console.log(degreeValue)
 
   const leftDistance =
     (stimulusDistance / 2) * Math.cos(degreeToRadian[degreeValue])
   const bottomDistance =
     (stimulusDistance / 2) * Math.sin(degreeToRadian[degreeValue])
-  const picLoader = (img) => {
-    switch (img) {
-      case imaginationCueTypes.GREEN: {
-        return GREEN
-      }
-      case imaginationCueTypes.RED: {
-        return RED
-      }
-      case imaginationCueTypes.MIXED_HORIZENTAL: {
-        return MIXED_HORIZENTAL
-      }
-      case imaginationCueTypes.MIXED_VERTICAL: {
-        return MIXED_VERTICAL
-      }
-      default:
-        break
-    }
-  }
+  // const picLoader = (img) => {
+  //   switch (img) {
+  //     case imaginationCueTypes.GREEN: {
+  //       return GREEN
+  //     }
+  //     case imaginationCueTypes.RED: {
+  //       return RED
+  //     }
+  //     default:
+  //       break
+  //   }
+  // }
 
   return (
     <Grid container justifyContent={'center'} spacing={2}>
@@ -95,19 +83,25 @@ const Slide4Revamped = ({
                 }}
               >
                 <img
-                  src={picLoader(imaginationCueArray[0])}
+                  src={rivalryType === 'RG' ? RED : GREEN}
                   alt="Rivalry1"
                   style={{
                     width: `${stimulusWidth}%`,
                     rotate: `-${degreeValue}deg`,
-                    opacity: `${leftOpacity}%`,
+                    opacity: `${
+                      rivalryType === 'RG' ? redOpacity : greenOpacity
+                    }%`,
                   }}
                 />
               </div>
               <div
-                style={{ position: 'relative', bottom: '5px', color: 'white' }}
+                style={{
+                  position: 'relative',
+                  color: 'white',
+                  maxWidth: '50px',
+                }}
               >
-                .
+                <BinocularBullseyeDot width={18} />
               </div>
               <div
                 style={{
@@ -118,12 +112,14 @@ const Slide4Revamped = ({
                 }}
               >
                 <img
-                  src={picLoader(imaginationCueArray[1])}
+                  src={rivalryType === 'RG' ? GREEN : RED}
                   alt="Rivalry2"
                   style={{
                     width: `${stimulusWidth}%`,
                     rotate: `-${degreeValue}deg`,
-                    opacity: `${rightOpacity}%`,
+                    opacity: `${
+                      rivalryType === 'RG' ? greenOpacity : redOpacity
+                    }%`,
                   }}
                 />
               </div>

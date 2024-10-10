@@ -9,10 +9,7 @@ import {
   TextField,
 } from '@mui/material'
 import OpacitySlider from './OpacitySlider'
-import {
-  recallTypes,
-  imaginationCueTypes,
-} from '../../../../Components/BinocularTrial/consts'
+import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
 import { pages } from '.'
 // import { createCalibrationSet } from '../../../../modules/experiment2/createBinocularParams'
@@ -22,23 +19,13 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [slide2Time, setSlide2Tiem] = useState(750)
   const [slide3Time, setSlide3Tiem] = useState(6000)
   const [slide4Time, setSlide4Tiem] = useState(750)
-  const [leftOpacity, setLeftOpacity] = useState(100)
-  const [rightOpacity, setRightOpacity] = useState(100)
+  const [redOpacity, setRedOpacity] = useState(100)
+  const [greenOpacity, setGreenOpacity] = useState(100)
   const [stimulusWidth, setStimulusWidth] = useState(40)
   const [stimulusDistance, setStimulusDistance] = useState(80)
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
-  // const arr = ['RED', 'GREEN', 'MIXED']
-
-  // const trial = createCalibrationSet(8).map((trial) => {
-  //   trial.userAnswer = {
-  //     answer: arr[Math.floor(Math.random() * arr.length)],
-  //     time: Math.floor(Math.random() * 3000),
-  //   }
-  //   return trial
-  // })
-  // console.log(trial)
 
   const onClickPerceptual = () => {
     const settingObj = {
@@ -46,12 +33,14 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       slide2Time,
       slide3Time,
       slide4Time,
-      leftOpacity,
-      rightOpacity,
+      redOpacity,
+      greenOpacity,
+      stimulusWidth,
+      stimulusDistance,
     }
     const paramsObj = {
       imaginationCue: imgCue,
-      recallType: recallTypes[rivalry],
+      recallType: rivalry,
     }
     onStartPreview(pages.TRIAL, { params: paramsObj, settings: settingObj })
   }
@@ -78,7 +67,6 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             variant="outlined"
             sx={{ borderRadius: '20px' }}
           />
-          {/* <Divider variant="fullWidth" sx={{ paddingTop: 2 }} /> */}
         </Grid>
       </Grid>
     )
@@ -180,17 +168,17 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 </Grid>
                 <Grid container item xs={12} justifyContent={'center'}>
                   <OpacitySlider
-                    leftOpacity={leftOpacity}
-                    setLeftOpacity={setLeftOpacity}
-                    rightOpacity={rightOpacity}
-                    setRightOpacity={setRightOpacity}
+                    redOpacity={redOpacity}
+                    setRedOpacity={setRedOpacity}
+                    greenOpacity={greenOpacity}
+                    setGreenOpacity={setGreenOpacity}
                     stimulusWidth={stimulusWidth}
                     setStimulusWidth={setStimulusWidth}
                     stimulusDistance={stimulusDistance}
                     setStimulusDistance={setStimulusDistance}
                     degreeValue={degreeValue}
                     setDegreeValue={setDegreeValue}
-                    rivalry={recallTypes[rivalry]}
+                    rivalry={rivalry}
                   />
                 </Grid>
                 <Grid item xs={12}>

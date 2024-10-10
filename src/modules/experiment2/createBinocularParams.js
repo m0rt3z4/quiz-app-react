@@ -4,6 +4,7 @@ import {
 } from '../../Components/BinocularTrial/consts'
 import shuffleArray from '../../helpers/shuffleArray'
 
+const angleArray = [0, 11.5, 22.5, 30, 37, 30, 22.5, 11.5]
 export const createCalibrationSet = (size = 8) => {
   const quarter = size / 4
   //
@@ -20,7 +21,9 @@ export const createCalibrationSet = (size = 8) => {
     return { imaginationCue: cue, recallType: recallTypes.HV, recallName: 'HV' }
   })
   const result = shuffleArray([...rg, ...gr, ...hv, ...vh])
-  return result
+  return result.map((set, index) => {
+    return { ...set, angle: angleArray[index % angleArray.length] }
+  })
 }
 
 const generateImaginationCue = (size) => {

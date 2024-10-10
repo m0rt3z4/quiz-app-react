@@ -18,3 +18,10 @@ export const recallTypes = {
     imaginationCueTypes.MIXED_VERTICAL,
   ],
 }
+
+export const recallTypesNames = {
+  RG: 'RG',
+  GR: 'GR',
+  VH: 'VH',
+  HV: 'HV',
+}

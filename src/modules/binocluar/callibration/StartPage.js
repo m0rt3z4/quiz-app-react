@@ -2,6 +2,7 @@
 import React from 'react'
 import { Grid, Typography, Card } from '@mui/material'
 import useKeyboard from './trial/useKeyboard'
+import BinocularBullseyeDot from '../../../Components/BinocularBullseyeDot'
 
 // Intro Step
 const StartPage = ({ onUserAnswer, isStart = false }) => {
@@ -12,7 +13,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
   }
   useKeyboard(keyboardCallback, Date.now())
 
-  const content = `${isStart ? 'Press -> to start' : '.'}`
+  const content = `Press -> to start`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -31,11 +32,17 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
           }}
         >
           <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={8} marginTop={2}>
-              <Typography fontSize={25} sx={{ color: 'white' }}>
-                {content}
-              </Typography>
-            </Grid>
+            {isStart ? (
+              <Grid item xs={8} marginTop={2}>
+                <Typography fontSize={25} sx={{ color: 'white' }}>
+                  {content}
+                </Typography>
+              </Grid>
+            ) : (
+              <Grid item xs={8}>
+                <BinocularBullseyeDot width={3} />
+              </Grid>
+            )}
           </Grid>
         </Card>
       </Grid>
