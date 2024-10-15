@@ -118,7 +118,12 @@ export const Experiment2Grid = ({
               />
             )
           } else {
-            cells.push(<GridCell darkTheme={darkTheme} />)
+            cells.push(
+              <GridCell
+                darkTheme={darkTheme}
+                isCenterCell={i - 1 === 1 && j - 1 === 1 && darkTheme}
+              />
+            )
           }
         }
       }
@@ -128,7 +133,8 @@ export const Experiment2Grid = ({
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            maxWidth: 420,
+            maxWidth: darkTheme ? 500 : 380,
+            maxHeight: darkTheme ? 100 : 35,
             width: '100%',
           }}
         >
@@ -156,7 +162,7 @@ export const Experiment2Grid = ({
         sx={{
           display: 'block',
           flexWrap: 'wrap',
-          maxWidth: 420,
+          maxWidth: darkTheme ? 500 : 380,
         }}
       >
         {renderGrid()}

@@ -7,9 +7,11 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
 import BinocularCell from './BinocularCell'
+import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
 const GridCell = ({
   darkTheme = false,
+  isCenterCell = false,
   cellType = cellTypes.EMPTY,
   patchType = '',
   cornerType = cornerTypes.EMPTY,
@@ -19,7 +21,7 @@ const GridCell = ({
   rightBorder = false,
 }) => {
   const { feedbackStatus } = useExperiment2Context()
-  const cellSize = darkTheme ? 65 : 34
+  const cellSize = darkTheme ? 85 : 34
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
@@ -67,7 +69,9 @@ const GridCell = ({
               width: cellSize,
               height: cellSize,
             }}
-          />
+          >
+            {isCenterCell ? <BinocularBullseyeDot width={30}/> : null}
+          </Box>
         )
       }
       case cellTypes.BINOCULAR: {
