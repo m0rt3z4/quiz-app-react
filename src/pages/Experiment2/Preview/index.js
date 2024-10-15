@@ -9,6 +9,9 @@ import {
 import ExperimentModule from '../../../modules/experiment2/ExperimentModule'
 import PreviewTrialPage from './PreviewTrial'
 import PreviewBinocularPage from './PreviewBinocular'
+import { Experiment2Grid } from '../../../Components/Experiment2Grid'
+import { cellTypes } from '../../../Components/Experiment2Grid/consts'
+import BinocularTrialV2 from '../../../modules/binocularv2/trial'
 
 export const previewPages = {
   TRIAL_GRID: 1,
@@ -39,6 +42,14 @@ export const Experiment2PreviewPage = () => {
     }
     case 1: {
       return <PreviewGridPage onBack={backButton} />
+      // return (
+      //   <Experiment2Grid
+      //     size={3}
+      //     darkTheme
+      //     stimuli={{ 3: { cellType: cellTypes.BINOCULAR }}}
+      //   />
+      //   // <BinocularTrialV2 onFinishTrial={backButton} />
+      // )
     }
     case 2: {
       return <PreviewTrialPage onBack={backButton} />

@@ -4,11 +4,13 @@ import { useExperiment2Context } from '../../../../layouts/Experiment2Layout/con
 import BinocularTrial from '../../../../Components/BinocularTrial'
 import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
 import { createCalibrationExperiment } from '../../../../modules/binocluar/callibration/createCallibrationExperiment'
+import BinocularTrialV2 from '../../../../modules/binocularv2/trial'
 
 export const pages = {
   SETTING: 1,
   TRIAL: 2,
   CALLIBRATION: 3,
+  BINOCLAR_V2: 4,
 }
 export const PreviewBinocularPage = ({ onBack }) => {
   const [state, setState] = useState(1)
@@ -48,6 +50,15 @@ export const PreviewBinocularPage = ({ onBack }) => {
         }, 100)
         break
       }
+      case pages.BINOCLAR_V2: {
+        // setTrialParams(options.params)
+        // setTrialSettings(options.settings)
+        setTimeout(() => {
+          setState(pages.BINOCLAR_V2)
+          return clearTimeout()
+        }, 100)
+        break
+      }
 
       default:
         break
@@ -76,7 +87,13 @@ export const PreviewBinocularPage = ({ onBack }) => {
           experiment={createCalibrationExperiment(4)}
         />
       )
-
+    case 4:
+      return (
+        <BinocularTrialV2
+          onFinishTrial={onFinishTrial}
+          // experiment={createCalibrationExperiment(4)}
+        />
+      )
     default:
       onBack()
   }
