@@ -90,7 +90,7 @@ const BinocularTrialV2 = ({
         <Experiment2Grid
           size={3}
           darkTheme
-          stimuli={{ 4: { cellType: cellTypes.IMAGINARY } }}
+          stimuli={{ 8: { cellType: cellTypes.IMAGINARY } }}
         />
       )
     }
@@ -99,7 +99,7 @@ const BinocularTrialV2 = ({
         <Experiment2Grid
           size={3}
           darkTheme
-          stimuli={{ 4: { cellType: cellTypes.BINOCULAR } }}
+          stimuli={{ 8: { cellType: cellTypes.BINOCULAR } }}
         />
 
         // <Step4

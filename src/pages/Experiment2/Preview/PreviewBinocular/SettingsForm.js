@@ -226,6 +226,22 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       CALLIBRATION
                     </Button>
                   </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      onClick={() => {
+                        onStartPreview(pages.BINOCLAR_V2)
+                      }}
+                      size="large"
+                      sx={{
+                        width: '70%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                      color="inherit"
+                    >
+                      Binocular v2
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
             </Grid>
