@@ -5,6 +5,7 @@ export const cellTypes = {
   CORNER: 'CORNER',
   IMAGINARY: 'IMAGINARY',
   IMAGINARY_REVERSE: 'IMAGINARY_REVERSE',
+  BINOCULAR: 'BINOCULAR',
 }
 export const cornerTypes = {
   UP: 'UP',

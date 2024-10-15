@@ -6,10 +6,12 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import BinocularCell from './BinocularCell'
 
 const GridCell = ({
-  showStimulus,
+  darkTheme = false,
   cellType = cellTypes.EMPTY,
+  patchType = '',
   cornerType = cornerTypes.EMPTY,
   topBorder = false,
   bottomBorder = false,
@@ -17,20 +19,35 @@ const GridCell = ({
   rightBorder = false,
 }) => {
   const { feedbackStatus } = useExperiment2Context()
+  const cellSize = darkTheme ? 65 : 34
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
         case cornerTypes.DOWN: {
-          return <ArrowDownwardIcon />
+          return (
+            <ArrowDownwardIcon
+              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+            />
+          )
         }
         case cornerTypes.UP: {
-          return <ArrowUpwardIcon />
+          return (
+            <ArrowUpwardIcon
+              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+            />
+          )
         }
         case cornerTypes.RIGHT: {
-          return <ArrowForwardIcon />
+          return (
+            <ArrowForwardIcon
+              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+            />
+          )
         }
         case cornerTypes.LEFT: {
-          return <ArrowBackIcon />
+          return (
+            <ArrowBackIcon sx={{ color: `${darkTheme ? 'white' : 'black'}` }} />
+          )
         }
         default:
           break
@@ -42,17 +59,19 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor:
-                cellType === cellTypes.FILLED ? 'black' : 'white',
+              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid black`,
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
               borderCollapse: 'collapse',
-              width: 34,
-              height: 34,
+              width: cellSize,
+              height: cellSize,
             }}
           />
         )
+      }
+      case cellTypes.BINOCULAR: {
+        return <BinocularCell darkTheme cellSize={cellSize} />
       }
       case cellTypes.FILLED: {
         return (
@@ -64,8 +83,8 @@ const GridCell = ({
               alignItems: 'center',
               border: `1px solid gray`,
               borderCollapse: 'collapse',
-              width: 34,
-              height: 34,
+              width: cellSize,
+              height: cellSize,
             }}
           />
         )
@@ -89,7 +108,7 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'white',
+              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: justify,
               alignItems: align,
               borderStyle: 'solid',
@@ -98,8 +117,8 @@ const GridCell = ({
                 bottomBorder ? 1 : 0
               }px ${leftBorder ? 1 : 0}px`,
               borderCollapse: 'collapse',
-              width: 36,
-              height: 36,
+              width: cellSize + 2,
+              height: cellSize + 2,
             }}
           >
             {cornerType === cornerTypes.EMPTY ? null : (
@@ -124,8 +143,8 @@ const GridCell = ({
               alignItems: 'center',
               border: `1px solid black`,
               borderCollapse: 'collapse',
-              width: 34,
-              height: 34,
+              width: cellSize,
+              height: cellSize,
             }}
           >
             <Box
@@ -136,8 +155,8 @@ const GridCell = ({
                 alignItems: 'center',
                 border: `3px solid white`,
                 borderCollapse: 'collapse',
-                width: 26,
-                height: 26,
+                width: cellSize - 8,
+                height: cellSize - 8,
               }}
             />
           </Box>
@@ -148,49 +167,18 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'white',
+              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid black`,
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
               borderCollapse: 'collapse',
-              width: 34,
-              height: 34,
+              width: cellSize,
+              height: cellSize,
             }}
           />
         )
     }
   }
-  // return (
-  //   <Box
-  //     sx={{
-  //       display: 'flex',
-  //       backgroundColor: cellType === cellTypes.FILLED ? 'black' : 'white',
-  //       justifyContent: 'center',
-  //       alignItems: 'center',
-  //       borderStyle: 'solid',
-  //       borderColor: 'black',
-  //       borderWidth: '1px 0px 0px 0px',
-  //       borderCollapse: 'collapse',
-  //       width: 34,
-  //       height: 34,
-  //     }}
-  //   >
-  //     {cellType === cellTypes.INQUIRY ? (
-  //       <Box
-  //         sx={{
-  //           display: 'flex',
-  //           backgroundColor: 'black',
-  //           justifyContent: 'center',
-  //           alignItems: 'center',
-  //           border: `3px solid white`,
-  //           borderCollapse: 'collapse',
-  //           width: 26,
-  //           height: 26,
-  //         }}
-  //       ></Box>
-  //     ) : null}
-  //   </Box>
-  // )
   return renderCell()
 }
 

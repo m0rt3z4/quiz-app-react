@@ -27,6 +27,7 @@ export const Experiment2Grid = ({
     //   cellType: cellTypes.FILLED,
     // },
   },
+  darkTheme = false,
 }) => {
   const increasedSize = size + 2
   const stimuliCount = Object.keys(stimuli).length
@@ -77,6 +78,7 @@ export const Experiment2Grid = ({
         ) {
           const cornerCell = (
             <GridCell
+              darkTheme={darkTheme}
               cellType={cellTypes.CORNER}
               bottomBorder={i === 0 && j > 0 && j < size + 1}
               rightBorder={j === 0 && i > 0 && i < size + 1}
@@ -91,6 +93,7 @@ export const Experiment2Grid = ({
               cells.push(
                 <GridCell
                   cellType={cellTypes.CORNER}
+                  darkTheme={darkTheme}
                   bottomBorder={i === 0 && j > 0 && j < size + 1}
                   rightBorder={j === 0 && i > 0 && i < size + 1}
                   leftBorder={j === size + 1 && i > 0 && i < size + 1}
@@ -105,11 +108,17 @@ export const Experiment2Grid = ({
             cells.push(cornerCell)
           }
         } else {
-          const cellId = (i - 1) * 6 + (j - 1)
+          const cellId = (i - 1) * size + (j - 1)
           if (Object.keys(stimuli).includes(`${cellId}`)) {
-            cells.push(<GridCell cellType={stimuli[cellId].cellType} />)
+            // if (stimuli[cellId].cellType === cellTypes.BINOCULAR)
+            cells.push(
+              <GridCell
+                darkTheme={darkTheme}
+                cellType={stimuli[cellId].cellType}
+              />
+            )
           } else {
-            cells.push(<GridCell />)
+            cells.push(<GridCell darkTheme={darkTheme} />)
           }
         }
       }
@@ -134,10 +143,10 @@ export const Experiment2Grid = ({
     <Card
       sx={{
         display: 'flex',
-        backgroundColor: 'white',
+        backgroundColor: `${darkTheme ? 'black' : 'white'}`,
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: 350,
+        minHeight: 470,
         padding: 6,
         borderRadius: '35px',
         border: '1px solid black',
