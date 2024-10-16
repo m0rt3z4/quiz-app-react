@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { recallTypesNames } from './consts'
-import Slide4Revamped from './Slide4Revamped'
+// import Slide4Revamped from './Slide4Revamped'
 import Slide4Mixed from './Slide4Mixed'
+import Step4Fused from './Step4Fused'
 
 // Question Step
 const Step4 = ({
@@ -18,7 +19,7 @@ const Step4 = ({
     recallType === recallTypesNames.RG
   ) {
     return (
-      <Slide4Revamped
+      <Step4Fused
         degreeValue={degreeValue}
         rivalryType={recallType}
         greenOpacity={greenOpacity}

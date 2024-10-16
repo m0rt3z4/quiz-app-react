@@ -21,8 +21,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [slide4Time, setSlide4Tiem] = useState(750)
   const [redOpacity, setRedOpacity] = useState(100)
   const [greenOpacity, setGreenOpacity] = useState(100)
-  const [stimulusWidth, setStimulusWidth] = useState(40)
-  const [stimulusDistance, setStimulusDistance] = useState(80)
+  const [stimulusWidth, setStimulusWidth] = useState(50)
+  const [stimulusDistance, setStimulusDistance] = useState(47)
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
@@ -69,6 +69,21 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
           />
         </Grid>
       </Grid>
+    )
+  }
+  const SettingsButton = ({ size = 40, text = '', onClickButton }) => {
+    return (
+      <Button
+        onClick={onClickButton}
+        size="large"
+        sx={{
+          width: `${size}%`,
+          backgroundColor: 'lightgray',
+          margin: '5px',
+        }}
+      >
+        {text}
+      </Button>
     )
   }
   return (
@@ -197,50 +212,29 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={onClickPerceptual}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                      color="inherit"
-                    >
-                      Binocular Trial
-                    </Button>
+                    <SettingsButton
+                      size={70}
+                      text="Binocular Trial"
+                      onClickButton={onClickPerceptual}
+                    />
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={() => {
+                    <SettingsButton
+                      size={70}
+                      text="CALLIBRATION"
+                      onClickButton={() => {
                         onStartPreview(pages.CALLIBRATION)
                       }}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                      color="inherit"
-                    >
-                      CALLIBRATION
-                    </Button>
+                    />
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={() => {
+                    <SettingsButton
+                      size={70}
+                      text="Binocular v2"
+                      onClickButton={() => {
                         onStartPreview(pages.BINOCLAR_V2)
                       }}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                      color="inherit"
-                    >
-                      Binocular v2
-                    </Button>
+                    />
                   </Grid>
                 </Grid>
               </Grid>

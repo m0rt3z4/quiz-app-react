@@ -30,12 +30,12 @@ const OpacitySlider = ({
   ]
   const marks2 = [
     {
-      value: 40,
-      label: '40',
+      value: 20,
+      label: '20',
     },
     {
-      value: 150,
-      label: '150',
+      value: 80,
+      label: '80',
     },
   ]
   const marks3 = [
@@ -49,6 +49,10 @@ const OpacitySlider = ({
     },
   ]
   const marks4 = [
+    { value: -37, label: '-37°' },
+    { value: -30, label: '-30°' },
+    { value: -22.5, label: '-22.5°' },
+    { value: -11.5, label: '-11.5°' },
     { value: 0, label: '0' },
     { value: 11.5, label: '11.5°' },
     { value: 22.5, label: '22.5°' },
@@ -110,8 +114,8 @@ const OpacitySlider = ({
           color="success"
           valueLabelDisplay="on"
           marks={marks2}
-          max={150}
-          min={40}
+          max={80}
+          min={20}
         />
       </Grid>
       <Grid container item xs={12} paddingTop={4}>
@@ -125,7 +129,8 @@ const OpacitySlider = ({
           valueLabelDisplay="on"
           marks={marks4}
           step={null}
-          max={45}
+          min={-40}
+          max={40}
         />
       </Grid>
       <Grid container item xs={12} paddingTop={2}>
