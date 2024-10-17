@@ -2,7 +2,8 @@ import React from 'react'
 
 import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
-import Step4 from '../../../../Components/BinocularTrial/Step4'
+import Step4 from '../../../../modules/binocularv2/trial/Step4'
+// import Step4 from '../../../../Components/BinocularTrial/Step4'
 
 const OpacitySlider = ({
   redOpacity,
@@ -131,7 +132,15 @@ const OpacitySlider = ({
           max={40}
         />
       </Grid>
-      <Grid container item xs={12} paddingTop={2}>
+      <Grid container item xs={12} paddingTop={2} justifyContent={'center'}>
+        {/* <Step4
+          recallType={rivalry}
+          redOpacity={redOpacity}
+          greenOpacity={greenOpacity}
+          stimulusWidth={stimulusWidth}
+          stimulusDistance={stimulusDistance}
+          degreeValue={degreeValue}
+        /> */}
         <Step4
           recallType={rivalry}
           redOpacity={redOpacity}

@@ -20,13 +20,13 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [slide4Time, setSlide4Tiem] = useState(750)
   const [redOpacity, setRedOpacity] = useState(100)
   const [greenOpacity, setGreenOpacity] = useState(100)
-  const [stimulusWidth, setStimulusWidth] = useState(50)
-  const [stimulusDistance, setStimulusDistance] = useState(47)
+  const [stimulusWidth, setStimulusWidth] = useState(80)
+  const [stimulusDistance, setStimulusDistance] = useState(55)
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
-  const [rivalry, setRivalry] = useState('GR')
+  const [rivalry, setRivalry] = useState('FUSED')
 
-  const onClickPerceptual = () => {
+  const onClickV2 = () => {
     const settingObj = {
       slide1Time,
       slide2Time,
@@ -40,8 +40,12 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
     const paramsObj = {
       imaginationCue: imgCue,
       recallType: rivalry,
+      angle: degreeValue,
     }
-    onStartPreview(pages.TRIAL, { params: paramsObj, settings: settingObj })
+    onStartPreview(pages.BINOCLAR_V2, {
+      params: paramsObj,
+      settings: settingObj,
+    })
   }
 
   const Item = ({ text = '', value, setValue }) => {
@@ -209,8 +213,10 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               <Grid item xs={4}>
                 <SettingsButton
                   size={70}
-                  text="Binocular Trial"
-                  onClickButton={onClickPerceptual}
+                  text="Binocular v2"
+                  onClickButton={() => {
+                    onClickV2(pages.BINOCLAR_V2)
+                  }}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -222,15 +228,6 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   }}
                 />
               </Grid>
-              {/* <Grid item xs={4}>
-                <SettingsButton
-                  size={70}
-                  text="Binocular v2"
-                  onClickButton={() => {
-                    onStartPreview(pages.BINOCLAR_V2)
-                  }}
-                />
-              </Grid> */}
             </Grid>
           </Grid>
         </Card>
