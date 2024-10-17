@@ -72,10 +72,6 @@ const BinocularTrial = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeTitle, trialParams])
 
-  // const nextStep = () => {
-  //   setStep((step) => step + 1)
-  // }
-
   switch (step) {
     case 1: {
       return <Step1 />

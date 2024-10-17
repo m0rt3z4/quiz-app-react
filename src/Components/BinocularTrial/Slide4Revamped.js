@@ -29,18 +29,6 @@ const Slide4Revamped = ({
     (stimulusDistance / 2) * Math.cos(degreeToRadian[degreeValue])
   const bottomDistance =
     (stimulusDistance / 2) * Math.sin(degreeToRadian[degreeValue])
-  // const picLoader = (img) => {
-  //   switch (img) {
-  //     case imaginationCueTypes.GREEN: {
-  //       return GREEN
-  //     }
-  //     case imaginationCueTypes.RED: {
-  //       return RED
-  //     }
-  //     default:
-  //       break
-  //   }
-  // }
 
   return (
     <Grid container justifyContent={'center'} spacing={2}>

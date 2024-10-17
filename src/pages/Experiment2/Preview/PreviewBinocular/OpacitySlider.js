@@ -1,6 +1,5 @@
 import React from 'react'
 
-// import Slide4 from '../../../../Components/BinocularTrial/Step4'
 import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
 import Step4 from '../../../../Components/BinocularTrial/Step4'
@@ -62,7 +61,6 @@ const OpacitySlider = ({
   return (
     <Grid container xs={10}>
       <Grid container xs={12} spacing={2}>
-        {' '}
         <Grid container item xs={6} paddingTop={4}>
           <Typography variant="h6">Red Opacity:</Typography>
           <Slider
