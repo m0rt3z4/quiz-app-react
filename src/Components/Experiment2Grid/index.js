@@ -28,6 +28,7 @@ export const Experiment2Grid = ({
     // },
   },
   darkTheme = false,
+  binocularOptions,
 }) => {
   const increasedSize = size + 2
   const stimuliCount = Object.keys(stimuli).length
@@ -115,6 +116,7 @@ export const Experiment2Grid = ({
               <GridCell
                 darkTheme={darkTheme}
                 cellType={stimuli[cellId].cellType}
+                binocularOptions={binocularOptions}
               />
             )
           } else {
@@ -152,6 +154,7 @@ export const Experiment2Grid = ({
         backgroundColor: `${darkTheme ? 'black' : 'white'}`,
         justifyContent: 'center',
         alignItems: 'center',
+        minWidth: 500,
         minHeight: 470,
         padding: 6,
         borderRadius: '35px',

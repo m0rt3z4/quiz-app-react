@@ -19,6 +19,7 @@ const GridCell = ({
   bottomBorder = false,
   leftBorder = false,
   rightBorder = false,
+  binocularOptions = {},
 }) => {
   const { feedbackStatus } = useExperiment2Context()
   const cellSize = darkTheme ? 85 : 34
@@ -70,12 +71,12 @@ const GridCell = ({
               height: cellSize,
             }}
           >
-            {isCenterCell ? <BinocularBullseyeDot width={30}/> : null}
+            {isCenterCell ? <BinocularBullseyeDot width={30} /> : null}
           </Box>
         )
       }
       case cellTypes.BINOCULAR: {
-        return <BinocularCell darkTheme cellSize={cellSize} />
+        return <BinocularCell darkTheme cellSize={cellSize} binocularOptions={binocularOptions} />
       }
       case cellTypes.FILLED: {
         return (

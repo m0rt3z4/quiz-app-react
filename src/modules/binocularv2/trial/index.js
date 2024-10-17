@@ -8,12 +8,13 @@ import Step5 from './Step5'
 import { imaginationCueTypes } from './consts'
 import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
+import Step4 from './Step4'
 
 const trialSettingsObj = {
   slide1Time: 1000,
   slide2Time: 1000,
   slide3Time: 6000,
-  slide4Time: 750,
+  slide4Time: 1250,
   redOpacity: 100,
   greenOpacity: 100,
   stimulusWidth: 40,
@@ -95,21 +96,23 @@ const BinocularTrialV2 = ({
       )
     }
     case 4: {
+      const stimulus = { 8: { cellType: cellTypes.BINOCULAR } }
       return (
-        <Experiment2Grid
-          size={3}
-          darkTheme
-          stimuli={{ 8: { cellType: cellTypes.BINOCULAR } }}
-        />
-
-        // <Step4
-        //   degreeValue={trialParams.angle}
-        //   recallType={trialParams.recallType}
-        //   greenOpacity={trialSettings.greenOpacity}
-        //   redOpacity={trialSettings.redOpacity}
-        //   stimulusWidth={trialSettings.stimulusWidth}
-        //   stimulusDistance={trialSettings.stimulusDistance}
+        // <Experiment2Grid
+        //   size={3}
+        //   darkTheme
+        //   stimuli={{ 8: { cellType: cellTypes.BINOCULAR } }}
         // />
+
+        <Step4
+          degreeValue={trialParams.angle}
+          recallType={trialParams.recallType}
+          greenOpacity={trialSettings.greenOpacity}
+          redOpacity={trialSettings.redOpacity}
+          stimulusWidth={trialSettings.stimulusWidth}
+          stimulusDistance={trialSettings.stimulusDistance}
+          stimulus={stimulus}
+        />
       )
     }
     case 5: {
