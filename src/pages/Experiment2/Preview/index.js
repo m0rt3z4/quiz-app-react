@@ -9,6 +9,7 @@ import PreviewGridPage from './PreviewGrid'
 // import ExperimentModule from '../../../modules/experiment2/ExperimentModule'
 import PreviewTrialPage from './PreviewTrial'
 import PreviewBinocularPage from './PreviewBinocular'
+import PreviewBinocularV2Page from './PreviewBinocularV2'
 // import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 // import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 // import BinocularTrialV2 from '../../../modules/binocularv2/trial'
@@ -17,6 +18,7 @@ export const previewPages = {
   TRIAL_GRID: 1,
   PREVIEW_BLOCKS: 2,
   BINOCULAR_TRIAL: 3,
+  BINOCULAR_TRIAL_V2: 4,
 }
 
 export const Experiment2PreviewPage = () => {
@@ -56,6 +58,9 @@ export const Experiment2PreviewPage = () => {
     }
     case 3: {
       return <PreviewBinocularPage onBack={backButton} />
+    }
+    case 4: {
+      return <PreviewBinocularV2Page onBack={backButton} />
     }
     default:
       break

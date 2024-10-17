@@ -118,6 +118,34 @@ export const MainPage = ({ setPage }) => {
                 </Button>
                 <Divider sx={{ paddingTop: 3 }} />
               </Grid>
+              <Grid item xs={12} justifyContent={'center'}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '10px',
+                  }}
+                >
+                  <Typography fontSize={'15px'}>
+                    Preview The Binocular Trial Version 2:
+                  </Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={8}>
+                <Button
+                  onClick={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
+                  size="large"
+                  sx={{
+                    width: '70%',
+                    backgroundColor: 'lightgray',
+                    margin: '5px',
+                  }}
+                >
+                  preview
+                </Button>
+                <Divider sx={{ paddingTop: 3 }} />
+              </Grid>
             </Grid>
           </Card>
         </Grid>

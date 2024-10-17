@@ -19,8 +19,6 @@ const BinocularCell = ({
   cellSize = 34,
   binocularOptions = binocluarOptionsMock,
 }) => {
-  console.log(binocularOptions);
-  
   const MixedPatches = () => {
     return (
       <div
