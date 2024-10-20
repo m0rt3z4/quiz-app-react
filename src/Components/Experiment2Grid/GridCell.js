@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { cellTypes, cornerTypes } from './consts'
+import { borderColor, cellTypes, cornerTypes, bullseyeOpacity } from './consts'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
@@ -62,21 +62,29 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
+              backgroundColor: `${darkTheme ? 'black' : 'rgb(247, 241, 241)'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+              border: `1px solid ${darkTheme ? borderColor : 'black'}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
             }}
           >
-            {isCenterCell ? <BinocularBullseyeDot width={30} /> : null}
+            {isCenterCell ? (
+              <BinocularBullseyeDot width={13} opacity={bullseyeOpacity} />
+            ) : null}
           </Box>
         )
       }
       case cellTypes.BINOCULAR: {
-        return <BinocularCell darkTheme cellSize={cellSize} binocularOptions={binocularOptions} />
+        return (
+          <BinocularCell
+            darkTheme
+            cellSize={cellSize}
+            binocularOptions={binocularOptions}
+          />
+        )
       }
       case cellTypes.FILLED: {
         return (
@@ -175,7 +183,7 @@ const GridCell = ({
               backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+              border: `1px solid ${darkTheme ? borderColor : 'black'}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,

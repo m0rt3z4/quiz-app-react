@@ -14,3 +14,6 @@ export const cornerTypes = {
   RIGHT: 'RIGHT',
   EMPTY: 'EMPTY',
 }
+
+export const borderColor = 'rgb(55, 55, 55)'
+export const bullseyeOpacity = 70

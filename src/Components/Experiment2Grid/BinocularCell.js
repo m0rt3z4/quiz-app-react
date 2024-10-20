@@ -4,6 +4,7 @@ import GREEN from '../../assets/Binocular/green_mixed.png'
 import RED from '../../assets/Binocular/red_mixed.png'
 import FADED_RED from '../../assets/Binocular/faded_red.png'
 import FADED_GREEN from '../../assets/Binocular/faded_green.png'
+import { borderColor } from './consts'
 
 const binocluarOptionsMock = {
   recallType: 'MIXED',
@@ -126,7 +127,7 @@ const BinocularCell = ({
         backgroundColor: `${darkTheme ? 'black' : 'white'}`,
         justifyContent: 'center',
         alignItems: 'center',
-        border: `1px solid white`,
+        border: `1px solid ${borderColor}`,
         width: cellSize,
         height: cellSize,
       }}
