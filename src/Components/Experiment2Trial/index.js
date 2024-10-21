@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import PrePresentationStep from './PrePresentationStep'
 import { Experiment2Grid } from '../Experiment2Grid'
 import PresentationStep from './PresentationStep'
@@ -29,7 +29,7 @@ const Experiment2Trial = ({
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
-  const { showRightArrow } = useExperiment2Context()
+  const { showRightArrow } = useExp2PersistedContext()
 
   useEffect(() => {
     setStep(1)

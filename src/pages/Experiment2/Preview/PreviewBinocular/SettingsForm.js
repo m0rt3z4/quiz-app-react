@@ -1,16 +1,10 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  Grid,
-  Card,
-  Button,
-  Divider,
-  Typography,
-  TextField,
-} from '@mui/material'
+import { Box, Grid, Card, Divider, Typography, TextField } from '@mui/material'
 import OpacitySlider from './OpacitySlider'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
+import { SettingsButton } from './SettingsButton'
 import { pages } from '.'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
@@ -25,6 +19,20 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
+
+  const { changeBinocularV1Settings } = useExp2PersistedContext()
+  const onSave = () => {
+    changeBinocularV1Settings({
+      slide1Time,
+      slide2Time,
+      slide3Time,
+      slide4Time,
+      redOpacity,
+      greenOpacity,
+      stimulusWidth,
+      stimulusDistance,
+    })
+  }
 
   const onClickPerceptual = () => {
     const settingObj = {
@@ -68,22 +76,6 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
           />
         </Grid>
       </Grid>
-    )
-  }
-
-  const SettingsButton = ({ size = 40, text = '', onClickButton }) => {
-    return (
-      <Button
-        onClick={onClickButton}
-        size="large"
-        sx={{
-          width: `${size}%`,
-          backgroundColor: 'lightgray',
-          margin: '5px',
-        }}
-      >
-        {text}
-      </Button>
     )
   }
 
@@ -189,6 +181,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 degreeValue={degreeValue}
                 setDegreeValue={setDegreeValue}
                 rivalry={rivalry}
+                onSave={onSave}
               />
             </Grid>
             <Grid item xs={12}>

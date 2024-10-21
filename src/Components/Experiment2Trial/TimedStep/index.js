@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 
-import { useExperiment2Context } from '../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import { Experiment2Grid } from '../../Experiment2Grid'
 import useKeyboard from './useKeyboard'
 
@@ -12,7 +12,7 @@ const TimedStep = ({
   isInquiryCorrect,
   feedbackTime = 700,
 }) => {
-  const { showArrows, changeFeedbackStatus } = useExperiment2Context()
+  const { showArrows, changeFeedbackStatus } = useExp2PersistedContext()
 
   const onFinishSurprizeStep = (resp) => {
     showArrows(false)

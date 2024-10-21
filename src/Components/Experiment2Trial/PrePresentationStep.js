@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 import { Experiment2Grid } from '../Experiment2Grid'
 
 const PrePresentationStep = ({ onNext }) => {
-  const { showRightArrow } = useExperiment2Context()
+  const { showRightArrow } = useExp2PersistedContext()
 
   const onClickStart = (resp) => {
     showRightArrow('')

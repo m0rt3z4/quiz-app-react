@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import SettingsForm from './SettingsForm'
-import { useExperiment2Context } from '../../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import BinocularTrial from '../../../../Components/BinocularTrial'
 import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
 import { createCalibrationExperiment } from '../../../../modules/binocluar/callibration/createCallibrationExperiment'
@@ -16,7 +16,7 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
   const [state, setState] = useState(1)
   const [trialParams, setTrialParams] = useState({})
   const [trialSettings, setTrialSettings] = useState({})
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
 
   useEffect(() => {
     changeTitle('Preview Binocular Trial Version 2')

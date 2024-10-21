@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useExperiment2Context } from '../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import MainPage from './MainPage'
 import PreviewGridPage from './PreviewGrid'
 // import {
@@ -28,7 +28,7 @@ export const Experiment2PreviewPage = () => {
   const backButton = () => {
     setStep(0)
   }
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
     // const trialParams = createBlocks(8, blockTypes.PERCEPTUAL)
