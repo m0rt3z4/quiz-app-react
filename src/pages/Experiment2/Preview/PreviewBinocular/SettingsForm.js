@@ -8,19 +8,20 @@ import { SettingsButton } from './SettingsButton'
 import { pages } from '.'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
-  const [slide1Time, setSlide1Tiem] = useState(1000)
-  const [slide2Time, setSlide2Tiem] = useState(750)
-  const [slide3Time, setSlide3Tiem] = useState(6000)
-  const [slide4Time, setSlide4Tiem] = useState(750)
-  const [redOpacity, setRedOpacity] = useState(100)
-  const [greenOpacity, setGreenOpacity] = useState(100)
-  const [stimulusWidth, setStimulusWidth] = useState(50)
-  const [stimulusDistance, setStimulusDistance] = useState(47)
+  const { binocluarV1Settings,changeBinocularV1Settings } = useExp2PersistedContext()
+  
+  const [slide1Time, setSlide1Tiem] = useState(binocluarV1Settings.slide1Time)
+  const [slide2Time, setSlide2Tiem] = useState(binocluarV1Settings.slide2Time)
+  const [slide3Time, setSlide3Tiem] = useState(binocluarV1Settings.slide3Time)
+  const [slide4Time, setSlide4Tiem] = useState(binocluarV1Settings.slide4Time)
+  const [redOpacity, setRedOpacity] = useState(binocluarV1Settings.redOpacity)
+  const [greenOpacity, setGreenOpacity] = useState(binocluarV1Settings.greenOpacity)
+  const [stimulusWidth, setStimulusWidth] = useState(binocluarV1Settings.stimulusWidth)
+  const [stimulusDistance, setStimulusDistance] = useState(binocluarV1Settings.stimulusDistance)
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('GR')
 
-  const { changeBinocularV1Settings } = useExp2PersistedContext()
   const onSave = () => {
     changeBinocularV1Settings({
       slide1Time,

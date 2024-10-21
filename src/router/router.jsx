@@ -62,30 +62,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   element: (
-  //     <Experiment2Provider>
-  //       <Experiment2Layout />
-  //     </Experiment2Provider>
-  //   ),
-  //   children: [
-  //     {
-  //       id: 'main-experiment2-page',
-  //       path: hierarchy.main.experiment2.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //     {
-  //       id: 'trial-experiment2-page',
-  //       path: hierarchy.main.experiment2.preview.path,
-  //       element: <Experiment2PreviewPage />,
-  //     },
-  //     {
-  //       id: 'preview-experiment2-page',
-  //       path: hierarchy.main.experiment2.trial.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //   ],
-  // },
   {
     element: (
       <Exp2PersistedProvider>
@@ -94,20 +70,44 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        id: 'main-exp2-page',
-        path: hierarchy.main.exp2.path,
+        id: 'main-experiment2-page',
+        path: hierarchy.main.experiment2.path,
         element: <Experiment2Page />,
       },
       {
-        id: 'trial-exp2-page',
-        path: hierarchy.main.exp2.preview.path,
+        id: 'trial-experiment2-page',
+        path: hierarchy.main.experiment2.preview.path,
         element: <Experiment2PreviewPage />,
       },
       {
-        id: 'preview-exp2-page',
-        path: hierarchy.main.exp2.trial.path,
+        id: 'preview-experiment2-page',
+        path: hierarchy.main.experiment2.trial.path,
         element: <Experiment2Page />,
       },
     ],
   },
+  // {
+  //   element: (
+  //     <Exp2PersistedProvider>
+  //       <Exp2PersistedLayout />
+  //     </Exp2PersistedProvider>
+  //   ),
+  //   children: [
+  //     {
+  //       id: 'main-exp2-page',
+  //       path: hierarchy.main.exp2.path,
+  //       element: <Experiment2Page />,
+  //     },
+  //     {
+  //       id: 'trial-exp2-page',
+  //       path: hierarchy.main.exp2.preview.path,
+  //       element: <Experiment2PreviewPage />,
+  //     },
+  //     {
+  //       id: 'preview-exp2-page',
+  //       path: hierarchy.main.exp2.trial.path,
+  //       element: <Experiment2Page />,
+  //     },
+  //   ],
+  // },
 ])
