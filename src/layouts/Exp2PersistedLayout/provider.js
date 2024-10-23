@@ -25,6 +25,20 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     true
   )
+  const [binocluarV2Settings, setBinocluarV2Settings] = usePersistedState(
+    storageKeys.BINOCULAR_V2_SETTINGS,
+    {
+      slide1Time: 1000,
+      slide2Time: 1000,
+      slide3Time: 6000,
+      slide4Time: 750,
+      redOpacity: 100,
+      greenOpacity: 100,
+      stimulusWidth: 40,
+      stimulusDistance: 80,
+    },
+    true
+  )
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -68,6 +82,13 @@ export const Exp2PersistedProvider = ({ children }) => {
     [setBinocluarV1Settings]
   )
 
+  const changeBinocularV2Settings = useCallback(
+    (settings) => {
+      setBinocluarV2Settings(settings)
+    },
+    [setBinocluarV2Settings]
+  )
+
   const value = useMemo(() => {
     return {
       title,
@@ -87,6 +108,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       changeFeedbackStatus,
       binocluarV1Settings,
       changeBinocularV1Settings,
+      binocluarV2Settings,
+      changeBinocularV2Settings,
     }
   }, [
     title,
@@ -106,6 +129,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     changeFeedbackStatus,
     binocluarV1Settings,
     changeBinocularV1Settings,
+    binocluarV2Settings,
+    changeBinocularV2Settings,
   ])
 
   return (

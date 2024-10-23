@@ -9,23 +9,47 @@ import {
   TextField,
 } from '@mui/material'
 import OpacitySlider from './OpacitySlider'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
 import { pages } from '.'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
-  const [slide1Time, setSlide1Tiem] = useState(1000)
-  const [slide2Time, setSlide2Tiem] = useState(750)
-  const [slide3Time, setSlide3Tiem] = useState(6000)
-  const [slide4Time, setSlide4Tiem] = useState(750)
-  const [redOpacity, setRedOpacity] = useState(100)
-  const [greenOpacity, setGreenOpacity] = useState(100)
-  const [stimulusWidth, setStimulusWidth] = useState(80)
-  const [stimulusDistance, setStimulusDistance] = useState(55)
+  const {
+    binocluarV2Settings,
+    changeBinocularV2Settings,
+  } = useExp2PersistedContext()
+
+  const [slide1Time, setSlide1Tiem] = useState(binocluarV2Settings.slide1Time)
+  const [slide2Time, setSlide2Tiem] = useState(binocluarV2Settings.slide2Time)
+  const [slide3Time, setSlide3Tiem] = useState(binocluarV2Settings.slide3Time)
+  const [slide4Time, setSlide4Tiem] = useState(binocluarV2Settings.slide4Time)
+  const [redOpacity, setRedOpacity] = useState(binocluarV2Settings.redOpacity)
+  const [greenOpacity, setGreenOpacity] = useState(
+    binocluarV2Settings.greenOpacity
+  )
+  const [stimulusWidth, setStimulusWidth] = useState(
+    binocluarV2Settings.stimulusWidth
+  )
+  const [stimulusDistance, setStimulusDistance] = useState(
+    binocluarV2Settings.stimulusDistance
+  )
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('FUSED')
 
+  const onSave = () => {
+    changeBinocularV2Settings({
+      slide1Time,
+      slide2Time,
+      slide3Time,
+      slide4Time,
+      redOpacity,
+      greenOpacity,
+      stimulusWidth,
+      stimulusDistance,
+    })
+  }
   const onClickV2 = () => {
     const settingObj = {
       slide1Time,
@@ -193,6 +217,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 degreeValue={degreeValue}
                 setDegreeValue={setDegreeValue}
                 rivalry={rivalry}
+                onSave={onSave}
               />
             </Grid>
             <Grid item xs={12}>
