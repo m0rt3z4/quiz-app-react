@@ -39,6 +39,16 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     true
   )
+  const [memoryV1Settings, setMemoryV1Settings] = usePersistedState(
+    storageKeys.MEMORY_TASK_V2_SETTINGS,
+    {
+      timeBeforeRecognition: 6000,
+      timeToShowStimuli: 500,
+      timeBetweenStimuli: 500,
+      feedbackTime: 700,
+    },
+    true
+  )
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -88,6 +98,12 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     [setBinocluarV2Settings]
   )
+  const changeMemoryV1Settings = useCallback(
+    (settings) => {
+      setMemoryV1Settings(settings)
+    },
+    [setMemoryV1Settings]
+  )
 
   const value = useMemo(() => {
     return {
@@ -110,6 +126,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       changeBinocularV1Settings,
       binocluarV2Settings,
       changeBinocularV2Settings,
+      memoryV1Settings,
+      changeMemoryV1Settings,
     }
   }, [
     title,
@@ -131,6 +149,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     changeBinocularV1Settings,
     binocluarV2Settings,
     changeBinocularV2Settings,
+    memoryV1Settings,
+    changeMemoryV1Settings,
   ])
 
   return (

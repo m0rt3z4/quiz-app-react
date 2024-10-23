@@ -8,13 +8,33 @@ import {
   Typography,
   TextField,
 } from '@mui/material'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { blockTypes } from '../../../../modules/experiment2/createExperimentParams'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
-  const [timeBeforeRecognition, setTimeBeforeRecognition] = useState(6000)
-  const [timeToShowStimuli, setTimeToShowStimuli] = useState(500)
-  const [timeBetweenStimuli, setTimeBetweenStimuli] = useState(500)
-  const [feedbackTime, setFeedbackTime] = useState(700)
+  const { memoryV1Settings, changeMemoryV1Settings } = useExp2PersistedContext()
+
+  const [timeBeforeRecognition, setTimeBeforeRecognition] = useState(
+    memoryV1Settings.timeBeforeRecognition
+  )
+  const [timeToShowStimuli, setTimeToShowStimuli] = useState(
+    memoryV1Settings.timeToShowStimuli
+  )
+  const [timeBetweenStimuli, setTimeBetweenStimuli] = useState(
+    memoryV1Settings.timeBetweenStimuli
+  )
+  const [feedbackTime, setFeedbackTime] = useState(
+    memoryV1Settings.feedbackTime
+  )
+
+  const onSave = () => {
+    changeMemoryV1Settings({
+      timeBeforeRecognition,
+      timeToShowStimuli,
+      timeBetweenStimuli,
+      feedbackTime,
+    })
+  }
 
   const onClickPerceptual = () => {
     const settingObj = {
@@ -41,7 +61,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
         container
         item
         xs={12}
-        paddingTop={1}
+        paddingTop={2}
         alignItems={'center'}
         sx={{ maxHeight: '120px' }}
       >
@@ -57,11 +77,11 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             variant="outlined"
             sx={{ borderRadius: '20px' }}
           />
-          <Divider variant="fullWidth" sx={{ paddingTop: 2 }} />
         </Grid>
       </Grid>
     )
   }
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -83,7 +103,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               border: '1px solid black',
             }}
           >
-            <Grid container >
+            <Grid container>
               <Grid container justifyContent={'center'} xs={12} spacing={3}>
                 <Grid item xs={6}>
                   <Button
@@ -121,11 +141,6 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       value={timeToShowStimuli}
                       setValue={setTimeToShowStimuli}
                     />
-                    <Item
-                      text="Time Between Stimuli"
-                      value={timeBetweenStimuli}
-                      setValue={setTimeBetweenStimuli}
-                    />
                   </Grid>
                   <Grid container xs={6}>
                     <Item
@@ -133,6 +148,31 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       value={feedbackTime}
                       setValue={setFeedbackTime}
                     />
+                    <Item
+                      text="Time Between Stimuli"
+                      value={timeBetweenStimuli}
+                      setValue={setTimeBetweenStimuli}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid
+                  container
+                  justifyContent={'flex-end'}
+                  xs={12}
+                  paddingTop={5}
+                >
+                  <Grid item xs={4}>
+                    <Button
+                      onClick={onSave}
+                      size="large"
+                      sx={{
+                        width: '50%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                    >
+                      save
+                    </Button>
                   </Grid>
                 </Grid>
                 <Grid container item xs={12}>
