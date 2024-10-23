@@ -62,7 +62,7 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: `${darkTheme ? 'black' : 'rgb(247, 241, 241)'}`,
+              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
               border: `1px solid ${darkTheme ? borderColor : 'black'}`,

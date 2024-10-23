@@ -1,9 +1,18 @@
 import { Box, Grid, Card, Typography } from '@mui/material'
 import { Outlet } from 'react-router'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { useExp2PersistedContext } from './context'
 
 export const Exp2PersistedLayout = () => {
-  const { title, outletWidth } = useExp2PersistedContext()
+  const {
+    title,
+    outletWidth,
+    leftBarVisible,
+    rightBarVisible,
+    rightBarWarning,
+    leftBarWarning,
+  } = useExp2PersistedContext()
   return (
     <Box sx={{ flexGrow: 1, height: '100vh' }}>
       <Grid
@@ -39,6 +48,29 @@ export const Exp2PersistedLayout = () => {
           paddingTop={!title ? 6 : 3}
           spacing={2}
         >
+          <Grid item xs={1}>
+            {leftBarVisible && (
+              <Grid item>
+                {!!leftBarWarning && (
+                  <Typography color={'black'} sx={{ marginBottom: 1 }}>
+                    {leftBarWarning}
+                  </Typography>
+                )}
+                <Card
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '150px',
+                    borderRadius: '35px',
+                    border: '1px solid black',
+                  }}
+                >
+                  <ArrowBackIcon fontSize="large" />
+                </Card>
+              </Grid>
+            )}
+          </Grid>
           <Grid
             item
             justifyContent="center"
@@ -46,6 +78,29 @@ export const Exp2PersistedLayout = () => {
             xs={outletWidth}
           >
             <Outlet />
+          </Grid>
+          <Grid item xs={1}>
+            {rightBarVisible && (
+              <Grid item>
+                {!!rightBarWarning && (
+                  <Typography color={'black'} sx={{ marginBottom: 1 }}>
+                    {rightBarWarning}
+                  </Typography>
+                )}
+                <Card
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '150px',
+                    borderRadius: '35px',
+                    border: '1px solid black',
+                  }}
+                >
+                  <ArrowForwardIcon fontSize="large" />
+                </Card>
+              </Grid>
+            )}
           </Grid>
         </Grid>
       </Grid>
