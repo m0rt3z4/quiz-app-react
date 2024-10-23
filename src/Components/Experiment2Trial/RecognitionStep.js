@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import TimedStep from './TimedStep'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+// import { TrialGrid } from '../TrialGrid/TrialGrid'
 import { Experiment2Grid } from '../Experiment2Grid'
 
 const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
@@ -12,7 +12,7 @@ const RecognitionStep = ({ stimuliArray, onFinishStep }) => {
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState({})
   const [toggle, setToggle] = useState(false)
-  const { showArrows } = useExperiment2Context()
+  const { showArrows } = useExp2PersistedContext()
   console.log(stimuliArray)
 
   useEffect(() => {

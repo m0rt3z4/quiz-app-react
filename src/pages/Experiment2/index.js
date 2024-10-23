@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 // import Exit from '../../Components/Trial2/Exit'
 // import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
 export const Experiment2Page = () => {
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Welcome')
   }, [changeTitle])

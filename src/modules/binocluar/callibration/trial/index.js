@@ -3,7 +3,7 @@ import Step1 from './Step1'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
-import { useExperiment2Context } from '../../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 
 const trialSettingsObj = {
   slide1Time: 1000,
@@ -21,7 +21,7 @@ const BinocularCallibrationTrial = ({
 }) => {
   const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('')
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
 
   const stepOne = () => {
     return setTimeout(() => {

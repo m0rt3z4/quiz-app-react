@@ -5,7 +5,7 @@ import {
 } from '../../../../modules/experiment2/createExperimentParams'
 import ExperimentModule from '../../../../modules/experiment2/ExperimentModule'
 import SettingsForm from './SettingsForm'
-import { useExperiment2Context } from '../../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 
 const defaultSettings = {
   timeBeforeRecognition: 6000,
@@ -20,7 +20,7 @@ export const PreviewTrialPage = ({ onBack }) => {
   const [perceptualParams, setPerceptualParams] = useState({})
   const [imaginaryParams, setImaginaryParams] = useState({})
   const [trialSettings, setTrialSettings] = useState(defaultSettings)
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
 
   useEffect(() => {
     setPerceptualParams(createBlocks(8, blockTypes.PERCEPTUAL))

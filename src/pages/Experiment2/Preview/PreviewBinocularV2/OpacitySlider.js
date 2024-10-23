@@ -3,7 +3,7 @@ import React from 'react'
 import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
 import Step4 from '../../../../modules/binocularv2/trial/Step4'
-// import Step4 from '../../../../Components/BinocularTrial/Step4'
+import { SettingsButton } from '../PreviewBinocular/SettingsButton'
 
 const OpacitySlider = ({
   redOpacity,
@@ -17,6 +17,7 @@ const OpacitySlider = ({
   degreeValue,
   setDegreeValue,
   rivalry = recallTypes.GR,
+  onSave,
 }) => {
   const marks = [
     {
@@ -131,6 +132,11 @@ const OpacitySlider = ({
           min={-40}
           max={40}
         />
+      </Grid>
+      <Grid container item xs={12} paddingTop={4} justifyContent={'end'}>
+        <Grid item xs={4}>
+          <SettingsButton text="Save" onClickButton={onSave} />
+        </Grid>
       </Grid>
       <Grid container item xs={12} paddingTop={2} justifyContent={'center'}>
         {/* <Step4

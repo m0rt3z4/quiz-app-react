@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Box, Grid, Card, Typography, Button, Divider } from '@mui/material'
-import { useExperiment2Context } from '../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import { previewPages } from './index'
 
 export const MainPage = ({ setPage }) => {
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
   }, [changeTitle])

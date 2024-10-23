@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Grid, Card, Button } from '@mui/material'
-import { useExperiment2Context } from '../../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 
 export const PreviewGridPage = ({ onBack }) => {
   const [stimulus, setStimulus] = useState({})
-  const { changeTitle } = useExperiment2Context()
+  const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('')
   }, [changeTitle])

@@ -5,7 +5,7 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import { useExperiment2Context } from '../../layouts/Experiment2Layout/context'
+import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
@@ -21,7 +21,7 @@ const GridCell = ({
   rightBorder = false,
   binocularOptions = {},
 }) => {
-  const { feedbackStatus } = useExperiment2Context()
+  const { feedbackStatus } = useExp2PersistedContext()
   const cellSize = darkTheme ? 85 : 34
   const renderCell = () => {
     const iconLoader = () => {
@@ -62,7 +62,7 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: `${darkTheme ? 'black' : 'rgb(247, 241, 241)'}`,
+              backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
               border: `1px solid ${darkTheme ? borderColor : 'black'}`,

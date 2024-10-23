@@ -31,6 +31,20 @@ export const { collection, hierarchy } = defineRoutes([
           },
         ],
       },
+      // {
+      //   key: 'exp2',
+      //   path: '/exp2',
+      //   children: [
+      //     {
+      //       key: 'preview',
+      //       path: '/preview',
+      //     },
+      //     {
+      //       key: 'trial',
+      //       path: '/trial',
+      //     },
+      //   ],
+      // },
     ],
   },
 ])

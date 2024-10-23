@@ -2,10 +2,10 @@ import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { MainLayout } from '../layouts/MainLayout/'
 import { TrialLayout } from '../layouts/TrialLayout/TestLayout'
-import { Experiment2Layout } from '../layouts/Experiment2Layout/'
+// import { Experiment2Layout } from '../layouts/Experiment2Layout/'
 import { MainProvider } from '../layouts/MainLayout/provider'
 import { TrialProvider } from '../layouts/TrialLayout/provider'
-import { Experiment2Provider } from '../layouts/Experiment2Layout/provider'
+// import { Experiment2Provider } from '../layouts/Experiment2Layout/provider'
 import { hierarchy } from './routes'
 import TrialPage from '../pages/Trial'
 import MainPage from '../pages/main'
@@ -13,6 +13,10 @@ import SettingPage from '../pages/setting'
 import TutorialPage from '../pages/tutorial'
 import Experiment2Page from '../pages/Experiment2'
 import Experiment2PreviewPage from '../pages/Experiment2/Preview/'
+import {
+  Exp2PersistedProvider,
+  Exp2PersistedLayout,
+} from '../layouts/Exp2PersistedLayout'
 
 export const router = createBrowserRouter([
   {
@@ -60,9 +64,9 @@ export const router = createBrowserRouter([
   },
   {
     element: (
-      <Experiment2Provider>
-        <Experiment2Layout />
-      </Experiment2Provider>
+      <Exp2PersistedProvider>
+        <Exp2PersistedLayout />
+      </Exp2PersistedProvider>
     ),
     children: [
       {
@@ -82,4 +86,28 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  // {
+  //   element: (
+  //     <Exp2PersistedProvider>
+  //       <Exp2PersistedLayout />
+  //     </Exp2PersistedProvider>
+  //   ),
+  //   children: [
+  //     {
+  //       id: 'main-exp2-page',
+  //       path: hierarchy.main.exp2.path,
+  //       element: <Experiment2Page />,
+  //     },
+  //     {
+  //       id: 'trial-exp2-page',
+  //       path: hierarchy.main.exp2.preview.path,
+  //       element: <Experiment2PreviewPage />,
+  //     },
+  //     {
+  //       id: 'preview-exp2-page',
+  //       path: hierarchy.main.exp2.trial.path,
+  //       element: <Experiment2Page />,
+  //     },
+  //   ],
+  // },
 ])
