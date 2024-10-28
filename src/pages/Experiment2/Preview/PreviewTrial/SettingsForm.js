@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { blockTypes } from '../../../../modules/experiment2/createExperimentParams'
+// import MixedTrialSettings from './MixedTrialSettings'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
   const { memoryV1Settings, changeMemoryV1Settings } = useExp2PersistedContext()
@@ -20,19 +21,27 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [timeToShowStimuli, setTimeToShowStimuli] = useState(
     memoryV1Settings.timeToShowStimuli
   )
+  const [timeToShowImaginaryStimuli, setTimeToShowImaginaryStimuli] = useState(
+    memoryV1Settings.timeToShowImaginaryStimuli
+  )
   const [timeBetweenStimuli, setTimeBetweenStimuli] = useState(
     memoryV1Settings.timeBetweenStimuli
   )
   const [feedbackTime, setFeedbackTime] = useState(
     memoryV1Settings.feedbackTime
   )
+  const [timeToWaitForAnswer, setTimeToWaitForAnswer] = useState(
+    memoryV1Settings.timeToWaitForAnswer
+  )
 
   const onSave = () => {
     changeMemoryV1Settings({
       timeBeforeRecognition,
       timeToShowStimuli,
+      timeToShowImaginaryStimuli,
       timeBetweenStimuli,
       feedbackTime,
+      timeToWaitForAnswer,
     })
   }
 
@@ -41,7 +50,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       timeBeforeRecognition,
       timeToShowStimuli,
       timeBetweenStimuli,
+      timeToShowImaginaryStimuli,
       feedbackTime,
+      timeToWaitForAnswer,
     }
     onStartPreview(blockTypes.PERCEPTUAL, settingObj)
   }
@@ -50,9 +61,23 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       timeBeforeRecognition,
       timeToShowStimuli,
       timeBetweenStimuli,
+      timeToShowImaginaryStimuli,
       feedbackTime,
+      timeToWaitForAnswer,
     }
     onStartPreview(blockTypes.IMAGINARY, settingObj)
+  }
+  const onClickMixed = () => {
+    const settingObj = {
+      timeBeforeRecognition,
+      timeToShowStimuli,
+      timeBetweenStimuli,
+      timeToShowImaginaryStimuli,
+      feedbackTime,
+      timeToWaitForAnswer,
+    }
+
+    onStartPreview(blockTypes.MIXED, settingObj)
   }
 
   const Item = ({ text = '', value, setValue }) => {
@@ -137,9 +162,14 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       setValue={setTimeBeforeRecognition}
                     />
                     <Item
-                      text="Time To Show Stimulus"
+                      text="Time To Show Perceptual Stimulus"
                       value={timeToShowStimuli}
                       setValue={setTimeToShowStimuli}
+                    />
+                    <Item
+                      text="Time To Show Imaginary Stimulus"
+                      value={timeToShowImaginaryStimuli}
+                      setValue={setTimeToShowImaginaryStimuli}
                     />
                   </Grid>
                   <Grid container xs={6}>
@@ -152,6 +182,11 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       text="Time Between Stimuli"
                       value={timeBetweenStimuli}
                       setValue={setTimeBetweenStimuli}
+                    />
+                    <Item
+                      text="Time to Wait for User Answer"
+                      value={timeToWaitForAnswer}
+                      setValue={setTimeToWaitForAnswer}
                     />
                   </Grid>
                 </Grid>
@@ -211,8 +246,24 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       imaginary
                     </Button>
                   </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      onClick={onClickMixed}
+                      size="large"
+                      sx={{
+                        width: '70%',
+                        backgroundColor: 'lightgray',
+                        margin: '5px',
+                      }}
+                    >
+                      mixed
+                    </Button>
+                  </Grid>
                 </Grid>
               </Grid>
+              {/* <Grid container justifyContent={'center'} xs={12} spacing={3}>
+                <MixedTrialSettings />
+              </Grid> */}
             </Grid>
           </Card>
         </Grid>

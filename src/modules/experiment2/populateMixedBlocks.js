@@ -22,7 +22,7 @@ export const populateMixedBlocks = (
   let pickedCellId
   const randomCells = getRandomElements(36, trialSize)
   //   const presentationCellsCopy = [...randomCells]
-  console.log('befor', randomCells)
+  // console.log('befor', randomCells)
   if (!isInquiryCorrect) {
     //set inquiry cellId
     let i = 0
@@ -54,8 +54,8 @@ export const populateMixedBlocks = (
       }
       i++
     }
-    console.log('incorrect inquiryCellId', inquiryCellId)
-    console.log('incorrect picked cell id', pickedCellId)
+    // console.log('incorrect inquiryCellId', inquiryCellId)
+    // console.log('incorrect picked cell id', pickedCellId)
   } else {
     // pick random correct inquiry
     inquiryCellId = randomCells[0]
@@ -78,7 +78,7 @@ export const populateMixedBlocks = (
       cellType: cellTypes.FILLED,
     })
   })
-  console.log('Final Recall Object', recallObj)
+  // console.log('Final Recall Object', recallObj)
 
   //handle presentation
   for (let index = 0; index < trialSize; index++) {
@@ -96,8 +96,8 @@ export const populateMixedBlocks = (
       })
     }
   }
-  console.log('after', randomCells)
-  console.log('Presentation Array => ', presentationArray)
+  // console.log('after', randomCells)
+  // console.log('Presentation Array => ', presentationArray)
   return {
     presentation: presentationArray,
     recognition: recallObj,

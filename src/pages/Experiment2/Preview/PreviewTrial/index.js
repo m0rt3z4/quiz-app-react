@@ -6,6 +6,7 @@ import {
 import ExperimentModule from '../../../../modules/experiment2/ExperimentModule'
 import SettingsForm from './SettingsForm'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
+import { createMixedBlock } from '../../../../modules/experiment2/createMixedMemoryTaskParams'
 
 const defaultSettings = {
   timeBeforeRecognition: 6000,
@@ -19,11 +20,13 @@ export const PreviewTrialPage = ({ onBack }) => {
   const [experiment, setExperiment] = useState({})
   const [perceptualParams, setPerceptualParams] = useState({})
   const [imaginaryParams, setImaginaryParams] = useState({})
+  const [mixedParams, setMixedParams] = useState([])
   const [trialSettings, setTrialSettings] = useState(defaultSettings)
   const { changeTitle } = useExp2PersistedContext()
 
   useEffect(() => {
     setPerceptualParams(createBlocks(8, blockTypes.PERCEPTUAL))
+    setMixedParams(createMixedBlock(true))
     setImaginaryParams(createBlocks(8, blockTypes.IMAGINARY))
     changeTitle('Preview Blocks')
   }, [changeTitle])
@@ -37,6 +40,10 @@ export const PreviewTrialPage = ({ onBack }) => {
       }
       case blockTypes.IMAGINARY: {
         setExperiment(imaginaryParams)
+        break
+      }
+      case blockTypes.MIXED: {
+        setExperiment(mixedParams)
         break
       }
       default:

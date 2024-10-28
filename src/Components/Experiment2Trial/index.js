@@ -79,7 +79,7 @@ const Experiment2Trial = ({
       return <Experiment2Grid />
     }
     case 4: {
-      console.log('recogniton=> ', trialParams.recognition)
+      // console.log('recogniton=> ', trialParams.recognition)
 
       if (trialParams.recognitionType === recognitionTypes.ONE_SHOT) {
         return (

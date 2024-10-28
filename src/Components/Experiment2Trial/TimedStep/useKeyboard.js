@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-const timeToWait = 3000
+// const timeToWait = 3000
 
-function useKeyboard(onResponse, startTime) {
+function useKeyboard(onResponse, startTime,timeToWait = 3000) {
   useEffect(() => {
     const timer = setTimeout(() => {
       window.removeEventListener('keydown', handleKeyDown)
@@ -30,7 +30,7 @@ function useKeyboard(onResponse, startTime) {
       window.removeEventListener('keydown', handleKeyDown)
       clearTimeout(timer)
     }
-  }, [onResponse, startTime])
+  }, [onResponse, startTime, timeToWait])
 
   return null
 }
