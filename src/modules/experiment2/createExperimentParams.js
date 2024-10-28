@@ -153,9 +153,9 @@ const createRecallArray = (
   return resObj
 }
 
-const cellIdToCoordinates = (cellId, gridLength = 6) => {
+export const cellIdToCoordinates = (cellId, gridLength = 6) => {
   return { i: Math.floor(cellId / gridLength), j: cellId % gridLength }
 }
-const coordinatesToCellId = (i, j, gridLength = 6) => {
+export const coordinatesToCellId = (i, j, gridLength = 6) => {
   return i * gridLength + j
 }
