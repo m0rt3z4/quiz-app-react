@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
+import { testVar } from '../../config'
 // import Exit from '../../Components/Trial2/Exit'
 // import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
@@ -9,6 +10,7 @@ export const Experiment2Page = () => {
   const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Welcome')
+    console.log(testVar)
   }, [changeTitle])
   const navigate = useNavigate()
 
