@@ -1,0 +1,1 @@
+export const testVar = process.env.REACT_APP_TEST_VAR
