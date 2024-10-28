@@ -1,14 +1,48 @@
-import { populateMixedBlocks } from "./populateMixedBlocks"
+import { generateRandomBool, getRandomElements } from './createExperimentParams'
+import { populateMixedBlocks } from './populateMixedBlocks'
 
-const mixedBlockTypes = ['iipp', 'ppii', 'ipip', 'pipi']
+const mixedBlockTypes = [
+  'iipp',
+  'ppii',
+  'ipip',
+  'pipi',
+  'iiippp',
+  'pppiii',
+  'ipipip',
+  'pipipi',
+]
 
-export const createMixedBlock = () => {
-  //   const temp = mixedBlockTypes.map((mixedBlockType) => {
-  //     return { trialType: mixedBlockType }
-  //   })
-  console.log(createBlocks('iiippp'))
-  populateMixedBlocks()
+export const createMixedBlock = (isPreview = false) => {
+  const blocks = populateBlockTypes(isPreview)
+  const halfRecallRandomArray = generateRandomBool(blocks.length)
+  return blocks.map((block, index) =>
+    populateMixedBlocks(
+      block.trialType,
+      block.isInquiryCorrect,
+      block.isI,
+      block.nthLetter,
+      halfRecallRandomArray[index]
+    )
+  )
 }
+
+const populateBlockTypes = (isPreview = false) => {
+  let res = []
+  mixedBlockTypes.map((mixedBlockType) => {
+    if (isPreview) {
+      const previewBlock = createBlocks(mixedBlockType)
+      return (res = [
+        ...res,
+        ...getRandomElements(previewBlock.length, 2).map(
+          (i) => previewBlock[i]
+        ),
+      ])
+    }
+    return (res = [...res, ...createBlocks(mixedBlockType)])
+  })
+  return res
+}
+
 export const createBlocks = (trialType = '', numOfBlocks = 1) => {
   let res = []
   for (let i = 0; i < numOfBlocks; i++) {
