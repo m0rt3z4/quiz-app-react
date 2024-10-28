@@ -12,7 +12,11 @@ const TimedStep = ({
   isInquiryCorrect,
   feedbackTime = 700,
 }) => {
-  const { showArrows, changeFeedbackStatus } = useExp2PersistedContext()
+  const {
+    showArrows,
+    changeFeedbackStatus,
+    memoryV1Settings,
+  } = useExp2PersistedContext()
 
   const onFinishSurprizeStep = (resp) => {
     showArrows(false)
@@ -45,9 +49,13 @@ const TimedStep = ({
   }
 
   const onResponse = (resp) => {
-    delayedFeedback(resp)
+    if (resp.userAnswer === 'NO_ANSWER') {
+      onFinishSurprizeStep(resp)
+    } else {
+      delayedFeedback(resp)
+    }
   }
-  useKeyboard(onResponse, startTime)
+  useKeyboard(onResponse, startTime, memoryV1Settings.timeToWaitForAnswer)
 
   return <Experiment2Grid stimuli={stimulus} />
 }

@@ -44,8 +44,10 @@ export const Exp2PersistedProvider = ({ children }) => {
     {
       timeBeforeRecognition: 6000,
       timeToShowStimuli: 500,
+      timeToShowImaginaryStimuli: 1500,
       timeBetweenStimuli: 500,
       feedbackTime: 700,
+      timeToWaitForAnswer: 3000,
     },
     true
   )

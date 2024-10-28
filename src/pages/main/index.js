@@ -158,7 +158,19 @@ export const MainPage = () => {
                     Settings
                   </Button>
                 </Grid>
-                {/* </Grid> */}
+                <Grid item xs={8}>
+                  <Button
+                    onClick={() => redirectUrl('/experiment2')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Experiment 2
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           </Card>

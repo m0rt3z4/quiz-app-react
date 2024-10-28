@@ -21,7 +21,7 @@ export const createBlocks = (size = 8, blockType = blockTypes.PERCEPTUAL) => {
   // console.log(blocks)
   return blocks
 }
-const generateRandomBool = (size) => {
+export const generateRandomBool = (size) => {
   const halfSize = size / 2
   const array = Array(halfSize).fill(true).concat(Array(halfSize).fill(false))
   return shuffleArray(array)
@@ -30,6 +30,7 @@ const generateRandomBool = (size) => {
 export const blockTypes = {
   PERCEPTUAL: 'PERCEPTUAL',
   IMAGINARY: 'IMAGINARY',
+  MIXED: 'MIXED',
 }
 
 export const createTrial = (
@@ -153,9 +154,9 @@ const createRecallArray = (
   return resObj
 }
 
-const cellIdToCoordinates = (cellId, gridLength = 6) => {
+export const cellIdToCoordinates = (cellId, gridLength = 6) => {
   return { i: Math.floor(cellId / gridLength), j: cellId % gridLength }
 }
-const coordinatesToCellId = (i, j, gridLength = 6) => {
+export const coordinatesToCellId = (i, j, gridLength = 6) => {
   return i * gridLength + j
 }
