@@ -51,6 +51,20 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     true
   )
+  const [memoryV2MixedSizes, setMemoryV2MixedSizes] = usePersistedState(
+    storageKeys.MEMORY_TASK_V2_MIXED_SIZES,
+    {
+      iipp: 1,
+      ppii: 1,
+      ipip: 1,
+      pipi: 1,
+      iiippp: 1,
+      pppiii: 1,
+      ipipip: 1,
+      pipipi: 1,
+    },
+    true
+  )
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -106,6 +120,12 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     [setMemoryV1Settings]
   )
+  const changeMemoryV2MixedSizes = useCallback(
+    (settings) => {
+      setMemoryV2MixedSizes(settings)
+    },
+    [setMemoryV2MixedSizes]
+  )
 
   const value = useMemo(() => {
     return {
@@ -130,6 +150,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       changeBinocularV2Settings,
       memoryV1Settings,
       changeMemoryV1Settings,
+      memoryV2MixedSizes,
+      changeMemoryV2MixedSizes,
     }
   }, [
     title,
@@ -153,6 +175,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     changeBinocularV2Settings,
     memoryV1Settings,
     changeMemoryV1Settings,
+    memoryV2MixedSizes,
+    changeMemoryV2MixedSizes,
   ])
 
   return (

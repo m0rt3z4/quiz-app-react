@@ -1,50 +1,32 @@
 import React, { useState } from 'react'
 import { Grid, Button, Divider, Typography, TextField } from '@mui/material'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
-import { blockTypes } from '../../../../modules/experiment2/createExperimentParams'
 
 export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
-  const { memoryV1Settings, changeMemoryV1Settings } = useExp2PersistedContext()
+  const {
+    memoryV2MixedSizes,
+    changeMemoryV2MixedSizes,
+  } = useExp2PersistedContext()
 
-  const [timeBeforeRecognition, setTimeBeforeRecognition] = useState(
-    memoryV1Settings.timeBeforeRecognition
-  )
-  const [timeToShowStimuli, setTimeToShowStimuli] = useState(
-    memoryV1Settings.timeToShowStimuli
-  )
-  const [timeBetweenStimuli, setTimeBetweenStimuli] = useState(
-    memoryV1Settings.timeBetweenStimuli
-  )
-  const [feedbackTime, setFeedbackTime] = useState(
-    memoryV1Settings.feedbackTime
-  )
-
+  const [iippValue, setIippValue] = useState(memoryV2MixedSizes.iipp)
+  const [ppiiValue, setPpiiValue] = useState(memoryV2MixedSizes.ppii)
+  const [ipipValue, setIpipValue] = useState(memoryV2MixedSizes.ipip)
+  const [pipiValue, setPipiValue] = useState(memoryV2MixedSizes.pipi)
+  const [iiipppValue, setIiipppValue] = useState(memoryV2MixedSizes.iiippp)
+  const [pppiiiValue, setPppiiiValue] = useState(memoryV2MixedSizes.pppiii)
+  const [ipipipValue, setIpipipValue] = useState(memoryV2MixedSizes.ipipip)
+  const [pipipiValue, setPipipiValue] = useState(memoryV2MixedSizes.pipipi)
   const onSave = () => {
-    changeMemoryV1Settings({
-      timeBeforeRecognition,
-      timeToShowStimuli,
-      timeBetweenStimuli,
-      feedbackTime,
+    changeMemoryV2MixedSizes({
+      iipp: iippValue,
+      ppii: ppiiValue,
+      ipip: ipipValue,
+      pipi: pipiValue,
+      iiippp: iiipppValue,
+      pppiii: pppiiiValue,
+      ipipip: ipipipValue,
+      pipipi: pipipiValue,
     })
-  }
-
-  const onClickPerceptual = () => {
-    const settingObj = {
-      timeBeforeRecognition,
-      timeToShowStimuli,
-      timeBetweenStimuli,
-      feedbackTime,
-    }
-    onStartPreview(blockTypes.PERCEPTUAL, settingObj)
-  }
-  const onClickImaginary = () => {
-    const settingObj = {
-      timeBeforeRecognition,
-      timeToShowStimuli,
-      timeBetweenStimuli,
-      feedbackTime,
-    }
-    onStartPreview(blockTypes.IMAGINARY, settingObj)
   }
 
   const Item = ({ text = '', value, setValue }) => {
@@ -75,7 +57,6 @@ export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
   }
 
   return (
-    // <Grid container paddingTop={5}>
     <Grid
       container
       justifyContent={'center'}
@@ -88,31 +69,35 @@ export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
           <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
         </Grid>
         <Grid container item xs={12} justifyContent={'start'} paddingTop={3}>
-          <Typography variant="h6">Trial Settings:</Typography>
+          <Typography variant="h6">Mixed Block Sizes:</Typography>
         </Grid>
 
         <Grid container xs={6} paddingTop={3}>
-          <Item
-            text="Time Before Recall Step"
-            value={timeBeforeRecognition}
-            setValue={setTimeBeforeRecognition}
-          />
-          <Item
-            text="Time To Show Stimulus"
-            value={timeToShowStimuli}
-            setValue={setTimeToShowStimuli}
-          />
+          <Item text="iipp (x8)" value={iippValue} setValue={setIippValue} />
+          <Item text="ppii (x8)" value={ppiiValue} setValue={setPpiiValue} />
+          <Item text="ipip (x8)" value={ipipValue} setValue={setIpipValue} />
+          <Item text="pipi (x8)" value={pipiValue} setValue={setPipiValue} />
         </Grid>
         <Grid container xs={6}>
           <Item
-            text="Time Show Feedback"
-            value={feedbackTime}
-            setValue={setFeedbackTime}
+            text="iiippp (x12)"
+            value={iiipppValue}
+            setValue={setIiipppValue}
           />
           <Item
-            text="Time Between Stimuli"
-            value={timeBetweenStimuli}
-            setValue={setTimeBetweenStimuli}
+            text="pppiii (x12)"
+            value={pppiiiValue}
+            setValue={setPppiiiValue}
+          />
+          <Item
+            text="ipipip (x12)"
+            value={ipipipValue}
+            setValue={setIpipipValue}
+          />
+          <Item
+            text="pipipi (x12)"
+            value={pipipiValue}
+            setValue={setPipipiValue}
           />
         </Grid>
       </Grid>
@@ -131,39 +116,7 @@ export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
           </Button>
         </Grid>
       </Grid>
-      <Grid container item xs={12}>
-        <Grid container item xs={12} justifyContent={'start'} paddingBottom={3}>
-          <Typography variant="h6">Start Block Preview:</Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <Button
-            onClick={onClickPerceptual}
-            size="large"
-            sx={{
-              width: '70%',
-              backgroundColor: 'lightgray',
-              margin: '5px',
-            }}
-          >
-            perceptual
-          </Button>
-        </Grid>
-        <Grid item xs={4}>
-          <Button
-            onClick={onClickImaginary}
-            size="large"
-            sx={{
-              width: '70%',
-              backgroundColor: 'lightgray',
-              margin: '5px',
-            }}
-          >
-            imaginary
-          </Button>
-        </Grid>
-      </Grid>
     </Grid>
-    // </Grid>
   )
 }
 

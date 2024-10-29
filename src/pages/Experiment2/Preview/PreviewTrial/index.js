@@ -22,14 +22,14 @@ export const PreviewTrialPage = ({ onBack }) => {
   const [imaginaryParams, setImaginaryParams] = useState({})
   const [mixedParams, setMixedParams] = useState([])
   const [trialSettings, setTrialSettings] = useState(defaultSettings)
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, memoryV2MixedSizes } = useExp2PersistedContext()
 
   useEffect(() => {
     setPerceptualParams(createBlocks(8, blockTypes.PERCEPTUAL))
-    setMixedParams(createMixedBlock(true))
+    setMixedParams(createMixedBlock(true, memoryV2MixedSizes))
     setImaginaryParams(createBlocks(8, blockTypes.IMAGINARY))
     changeTitle('Preview Blocks')
-  }, [changeTitle])
+  }, [changeTitle, memoryV2MixedSizes])
 
   const onStartPreview = (blockType, settings) => {
     setTrialSettings(settings)

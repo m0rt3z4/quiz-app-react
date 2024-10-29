@@ -12,8 +12,8 @@ const mixedBlockTypes = [
   'pipipi',
 ]
 
-export const createMixedBlock = (isPreview = false) => {
-  const blocks = populateBlockTypes(isPreview)
+export const createMixedBlock = (isPreview = false, blockSizesSettings) => {
+  const blocks = populateBlockTypes(isPreview, blockSizesSettings)
   const halfRecallRandomArray = generateRandomBool(blocks.length)
   return blocks.map((block, index) =>
     populateMixedBlocks(
@@ -26,19 +26,26 @@ export const createMixedBlock = (isPreview = false) => {
   )
 }
 
-const populateBlockTypes = (isPreview = false) => {
+const populateBlockTypes = (isPreview = false, blockSizesSettings) => {
   let res = []
   mixedBlockTypes.map((mixedBlockType) => {
     if (isPreview) {
-      const previewBlock = createBlocks(mixedBlockType)
+      const previewBlock = createBlocks(
+        mixedBlockType,
+        blockSizesSettings[mixedBlockType]
+      )
       return (res = [
         ...res,
         ...getRandomElements(previewBlock.length, 2).map(
           (i) => previewBlock[i]
         ),
       ])
+    } else {
+      return (res = [
+        ...res,
+        ...createBlocks(mixedBlockType, blockSizesSettings[mixedBlockType]),
+      ])
     }
-    return (res = [...res, ...createBlocks(mixedBlockType)])
   })
   return res
 }
