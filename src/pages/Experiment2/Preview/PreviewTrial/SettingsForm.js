@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { blockTypes } from '../../../../modules/experiment2/createExperimentParams'
-// import MixedTrialSettings from './MixedTrialSettings'
+import MixedTrialSettings from './MixedTrialSettings'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
   const { memoryV1Settings, changeMemoryV1Settings } = useExp2PersistedContext()
@@ -112,7 +112,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
+        paddingBottom={3}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
@@ -261,9 +261,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   </Grid>
                 </Grid>
               </Grid>
-              {/* <Grid container justifyContent={'center'} xs={12} spacing={3}>
+              <Grid container justifyContent={'center'} xs={12} spacing={3}>
                 <MixedTrialSettings />
-              </Grid> */}
+              </Grid>
             </Grid>
           </Card>
         </Grid>

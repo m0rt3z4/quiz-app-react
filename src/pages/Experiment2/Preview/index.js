@@ -10,7 +10,6 @@ import PreviewGridPage from './PreviewGrid'
 import PreviewTrialPage from './PreviewTrial'
 import PreviewBinocularPage from './PreviewBinocular'
 import PreviewBinocularV2Page from './PreviewBinocularV2'
-import { createMixedBlock } from '../../../modules/experiment2/createMixedMemoryTaskParams'
 // import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 // import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 // import BinocularTrialV2 from '../../../modules/binocularv2/trial'
@@ -32,7 +31,6 @@ export const Experiment2PreviewPage = () => {
   const { changeTitle } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
-    createMixedBlock()
     // const trialParams = createBlocks(8, blockTypes.PERCEPTUAL)
     // setImaginary(createBlocks(8, blockTypes.IMAGINARY))
     // console.log(createBlocks(128, blockTypes.PERCEPTUAL))
