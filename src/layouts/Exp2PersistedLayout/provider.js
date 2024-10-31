@@ -6,6 +6,7 @@ import { storageKeys } from './consts'
 export const Exp2PersistedProvider = ({ children }) => {
   const [title, setTitle] = useState()
   const [outletWidth, setOutletWidth] = useState(6)
+  const [darkTheme, setDarkTheme] = useState(false)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState('')
@@ -74,6 +75,10 @@ export const Exp2PersistedProvider = ({ children }) => {
     setOutletWidth(newWidth)
   }, [])
 
+  const changeTheme = useCallback((theme) => {
+    setDarkTheme(theme)
+  }, [])
+
   const changeRightbarVisiblity = useCallback((isVisible) => {
     setRightBarVisible(isVisible)
   }, [])
@@ -133,6 +138,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       changeTitle,
       outletWidth,
       changeOutletWidth,
+      darkTheme,
+      changeTheme,
       leftBarVisible,
       rightBarVisible,
       changeLeftbarVisiblity,
@@ -158,6 +165,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     changeTitle,
     outletWidth,
     changeOutletWidth,
+    darkTheme,
+    changeTheme,
     leftBarVisible,
     rightBarVisible,
     changeLeftbarVisiblity,
