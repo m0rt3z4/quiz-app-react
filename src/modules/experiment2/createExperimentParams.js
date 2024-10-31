@@ -11,7 +11,11 @@ export const getRandomElements = (n = 36, numElements) => {
   return result
 }
 
-export const createExperimentParams = () => {}
+export const createExperimentParams = () => {
+  const perceptual = createBlocks(8, blockTypes.PERCEPTUAL)
+  const imaginary = createBlocks(8, blockTypes.IMAGINARY)
+  return { perceptual, imaginary }
+}
 export const createBlocks = (size = 8, blockType = blockTypes.PERCEPTUAL) => {
   const sizeArray = generateRandomBool(size)
   const inquiryArray = generateRandomBool(size)
