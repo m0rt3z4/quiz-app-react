@@ -1,6 +1,7 @@
 import {
   imaginationCueTypes,
-  recallTypes,
+  // recallTypes,
+  recallTypesNames,
 } from '../../Components/BinocularTrial/consts'
 import shuffleArray from '../../helpers/shuffleArray'
 
@@ -9,16 +10,32 @@ export const createBinocularParams = (size = 8) => {
   const quarter = size / 4
   //
   const rg = generateImaginationCue(quarter).map((cue) => {
-    return { imaginationCue: cue, recallType: recallTypes.RG, recallName: 'RG' }
+    return {
+      imaginationCue: cue,
+      recallType: recallTypesNames.RG,
+      recallName: 'RG',
+    }
   })
   const gr = generateImaginationCue(quarter).map((cue) => {
-    return { imaginationCue: cue, recallType: recallTypes.GR, recallName: 'GR' }
+    return {
+      imaginationCue: cue,
+      recallType: recallTypesNames.GR,
+      recallName: 'GR',
+    }
   })
   const vh = generateImaginationCue(quarter).map((cue) => {
-    return { imaginationCue: cue, recallType: recallTypes.VH, recallName: 'VH' }
+    return {
+      imaginationCue: cue,
+      recallType: recallTypesNames.VH,
+      recallName: 'VH',
+    }
   })
   const hv = generateImaginationCue(quarter).map((cue) => {
-    return { imaginationCue: cue, recallType: recallTypes.HV, recallName: 'HV' }
+    return {
+      imaginationCue: cue,
+      recallType: recallTypesNames.HV,
+      recallName: 'HV',
+    }
   })
   const result = shuffleArray([...rg, ...gr, ...hv, ...vh])
   return result.map((set, index) => {
