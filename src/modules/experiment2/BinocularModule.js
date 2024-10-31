@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react'
 
 import BinocularTrial from '../../Components/BinocularTrial'
+import { binocularTrialTypes } from '../../consts'
+import BinocularTrialV2 from '../binocularv2/trial'
 
 const BinocularModule = ({
   experiment,
+  trialType = binocularTrialTypes.BINOCULAR_V1,
   onFinishExperiment,
-  showTracker = false,
+  // showTracker = false,
   trialSettings,
 }) => {
   const [results, setResults] = useState([])
@@ -39,17 +42,36 @@ const BinocularModule = ({
     toggleBreake()
   }
 
-  return toggle ? (
-    <></>
-  ) : (
-    <BinocularTrial
-      trialParams={current}
-      onFinishTrial={onFinishTrial}
-      showTracker={showTracker}
-      trackerIndex={trialIndex}
-      trialSettings={trialSettings}
-    />
-  )
+  const pickTrialType = () => {
+    switch (trialType) {
+      case binocularTrialTypes.BINOCULAR_V1: {
+        return (
+          <BinocularTrial
+            trialParams={current}
+            onFinishTrial={onFinishTrial}
+            // showTracker={showTracker}
+            trackerIndex={trialIndex}
+            trialSettings={trialSettings}
+          />
+        )
+      }
+      case binocularTrialTypes.BINOCULAR_V2: {
+        return (
+          <BinocularTrialV2
+            trialParams={current}
+            onFinishTrial={onFinishTrial}
+            // showTracker={showTracker}
+            trackerIndex={trialIndex}
+            trialSettings={trialSettings}
+          />
+        )
+      }
+
+      default:
+        break
+    }
+  }
+  return toggle ? <></> : pickTrialType()
 }
 
 export default BinocularModule

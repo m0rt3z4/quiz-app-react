@@ -5,7 +5,7 @@ import {
 import shuffleArray from '../../helpers/shuffleArray'
 
 const angleArray = [0, 11.5, 22.5, 30, 37, 30, 22.5, 11.5]
-export const createCalibrationSet = (size = 8) => {
+export const createBinocularParams = (size = 8) => {
   const quarter = size / 4
   //
   const rg = generateImaginationCue(quarter).map((cue) => {

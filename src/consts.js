@@ -28,3 +28,9 @@ export const blockTypes = {
   MEMORANDUM_BLOCK: 'Memorandum_Block',
   MIXED_BLOCK: 'MIXED_BLOCK',
 }
+
+export const binocularTrialTypes = {
+  BINOCULAR_V1: 'BINOCULAR_V1',
+  BINOCULAR_V2: 'BINOCULAR_V2',
+  BINOCULAR_V3: 'BINOCULAR_V3',
+}
