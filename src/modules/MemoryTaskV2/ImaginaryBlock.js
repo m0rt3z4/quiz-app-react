@@ -5,7 +5,7 @@ import ExperimentModule from '../experiment2/ExperimentModule'
 
 const ImaginaryBlock = ({
   experiment,
-  onFinishCallibration,
+  onFinishBlock,
   trialSettings,
 }) => {
   const [step, setStep] = useState(1)
@@ -24,7 +24,7 @@ const ImaginaryBlock = ({
       return (
         <ExperimentModule
           experiment={experiment}
-          onFinishExperiment={onFinishCallibration}
+          onFinishExperiment={onFinishBlock}
           trialSettings={trialSettings}
         />
       )

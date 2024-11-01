@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
 
-const MixedBlock = ({ experiment, onFinishCallibration, trialSettings }) => {
+const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
 
   useEffect(() => {}, [])
@@ -19,7 +19,7 @@ const MixedBlock = ({ experiment, onFinishCallibration, trialSettings }) => {
       return (
         <ExperimentModule
           experiment={experiment}
-          onFinishExperiment={onFinishCallibration}
+          onFinishExperiment={onFinishBlock}
           trialSettings={trialSettings}
         />
       )

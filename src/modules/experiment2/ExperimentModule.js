@@ -17,7 +17,7 @@ const ExperimentModule = ({
     setToggle(true)
     setTimeout(() => {
       setToggle(false)
-    }, 500)
+    }, 1000)
   }
   useEffect(() => {
     if (trialIndex < experiment.length) {

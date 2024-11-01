@@ -36,8 +36,10 @@ const MemoryTaskV2 = ({ onFinishExperiment }) => {
     case 2:
       return (
         <PerceptualBlock
-          experiment={experiment.perceptual.splice(0, 2)}
+          experiment={experiment.perceptual.slice(0, 2)}
           onFinishBlock={(resp) => {
+            console.log(resp)
+
             setResults({ perceptual: resp })
             return setStep(3)
           }}
@@ -46,7 +48,7 @@ const MemoryTaskV2 = ({ onFinishExperiment }) => {
     case 3:
       return (
         <ImaginaryBlock
-          experiment={experiment.imaginary.splice(0, 2)}
+          experiment={experiment.imaginary.slice(0, 2)}
           onFinishBlock={(resp) => {
             setResults({ ...results, imaginary: resp })
             return setStep(4)
@@ -56,7 +58,7 @@ const MemoryTaskV2 = ({ onFinishExperiment }) => {
     case 4:
       return (
         <MixedBlock
-          experiment={experiment.mixed.splice(0, 2)}
+          experiment={experiment.mixed.slice(0, 2)}
           onFinishBlock={onFinish}
         />
       )
