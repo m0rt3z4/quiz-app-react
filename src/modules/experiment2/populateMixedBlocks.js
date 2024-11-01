@@ -31,20 +31,20 @@ export const populateMixedBlocks = (
       const coordinates = cellIdToCoordinates(randomPick)
 
       const possibleMoves = []
-      if (coordinates.i > 0) {
-        const cellId = coordinatesToCellId(coordinates.i - 1, coordinates.j)
+      if (coordinates.i > 1) {
+        const cellId = coordinatesToCellId(coordinates.i - 2, coordinates.j)
         if (!randomCells.includes(cellId)) possibleMoves.push(cellId)
       }
-      if (coordinates.j > 0) {
-        const cellId = coordinatesToCellId(coordinates.i, coordinates.j - 1)
+      if (coordinates.j > 1) {
+        const cellId = coordinatesToCellId(coordinates.i, coordinates.j - 2)
         if (!randomCells.includes(cellId)) possibleMoves.push(cellId)
       }
-      if (coordinates.i < 5) {
-        const cellId = coordinatesToCellId(coordinates.i + 1, coordinates.j)
+      if (coordinates.i < 4) {
+        const cellId = coordinatesToCellId(coordinates.i + 2, coordinates.j)
         if (!randomCells.includes(cellId)) possibleMoves.push(cellId)
       }
-      if (coordinates.j < 5) {
-        const cellId = coordinatesToCellId(coordinates.i, coordinates.j + 1)
+      if (coordinates.j < 4) {
+        const cellId = coordinatesToCellId(coordinates.i, coordinates.j + 2)
         if (!randomCells.includes(cellId)) possibleMoves.push(cellId)
       }
       if (possibleMoves.length > 0) {

@@ -12,9 +12,16 @@ export const Exp2PersistedLayout = () => {
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
+    darkTheme,
   } = useExp2PersistedContext()
   return (
-    <Box sx={{ flexGrow: 1, height: '100vh' }}>
+    <Box
+      sx={{
+        width: '100vw',
+        minHeight: '100vh',
+        backgroundColor: darkTheme ? 'black' : '#e6dada',
+      }}
+    >
       <Grid
         container
         justifyContent={'center'}

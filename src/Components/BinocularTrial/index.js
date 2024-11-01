@@ -80,7 +80,7 @@ const BinocularTrial = ({
       return <Step2 imaginationCue={trialParams.imaginationCue} />
     }
     case 3: {
-      return <Step3 />
+      return <Step3 imaginationCue={trialParams.imaginationCue} />
     }
     case 4: {
       return (

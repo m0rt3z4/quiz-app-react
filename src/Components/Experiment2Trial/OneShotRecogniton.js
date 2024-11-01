@@ -11,8 +11,6 @@ const OneShotRecogniton = ({
   feedbackTime,
 }) => {
   const onUserResp = (resp) => {
-    console.log(resp)
-
     onFinishStep(resp)
   }
   return (

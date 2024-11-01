@@ -91,12 +91,14 @@ const BinocularTrialV2 = ({
         <Experiment2Grid
           size={3}
           darkTheme
-          stimuli={{ 8: { cellType: cellTypes.IMAGINARY } }}
+          stimuli={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
         />
       )
     }
     case 4: {
-      const stimulus = { 8: { cellType: cellTypes.BINOCULAR } }
+      const stimulus = {
+        [trialParams.cellId]: { cellType: cellTypes.BINOCULAR },
+      }
       return (
         // <Experiment2Grid
         //   size={3}

@@ -7,7 +7,6 @@ const ExperimentModule = ({
   experiment,
   onFinishExperiment,
   showTracker = false,
-  trialSettings,
 }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
@@ -18,7 +17,7 @@ const ExperimentModule = ({
     setToggle(true)
     setTimeout(() => {
       setToggle(false)
-    }, 500)
+    }, 1000)
   }
   useEffect(() => {
     if (trialIndex < experiment.length) {
@@ -47,7 +46,6 @@ const ExperimentModule = ({
       onFinishTrial={onFinishTrial}
       showTracker={showTracker}
       trackerIndex={trialIndex}
-      trialSettings={trialSettings}
     />
   )
 }

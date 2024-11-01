@@ -12,25 +12,26 @@ const recognitionTypes = {
   ONE_SHOT: 'ONE_SHOT',
   SEQUENTIAL: 'SEQUENTIAL',
 }
-const settingsDefault = {
-  timeBeforeRecognition: 6000,
-  timeToShowStimuli: 500,
-  timeBetweenStimuli: 500,
-  feedbackTime: 700,
-}
+// const settingsDefault = {
+//   timeBeforeRecognition: 6000,
+//   timeToShowStimuli: 500,
+//   timeBetweenStimuli: 500,
+//   feedbackTime: 700,
+// }
 
 const Experiment2Trial = ({
   trialParams,
   onFinishTrial,
   showTracker = false,
   trackerIndex,
-  trialSettings = settingsDefault,
+  // trialSettings = settingsDefault,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
-  const { showRightArrow } = useExp2PersistedContext()
+  const { showRightArrow, memoryV1Settings } = useExp2PersistedContext()
 
+  const trialSettings = memoryV1Settings
   useEffect(() => {
     setStep(1)
     setResults({})
