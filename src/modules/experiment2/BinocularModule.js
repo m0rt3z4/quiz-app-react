@@ -34,7 +34,7 @@ const BinocularModule = ({
 
   const onFinishTrial = (resp) => {
     const trialResult = {
-      ...experiment[trialIndex],
+      // ...experiment[trialIndex],
       results: resp,
     }
     setResults([...results, trialResult])

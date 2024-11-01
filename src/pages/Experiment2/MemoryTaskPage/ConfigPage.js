@@ -9,12 +9,13 @@ import {
   MenuItem,
 } from '@mui/material'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
-import { binocluarTaskTypes, memeoryTaskTypes } from '.'
+import { memeoryTaskTypes } from '.'
+import { binocularTrialTypes } from '../../../consts'
 
 export const ConfigPage = ({
   binocluarType = memeoryTaskTypes.MEMORY_V2,
   setBinocularType,
-  memoryType = binocluarTaskTypes.BINOCULAR_V1,
+  memoryType = binocularTrialTypes.BINOCULAR_V1,
   setMemoryType,
   onStart,
 }) => {
@@ -57,12 +58,12 @@ export const ConfigPage = ({
                     }}
                     size="small"
                   >
-                    <MenuItem value={binocluarTaskTypes.BINOCULAR_V1}>
-                      {binocluarTaskTypes.BINOCULAR_V1}
+                    <MenuItem value={binocularTrialTypes.BINOCULAR_V1}>
+                      {binocularTrialTypes.BINOCULAR_V1}
                     </MenuItem>
-                    {/* <MenuItem value={imaginationCueTypes.RED}>
-                      {imaginationCueTypes.RED}
-                    </MenuItem> */}
+                    <MenuItem value={binocularTrialTypes.BINOCULAR_V2}>
+                      {binocularTrialTypes.BINOCULAR_V2}
+                    </MenuItem>
                   </Select>
                 </Grid>
               </Grid>
@@ -80,11 +81,8 @@ export const ConfigPage = ({
                     size="small"
                   >
                     <MenuItem value={memeoryTaskTypes.MEMORY_V2}>
-                      memeoryTaskTypes.MEMORY_V2
+                      {memeoryTaskTypes.MEMORY_V2}
                     </MenuItem>
-                    {/* <MenuItem value={'RG'}>RG</MenuItem>
-                    <MenuItem value={'HV'}>HV</MenuItem>
-                    <MenuItem value={'VH'}>VH</MenuItem> */}
                   </Select>
                 </Grid>
               </Grid>

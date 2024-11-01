@@ -4,7 +4,10 @@ import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout
 import BinocularTrial from '../../../../Components/BinocularTrial'
 import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
 import { createCalibrationExperiment } from '../../../../modules/binocluar/callibration/createCallibrationExperiment'
-import BinocularTrialV2 from '../../../../modules/binocularv2/trial'
+// import BinocularTrialV2 from '../../../../modules/binocularv2/trial'
+import BinocularModule from '../../../../modules/experiment2/BinocularModule'
+import { binocularTrialTypes } from '../../../../consts'
+import { createBinocularV2Params } from '../../../../modules/binocularv2/createBinocularV2Params'
 
 export const pages = {
   SETTING: 1,
@@ -88,12 +91,23 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
         />
       )
     case 4:
+      // return (
+      //   <BinocularTrialV2
+      //     onFinishTrial={onFinishTrial}
+      //     trialParams={trialParams}
+      //     trialSettings={trialSettings}
+      //     // experiment={createCalibrationExperiment(4)}
+      //   />
+      // )
       return (
-        <BinocularTrialV2
-          onFinishTrial={onFinishTrial}
-          trialParams={trialParams}
+        <BinocularModule
+          experiment={createBinocularV2Params(
+            8,
+            binocularTrialTypes.BINOCULAR_V2
+          )}
+          onFinishExperiment={onFinishTrial}
           trialSettings={trialSettings}
-          // experiment={createCalibrationExperiment(4)}
+          trialType={binocularTrialTypes.BINOCULAR_V2}
         />
       )
     default:

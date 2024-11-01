@@ -7,19 +7,20 @@ import { createExperimentParams } from '../../../modules/experiment2/createExper
 import { createMixedBlock } from '../../../modules/experiment2/createMixedMemoryTaskParams'
 import BinocularMainModule from '../../../modules/BinocularMain'
 import MemoryTaskV2 from '../../../modules/MemoryTaskV2'
+import { binocularTrialTypes } from '../../../consts'
+import { createBinocularV2Params } from '../../../modules/binocularv2/createBinocularV2Params'
 // import Exit from '../../Components/Trial2/Exit'
 // import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
 export const memeoryTaskTypes = {
   MEMORY_V2: 'MEMORY_V2',
 }
-export const binocluarTaskTypes = {
-  BINOCULAR_V1: 'BINOCULAR_V1',
-}
 export const MemoryTaskPage = () => {
   const [step, setStep] = useState(1)
-  const [binocluarType, setBinocularType] = useState(memeoryTaskTypes.MEMORY_V2)
-  const [memoryType, setMemoryType] = useState(binocluarTaskTypes.BINOCULAR_V1)
+  const [binocluarType, setBinocularType] = useState(
+    binocularTrialTypes.BINOCULAR_V1
+  )
+  const [memoryType, setMemoryType] = useState(memeoryTaskTypes.MEMORY_V2)
   const [binocluarExp, setBinocularExp] = useState()
   const [memoryExp, setMemoryExp] = useState()
   const { changeTitle, memoryV2MixedSizes } = useExp2PersistedContext()
@@ -30,16 +31,22 @@ export const MemoryTaskPage = () => {
     setMemoryExp(generateMemoryParams())
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changeTitle])
+  useEffect(() => {
+    setBinocularExp(generateBinocularParams(binocluarType))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [binocluarType])
 
-  const generateBinocularParams = (type = binocluarTaskTypes.BINOCULAR_V1) => {
+  const generateBinocularParams = (type = binocularTrialTypes.BINOCULAR_V1) => {
     let res = {}
     res.type = type
     res.calibration = createCalibrationExperiment(10)
     switch (type) {
-      case binocluarTaskTypes.BINOCULAR_V1:
+      case binocularTrialTypes.BINOCULAR_V1:
         res.binocular = createBinocularParams(8)
         break
-
+      case binocularTrialTypes.BINOCULAR_V2:
+        res.binocular = createBinocularV2Params(8)
+        break
       default:
         break
     }
@@ -73,7 +80,7 @@ export const MemoryTaskPage = () => {
       return (
         <BinocularMainModule
           experiment={binocluarExp}
-          binocularTrialType={binocluarTaskTypes.BINOCULAR_V1}
+          binocularTrialType={binocluarType}
           onFinishExperiment={onFinishBinocular}
         />
       )
