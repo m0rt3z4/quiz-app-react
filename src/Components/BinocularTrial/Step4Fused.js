@@ -28,7 +28,7 @@ const Step4Fused = ({
             maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
-            border: '1px solid white',
+            border: '1px solid black',
             backgroundColor: 'black',
           }}
         >
