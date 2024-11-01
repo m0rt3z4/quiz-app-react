@@ -9,6 +9,38 @@ export const MainPage = ({ setPage }) => {
     changeTitle('Preview Settings')
   }, [changeTitle])
 
+  const Item = ({ text = '', buttonLable = '', onClickButton }) => {
+    return (
+      <Grid container item xs={12} justifyContent={'center'}>
+        <Grid item xs={12} justifyContent={'center'}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              padding: '10px',
+            }}
+          >
+            <Typography fontSize={'15px'}>{text}</Typography>
+          </Box>
+        </Grid>
+        <Grid item xs={8}>
+          <Button
+            onClick={onClickButton}
+            size="large"
+            sx={{
+              width: '70%',
+              backgroundColor: 'lightgray',
+              margin: '5px',
+            }}
+          >
+            {buttonLable}
+          </Button>
+          <Divider sx={{ paddingTop: 3 }} />
+        </Grid>
+      </Grid>
+    )
+  }
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -34,118 +66,31 @@ export const MainPage = ({ setPage }) => {
               sx={{ paddingTop: '20px' }}
               justifyContent={'center'}
             >
-              <Grid item xs={12} justifyContent={'center'}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '10px',
-                  }}
-                >
-                  <Typography fontSize={'15px'}>
-                    Preview The Trial Grid:
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={8}>
-                <Button
-                  onClick={() => setPage(previewPages.TRIAL_GRID)}
-                  size="large"
-                  sx={{
-                    width: '70%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  preview
-                </Button>
-                <Divider sx={{ paddingTop: 3 }} />
-              </Grid>
-              <Grid item xs={12} justifyContent={'center'}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '10px',
-                  }}
-                >
-                  <Typography fontSize={'15px'}>
-                    Preview The Trial Blocks:
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={8}>
-                <Button
-                  onClick={() => setPage(previewPages.PREVIEW_BLOCKS)}
-                  size="large"
-                  sx={{
-                    width: '70%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  preview
-                </Button>
-                <Divider sx={{ paddingTop: 3 }} />
-              </Grid>
-              <Grid item xs={12} justifyContent={'center'}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '10px',
-                  }}
-                >
-                  <Typography fontSize={'15px'}>
-                    Preview The Binocular Trial:
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={8}>
-                <Button
-                  onClick={() => setPage(previewPages.BINOCULAR_TRIAL)}
-                  size="large"
-                  sx={{
-                    width: '70%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  preview
-                </Button>
-                <Divider sx={{ paddingTop: 3 }} />
-              </Grid>
-              <Grid item xs={12} justifyContent={'center'}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    padding: '10px',
-                  }}
-                >
-                  <Typography fontSize={'15px'}>
-                    Preview The Binocular Trial Version 2:
-                  </Typography>
-                </Box>
-              </Grid>
-              <Grid item xs={8}>
-                <Button
-                  onClick={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
-                  size="large"
-                  sx={{
-                    width: '70%',
-                    backgroundColor: 'lightgray',
-                    margin: '5px',
-                  }}
-                >
-                  preview
-                </Button>
-                <Divider sx={{ paddingTop: 3 }} />
-              </Grid>
+              <Item
+                text="Preview The Main Experience:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.MAIN_TRIAL)}
+              />
+              <Item
+                text="Preview The Trial Grid:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.TRIAL_GRID)}
+              />
+              <Item
+                text="Preview The Trial Blocks:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.PREVIEW_BLOCKS)}
+              />
+              <Item
+                text="Preview The Binocular Trial:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL)}
+              />
+              <Item
+                text="Preview The Binocular Trial Version 2:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
+              />
             </Grid>
           </Card>
         </Grid>
