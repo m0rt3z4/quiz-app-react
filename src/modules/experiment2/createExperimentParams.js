@@ -58,7 +58,7 @@ export const createTrial = (
     }
   )
   //   console.log('Presentation Stimuli Array => ', presentationStimuli)
-  let recallObj = createRecallArray(
+  let recallObj = createRecallArrayV2(
     presentationStimuli.map((item) => item.cellId),
     isInquiryCorrect,
     isHalfRecall ? 3 : 6
@@ -72,91 +72,152 @@ export const createTrial = (
   }
 }
 
-const createRecallArray = (
+const createRecallArrayV2 = (
   arr = [],
-  correctInquiry = false,
-  numOfRecallStimuli = 6
+  isInquiryCorrect = false,
+  numOfRecallStimuli = 3
 ) => {
   if (!arr.length) return []
-  let clonedArray = [...arr]
-  //   console.log('clonedArrayBefore', clonedArray)
+  const presentationArray = shuffleArray(arr)
+
   let resultArray = []
-  let resultCellIdArray = []
 
-  //add correct inquiry stimulus
-  if (correctInquiry) {
-    const inquiryStimulus = clonedArray.splice(
-      Math.floor(Math.random() * clonedArray.length),
-      1
-    )[0]
-    resultCellIdArray.push(inquiryStimulus)
-    resultArray.push({ cellId: inquiryStimulus, cellType: cellTypes.INQUIRY })
-  }
-
-  // find possible moves
-  let temp = clonedArray.map((cellId) => {
-    const coordinates = cellIdToCoordinates(cellId)
-
-    const res = []
-    if (coordinates.i > 0) {
-      res.push(coordinatesToCellId(coordinates.i - 1, coordinates.j))
+  //pick inquiry cell
+  if (isInquiryCorrect) {
+    const pickInquiry = presentationArray.splice(0, 1)[0]
+    resultArray.push({ cellId: pickInquiry, cellType: cellTypes.INQUIRY })
+  } else {
+    let inquiryCellId = -1
+    let i = 0
+    while (inquiryCellId < 0) {
+      const randomPick = presentationArray[i]
+      const coordinates = cellIdToCoordinates(randomPick)
+      const possibleMoves = []
+      if (coordinates.i > 1) {
+        const cellId = coordinatesToCellId(coordinates.i - 2, coordinates.j)
+        if (!presentationArray.includes(cellId)) possibleMoves.push(cellId)
+      }
+      if (coordinates.j > 1) {
+        const cellId = coordinatesToCellId(coordinates.i, coordinates.j - 2)
+        if (!presentationArray.includes(cellId)) possibleMoves.push(cellId)
+      }
+      if (coordinates.i < 4) {
+        const cellId = coordinatesToCellId(coordinates.i + 2, coordinates.j)
+        if (!presentationArray.includes(cellId)) possibleMoves.push(cellId)
+      }
+      if (coordinates.j < 4) {
+        const cellId = coordinatesToCellId(coordinates.i, coordinates.j + 2)
+        if (!presentationArray.includes(cellId)) possibleMoves.push(cellId)
+      }
+      if (possibleMoves.length > 0) {
+        inquiryCellId =
+          possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+        presentationArray.splice(i, 1)
+      }
+      i++
     }
-    if (coordinates.j > 0) {
-      res.push(coordinatesToCellId(coordinates.i, coordinates.j - 1))
-    }
-    if (coordinates.i < 5) {
-      res.push(coordinatesToCellId(coordinates.i + 1, coordinates.j))
-    }
-    if (coordinates.j < 5) {
-      res.push(coordinatesToCellId(coordinates.i, coordinates.j + 1))
-    }
-    return res
-  })
-  //   console.log('Possible Moves Array => ', temp)
-
-  // add incorrect inquiry stimulus
-  if (!correctInquiry) {
-    const pickedCellId = Math.floor(Math.random() * temp.length)
-    const possibleMoves = temp.splice(pickedCellId, 1)[0]
-    // console.log('pickedCellId => ', pickedCellId)
-    // console.log('possibleMoves => ', possibleMoves)
-    const inquiryCellId =
-      possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
-    // console.log('inquiry after moving => ', inquiryCellId)
-    resultCellIdArray.push(inquiryCellId)
     resultArray.push({ cellId: inquiryCellId, cellType: cellTypes.INQUIRY })
   }
-  // console.log(resultArray)
-  // console.log(resultCellIdArray)
-  for (let i = 0; i < numOfRecallStimuli - 1; i++) {
-    const possibleMoves = temp.splice(
-      Math.floor(Math.random() * temp.length),
-      1
-    )[0]
-    let res = []
-    while (res.length === 0 || possibleMoves.length > 0) {
-      const randomMove = possibleMoves.splice(
-        Math.floor(Math.random() * possibleMoves.length),
-        1
-      )[0]
-      if (!resultCellIdArray.includes(randomMove)) res.push(randomMove)
-    }
-    if (!res.length) {
-      console.log('error happened')
-      console.log(resultCellIdArray)
-    }
 
-    resultCellIdArray.push(res[0])
-    resultArray.push({ cellId: res[0], cellType: cellTypes.FILLED })
-  }
-  //   console.log(resultArray)
-  //   console.log(resultCellIdArray)
-  let resObj = {}
-  resultArray.map((res) => {
-    return (resObj[res.cellId] = { cellType: res.cellType })
+  // pick the rest of the recall array
+  const randomRecalls = getRandomElements(
+    presentationArray.length,
+    numOfRecallStimuli - 1
+  )
+  randomRecalls.map((index) => {
+    return resultArray.push({
+      cellId: presentationArray[index],
+      cellType: cellTypes.FILLED,
+    })
   })
-  return resObj
+  return resultArray
 }
+
+// const createRecallArray = (
+//   arr = [],
+//   correctInquiry = false,
+//   numOfRecallStimuli = 6
+// ) => {
+//   if (!arr.length) return []
+//   let clonedArray = [...arr]
+//   //   console.log('clonedArrayBefore', clonedArray)
+//   let resultArray = []
+//   let resultCellIdArray = []
+
+//   //add correct inquiry stimulus
+//   if (correctInquiry) {
+//     const inquiryStimulus = clonedArray.splice(
+//       Math.floor(Math.random() * clonedArray.length),
+//       1
+//     )[0]
+//     resultCellIdArray.push(inquiryStimulus)
+//     resultArray.push({ cellId: inquiryStimulus, cellType: cellTypes.INQUIRY })
+//   }
+
+//   // find possible moves
+//   let temp = clonedArray.map((cellId) => {
+//     const coordinates = cellIdToCoordinates(cellId)
+
+//     const res = []
+//     if (coordinates.i > 0) {
+//       res.push(coordinatesToCellId(coordinates.i - 1, coordinates.j))
+//     }
+//     if (coordinates.j > 0) {
+//       res.push(coordinatesToCellId(coordinates.i, coordinates.j - 1))
+//     }
+//     if (coordinates.i < 5) {
+//       res.push(coordinatesToCellId(coordinates.i + 1, coordinates.j))
+//     }
+//     if (coordinates.j < 5) {
+//       res.push(coordinatesToCellId(coordinates.i, coordinates.j + 1))
+//     }
+//     return res
+//   })
+//   //   console.log('Possible Moves Array => ', temp)
+
+//   // add incorrect inquiry stimulus
+//   if (!correctInquiry) {
+//     const pickedCellId = Math.floor(Math.random() * temp.length)
+//     const possibleMoves = temp.splice(pickedCellId, 1)[0]
+//     // console.log('pickedCellId => ', pickedCellId)
+//     // console.log('possibleMoves => ', possibleMoves)
+//     const inquiryCellId =
+//       possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+//     // console.log('inquiry after moving => ', inquiryCellId)
+//     resultCellIdArray.push(inquiryCellId)
+//     resultArray.push({ cellId: inquiryCellId, cellType: cellTypes.INQUIRY })
+//   }
+//   // console.log(resultArray)
+//   // console.log(resultCellIdArray)
+//   for (let i = 0; i < numOfRecallStimuli - 1; i++) {
+//     const possibleMoves = temp.splice(
+//       Math.floor(Math.random() * temp.length),
+//       1
+//     )[0]
+//     let res = []
+//     while (res.length === 0 || possibleMoves.length > 0) {
+//       const randomMove = possibleMoves.splice(
+//         Math.floor(Math.random() * possibleMoves.length),
+//         1
+//       )[0]
+//       if (!resultCellIdArray.includes(randomMove)) res.push(randomMove)
+//     }
+//     if (!res.length) {
+//       console.log('error happened')
+//       console.log(resultCellIdArray)
+//     }
+
+//     resultCellIdArray.push(res[0])
+//     resultArray.push({ cellId: res[0], cellType: cellTypes.FILLED })
+//   }
+//   //   console.log(resultArray)
+//   //   console.log(resultCellIdArray)
+//   let resObj = {}
+//   resultArray.map((res) => {
+//     return (resObj[res.cellId] = { cellType: res.cellType })
+//   })
+//   return resObj
+// }
 
 export const cellIdToCoordinates = (cellId, gridLength = 6) => {
   return { i: Math.floor(cellId / gridLength), j: cellId % gridLength }
