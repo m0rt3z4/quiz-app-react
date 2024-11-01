@@ -39,13 +39,13 @@ export const MemoryTaskPage = () => {
   const generateBinocularParams = (type = binocularTrialTypes.BINOCULAR_V1) => {
     let res = {}
     res.type = type
-    res.calibration = createCalibrationExperiment(10)
+    res.calibration = createCalibrationExperiment(20)
     switch (type) {
       case binocularTrialTypes.BINOCULAR_V1:
-        res.binocular = createBinocularParams(8)
+        res.binocular = createBinocularParams(16)
         break
       case binocularTrialTypes.BINOCULAR_V2:
-        res.binocular = createBinocularV2Params(8)
+        res.binocular = createBinocularV2Params(16)
         break
       default:
         break
@@ -56,7 +56,7 @@ export const MemoryTaskPage = () => {
     let res = createExperimentParams()
     res.type = type
 
-    res.mixed = createMixedBlock(true, memoryV2MixedSizes)
+    res.mixed = createMixedBlock(false, memoryV2MixedSizes)
     return res
   }
   const onFinishBinocular = () => {
