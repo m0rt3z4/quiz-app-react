@@ -71,6 +71,7 @@ const BinocularMainModule = ({
           experiment={experiment.binocular}
           onFinishExperiment={onFinishTrial}
           trialSettings={currentSettings}
+          binocularTrialType={binocularTrialType}
         />
       )
     default:

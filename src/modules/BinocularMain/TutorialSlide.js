@@ -3,7 +3,7 @@ import { Box, Grid, Typography, Card } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 
-const Slide = ({ content = [], onNext }) => {
+const Slide = ({ content = '', onNext }) => {
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
@@ -34,7 +34,7 @@ const Slide = ({ content = [], onNext }) => {
         >
           <Box>
             <Typography fontSize={22} paddingTop={10} sx={{ color: 'white' }}>
-              Tutorial
+              {content}
             </Typography>
           </Box>
         </Card>

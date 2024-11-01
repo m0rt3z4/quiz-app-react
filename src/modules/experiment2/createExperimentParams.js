@@ -130,7 +130,11 @@ const createRecallArrayV2 = (
       cellType: cellTypes.FILLED,
     })
   })
-  return resultArray
+  let resObj = {}
+  resultArray.map((res) => {
+    return (resObj[res.cellId] = { cellType: res.cellType })
+  })
+  return resObj
 }
 
 // const createRecallArray = (

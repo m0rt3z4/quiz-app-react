@@ -20,7 +20,7 @@ const MemoryTaskV2 = ({ experiment, onFinishExperiment }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} />
+      return <Slide onNext={onNext} content="Memory Task" />
     case 2:
       return (
         <PerceptualBlock

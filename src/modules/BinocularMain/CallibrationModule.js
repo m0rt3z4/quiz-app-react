@@ -13,7 +13,7 @@ const CallibrationModule = ({ experiment, onFinishCallibration }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} />
+      return <Slide onNext={onNext} content="Calibration" />
     case 2:
       return (
         <BinocularCallibrationModule

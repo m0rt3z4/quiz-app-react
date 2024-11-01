@@ -1,16 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
 
-const PerceptualBlock = ({
-  experiment,
-  onFinishBlock,
-}) => {
+const PerceptualBlock = ({ experiment, onFinishBlock }) => {
   const [step, setStep] = useState(1)
-
-  useEffect(() => {    
-  }, [])
 
   const onNext = () => {
     setStep(2)
@@ -18,7 +12,7 @@ const PerceptualBlock = ({
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} />
+      return <Slide onNext={onNext} content="Perceptual Block" />
     case 2:
       return (
         <ExperimentModule

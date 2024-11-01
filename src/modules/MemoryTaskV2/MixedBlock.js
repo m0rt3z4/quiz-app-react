@@ -14,7 +14,7 @@ const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} />
+      return <Slide onNext={onNext} content="Mixed Block" />
     case 2:
       return (
         <ExperimentModule
