@@ -1,33 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Slide from './Slide'
 import PerceptualBlock from './PerceptualBlock'
 import ImaginaryBlock from './ImaginaryBlock'
 import MixedBlock from './MixedBlock'
-import { createExperimentParams } from '../experiment2/createExperimentParams'
-import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
-import { createMixedBlock } from '../experiment2/createMixedMemoryTaskParams'
 
-const MemoryTaskV2 = ({ onFinishExperiment }) => {
+const MemoryTaskV2 = ({ experiment, onFinishExperiment }) => {
   const [step, setStep] = useState(1)
-  const [experiment, setExperiment] = useState({})
   const [results, setResults] = useState({})
-  const { memoryV2MixedSizes } = useExp2PersistedContext()
-
-  useEffect(() => {
-    const exp = {
-      ...createExperimentParams(),
-      mixed: createMixedBlock(true, memoryV2MixedSizes),
-    }
-    setExperiment(exp)
-    console.log(exp)
-  }, [])
 
   const onNext = () => {
     setStep(2)
   }
   const onFinish = (resp) => {
-    onFinishExperiment({ ...results, mixed: resp })
+    const res = { ...results, mixed: resp }
+    downloadQuizDataAsJson(res, 123, 'memory')
+    onFinishExperiment(res)
   }
 
   switch (step) {
@@ -65,6 +53,19 @@ const MemoryTaskV2 = ({ onFinishExperiment }) => {
     default:
       break
   }
+}
+
+const downloadQuizDataAsJson = (data, userNumber, postfix) => {
+  const jsonString = JSON.stringify(data)
+  const blob = new Blob([jsonString], { type: 'application/json' })
+  const url = URL.createObjectURL(blob)
+  const a = document.createElement('a')
+  a.href = url
+  a.download = `USER_${userNumber}_${postfix}.json`
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+  URL.revokeObjectURL(url)
 }
 
 export default MemoryTaskV2
