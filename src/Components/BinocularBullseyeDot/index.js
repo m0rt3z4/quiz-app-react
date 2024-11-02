@@ -1,6 +1,7 @@
 import BULLSEYE from '../../assets/Binocular/bullseye.png'
+import { bullseyeOpacity } from '../../consts'
 
-const BinocularBullseyeDot = ({ width = 100, opacity = 100 }) => {
+const BinocularBullseyeDot = ({ width = 100, opacity = bullseyeOpacity }) => {
   return (
     <img
       src={BULLSEYE}

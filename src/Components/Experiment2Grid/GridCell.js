@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { borderColor, cellTypes, cornerTypes, bullseyeOpacity } from './consts'
+import { cellTypes, cornerTypes } from './consts'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
@@ -8,6 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
+import { borderColor, bullseyeOpacity } from '../../consts'
 
 const GridCell = ({
   darkTheme = false,
