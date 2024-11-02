@@ -110,7 +110,7 @@ export const PreviewGridPage = ({ onBack }) => {
                   />
                 </Grid>
                 <Grid item xs={10} paddingBottom={3}>
-                  <Experiment2Grid darkTheme stimuli={stimulus} />
+                  <Experiment2Grid darkTheme stimuli={stimulus} isPreview />
                 </Grid>
                 <Grid item xs={4}>
                   <SettingsButton

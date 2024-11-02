@@ -2,7 +2,7 @@
 import React from 'react'
 import { Grid, Typography, Card, Slider } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
-import { keyboardKeys } from '../../consts'
+import { fontColor, keyboardKeys } from '../../consts'
 // import Slide from '../Slide'
 import Strings from '../Slide/Strings'
 
@@ -25,17 +25,15 @@ const Final = ({ onFinishStep, showTracker = false, index }) => {
     },
   ]
   return (
-    <Grid
-      container
-      justifyContent={'center'}
-      spacing={2}
-    >
+    <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
         <Card
           sx={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            color: fontColor,
+            backgroundColor: 'black',
             width: '100%',
             minHeight: 450,
             maxHeight: 540,

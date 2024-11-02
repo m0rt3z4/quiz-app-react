@@ -30,6 +30,7 @@ export const Experiment2Grid = ({
   },
   darkTheme = false,
   binocularOptions,
+  isPreview = false,
 }) => {
   const cellSize = size === 3 ? 85 : 45
   const increasedSize = size + 2
@@ -164,7 +165,9 @@ export const Experiment2Grid = ({
         minHeight: 470,
         padding: 6,
         borderRadius: '35px',
-        border: `1px solid ${darkTheme ? borderColor : 'black'}`,
+        border: `1px solid ${
+          isPreview ? (darkTheme ? borderColor : 'black') : 'black'
+        }`,
       }}
     >
       <Box

@@ -57,7 +57,7 @@ const TimedStep = ({
   }
   useKeyboard(onResponse, startTime, memoryV1Settings.timeToWaitForAnswer)
 
-  return <Experiment2Grid stimuli={stimulus} />
+  return <Experiment2Grid stimuli={stimulus} darkTheme />
 }
 
 export default TimedStep

@@ -51,6 +51,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     }
     setTimeout(() => {
       setShowForm(false)
+      changeTitle('')
       return clearTimeout()
     }, 200)
   }
@@ -61,6 +62,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     <ExperimentModule
       experiment={experiment}
       onFinishExperiment={() => {
+        changeTitle('Trial Blocks Settings')
         return setShowForm(true)
       }}
       trialSettings={trialSettings}
