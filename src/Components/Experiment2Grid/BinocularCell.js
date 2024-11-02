@@ -4,7 +4,7 @@ import GREEN from '../../assets/Binocular/green_mixed.png'
 import RED from '../../assets/Binocular/red_mixed.png'
 import FADED_RED from '../../assets/Binocular/faded_red.png'
 import FADED_GREEN from '../../assets/Binocular/faded_green.png'
-import { borderColor } from './consts'
+import { borderColor } from '../../consts'
 
 const binocluarOptionsMock = {
   recallType: 'MIXED',

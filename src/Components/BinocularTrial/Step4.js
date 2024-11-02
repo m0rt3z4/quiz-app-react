@@ -13,6 +13,7 @@ const Step4 = ({
   stimulusWidth = 45,
   stimulusDistance = 80,
   degreeValue = 0,
+  isPreview = false,
 }) => {
   if (
     recallType === recallTypesNames.GR ||
@@ -26,6 +27,7 @@ const Step4 = ({
         redOpacity={redOpacity}
         stimulusWidth={stimulusWidth}
         stimulusDistance={stimulusDistance}
+        isPreview={isPreview}
       />
     )
   } else if (
@@ -39,6 +41,7 @@ const Step4 = ({
         greenOpacity={greenOpacity}
         redOpacity={redOpacity}
         stimulusWidth={stimulusWidth}
+        isPreview={isPreview}
       />
     )
   }

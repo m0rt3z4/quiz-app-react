@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
-import { Grid, Select, Typography, MenuItem, Divider } from '@mui/material'
+import { Grid, Select, Typography, MenuItem } from '@mui/material'
 
 const SelectSection = ({
   imaginationCue = imaginationCueTypes.GREEN,
@@ -10,18 +10,19 @@ const SelectSection = ({
   setRecalType,
 }) => {
   return (
-    <Grid container xs={12} spacing={3}>
-      <Grid container item xs={6}>
+    <Grid container xs={12} spacing={3} justifyContent={'center'}>
+      <Grid container item xs={10} justifyContent={'center'}>
         <Grid item xs={12}>
           <Typography>Imagination Cue:</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={8} paddingTop={1}>
           <Select
             fullWidth
             value={imaginationCue}
             onChange={(e) => {
               setImaginationCue(e.target.value)
             }}
+            sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
           >
             <MenuItem value={imaginationCueTypes.GREEN}>
               {imaginationCueTypes.GREEN}
@@ -32,17 +33,18 @@ const SelectSection = ({
           </Select>
         </Grid>
       </Grid>
-      <Grid container item xs={6}>
+      <Grid container item xs={10} justifyContent={'center'}>
         <Grid item xs={12}>
           <Typography>Rivalry Type:</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={8} paddingTop={1}>
           <Select
             fullWidth
             value={recallType}
             onChange={(e) => {
               setRecalType(e.target.value)
             }}
+            sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
           >
             <MenuItem value={'GR'}>GR</MenuItem>
             <MenuItem value={'RG'}>RG</MenuItem>
@@ -50,7 +52,6 @@ const SelectSection = ({
             <MenuItem value={'VH'}>VH</MenuItem>
           </Select>
         </Grid>
-        <Divider />
       </Grid>
     </Grid>
   )

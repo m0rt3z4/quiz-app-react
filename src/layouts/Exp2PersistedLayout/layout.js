@@ -26,7 +26,7 @@ export const Exp2PersistedLayout = () => {
         container
         justifyContent={'center'}
         alignContent={'center'}
-        spacing={2}
+        // spacing={2}
         sx={{ paddingTop: 1 }}
       >
         {!!title && (
@@ -36,14 +36,20 @@ export const Exp2PersistedLayout = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                // backgroundColor: darkTheme ? 'white' : 'black',
                 minHeight: 125,
                 borderRadius: '35px',
-                border: '1px solid black',
+                // border: `1px solid ${darkTheme ? 'white' : 'black'}`,
                 // background: 'rgb(247, 241, 241)',
-                background: 'white',
+                background: darkTheme ? 'black' : 'white',
               }}
             >
-              <Typography fontSize={'25px'}>{title}</Typography>
+              <Typography
+                fontSize={'25px'}
+                sx={{ color: darkTheme ? 'white' : 'black' }}
+              >
+                {title}
+              </Typography>
             </Card>
           </Grid>
         )}

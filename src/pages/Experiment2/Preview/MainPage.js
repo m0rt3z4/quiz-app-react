@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { Box, Grid, Card, Typography, Button, Divider } from '@mui/material'
+import { Box, Grid, Card, Typography, Divider } from '@mui/material'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import { previewPages } from './index'
+import { SettingsButton } from '../../../Components/SettingsButton'
 
 export const MainPage = ({ setPage }) => {
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, darkTheme } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
   }, [changeTitle])
@@ -25,17 +26,12 @@ export const MainPage = ({ setPage }) => {
           </Box>
         </Grid>
         <Grid item xs={8}>
-          <Button
-            onClick={onClickButton}
-            size="large"
-            sx={{
-              width: '70%',
-              backgroundColor: 'lightgray',
-              margin: '5px',
-            }}
-          >
-            {buttonLable}
-          </Button>
+          <SettingsButton
+            text={buttonLable}
+            onClickButton={onClickButton}
+            backgroundColor="white"
+            size={40}
+          />
           <Divider sx={{ paddingTop: 3 }} />
         </Grid>
       </Grid>
@@ -55,6 +51,8 @@ export const MainPage = ({ setPage }) => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
+              color: darkTheme ? 'white' : 'black',
+              backgroundColor: darkTheme ? 'black' : 'white',
               minHeight: 420,
               borderRadius: '35px',
               padding: 7,
@@ -67,8 +65,8 @@ export const MainPage = ({ setPage }) => {
               justifyContent={'center'}
             >
               <Item
-                text="Preview The Main Experience:"
-                buttonLable="preview"
+                text="Preview The Main Experiment:"
+                buttonLable="Start Experiment"
                 onClickButton={() => setPage(previewPages.MAIN_TRIAL)}
               />
               <Item
@@ -77,18 +75,18 @@ export const MainPage = ({ setPage }) => {
                 onClickButton={() => setPage(previewPages.TRIAL_GRID)}
               />
               <Item
-                text="Preview The Trial Blocks:"
-                buttonLable="preview"
+                text="Trial Blocks Settings:"
+                buttonLable="settings"
                 onClickButton={() => setPage(previewPages.PREVIEW_BLOCKS)}
               />
               <Item
-                text="Preview The Binocular Trial:"
-                buttonLable="preview"
+                text="Binocular Trial:"
+                buttonLable="Settings"
                 onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL)}
               />
               <Item
-                text="Preview The Binocular Trial Version 2:"
-                buttonLable="preview"
+                text="Binocular Trial Version 2:"
+                buttonLable="Settings"
                 onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
               />
             </Grid>

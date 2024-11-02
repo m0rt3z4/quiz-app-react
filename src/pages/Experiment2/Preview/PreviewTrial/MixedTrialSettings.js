@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Grid, Button, Divider, Typography, TextField } from '@mui/material'
+import { Grid, Divider, Typography, TextField } from '@mui/material'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
+import { SettingsButton } from '../../../../Components/SettingsButton'
 
 export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
   const {
@@ -42,14 +43,14 @@ export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
         <Grid item xs={12}>
           <Typography>{text}</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} paddingTop={1}>
           <TextField
             value={value}
             onChange={(event) => {
               setValue(event.target.value)
             }}
             variant="outlined"
-            sx={{ borderRadius: '20px' }}
+            sx={{ borderRadius: '20px', backgroundColor: 'lightgray' }}
           />
         </Grid>
       </Grid>
@@ -103,17 +104,7 @@ export const MixedTrialSettings = ({ onBack, onStartPreview }) => {
       </Grid>
       <Grid container justifyContent={'flex-end'} xs={12} paddingTop={5}>
         <Grid item xs={4}>
-          <Button
-            onClick={onSave}
-            size="large"
-            sx={{
-              width: '50%',
-              backgroundColor: 'lightgray',
-              margin: '5px',
-            }}
-          >
-            save
-          </Button>
+          <SettingsButton text="save" size={50} onClickButton={onSave} />
         </Grid>
       </Grid>
     </Grid>

@@ -11,6 +11,7 @@ import {
 import OpacitySlider from './OpacitySlider'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
+import { SettingsButton } from '../../../../Components/SettingsButton'
 import SelectSection from './Select'
 import { pages } from '.'
 
@@ -18,6 +19,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const {
     binocluarV2Settings,
     changeBinocularV2Settings,
+    darkTheme,
   } = useExp2PersistedContext()
 
   const [slide1Time, setSlide1Tiem] = useState(binocluarV2Settings.slide1Time)
@@ -85,33 +87,17 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
         <Grid item xs={12}>
           <Typography>{text}</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} paddingTop={1}>
           <TextField
             value={value}
             onChange={(event) => {
               setValue(event.target.value)
             }}
             variant="outlined"
-            sx={{ borderRadius: '20px' }}
+            sx={{ borderRadius: '20px', backgroundColor: 'gray' }}
           />
         </Grid>
       </Grid>
-    )
-  }
-
-  const SettingsButton = ({ size = 40, text = '', onClickButton }) => {
-    return (
-      <Button
-        onClick={onClickButton}
-        size="large"
-        sx={{
-          width: `${size}%`,
-          backgroundColor: 'lightgray',
-          margin: '5px',
-        }}
-      >
-        {text}
-      </Button>
     )
   }
 
@@ -129,9 +115,11 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             display: 'flex',
             alignItems: 'baseline',
             justifyContent: 'center',
+            color: darkTheme ? 'white' : 'black',
+            backgroundColor: darkTheme ? 'black' : 'white',
             minHeight: 420,
             borderRadius: '35px',
-            padding: 7,
+            // padding: 7,
             border: '1px solid black',
           }}
         >
@@ -143,54 +131,56 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             marginBottom={3}
           >
             <Grid item xs={6}>
-              <SettingsButton onClickButton={onBack} size={40} text="Back" />
+              <SettingsButton onClickButton={onBack} size={30} text="Back" />
             </Grid>
             <Grid item xs={12}>
-              <Divider variant="fullWidth" sx={{ paddingTop: 1 }} />
+              <Divider
+                variant="fullWidth"
+                sx={{ paddingTop: 1, borderColor: 'darkgray' }}
+              />
             </Grid>
-            <Grid container item xs={12}>
+            <Grid container item xs={8}>
               <Grid
                 container
                 item
                 xs={12}
-                justifyContent={'start'}
+                justifyContent={'center'}
                 paddingBottom={3}
               >
-                <Typography variant="h6">Trial Settings:</Typography>
-              </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h6">Trial Settings:</Typography>
+                </Grid>
 
-              <Grid container xs={6}>
-                <Item
-                  text="Time to show Intro"
-                  value={slide1Time}
-                  setValue={setSlide1Tiem}
-                />
-                <Item
-                  text="Time To Show Imagination Cue"
-                  value={slide2Time}
-                  setValue={setSlide2Tiem}
-                />
+                <Grid container xs={6}>
+                  <Item
+                    text="Time to show Intro"
+                    value={slide1Time}
+                    setValue={setSlide1Tiem}
+                  />
+                  <Item
+                    text="Time To Show Imagination Cue"
+                    value={slide2Time}
+                    setValue={setSlide2Tiem}
+                  />
+                </Grid>
+                <Grid container xs={6}>
+                  <Item
+                    text="Imagination Time"
+                    value={slide3Time}
+                    setValue={setSlide3Tiem}
+                  />
+                  <Item
+                    text="Time to show Rivalry"
+                    value={slide4Time}
+                    setValue={setSlide4Tiem}
+                  />
+                </Grid>
               </Grid>
-              <Grid container xs={6}>
-                <Item
-                  text="Imagination Time"
-                  value={slide3Time}
-                  setValue={setSlide3Tiem}
-                />
-                <Item
-                  text="Time to show Rivalry"
-                  value={slide4Time}
-                  setValue={setSlide4Tiem}
-                />
+            </Grid>
+            <Grid container item xs={4} justifyContent={'center'}>
+              <Grid container item xs={4}>
+                <Typography variant="h6">Preview Params:</Typography>
               </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Divider variant="fullWidth" sx={{ paddingTop: 1 }} />
-            </Grid>
-            <Grid container item xs={12}>
-              <Typography variant="h6">Trial Params:</Typography>
-            </Grid>
-            <Grid container item xs={10} justifyContent={'center'}>
               <SelectSection
                 imaginationCue={imgCue}
                 setImaginationCue={setImgCue}
@@ -199,7 +189,10 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Divider variant="fullWidth" sx={{ paddingTop: 1 }} />
+              <Divider
+                variant="fullWidth"
+                sx={{ paddingTop: 1, borderColor: 'darkgray' }}
+              />
             </Grid>
             <Grid container item xs={12}>
               <Typography variant="h6">Preview Luminance:</Typography>
@@ -221,7 +214,10 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <Divider variant="fullWidth" sx={{ paddingTop: 1 }} />
+              <Divider
+                variant="fullWidth"
+                sx={{ paddingTop: 3, borderColor: 'darkgray' }}
+              />
             </Grid>
             <Grid container item xs={12}>
               <Grid
@@ -237,7 +233,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               </Grid>
               <Grid item xs={4}>
                 <SettingsButton
-                  size={70}
+                  size={50}
                   text="Binocular v2"
                   onClickButton={() => {
                     onClickV2(pages.BINOCLAR_V2)
@@ -246,7 +242,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               </Grid>
               <Grid item xs={4}>
                 <SettingsButton
-                  size={70}
+                  size={50}
                   text="CALLIBRATION"
                   onClickButton={() => {
                     onStartPreview(pages.CALLIBRATION)

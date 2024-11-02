@@ -2,7 +2,6 @@
 import React from 'react'
 import { Grid, Card } from '@mui/material'
 import BinocularBullseyeDot from '../../../../Components/BinocularBullseyeDot'
-// import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
 // Intro Step
 const Step1 = () => {
@@ -25,7 +24,7 @@ const Step1 = () => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8}>
-              <BinocularBullseyeDot width={3} />
+              <BinocularBullseyeDot width={13} />
             </Grid>
           </Grid>
         </Card>

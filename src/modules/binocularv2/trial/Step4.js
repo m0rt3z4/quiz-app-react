@@ -16,6 +16,7 @@ const Step4 = ({
   stimulusDistance = 80,
   degreeValue = 0,
   stimulus = { 8: { cellType: cellTypes.BINOCULAR } },
+  isPreview = false,
 }) => {
   return (
     <Experiment2Grid
@@ -30,6 +31,7 @@ const Step4 = ({
         stimulusDistance,
         degreeValue,
       }}
+      isPreview
     />
   )
 }

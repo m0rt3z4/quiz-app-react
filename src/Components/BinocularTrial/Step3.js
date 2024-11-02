@@ -28,7 +28,7 @@ const Step3 = ({ imaginationCue = imaginationCueTypes.RED }) => {
         >
           <Grid container item xs={12} paddingTop={6} justifyContent={'center'}>
             <Grid item xs={8}>
-              <BinocularBullseyeDot width={3} />
+              <BinocularBullseyeDot width={13} />
             </Grid>
             <Grid item xs={8} paddingTop={3}>
               <DensityLargeIcon

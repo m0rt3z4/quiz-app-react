@@ -12,29 +12,23 @@ const recognitionTypes = {
   ONE_SHOT: 'ONE_SHOT',
   SEQUENTIAL: 'SEQUENTIAL',
 }
-// const settingsDefault = {
-//   timeBeforeRecognition: 6000,
-//   timeToShowStimuli: 500,
-//   timeBetweenStimuli: 500,
-//   feedbackTime: 700,
-// }
-
 const Experiment2Trial = ({
   trialParams,
   onFinishTrial,
   showTracker = false,
   trackerIndex,
-  // trialSettings = settingsDefault,
 }) => {
-  // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
-  const { showRightArrow, memoryV1Settings } = useExp2PersistedContext()
+  const { memoryV1Settings } = useExp2PersistedContext()
 
   const trialSettings = memoryV1Settings
   useEffect(() => {
     setStep(1)
     setResults({})
+    setTimeout(() => {
+      onFinishImagination()
+    }, 2000)
   }, [trialParams])
 
   const onFinishFirstStep = (resp) => {
@@ -44,11 +38,7 @@ const Experiment2Trial = ({
       return clearTimeout()
     }, trialSettings.timeBeforeRecognition)
   }
-  const onFinishImagination = (resp) => {
-    showRightArrow('')
-    // if (!dontShowLetter) {
-    //   setResults({ ...results, imaginationTime: resp })
-    // }
+  const onFinishImagination = () => {
     setStep(2)
   }
   const onFinishRecognition = (resp) => {
@@ -63,8 +53,7 @@ const Experiment2Trial = ({
 
   switch (step) {
     case 1: {
-      showRightArrow('press → to Start!')
-      return <PrePresentationStep onNext={onFinishImagination} />
+      return <PrePresentationStep onNext={() => {}} />
     }
     case 2: {
       return (
@@ -77,7 +66,7 @@ const Experiment2Trial = ({
       )
     }
     case 3: {
-      return <Experiment2Grid />
+      return <Experiment2Grid darkTheme />
     }
     case 4: {
       // console.log('recogniton=> ', trialParams.recognition)

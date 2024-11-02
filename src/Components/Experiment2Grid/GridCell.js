@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import { borderColor, cellTypes, cornerTypes, bullseyeOpacity } from './consts'
+import { cellTypes, cornerTypes } from './consts'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward'
@@ -8,6 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
+import { borderColor, bullseyeOpacity, fontColor } from '../../consts'
 
 const GridCell = ({
   darkTheme = false,
@@ -20,36 +21,39 @@ const GridCell = ({
   leftBorder = false,
   rightBorder = false,
   binocularOptions = {},
+  cellSize = 34,
 }) => {
   const { feedbackStatus } = useExp2PersistedContext()
-  const cellSize = darkTheme ? 85 : 34
+  // const cellSize = darkTheme ? 85 : 34
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
         case cornerTypes.DOWN: {
           return (
             <ArrowDownwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.UP: {
           return (
             <ArrowUpwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.RIGHT: {
           return (
             <ArrowForwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.LEFT: {
           return (
-            <ArrowBackIcon sx={{ color: `${darkTheme ? 'white' : 'black'}` }} />
+            <ArrowBackIcon
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+            />
           )
         }
         default:
@@ -91,10 +95,10 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'black',
+              backgroundColor: fontColor,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid gray`,
+              border: `1px solid ${borderColor}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -146,15 +150,15 @@ const GridCell = ({
             ? 'rgba(13, 231, 46, 0.881)'
             : feedbackStatus === 'error'
             ? 'red'
-            : 'black'
+            : fontColor
         return (
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'white',
+              backgroundColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid black`,
+              border: `1px solid ${borderColor}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -166,10 +170,10 @@ const GridCell = ({
                 backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
-                border: `3px solid white`,
+                // border: `2px solid black`,
                 borderCollapse: 'collapse',
-                width: cellSize - 8,
-                height: cellSize - 8,
+                width: cellSize - 20,
+                height: cellSize - 23,
               }}
             />
           </Box>

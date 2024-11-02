@@ -24,7 +24,7 @@ const Step1 = () => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8}>
-              <BinocularBullseyeDot width={3} />
+              <BinocularBullseyeDot width={13} />
             </Grid>
           </Grid>
         </Card>

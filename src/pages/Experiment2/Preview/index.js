@@ -20,10 +20,12 @@ export const Experiment2PreviewPage = () => {
   const backButton = () => {
     setStep(0)
   }
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, changeTheme,changeOutletWidth } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
-  }, [changeTitle])
+    changeOutletWidth(10)
+    changeTheme(true)
+  }, [changeTitle, changeTheme,changeOutletWidth])
 
   switch (step) {
     case 0: {

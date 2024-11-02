@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 import { cellTypes, cornerTypes } from './consts'
+import { borderColor } from '../../consts'
 // const mock = {
 //   2: {
 //     cellType: cellTypes.FILLED,
@@ -29,7 +30,9 @@ export const Experiment2Grid = ({
   },
   darkTheme = false,
   binocularOptions,
+  isPreview = false,
 }) => {
+  const cellSize = size === 3 ? 85 : 45
   const increasedSize = size + 2
   const stimuliCount = Object.keys(stimuli).length
   let imaginaryCellObj = {}
@@ -85,6 +88,7 @@ export const Experiment2Grid = ({
               rightBorder={j === 0 && i > 0 && i < size + 1}
               leftBorder={j === size + 1 && i > 0 && i < size + 1}
               topBorder={i === size + 1 && j > 0 && j < size + 1}
+              cellSize={cellSize}
             />
           )
 
@@ -100,6 +104,7 @@ export const Experiment2Grid = ({
                   leftBorder={j === size + 1 && i > 0 && i < size + 1}
                   topBorder={i === size + 1 && j > 0 && j < size + 1}
                   cornerType={imaginaryCellObj[newCellId].cornerType}
+                  cellSize={cellSize}
                 />
               )
             } else {
@@ -117,13 +122,15 @@ export const Experiment2Grid = ({
                 darkTheme={darkTheme}
                 cellType={stimuli[cellId].cellType}
                 binocularOptions={binocularOptions}
+                cellSize={cellSize}
               />
             )
           } else {
             cells.push(
               <GridCell
                 darkTheme={darkTheme}
-                isCenterCell={i - 1 === 1 && j - 1 === 1 && darkTheme}
+                isCenterCell={i - 1 === 1 && j - 1 === 1 && size === 3}
+                cellSize={cellSize}
               />
             )
           }
@@ -135,7 +142,7 @@ export const Experiment2Grid = ({
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            maxWidth: darkTheme ? 500 : 380,
+            // maxWidth: darkTheme ? 500 : 380,
             maxHeight: darkTheme ? 100 : 35,
             width: '100%',
           }}
@@ -158,14 +165,16 @@ export const Experiment2Grid = ({
         minHeight: 470,
         padding: 6,
         borderRadius: '35px',
-        border: '1px solid black',
+        border: `1px solid ${
+          isPreview ? (darkTheme ? borderColor : 'black') : 'black'
+        }`,
       }}
     >
       <Box
         sx={{
           display: 'block',
           flexWrap: 'wrap',
-          maxWidth: darkTheme ? 500 : 380,
+          // maxWidth: darkTheme ? 800 : 380,
         }}
       >
         {renderGrid()}

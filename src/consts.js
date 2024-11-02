@@ -34,3 +34,7 @@ export const binocularTrialTypes = {
   BINOCULAR_V2: 'BINOCULAR_V2',
   BINOCULAR_V3: 'BINOCULAR_V3',
 }
+
+export const borderColor = 'rgb(55, 55, 55)'
+export const fontColor = 'rgb(95, 95, 95)'
+export const bullseyeOpacity = 35

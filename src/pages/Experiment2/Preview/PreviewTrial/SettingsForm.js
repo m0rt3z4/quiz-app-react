@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  Grid,
-  Card,
-  Button,
-  Divider,
-  Typography,
-  TextField,
-} from '@mui/material'
+import { Box, Grid, Card, Divider, Typography, TextField } from '@mui/material'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { blockTypes } from '../../../../modules/experiment2/createExperimentParams'
 import MixedTrialSettings from './MixedTrialSettings'
+import { SettingsButton } from '../../../../Components/SettingsButton'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
-  const { memoryV1Settings, changeMemoryV1Settings } = useExp2PersistedContext()
+  const {
+    memoryV1Settings,
+    changeMemoryV1Settings,
+    darkTheme,
+  } = useExp2PersistedContext()
 
   const [timeBeforeRecognition, setTimeBeforeRecognition] = useState(
     memoryV1Settings.timeBeforeRecognition
@@ -93,14 +90,14 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
         <Grid item xs={12}>
           <Typography>{text}</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} paddingTop={1}>
           <TextField
             value={value}
             onChange={(event) => {
               setValue(event.target.value)
             }}
             variant="outlined"
-            sx={{ borderRadius: '20px' }}
+            sx={{ borderRadius: '20px', backgroundColor: 'lightgray' }}
           />
         </Grid>
       </Grid>
@@ -122,27 +119,26 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
+              color: darkTheme ? 'white' : 'black',
+              backgroundColor: darkTheme ? 'black' : 'white',
               minHeight: 420,
               borderRadius: '35px',
               padding: 7,
-              border: '1px solid black',
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
             }}
           >
             <Grid container>
               <Grid container justifyContent={'center'} xs={12} spacing={3}>
                 <Grid item xs={6}>
-                  <Button
-                    onClick={() => onBack()}
-                    size="large"
-                    sx={{
-                      width: '40%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Back
-                  </Button>
-                  <Divider variant="fullWidth" sx={{ paddingTop: 3 }} />
+                  <SettingsButton
+                    onClickButton={() => onBack()}
+                    text="Back"
+                    size={30}
+                  />
+                  <Divider
+                    variant="fullWidth"
+                    sx={{ paddingTop: 3, borderColor: 'gray' }}
+                  />
                 </Grid>
                 <Grid container item xs={12}>
                   <Grid
@@ -151,11 +147,12 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                     xs={12}
                     justifyContent={'start'}
                     paddingBottom={3}
+                    paddingLeft={5}
                   >
                     <Typography variant="h6">Trial Settings:</Typography>
                   </Grid>
 
-                  <Grid container xs={6}>
+                  <Grid container xs={4}>
                     <Item
                       text="Time Before Recall Step"
                       value={timeBeforeRecognition}
@@ -172,7 +169,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                       setValue={setTimeToShowImaginaryStimuli}
                     />
                   </Grid>
-                  <Grid container xs={6}>
+                  <Grid container xs={4}>
                     <Item
                       text="Time Show Feedback"
                       value={feedbackTime}
@@ -193,21 +190,21 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 <Grid
                   container
                   justifyContent={'flex-end'}
-                  xs={12}
+                  xs={10}
                   paddingTop={5}
                 >
                   <Grid item xs={4}>
-                    <Button
-                      onClick={onSave}
-                      size="large"
-                      sx={{
-                        width: '50%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                    >
-                      save
-                    </Button>
+                    <SettingsButton
+                      onClickButton={onSave}
+                      text="save"
+                      size={50}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Divider
+                      variant="fullWidth"
+                      sx={{ paddingTop: 3, borderColor: 'gray' }}
+                    />
                   </Grid>
                 </Grid>
                 <Grid container item xs={12}>
@@ -221,44 +218,32 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                     <Typography variant="h6">Start Block Preview:</Typography>
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={onClickPerceptual}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                    >
-                      perceptual
-                    </Button>
+                    <SettingsButton
+                      onClickButton={onClickPerceptual}
+                      text="perceptual"
+                      size={50}
+                    />
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={onClickImaginary}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                    >
-                      imaginary
-                    </Button>
+                    <SettingsButton
+                      onClickButton={onClickImaginary}
+                      text="imaginary"
+                      size={50}
+                    />
                   </Grid>
                   <Grid item xs={4}>
-                    <Button
-                      onClick={onClickMixed}
-                      size="large"
-                      sx={{
-                        width: '70%',
-                        backgroundColor: 'lightgray',
-                        margin: '5px',
-                      }}
-                    >
-                      mixed
-                    </Button>
+                    <SettingsButton
+                      onClickButton={onClickMixed}
+                      text="mixed"
+                      size={50}
+                    />
                   </Grid>
+                </Grid>
+                <Grid item xs={10}>
+                  <Divider
+                    variant="fullWidth"
+                    sx={{ paddingTop: 6, borderColor: 'gray' }}
+                  />
                 </Grid>
               </Grid>
               <Grid container justifyContent={'center'} xs={12} spacing={3}>

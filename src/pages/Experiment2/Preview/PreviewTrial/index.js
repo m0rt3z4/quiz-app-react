@@ -28,7 +28,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     setPerceptualParams(createBlocks(8, blockTypes.PERCEPTUAL))
     setMixedParams(createMixedBlock(true, memoryV2MixedSizes))
     setImaginaryParams(createBlocks(8, blockTypes.IMAGINARY))
-    changeTitle('Preview Blocks')
+    changeTitle('Trial Blocks Settings')
   }, [changeTitle, memoryV2MixedSizes])
 
   const onStartPreview = (blockType, settings) => {
@@ -51,6 +51,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     }
     setTimeout(() => {
       setShowForm(false)
+      changeTitle('')
       return clearTimeout()
     }, 200)
   }
@@ -61,6 +62,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     <ExperimentModule
       experiment={experiment}
       onFinishExperiment={() => {
+        changeTitle('Trial Blocks Settings')
         return setShowForm(true)
       }}
       trialSettings={trialSettings}

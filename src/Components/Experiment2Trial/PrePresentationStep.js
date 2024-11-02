@@ -24,7 +24,7 @@ const PrePresentationStep = ({ onNext }) => {
   }
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
-  return <Experiment2Grid />
+  return <Experiment2Grid darkTheme />
 }
 
 export default PrePresentationStep

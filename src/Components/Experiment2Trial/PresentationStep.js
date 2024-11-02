@@ -39,7 +39,7 @@ const PresentationStep = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
 
-  return <Experiment2Grid stimuli={stimulus} />
+  return <Experiment2Grid stimuli={stimulus} darkTheme />
 }
 
 export default PresentationStep
