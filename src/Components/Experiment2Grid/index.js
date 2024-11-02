@@ -2,6 +2,7 @@ import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 import { cellTypes, cornerTypes } from './consts'
+import { borderColor } from '../../consts'
 // const mock = {
 //   2: {
 //     cellType: cellTypes.FILLED,
@@ -163,7 +164,7 @@ export const Experiment2Grid = ({
         minHeight: 470,
         padding: 6,
         borderRadius: '35px',
-        // border: '1px solid blakc',
+        border: `1px solid ${darkTheme ? borderColor : 'black'}`,
       }}
     >
       <Box

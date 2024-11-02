@@ -6,7 +6,7 @@ import { storageKeys } from './consts'
 export const Exp2PersistedProvider = ({ children }) => {
   const [title, setTitle] = useState()
   const [outletWidth, setOutletWidth] = useState(6)
-  const [darkTheme, setDarkTheme] = useState(false)
+  const [darkTheme, setDarkTheme] = useState(true)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState('')

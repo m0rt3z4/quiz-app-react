@@ -85,7 +85,7 @@ export const PreviewGridPage = ({ onBack }) => {
         justifyContent={'center'}
         // alignItems={'baseline'}
         spacing={2}
-        sx={{ paddingTop: 1 }}
+        // sx={{ paddingTop: 1 }}
       >
         <Grid item xs={12}>
           <Card
@@ -96,7 +96,7 @@ export const PreviewGridPage = ({ onBack }) => {
               backgroundColor: darkTheme ? 'black' : 'white',
               minHeight: 420,
               borderRadius: '35px',
-              padding: 5,
+              padding: 3,
               border: '1px solid black',
             }}
           >
@@ -109,7 +109,7 @@ export const PreviewGridPage = ({ onBack }) => {
                     onClickButton={() => onBack()}
                   />
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={10} paddingBottom={3}>
                   <Experiment2Grid darkTheme stimuli={stimulus} />
                 </Grid>
                 <Grid item xs={4}>

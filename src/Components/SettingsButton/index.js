@@ -15,6 +15,9 @@ export const SettingsButton = ({
         width: `${size}%`,
         backgroundColor,
         color,
+        '&:hover': {
+          backgroundColor: '#fff',
+        },
         margin: '5px',
       }}
     >

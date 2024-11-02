@@ -28,7 +28,7 @@ export const PreviewTrialPage = ({ onBack }) => {
     setPerceptualParams(createBlocks(8, blockTypes.PERCEPTUAL))
     setMixedParams(createMixedBlock(true, memoryV2MixedSizes))
     setImaginaryParams(createBlocks(8, blockTypes.IMAGINARY))
-    changeTitle('Preview Blocks')
+    changeTitle('Trial Blocks Settings')
   }, [changeTitle, memoryV2MixedSizes])
 
   const onStartPreview = (blockType, settings) => {
