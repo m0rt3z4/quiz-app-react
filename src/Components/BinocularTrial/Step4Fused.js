@@ -14,6 +14,7 @@ const Step4Fused = ({
   stimulusWidth = 40,
   stimulusDistance = 80,
   degreeValue = 0,
+  isPreview = false,
 }) => {
   return (
     <Grid container justifyContent={'center'} spacing={2}>
@@ -28,7 +29,7 @@ const Step4Fused = ({
             maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
-            border: '1px solid black',
+            border: `1px solid ${isPreview ? 'gray' : 'black'}`,
             backgroundColor: 'black',
           }}
         >

@@ -66,10 +66,12 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
       default:
         break
     }
+    changeTitle('')
   }
   const onFinishTrial = (resp) => {
     console.log(resp)
     setState(pages.SETTING)
+    changeTitle('Preview Binocular Trial')
   }
 
   switch (state) {

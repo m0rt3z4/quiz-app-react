@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Grid, Card, Typography, Button } from '@mui/material'
+import { Box, Grid, Card, Typography } from '@mui/material'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import { testVar } from '../../config'
+import { SettingsButton } from '../../Components/SettingsButton'
 // import Exit from '../../Components/Trial2/Exit'
 // import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
 export const Experiment2Page = () => {
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, darkTheme } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Welcome')
     console.log(testVar)
@@ -23,7 +24,6 @@ export const Experiment2Page = () => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
@@ -33,6 +33,8 @@ export const Experiment2Page = () => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
+              color: darkTheme ? 'white' : 'black',
+              backgroundColor: darkTheme ? 'black' : 'white',
               minHeight: 420,
               borderRadius: '35px',
               padding: 7,
@@ -49,9 +51,7 @@ export const Experiment2Page = () => {
                     padding: '10px',
                   }}
                 >
-                  <Typography fontSize={'25px'}>
-                    Please read through the Tutorial before starting the task.
-                  </Typography>
+                  <Typography fontSize={'25px'}>Experiment 2</Typography>
                 </Box>
               </Grid>
               <Grid
@@ -62,32 +62,21 @@ export const Experiment2Page = () => {
                 spacing={3}
               >
                 <Grid item xs={8}>
-                  <Button
-                    onClick={() => redirectUrl('trial')}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Start
-                  </Button>
+                  <SettingsButton
+                    onClickButton={() => redirectUrl('trial')}
+                    text="start"
+                    size={40}
+                    backgroundColor="white"
+                  />
                 </Grid>
                 <Grid item xs={8}>
-                  <Button
-                    onClick={() => redirectUrl('preview')}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    preview
-                  </Button>
+                  <SettingsButton
+                    onClickButton={() => redirectUrl('preview')}
+                    text="preview"
+                    size={40}
+                    backgroundColor="white"
+                  />
                 </Grid>
-                {/* </Grid> */}
               </Grid>
             </Grid>
           </Card>

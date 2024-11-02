@@ -13,6 +13,7 @@ const Slide4Mixed = ({
   redOpacity = 100,
   stimulusWidth = 45,
   degreeValue = 0,
+  isPreview = false,
 }) => {
   const flip =
     patch === 'HV' ? `${180 - degreeValue}deg` : `${0 - degreeValue}deg`
@@ -29,7 +30,7 @@ const Slide4Mixed = ({
             maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
-            border: '1px solid black',
+            border: `1px solid ${isPreview ? 'gray' : 'black'}`,
             backgroundColor: 'black',
           }}
         >

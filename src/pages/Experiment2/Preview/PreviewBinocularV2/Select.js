@@ -11,17 +11,18 @@ const SelectSection = ({
 }) => {
   return (
     <Grid container xs={12} spacing={3}>
-      <Grid container item xs={6}>
+      <Grid container item xs={10} justifyContent={'center'}>
         <Grid item xs={12}>
           <Typography>Imagination Cue:</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={8}>
           <Select
             fullWidth
             value={imaginationCue}
             onChange={(e) => {
               setImaginationCue(e.target.value)
             }}
+            sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
           >
             <MenuItem value={imaginationCueTypes.GREEN}>
               {imaginationCueTypes.GREEN}
@@ -32,17 +33,18 @@ const SelectSection = ({
           </Select>
         </Grid>
       </Grid>
-      <Grid container item xs={6}>
+      <Grid container item xs={10} justifyContent={'center'}>
         <Grid item xs={12}>
           <Typography>Rivalry Type:</Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={8}>
           <Select
             fullWidth
             value={recallType}
             onChange={(e) => {
               setRecalType(e.target.value)
             }}
+            sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
           >
             <MenuItem value={'FUSED'}>FUSED</MenuItem>
             <MenuItem value={'MIXED'}>MIXED</MenuItem>
