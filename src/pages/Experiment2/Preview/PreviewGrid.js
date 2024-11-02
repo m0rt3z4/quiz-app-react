@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Grid, Card, Button } from '@mui/material'
+import { Box, Grid, Card } from '@mui/material'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
+import { SettingsButton } from '../../../Components/SettingsButton'
 
 export const PreviewGridPage = ({ onBack }) => {
   const [stimulus, setStimulus] = useState({})
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, darkTheme } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('')
   }, [changeTitle])
@@ -92,6 +93,7 @@ export const PreviewGridPage = ({ onBack }) => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
+              backgroundColor: darkTheme ? 'black' : 'white',
               minHeight: 420,
               borderRadius: '35px',
               padding: 5,
@@ -101,100 +103,68 @@ export const PreviewGridPage = ({ onBack }) => {
             <Grid container>
               <Grid container justifyContent={'center'} xs={12} spacing={3}>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => onBack()}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Back
-                  </Button>
+                  <SettingsButton
+                    text="Back"
+                    size={40}
+                    onClickButton={() => onBack()}
+                  />
                 </Grid>
                 <Grid item xs={12}>
-                  <Experiment2Grid stimuli={stimulus} />
+                  <Experiment2Grid darkTheme stimuli={stimulus} />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => setRandomStimulus(previewTypes.PERCEPTUAL_6)}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Perceptual 6
-                  </Button>
+                  <SettingsButton
+                    text="Perceptual 6"
+                    size={50}
+                    onClickButton={() =>
+                      setRandomStimulus(previewTypes.PERCEPTUAL_6)
+                    }
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => setRandomStimulus(previewTypes.PERCEPTUAL_3)}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Perceptual 3
-                  </Button>
+                  <SettingsButton
+                    text="Perceptual 3"
+                    size={50}
+                    onClickButton={() =>
+                      setRandomStimulus(previewTypes.PERCEPTUAL_3)
+                    }
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => setRandomStimulus(previewTypes.IMAGINARY)}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Imaginary
-                  </Button>
+                  <SettingsButton
+                    text="Imaginary 3"
+                    size={50}
+                    onClickButton={() =>
+                      setRandomStimulus(previewTypes.IMAGINARY)
+                    }
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() =>
+                  <SettingsButton
+                    text="Imaginary Reverse"
+                    size={50}
+                    onClickButton={() =>
                       setRandomStimulus(previewTypes.IMAGINARY_REVERSE)
                     }
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Imaginary Reverse
-                  </Button>
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => setRandomStimulus(previewTypes.INQUIRY_6)}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Inquiry 6
-                  </Button>
+                  <SettingsButton
+                    text="Inquiry 6"
+                    size={50}
+                    onClickButton={() =>
+                      setRandomStimulus(previewTypes.INQUIRY_6)
+                    }
+                  />
                 </Grid>
                 <Grid item xs={4}>
-                  <Button
-                    onClick={() => setRandomStimulus(previewTypes.INQUIRY_3)}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Inquiry 3
-                  </Button>
+                  <SettingsButton
+                    text="Inquiry 3"
+                    size={50}
+                    onClickButton={() =>
+                      setRandomStimulus(previewTypes.INQUIRY_3)
+                    }
+                  />
                 </Grid>
               </Grid>
             </Grid>

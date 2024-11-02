@@ -4,7 +4,7 @@ import OpacitySlider from './OpacitySlider'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
 import SelectSection from './Select'
-import { SettingsButton } from './SettingsButton'
+import { SettingsButton } from '../../../../Components/SettingsButton'
 import { pages } from '.'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {

@@ -3,7 +3,7 @@ import React from 'react'
 import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
 import Step4 from '../../../../Components/BinocularTrial/Step4'
-import { SettingsButton } from './SettingsButton'
+import { SettingsButton } from '../../../../Components/SettingsButton'
 
 const OpacitySlider = ({
   redOpacity,

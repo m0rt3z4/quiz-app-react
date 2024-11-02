@@ -21,9 +21,10 @@ const GridCell = ({
   leftBorder = false,
   rightBorder = false,
   binocularOptions = {},
+  cellSize = 34,
 }) => {
   const { feedbackStatus } = useExp2PersistedContext()
-  const cellSize = darkTheme ? 85 : 34
+  // const cellSize = darkTheme ? 85 : 34
   const renderCell = () => {
     const iconLoader = () => {
       switch (cornerType) {
@@ -94,10 +95,10 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'black',
+              backgroundColor: fontColor,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid gray`,
+              border: `1px solid ${borderColor}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -149,15 +150,15 @@ const GridCell = ({
             ? 'rgba(13, 231, 46, 0.881)'
             : feedbackStatus === 'error'
             ? 'red'
-            : 'black'
+            : fontColor
         return (
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: 'white',
+              backgroundColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid black`,
+              border: `1px solid ${borderColor}`,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -169,10 +170,10 @@ const GridCell = ({
                 backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
-                border: `3px solid white`,
+                // border: `2px solid black`,
                 borderCollapse: 'collapse',
-                width: cellSize - 8,
-                height: cellSize - 8,
+                width: cellSize - 20,
+                height: cellSize - 23,
               }}
             />
           </Box>
