@@ -7,7 +7,7 @@ const BinocularBullseyeDot = ({ width = 100, opacity = bullseyeOpacity }) => {
       src={BULLSEYE}
       alt="BULLSEYE"
       style={{
-        width: `${width}%`,
+        width: `${width}px`,
         opacity: `${opacity}%`,
       }}
     />
