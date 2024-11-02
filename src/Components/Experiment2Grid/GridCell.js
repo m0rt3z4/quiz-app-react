@@ -8,7 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
-import { borderColor, bullseyeOpacity } from '../../consts'
+import { borderColor, bullseyeOpacity, fontColor } from '../../consts'
 
 const GridCell = ({
   darkTheme = false,
@@ -30,27 +30,29 @@ const GridCell = ({
         case cornerTypes.DOWN: {
           return (
             <ArrowDownwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.UP: {
           return (
             <ArrowUpwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.RIGHT: {
           return (
             <ArrowForwardIcon
-              sx={{ color: `${darkTheme ? 'white' : 'black'}` }}
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
             />
           )
         }
         case cornerTypes.LEFT: {
           return (
-            <ArrowBackIcon sx={{ color: `${darkTheme ? 'white' : 'black'}` }} />
+            <ArrowBackIcon
+              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+            />
           )
         }
         default:
