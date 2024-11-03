@@ -37,4 +37,5 @@ export const binocularTrialTypes = {
 
 export const borderColor = 'rgb(55, 55, 55)'
 export const fontColor = 'rgb(95, 95, 95)'
+export const cellColor = 'rgb(200, 200, 200)'
 export const bullseyeOpacity = 35

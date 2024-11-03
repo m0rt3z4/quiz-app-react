@@ -31,7 +31,7 @@ const Step4 = ({
         stimulusDistance,
         degreeValue,
       }}
-      isPreview
+      isPreview = {isPreview}
     />
   )
 }

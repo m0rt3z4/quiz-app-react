@@ -36,14 +36,16 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
   }, [trialIndex])
 
   const calculateRatio = (resultsArray = []) => {
+    if (resultsArray.length < 10) return 0
+    const lastTen = resultsArray.slice(resultsArray.length - 10)
     return (
-      resultsArray
+      lastTen
         .map((res) => res.isSwitched)
         .reduce((prev, cur) => {
           if (cur) {
             return prev + 1
           } else return prev
-        }, 0) / resultsArray.length
+        }, 0) / lastTen.length
     )
   }
   const onFinishTrial = (resp) => {
@@ -54,8 +56,16 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
     ]
     setResults(savedResults)
     const ratio = calculateRatio(savedResults)
-    console.log(`Ratio is => ${ratio}`)
+    // console.log(`Ratio is => ${ratio}`)
 
+    if (ratio >= 0.8) {
+      onFinishExperiment({
+        results: savedResults,
+        switchRatio: ratio,
+        redOpacity,
+        greenOpacity,
+      })
+    }
     setLastAnswer(resp)
     if (!isSwitched) handleOpacityChange(resp)
     setTrialIndex(trialIndex + 1)

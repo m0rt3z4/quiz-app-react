@@ -2,6 +2,7 @@
 import React from 'react'
 import { Grid, Typography, Card } from '@mui/material'
 import { imaginationCueTypes } from './consts'
+import { fontColor } from '../../../consts'
 
 // Imagination Cue Step
 const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
@@ -25,7 +26,7 @@ const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8}>
-              <Typography fontSize={25} sx={{ color: 'white' }}>
+              <Typography fontSize={25} sx={{ color: fontColor }}>
                 {cue}
               </Typography>
             </Grid>

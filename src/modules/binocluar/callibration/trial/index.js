@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Step1 from './Step1'
-import Step2 from './Step2'
+// import Step2 from './Step2'
 import Step3 from './Step3'
 import Step4 from './Step4'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
+import Step4Fused from '../../../../Components/BinocularTrial/Step4Fused'
 
 const trialSettingsObj = {
   slide1Time: 1000,
@@ -21,7 +22,7 @@ const BinocularCallibrationTrial = ({
 }) => {
   const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('')
-  const { changeTitle } = useExp2PersistedContext()
+  const { changeTitle, binocluarV1Settings } = useExp2PersistedContext()
 
   const stepOne = () => {
     return setTimeout(() => {
@@ -68,12 +69,21 @@ const BinocularCallibrationTrial = ({
     }
     case 2: {
       return (
-        <Step2
-          isGreenFirst={isGreenFirst}
+        <Step4Fused
           greenOpacity={greenOpacity}
           redOpacity={redOpacity}
+          rivalryType="GR"
+          stimulusDistance={binocluarV1Settings.stimulusDistance}
+          stimulusWidth={binocluarV1Settings.stimulusWidth}
         />
       )
+      // return (
+      //   <Step2
+      //     isGreenFirst={isGreenFirst}
+      //     greenOpacity={greenOpacity}
+      //     redOpacity={redOpacity}
+      //   />
+      // )
     }
     case 3: {
       return <Step3 onUserAnswer={onUserAnswer} />

@@ -40,7 +40,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
               </Grid>
             ) : (
               <Grid item xs={8}>
-                <BinocularBullseyeDot width={3} />
+                <BinocularBullseyeDot width={13} />
               </Grid>
             )}
           </Grid>
