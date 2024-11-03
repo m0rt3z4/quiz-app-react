@@ -119,6 +119,8 @@ export const Experiment2Grid = ({
             // if (stimuli[cellId].cellType === cellTypes.BINOCULAR)
             cells.push(
               <GridCell
+                gridSize={size}
+                cellId={cellId}
                 darkTheme={darkTheme}
                 cellType={stimuli[cellId].cellType}
                 binocularOptions={binocularOptions}
@@ -128,6 +130,8 @@ export const Experiment2Grid = ({
           } else {
             cells.push(
               <GridCell
+                gridSize={size}
+                cellId={cellId}
                 darkTheme={darkTheme}
                 isCenterCell={i - 1 === 1 && j - 1 === 1 && size === 3}
                 cellSize={cellSize}
@@ -174,6 +178,9 @@ export const Experiment2Grid = ({
         sx={{
           display: 'block',
           flexWrap: 'wrap',
+          // justifyContent: 'center',
+          // alignItems: 'center',
+          // border: `1px solid ${borderColor}`,
           // maxWidth: darkTheme ? 800 : 380,
         }}
       >

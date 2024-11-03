@@ -8,9 +8,15 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
-import { borderColor, bullseyeOpacity, cellColor, fontColor } from '../../consts'
+import {
+  borderColor,
+  bullseyeOpacity,
+  cellColor,
+  fontColor,
+} from '../../consts'
 
 const GridCell = ({
+  cellId,
   darkTheme = false,
   isCenterCell = false,
   cellType = cellTypes.EMPTY,
@@ -22,8 +28,18 @@ const GridCell = ({
   rightBorder = false,
   binocularOptions = {},
   cellSize = 34,
+  gridSize,
 }) => {
   const { feedbackStatus } = useExp2PersistedContext()
+  const i = Math.floor(cellId / gridSize)
+  const j = cellId % gridSize
+  const borderObj = {
+    borderStyle: 'solid',
+    borderColor,
+    borderWidth: `${i === 0 ? 2 : 1}px ${j === gridSize - 1 ? 2 : 1}px ${
+      i === gridSize - 1 ? 2 : 1
+    }px ${j === 0 ? 2 : 1}px`,
+  }
   // const cellSize = darkTheme ? 85 : 34
   const renderCell = () => {
     const iconLoader = () => {
@@ -69,7 +85,8 @@ const GridCell = ({
               backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${darkTheme ? borderColor : 'black'}`,
+              // border: `1px solid ${darkTheme ? borderColor : 'black'}`,
+              ...borderObj,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -87,6 +104,7 @@ const GridCell = ({
             darkTheme
             cellSize={cellSize}
             binocularOptions={binocularOptions}
+            borderObj={borderObj}
           />
         )
       }
@@ -98,7 +116,8 @@ const GridCell = ({
               backgroundColor: cellColor,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${borderColor}`,
+              // border: `1px solid ${borderColor}`,
+              ...borderObj,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -128,14 +147,14 @@ const GridCell = ({
               backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: justify,
               alignItems: align,
-              borderStyle: 'solid',
-              borderColor: 'black',
-              borderWidth: `${topBorder ? 1 : 0}px ${rightBorder ? 1 : 0}px ${
-                bottomBorder ? 1 : 0
-              }px ${leftBorder ? 1 : 0}px`,
+              // borderStyle: 'outset',
+              // borderColor: borderColor,
+              // borderWidth: `${topBorder ? 2 : 0}px ${rightBorder ? 1 : 0}px ${
+              //   bottomBorder ? 1 : 0
+              // }px ${leftBorder ? 1 : 0}px`,
               borderCollapse: 'collapse',
-              width: cellSize + 2,
-              height: cellSize + 2,
+              width: cellSize + 1,
+              height: cellSize + 1,
             }}
           >
             {cornerType === cornerTypes.EMPTY ? null : (
@@ -158,7 +177,8 @@ const GridCell = ({
               backgroundColor: 'black',
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${borderColor}`,
+              // border: `1px solid ${borderColor}`,
+              ...borderObj,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
@@ -189,7 +209,8 @@ const GridCell = ({
               backgroundColor: `${darkTheme ? 'black' : 'white'}`,
               justifyContent: 'center',
               alignItems: 'center',
-              border: `1px solid ${darkTheme ? borderColor : 'black'}`,
+              // border: `1px solid ${darkTheme ? borderColor : 'black'}`,
+              ...borderObj,
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
