@@ -8,7 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import BinocularCell from './BinocularCell'
 import BinocularBullseyeDot from '../BinocularBullseyeDot'
-import { borderColor, bullseyeOpacity, fontColor } from '../../consts'
+import { borderColor, bullseyeOpacity, cellColor, fontColor } from '../../consts'
 
 const GridCell = ({
   darkTheme = false,
@@ -95,7 +95,7 @@ const GridCell = ({
           <Box
             sx={{
               display: 'flex',
-              backgroundColor: fontColor,
+              backgroundColor: cellColor,
               justifyContent: 'center',
               alignItems: 'center',
               border: `1px solid ${borderColor}`,
@@ -150,7 +150,7 @@ const GridCell = ({
             ? 'rgba(13, 231, 46, 0.881)'
             : feedbackStatus === 'error'
             ? 'red'
-            : fontColor
+            : cellColor
         return (
           <Box
             sx={{
@@ -170,10 +170,12 @@ const GridCell = ({
                 backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
-                // border: `2px solid black`,
+                borderColor: 'darkblue',
+                borderStyle: 'solid',
+                borderWidth: `3px 2px 3px 3px`,
                 borderCollapse: 'collapse',
                 width: cellSize - 20,
-                height: cellSize - 23,
+                height: cellSize - 20,
               }}
             />
           </Box>

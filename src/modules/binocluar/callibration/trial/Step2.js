@@ -5,6 +5,7 @@ import { Grid, Card } from '@mui/material'
 //assets
 import GREEN from '../../../../assets/Binocular/green2.PNG'
 import RED from '../../../../assets/Binocular/red2.PNG'
+import BinocularBullseyeDot from '../../../../Components/BinocularBullseyeDot'
 
 const Step2 = ({
   isGreenFirst = true,
@@ -35,7 +36,7 @@ const Step2 = ({
             justifyContent={'center'}
             alignItems={'center'}
           >
-            <Grid container item xs={6} marginTop={2} justifyContent={'center'}>
+            <Grid container item xs={5} marginTop={2} justifyContent={'center'}>
               <img
                 src={isGreenFirst ? GREEN : RED}
                 alt="Rivalry1"
@@ -45,7 +46,10 @@ const Step2 = ({
                 }}
               />
             </Grid>
-            <Grid container item xs={6} marginTop={2} justifyContent={'center'}>
+            <Grid item xs={2}>
+              <BinocularBullseyeDot width={13} />
+            </Grid>
+            <Grid container item xs={5} marginTop={2} justifyContent={'center'}>
               <img
                 src={isGreenFirst ? RED : GREEN}
                 alt="Rivalry2"

@@ -5,6 +5,7 @@ import { Grid, Typography, Card } from '@mui/material'
 import ArrowBackSharpIcon from '@mui/icons-material/ArrowBackSharp'
 import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp'
 import useKeyboard from './useKeyboard'
+import { fontColor } from '../../../../consts'
 
 // Intro Step
 const Step3 = ({ onUserAnswer }) => {
@@ -41,17 +42,13 @@ const Step3 = ({ onUserAnswer }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={4}>
-              <Typography sx={{ color: 'lightgreen' }}>Green</Typography>
-              <ArrowBackSharpIcon sx={{ color: 'white', paddingTop: 2 }} />
+              <Typography sx={{ color: fontColor }}>Green</Typography>
+              <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
             </Grid>
-            {/* <Grid item xs={4}>
-              <Typography sx={{ color: 'white' }}>None</Typography>
-              <ArrowDownwardSharpIcon sx={{ color: 'white', paddingTop: 2 }} />
-            </Grid> */}
             <Grid item xs={4}>
-              <Typography sx={{ color: 'red' }}>Red</Typography>
-              <ArrowForwardSharpIcon sx={{ color: 'white', paddingTop: 2 }} />
-            </Grid>{' '}
+              <Typography sx={{ color: fontColor }}>Red</Typography>
+              <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
+            </Grid>
           </Grid>
         </Card>
       </Grid>
