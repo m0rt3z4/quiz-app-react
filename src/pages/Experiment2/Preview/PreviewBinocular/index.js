@@ -86,7 +86,7 @@ export const PreviewBinocularPage = ({ onBack }) => {
       return (
         <BinocularCallibrationModule
           onFinishExperiment={onFinishTrial}
-          experiment={createCalibrationExperiment(4)}
+          experiment={createCalibrationExperiment(30)}
         />
       )
     case 4:

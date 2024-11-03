@@ -3,8 +3,8 @@ import React from 'react'
 import { Grid, Card } from '@mui/material'
 
 //assets
-import GREEN from '../../../../assets/Binocular/green2.PNG'
-import RED from '../../../../assets/Binocular/red2.PNG'
+import GREEN from '../../../../assets/Binocular/faded_green.png'
+import RED from '../../../../assets/Binocular/faded_red.png'
 
 const Step4 = ({ userAnswer = 'GREEN' }) => {
   const pic = userAnswer === 'GREEN' ? GREEN : userAnswer === 'RED' ? RED : null
