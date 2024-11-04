@@ -44,10 +44,14 @@ const PresentationStep = ({
   return (
     <Grid container xs={12}>
       <Grid item xs={6}>
-        {isLeft ? <Experiment2Grid stimuli={stimulus} darkTheme /> : null}
+        {isLeft ? (
+          <Experiment2Grid stimuli={stimulus} darkTheme withBullseye />
+        ) : null}
       </Grid>
       <Grid item xs={6}>
-        {!isLeft ? <Experiment2Grid stimuli={stimulus} darkTheme /> : null}
+        {!isLeft ? (
+          <Experiment2Grid stimuli={stimulus} darkTheme withBullseye />
+        ) : null}
       </Grid>
     </Grid>
   )

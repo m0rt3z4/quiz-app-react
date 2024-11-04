@@ -7,7 +7,11 @@ import { keyboardKeys } from '../../consts'
 import { Experiment2Grid } from '../Experiment2Grid'
 import { Grid } from '@mui/material'
 
-const PrePresentationStep = ({ onNext, isLeft = true }) => {
+const PrePresentationStep = ({
+  onNext,
+  isLeft = true,
+  withBullseye = false,
+}) => {
   const { showRightArrow } = useExp2PersistedContext()
 
   const onClickStart = (resp) => {
@@ -28,10 +32,14 @@ const PrePresentationStep = ({ onNext, isLeft = true }) => {
   return (
     <Grid container xs={12}>
       <Grid item xs={6}>
-        {isLeft ? <Experiment2Grid darkTheme /> : null}
+        {isLeft ? (
+          <Experiment2Grid darkTheme withBullseye={withBullseye} />
+        ) : null}
       </Grid>
       <Grid item xs={6}>
-        {!isLeft ? <Experiment2Grid darkTheme /> : null}
+        {!isLeft ? (
+          <Experiment2Grid darkTheme withBullseye={withBullseye} />
+        ) : null}
       </Grid>
     </Grid>
   )

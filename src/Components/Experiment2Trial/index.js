@@ -91,7 +91,9 @@ const Experiment2Trial = ({
       )
     }
     case 2: {
-      return <PrePresentationStep onNext={() => {}} isLeft={isLeft} />
+      return (
+        <PrePresentationStep onNext={() => {}} isLeft={isLeft} withBullseye />
+      )
     }
     case 3: {
       return (
