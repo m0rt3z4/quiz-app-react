@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import { Experiment2Grid } from '../Experiment2Grid'
 import { cellTypes } from '../Experiment2Grid/consts'
+import { Grid } from '@mui/material'
 
 const PresentationStep = ({
   onFinishStep,
@@ -10,6 +11,7 @@ const PresentationStep = ({
   timeToShowStimuli = 500,
   timeToShowImaginaryStimuli = 1500,
   timeBetweenStimuli = 250,
+  isLeft = true,
 }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
@@ -39,7 +41,20 @@ const PresentationStep = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index])
 
-  return <Experiment2Grid stimuli={stimulus} darkTheme />
+  return (
+    <Grid container xs={12}>
+      <Grid item xs={6}>
+        {isLeft ? (
+          <Experiment2Grid stimuli={stimulus} darkTheme withBullseye />
+        ) : null}
+      </Grid>
+      <Grid item xs={6}>
+        {!isLeft ? (
+          <Experiment2Grid stimuli={stimulus} darkTheme withBullseye />
+        ) : null}
+      </Grid>
+    </Grid>
+  )
 }
 
 export default PresentationStep

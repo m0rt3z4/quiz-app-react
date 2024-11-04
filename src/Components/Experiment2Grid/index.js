@@ -3,6 +3,7 @@ import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
 import { cellTypes, cornerTypes } from './consts'
 import { borderColor } from '../../consts'
+import BinocularBullseyeDot from '../BinocularBullseyeDot'
 // const mock = {
 //   2: {
 //     cellType: cellTypes.FILLED,
@@ -31,6 +32,7 @@ export const Experiment2Grid = ({
   darkTheme = false,
   binocularOptions,
   isPreview = false,
+  withBullseye = false,
 }) => {
   const cellSize = size === 3 ? 85 : 45
   const increasedSize = size + 2
@@ -186,6 +188,11 @@ export const Experiment2Grid = ({
       >
         {renderGrid()}
       </Box>
+      {withBullseye ? (
+        <div style={{ display: 'flex', position: 'absolute' }}>
+          <BinocularBullseyeDot width={13} />
+        </div>
+      ) : null}
     </Card>
   )
 }
