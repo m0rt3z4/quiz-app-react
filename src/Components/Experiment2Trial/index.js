@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import PrePresentationStep from './PrePresentationStep'
-import { Experiment2Grid } from '../Experiment2Grid'
 import PresentationStep from './PresentationStep'
 import RecognitionStep from './RecognitionStep'
 import OneShotRecogniton from './OneShotRecogniton'
 import Final from './Final'
+import { Card, Grid } from '@mui/material'
+import BinocularBullseyeDot from '../BinocularBullseyeDot'
 
 const recognitionTypes = {
   ONE_SHOT: 'ONE_SHOT',
@@ -21,6 +22,7 @@ const Experiment2Trial = ({
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
   const { memoryV1Settings } = useExp2PersistedContext()
+  const { isLeft } = trialParams
 
   const trialSettings = memoryV1Settings
   useEffect(() => {
@@ -28,22 +30,28 @@ const Experiment2Trial = ({
     setResults({})
     setTimeout(() => {
       onFinishImagination()
+      return clearTimeout()
     }, 2000)
   }, [trialParams])
 
   const onFinishFirstStep = (resp) => {
-    setStep(3)
+    setStep(4)
     setTimeout(() => {
-      setStep(4)
+      setStep(5)
       return clearTimeout()
     }, trialSettings.timeBeforeRecognition)
   }
   const onFinishImagination = () => {
     setStep(2)
+
+    setTimeout(() => {
+      setStep(3)
+      return clearTimeout()
+    }, 2000)
   }
   const onFinishRecognition = (resp) => {
     setResults(resp)
-    setStep(5)
+    setStep(6)
   }
 
   const onNext = () => {
@@ -53,32 +61,79 @@ const Experiment2Trial = ({
 
   switch (step) {
     case 1: {
-      return <PrePresentationStep onNext={() => {}} />
+      const cardStyle = {
+        display: 'flex',
+        backgroundColor: 'black',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minWidth: 500,
+        minHeight: 470,
+        padding: 6,
+        borderRadius: '35px',
+      }
+      return (
+        <Grid container xs={12}>
+          <Grid item xs={6}>
+            {isLeft ? (
+              <Card sx={cardStyle}>
+                <BinocularBullseyeDot width={13} />
+              </Card>
+            ) : null}
+          </Grid>
+          <Grid item xs={6}>
+            {!isLeft ? (
+              <Card sx={cardStyle}>
+                <BinocularBullseyeDot width={13} />
+              </Card>
+            ) : null}
+          </Grid>
+        </Grid>
+      )
     }
     case 2: {
+      return <PrePresentationStep onNext={() => {}} isLeft={isLeft} />
+    }
+    case 3: {
       return (
         <PresentationStep
           stimuliArray={trialParams.presentation}
           onFinishStep={onFinishFirstStep}
           timeBetweenStimuli={trialSettings.timeBetweenStimuli}
           timeToShowStimuli={trialSettings.timeToShowStimuli}
+          isLeft={isLeft}
         />
       )
     }
-    case 3: {
-      return <Experiment2Grid darkTheme />
-    }
     case 4: {
+      return <PrePresentationStep onNext={() => {}} isLeft={!isLeft} />
+    }
+    case 5: {
       // console.log('recogniton=> ', trialParams.recognition)
 
       if (trialParams.recognitionType === recognitionTypes.ONE_SHOT) {
         return (
-          <OneShotRecogniton
-            stimuliArray={trialParams.recognition}
-            onFinishStep={onFinishRecognition}
-            isInquiryCorrect={trialParams.isInquiryCorrect}
-            feedbackTime={trialSettings.feedbackTime}
-          />
+          <Grid container xs={12}>
+            <Grid item xs={6}>
+              {!isLeft ? (
+                <OneShotRecogniton
+                  stimuliArray={trialParams.recognition}
+                  onFinishStep={onFinishRecognition}
+                  isInquiryCorrect={trialParams.isInquiryCorrect}
+                  feedbackTime={trialSettings.feedbackTime}
+                />
+              ) : null}
+            </Grid>
+            <Grid item xs={6}>
+              {isLeft ? (
+                <OneShotRecogniton
+                  stimuliArray={trialParams.recognition}
+                  onFinishStep={onFinishRecognition}
+                  isInquiryCorrect={trialParams.isInquiryCorrect}
+                  feedbackTime={trialSettings.feedbackTime}
+                />
+              ) : null}
+            </Grid>
+          </Grid>
         )
       } else {
         return (
@@ -89,7 +144,7 @@ const Experiment2Trial = ({
         )
       }
     }
-    case 5: {
+    case 6: {
       return (
         <Final
           onFinishStep={onNext}

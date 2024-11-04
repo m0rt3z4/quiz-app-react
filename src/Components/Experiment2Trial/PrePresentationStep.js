@@ -5,8 +5,9 @@ import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 import { Experiment2Grid } from '../Experiment2Grid'
+import { Grid } from '@mui/material'
 
-const PrePresentationStep = ({ onNext }) => {
+const PrePresentationStep = ({ onNext, isLeft = true }) => {
   const { showRightArrow } = useExp2PersistedContext()
 
   const onClickStart = (resp) => {
@@ -24,7 +25,16 @@ const PrePresentationStep = ({ onNext }) => {
   }
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
-  return <Experiment2Grid darkTheme />
+  return (
+    <Grid container xs={12}>
+      <Grid item xs={6}>
+        {isLeft ? <Experiment2Grid darkTheme /> : null}
+      </Grid>
+      <Grid item xs={6}>
+        {!isLeft ? <Experiment2Grid darkTheme /> : null}
+      </Grid>
+    </Grid>
+  )
 }
 
 export default PrePresentationStep

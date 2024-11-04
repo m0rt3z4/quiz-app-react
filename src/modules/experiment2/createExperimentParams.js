@@ -28,8 +28,12 @@ export const createBlocks = (
 ) => {
   const sizeArray = generateRandomBool(size)
   const inquiryArray = generateRandomBool(size)
+  const direction = generateRandomBool(size)
   const blocks = sizeArray.map((value, index) => {
-    return createTrial(trialSize, inquiryArray[index], blockType, value)
+    return {
+      ...createTrial(trialSize, inquiryArray[index], blockType, value),
+      isLeft: direction[index],
+    }
   })
   // console.log(blocks)
   return blocks
