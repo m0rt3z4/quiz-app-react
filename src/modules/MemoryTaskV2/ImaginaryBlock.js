@@ -1,30 +1,44 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
 
 const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
-
-  useEffect(() => {}, [])
+  const [practiceRes, setPracticeRes] = useState({})
 
   const onNext = () => {
     setStep(2)
   }
 
+  const onFinishPractice = (resp) => {
+    setPracticeRes({ practice: resp })
+    setStep(3)
+  }
+
+  const onFinishMainTrial = (resp) => {
+    onFinishBlock({ practice: practiceRes, mainTrial: resp })
+  }
+
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content="Imaginary Block" />
-    case 2: {
-      console.log('img')
+      return <Slide onNext={onNext} content="Imaginary Practice" />
+    case 2:
+      return (
+        <ExperimentModule
+          experiment={experiment.slice(0, 10)}
+          onFinishExperiment={onFinishPractice}
+        />
+      )
+    case 3:
+      return <Slide onNext={onNext} content="Imaginary Main Trial" />
+    case 4:
       return (
         <ExperimentModule
           experiment={experiment}
-          onFinishExperiment={onFinishBlock}
-          trialSettings={trialSettings}
+          onFinishExperiment={onFinishMainTrial}
         />
       )
-    }
     default:
       break
   }

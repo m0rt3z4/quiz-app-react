@@ -12,15 +12,24 @@ export const getRandomElements = (n = 36, numElements) => {
 }
 
 export const createExperimentParams = () => {
-  const perceptual = createBlocks(16, blockTypes.PERCEPTUAL)
-  const imaginary = createBlocks(16, blockTypes.IMAGINARY)
-  return { perceptual, imaginary }
+  const perceptual4 = createBlocks(32, blockTypes.PERCEPTUAL, 4)
+  const imaginary4 = createBlocks(32, blockTypes.IMAGINARY, 4)
+  const perceptual6 = createBlocks(32, blockTypes.PERCEPTUAL, 6)
+  const imaginary6 = createBlocks(32, blockTypes.IMAGINARY, 6)
+  return {
+    perceptual: shuffleArray([...perceptual4, ...perceptual6]),
+    imaginary: shuffleArray([...imaginary4, ...imaginary6]),
+  }
 }
-export const createBlocks = (size = 8, blockType = blockTypes.PERCEPTUAL) => {
+export const createBlocks = (
+  size = 8,
+  blockType = blockTypes.PERCEPTUAL,
+  trialSize = 6
+) => {
   const sizeArray = generateRandomBool(size)
   const inquiryArray = generateRandomBool(size)
   const blocks = sizeArray.map((value, index) => {
-    return createTrial(6, inquiryArray[index], blockType, value)
+    return createTrial(trialSize, inquiryArray[index], blockType, value)
   })
   // console.log(blocks)
   return blocks
@@ -61,7 +70,7 @@ export const createTrial = (
   let recallObj = createRecallArrayV2(
     presentationStimuli.map((item) => item.cellId),
     isInquiryCorrect,
-    isHalfRecall ? 3 : 6
+    isHalfRecall ? numOfElements / 2 : numOfElements
   )
   // console.log(recallObj)
   return {

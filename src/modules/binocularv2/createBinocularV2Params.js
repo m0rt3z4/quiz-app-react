@@ -3,16 +3,16 @@ import shuffleArray from '../../helpers/shuffleArray'
 
 const angleArray = [0, 11.5, 22.5, 30, 37, 30, 22.5, 11.5]
 const cellIdArray = [0, 1, 2, 3, 5, 6, 7, 8]
-export const createBinocularV2Params = (size = 8) => {
-  const half = size / 2
+export const createBinocularV2Params = (size = 64) => {
+  // const half = size / 2
   //
-  const fused = generateImaginationCue(half).map((cue) => {
+  const fused = generateImaginationCue(64).map((cue) => {
     return {
       imaginationCue: cue,
       recallType: 'FUSED',
     }
   })
-  const mixed = generateImaginationCue(half).map((cue) => {
+  const mixed = generateImaginationCue(8).map((cue) => {
     return {
       imaginationCue: cue,
       recallType: 'MIXED',
