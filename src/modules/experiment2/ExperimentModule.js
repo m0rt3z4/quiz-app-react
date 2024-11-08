@@ -6,7 +6,7 @@ import Experiment2Trial from '../../Components/Experiment2Trial'
 const ExperimentModule = ({
   experiment,
   onFinishExperiment,
-  showTracker = false,
+  showTracker = true,
 }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
@@ -46,6 +46,7 @@ const ExperimentModule = ({
       onFinishTrial={onFinishTrial}
       showTracker={showTracker}
       trackerIndex={trialIndex}
+      expLength={experiment.length}
     />
   )
 }

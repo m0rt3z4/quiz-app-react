@@ -6,7 +6,7 @@ import { fontColor, keyboardKeys } from '../../consts'
 // import Slide from '../Slide'
 import Strings from '../Slide/Strings'
 
-const Final = ({ onFinishStep, showTracker = false, index }) => {
+const Final = ({ onFinishStep, showTracker = false, index, expLength }) => {
   const content = Strings.trial.exit
   //press space to continue
   const keyboardCallback = (resp) => {
@@ -20,8 +20,8 @@ const Final = ({ onFinishStep, showTracker = false, index }) => {
       label: '1',
     },
     {
-      value: 64,
-      label: '64',
+      value: expLength,
+      label: `${expLength}`,
     },
   ]
   return (
@@ -51,7 +51,12 @@ const Final = ({ onFinishStep, showTracker = false, index }) => {
                   color="success"
                   valueLabelDisplay="on"
                   marks={marks}
-                  max={64}
+                  min={1}
+                  max={expLength}
+                  sx={{
+                    color: 'lightgray',
+                    '.MuiSlider-markLabel': { color: 'lightgray' },
+                  }}
                 />
               </Grid>
             )}
