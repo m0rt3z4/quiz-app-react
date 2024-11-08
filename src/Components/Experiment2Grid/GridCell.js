@@ -13,6 +13,7 @@ import {
   bullseyeOpacity,
   cellColor,
   fontColor,
+  inquiryBorderColor,
 } from '../../consts'
 
 const GridCell = ({
@@ -121,6 +122,7 @@ const GridCell = ({
               borderCollapse: 'collapse',
               width: cellSize,
               height: cellSize,
+              zIndex: 1,
             }}
           />
         )
@@ -190,9 +192,9 @@ const GridCell = ({
                 backgroundColor: bgColor,
                 justifyContent: 'center',
                 alignItems: 'center',
-                borderColor: 'darkblue',
+                borderColor: inquiryBorderColor,
                 borderStyle: 'solid',
-                borderWidth: `3px 2px 3px 3px`,
+                borderWidth: `3px 2px 3px 2px`,
                 borderCollapse: 'collapse',
                 width: cellSize - 20,
                 height: cellSize - 20,

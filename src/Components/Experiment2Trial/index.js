@@ -18,6 +18,7 @@ const Experiment2Trial = ({
   onFinishTrial,
   showTracker = false,
   trackerIndex,
+  expLength,
 }) => {
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
@@ -152,6 +153,7 @@ const Experiment2Trial = ({
           onFinishStep={onNext}
           showTracker={showTracker}
           index={trackerIndex + 1}
+          expLength={expLength}
         />
       )
     }
