@@ -44,7 +44,7 @@ const ExperimentModule = ({
     <Experiment2Trial
       trialParams={current}
       onFinishTrial={onFinishTrial}
-      showTracker={showTracker}
+      showTracker={showTracker && trialIndex === 31}
       trackerIndex={trialIndex}
       expLength={experiment.length}
     />

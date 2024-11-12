@@ -62,6 +62,11 @@ const Final = ({ onFinishStep, showTracker = false, index, expLength }) => {
             )}
             {content.length > 0 && (
               <Grid item xs={8} marginTop={2}>
+                {showTracker && (
+                  <Typography fontSize={content[0].fontSize}>
+                    Feel free to take some rest.
+                  </Typography>
+                )}
                 <Typography fontSize={content[0].fontSize}>
                   {content[0].text}
                 </Typography>
