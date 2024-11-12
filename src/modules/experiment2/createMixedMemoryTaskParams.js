@@ -1,3 +1,4 @@
+import shuffleArray from '../../helpers/shuffleArray'
 import { generateRandomBool, getRandomElements } from './createExperimentParams'
 import { populateMixedBlocks } from './populateMixedBlocks'
 
@@ -15,13 +16,16 @@ const mixedBlockTypes = [
 export const createMixedBlock = (isPreview = false, blockSizesSettings) => {
   const blocks = populateBlockTypes(isPreview, blockSizesSettings)
   const halfRecallRandomArray = generateRandomBool(blocks.length)
-  return blocks.map((block, index) =>
-    populateMixedBlocks(
-      block.trialType,
-      block.isInquiryCorrect,
-      block.isI,
-      block.nthLetter,
-      halfRecallRandomArray[index]
+  return shuffleArray(
+    blocks.map((block, index) =>
+      populateMixedBlocks(
+        block.trialType,
+        block.isInquiryCorrect,
+        block.isI,
+        block.nthLetter,
+        halfRecallRandomArray[index],
+        block.isLeft
+      )
     )
   )
 }
@@ -74,8 +78,12 @@ const injectCounterBalance = (trialType = '') => {
     }),
     trialType.length
   )
+  const finalArray = shuffleArray([...correctInquiry, ...incorrectInquiry])
+  const directionArray = generateRandomBool(finalArray.length)
 
-  return [...correctInquiry, ...incorrectInquiry]
+  return finalArray.map((value, index) => {
+    return { ...value, isLeft: directionArray[index] }
+  })
 }
 
 const pickLetter = (arr = [], trialSize = 4) => {

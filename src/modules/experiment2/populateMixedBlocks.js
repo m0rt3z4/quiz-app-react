@@ -10,7 +10,8 @@ export const populateMixedBlocks = (
   isInquiryCorrect = false,
   isI = false,
   nthLetter = 2,
-  isHalfRecall = true
+  isHalfRecall = true,
+  isLeft
 ) => {
   // console.log('ss', findInquiryIndex())
   let presentationArray = []
@@ -99,10 +100,12 @@ export const populateMixedBlocks = (
   // console.log('after', randomCells)
   // console.log('Presentation Array => ', presentationArray)
   return {
+    trialType,
     presentation: presentationArray,
     recognition: recallObj,
     isInquiryCorrect,
     recognitionType: 'ONE_SHOT',
+    isLeft,
   }
 }
 
