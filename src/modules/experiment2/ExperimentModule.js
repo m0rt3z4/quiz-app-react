@@ -30,9 +30,11 @@ const ExperimentModule = ({
 
   const onFinishTrial = (resp) => {
     const trialResult = {
-      ...experiment[trialIndex],
+      params: { trialNumber: trialIndex, ...experiment[trialIndex] },
       results: resp,
     }
+    console.log(trialResult)
+
     setResults([...results, trialResult])
     setTrialIndex(trialIndex + 1)
     toggleBreake()
@@ -44,7 +46,7 @@ const ExperimentModule = ({
     <Experiment2Trial
       trialParams={current}
       onFinishTrial={onFinishTrial}
-      showTracker={showTracker}
+      showTracker={showTracker && trialIndex === 31}
       trackerIndex={trialIndex}
       expLength={experiment.length}
     />
