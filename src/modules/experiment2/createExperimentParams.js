@@ -33,6 +33,7 @@ export const createBlocks = (
     return {
       ...createTrial(trialSize, inquiryArray[index], blockType, value),
       isLeft: direction[index],
+      gridLocation: direction[index] ? 'LEFT' : 'RIGHT',
     }
   })
   // console.log(blocks)
@@ -78,10 +79,14 @@ export const createTrial = (
   )
   // console.log(recallObj)
   return {
+    setSize: numOfElements,
     presentation: shuffleArray(presentationStimuli),
-    recognition: recallObj,
+    recognition: recallObj.recognition,
+    inquiryCell: recallObj.inquiryCell,
+    recallType: isInquiryCorrect ? 'SAME' : 'DIFFERENT',
     isInquiryCorrect,
     recognitionType: 'ONE_SHOT',
+    recognitionConfiguration: isHalfRecall ? 'PARTIAL' : 'WHOLE',
   }
 }
 
@@ -94,11 +99,13 @@ const createRecallArrayV2 = (
   const presentationArray = shuffleArray(arr)
 
   let resultArray = []
+  let inquiryCell = {}
 
   //pick inquiry cell
   if (isInquiryCorrect) {
     const pickInquiry = presentationArray.splice(0, 1)[0]
     resultArray.push({ cellId: pickInquiry, cellType: cellTypes.INQUIRY })
+    inquiryCell = cellIdToCoordinates(pickInquiry)
   } else {
     let inquiryCellId = -1
     let i = 0
@@ -130,6 +137,7 @@ const createRecallArrayV2 = (
       i++
     }
     resultArray.push({ cellId: inquiryCellId, cellType: cellTypes.INQUIRY })
+    inquiryCell = cellIdToCoordinates(inquiryCellId)
   }
 
   // pick the rest of the recall array
@@ -147,94 +155,8 @@ const createRecallArrayV2 = (
   resultArray.map((res) => {
     return (resObj[res.cellId] = { cellType: res.cellType })
   })
-  return resObj
+  return { recognition: resObj, inquiryCell }
 }
-
-// const createRecallArray = (
-//   arr = [],
-//   correctInquiry = false,
-//   numOfRecallStimuli = 6
-// ) => {
-//   if (!arr.length) return []
-//   let clonedArray = [...arr]
-//   //   console.log('clonedArrayBefore', clonedArray)
-//   let resultArray = []
-//   let resultCellIdArray = []
-
-//   //add correct inquiry stimulus
-//   if (correctInquiry) {
-//     const inquiryStimulus = clonedArray.splice(
-//       Math.floor(Math.random() * clonedArray.length),
-//       1
-//     )[0]
-//     resultCellIdArray.push(inquiryStimulus)
-//     resultArray.push({ cellId: inquiryStimulus, cellType: cellTypes.INQUIRY })
-//   }
-
-//   // find possible moves
-//   let temp = clonedArray.map((cellId) => {
-//     const coordinates = cellIdToCoordinates(cellId)
-
-//     const res = []
-//     if (coordinates.i > 0) {
-//       res.push(coordinatesToCellId(coordinates.i - 1, coordinates.j))
-//     }
-//     if (coordinates.j > 0) {
-//       res.push(coordinatesToCellId(coordinates.i, coordinates.j - 1))
-//     }
-//     if (coordinates.i < 5) {
-//       res.push(coordinatesToCellId(coordinates.i + 1, coordinates.j))
-//     }
-//     if (coordinates.j < 5) {
-//       res.push(coordinatesToCellId(coordinates.i, coordinates.j + 1))
-//     }
-//     return res
-//   })
-//   //   console.log('Possible Moves Array => ', temp)
-
-//   // add incorrect inquiry stimulus
-//   if (!correctInquiry) {
-//     const pickedCellId = Math.floor(Math.random() * temp.length)
-//     const possibleMoves = temp.splice(pickedCellId, 1)[0]
-//     // console.log('pickedCellId => ', pickedCellId)
-//     // console.log('possibleMoves => ', possibleMoves)
-//     const inquiryCellId =
-//       possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
-//     // console.log('inquiry after moving => ', inquiryCellId)
-//     resultCellIdArray.push(inquiryCellId)
-//     resultArray.push({ cellId: inquiryCellId, cellType: cellTypes.INQUIRY })
-//   }
-//   // console.log(resultArray)
-//   // console.log(resultCellIdArray)
-//   for (let i = 0; i < numOfRecallStimuli - 1; i++) {
-//     const possibleMoves = temp.splice(
-//       Math.floor(Math.random() * temp.length),
-//       1
-//     )[0]
-//     let res = []
-//     while (res.length === 0 || possibleMoves.length > 0) {
-//       const randomMove = possibleMoves.splice(
-//         Math.floor(Math.random() * possibleMoves.length),
-//         1
-//       )[0]
-//       if (!resultCellIdArray.includes(randomMove)) res.push(randomMove)
-//     }
-//     if (!res.length) {
-//       console.log('error happened')
-//       console.log(resultCellIdArray)
-//     }
-
-//     resultCellIdArray.push(res[0])
-//     resultArray.push({ cellId: res[0], cellType: cellTypes.FILLED })
-//   }
-//   //   console.log(resultArray)
-//   //   console.log(resultCellIdArray)
-//   let resObj = {}
-//   resultArray.map((res) => {
-//     return (resObj[res.cellId] = { cellType: res.cellType })
-//   })
-//   return resObj
-// }
 
 export const cellIdToCoordinates = (cellId, gridLength = 6) => {
   return { i: Math.floor(cellId / gridLength), j: cellId % gridLength }

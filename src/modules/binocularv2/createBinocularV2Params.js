@@ -1,7 +1,7 @@
 import { imaginationCueTypes } from '../../Components/BinocularTrial/consts'
 import shuffleArray from '../../helpers/shuffleArray'
 
-const angleArray = [0, 11.5, 22.5, 30, 37, 30, 22.5, 11.5]
+const angleArray = [-37, -30, -22.5, -11.5, 0, 11.5, 22.5, 30, 37]
 const cellIdArray = [0, 1, 2, 3, 5, 6, 7, 8]
 export const createBinocularV2Params = (size = 64) => {
   // const half = size / 2
@@ -21,12 +21,14 @@ export const createBinocularV2Params = (size = 64) => {
   let result = shuffleArray([...fused, ...mixed])
   result = shuffleArray(
     result.map((value, index) => {
-      return { ...value, cellId: cellIdArray[index % cellIdArray.length] }
+      return {
+        ...value,
+        cellId: cellIdArray[index % cellIdArray.length],
+        angle: angleArray[index % angleArray.length],
+      }
     })
   )
-  return result.map((set, index) => {
-    return { ...set, angle: angleArray[index % angleArray.length] }
-  })
+  return result
 }
 
 const generateImaginationCue = (size) => {
