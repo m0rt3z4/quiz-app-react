@@ -23,6 +23,8 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
   }
   useEffect(() => {
     if (trialIndex < experiment.length) {
+      console.log(experiment);
+      
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
@@ -86,7 +88,7 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
   ) : (
     <BinocularCallibrationTrial
       onFinishTrial={onFinishTrial}
-      isGreenFirst={current}
+      angle={current}
       greenOpacity={greenOpacity}
       redOpacity={redOpacity}
     />
