@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400&display=swap');
 
+@font-face {
+  font-family: 'B-Nazanin';
+  src: local('B-Nazanin'), url(./assets/Fonts/BNAZANB.TTF) format('truetype');
+}
+
 body {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Merriweather Sans', 'B-Nazanin', sans-serif;
   color: white;
   /* background-color: #ffffff; */
   font-weight: 300;
