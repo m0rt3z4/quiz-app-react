@@ -89,6 +89,11 @@ export const MainPage = ({ setPage }) => {
                 buttonLable="Settings"
                 onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
               />
+              <Item
+                text="Tutorial Slides:"
+                buttonLable="preview"
+                onClickButton={() => setPage(previewPages.TUTORIAL_SLIDES)}
+              />
             </Grid>
           </Card>
         </Grid>
