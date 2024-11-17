@@ -48,28 +48,40 @@ const GridCell = ({
         case cornerTypes.DOWN: {
           return (
             <ArrowDownwardIcon
-              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+              sx={{
+                color: `${darkTheme ? fontColor : 'black'}`,
+                // marginBottom: '-3px',
+              }}
             />
           )
         }
         case cornerTypes.UP: {
           return (
             <ArrowUpwardIcon
-              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+              sx={{
+                color: `${darkTheme ? fontColor : 'black'}`,
+                // marginTop: '-3px',
+              }}
             />
           )
         }
         case cornerTypes.RIGHT: {
           return (
             <ArrowForwardIcon
-              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+              sx={{
+                color: `${darkTheme ? fontColor : 'black'}`,
+                marginRight: '-1px',
+              }}
             />
           )
         }
         case cornerTypes.LEFT: {
           return (
             <ArrowBackIcon
-              sx={{ color: `${darkTheme ? fontColor : 'black'}` }}
+              sx={{
+                color: `${darkTheme ? fontColor : 'black'}`,
+                marginLeft: '-1px',
+              }}
             />
           )
         }
@@ -159,9 +171,7 @@ const GridCell = ({
               height: cellSize + 1,
             }}
           >
-            {cornerType === cornerTypes.EMPTY ? null : (
-              <span>{iconLoader()}</span>
-            )}
+            {cornerType === cornerTypes.EMPTY ? null : iconLoader()}
           </Box>
         )
       }

@@ -6,6 +6,7 @@ import PreviewTrialPage from './PreviewTrial'
 import PreviewBinocularPage from './PreviewBinocular'
 import PreviewBinocularV2Page from './PreviewBinocularV2'
 import MemoryTaskPage from '../MemoryTaskPage'
+import PreviewTutorials from './PreviewTutorials'
 
 export const previewPages = {
   TRIAL_GRID: 1,
@@ -13,6 +14,7 @@ export const previewPages = {
   BINOCULAR_TRIAL: 3,
   BINOCULAR_TRIAL_V2: 4,
   MAIN_TRIAL: 5,
+  TUTORIAL_SLIDES: 6,
 }
 
 export const Experiment2PreviewPage = () => {
@@ -20,12 +22,16 @@ export const Experiment2PreviewPage = () => {
   const backButton = () => {
     setStep(0)
   }
-  const { changeTitle, changeTheme,changeOutletWidth } = useExp2PersistedContext()
+  const {
+    changeTitle,
+    changeTheme,
+    changeOutletWidth,
+  } = useExp2PersistedContext()
   useEffect(() => {
     changeTitle('Preview Settings')
     changeOutletWidth(10)
     changeTheme(true)
-  }, [changeTitle, changeTheme,changeOutletWidth])
+  }, [changeTitle, changeTheme, changeOutletWidth])
 
   switch (step) {
     case 0: {
@@ -45,6 +51,9 @@ export const Experiment2PreviewPage = () => {
     }
     case 5: {
       return <MemoryTaskPage />
+    }
+    case 6: {
+      return <PreviewTutorials onBack={backButton} />
     }
     default:
       break

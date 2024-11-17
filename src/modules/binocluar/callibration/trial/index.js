@@ -16,7 +16,7 @@ const trialSettingsObj = {
 const BinocularCallibrationTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
-  isGreenFirst = true,
+  angle = 0,
   greenOpacity = 100,
   redOpacity = 100,
 }) => {
@@ -75,6 +75,7 @@ const BinocularCallibrationTrial = ({
           rivalryType="GR"
           stimulusDistance={binocluarV1Settings.stimulusDistance}
           stimulusWidth={binocluarV1Settings.stimulusWidth}
+          degreeValue={angle}
         />
       )
       // return (
