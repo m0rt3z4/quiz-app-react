@@ -20,15 +20,18 @@ export const PreviewTutorials = ({ onBack }) => {
 
   switch (step) {
     case 1: {
-      return <DarkSlide content={tutorialTypes.BINOCULARV2} onNext={onNext} />
+      return <DarkSlide content={tutorialTypes.BINOCULARV2CALIBRATION} onNext={onNext} />
     }
     case 2: {
-      return <DarkSlide content={tutorialTypes.PERCEPTUAL} onNext={onNext} />
+      return <DarkSlide content={tutorialTypes.BINOCULARV2} onNext={onNext} />
     }
     case 3: {
-      return <DarkSlide content={tutorialTypes.IMAGINARY} onNext={onNext} />
+      return <DarkSlide content={tutorialTypes.PERCEPTUAL} onNext={onNext} />
     }
     case 4: {
+      return <DarkSlide content={tutorialTypes.IMAGINARY} onNext={onNext} />
+    }
+    case 5: {
       return <DarkSlide content={tutorialTypes.MIXED} onNext={onBack} />
     }
     default:

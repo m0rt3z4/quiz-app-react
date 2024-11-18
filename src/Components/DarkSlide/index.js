@@ -4,6 +4,7 @@ import BINOCULARV2 from '../../assets/MemoryV2TutorialSlides/BinocularV2.jpg'
 import PERCEPTUAL from '../../assets/MemoryV2TutorialSlides/Perceptual.jpg'
 import IMAGINARY from '../../assets/MemoryV2TutorialSlides/Imaginary.jpg'
 import MIXED from '../../assets/MemoryV2TutorialSlides/Mixed.jpg'
+import BINOCULARV2CALIBRATION from '../../assets/MemoryV2TutorialSlides/BinocularV2Calibration.jpg'
 import useKeyboardNavigation from '../../helpers/useKeyboardNavigation'
 import { tutorialTypes } from './consts'
 
@@ -12,6 +13,9 @@ const DarkSlide = ({ content, onNext }) => {
 
   const picLoader = () => {
     switch (content) {
+      case tutorialTypes.BINOCULARV2CALIBRATION: {
+        return BINOCULARV2CALIBRATION
+      }
       case tutorialTypes.BINOCULARV2: {
         return BINOCULARV2
       }
