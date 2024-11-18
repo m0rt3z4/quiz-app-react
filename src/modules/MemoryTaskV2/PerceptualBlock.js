@@ -45,7 +45,7 @@ const PerceptualBlock = ({ experiment, onFinishBlock }) => {
           onNext={() => {
             setStep(4)
           }}
-          content={`شروغ (→)`}
+          content={`شروع آزمایش (→)`}
         />
       )
     case 4:

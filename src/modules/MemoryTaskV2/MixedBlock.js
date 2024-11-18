@@ -10,10 +10,6 @@ const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
   const [practiceRes, setPracticeRes] = useState({})
 
-  const onNext = () => {
-    setStep(2)
-  }
-
   const onFinishPractice = (resp) => {
     setPracticeRes({ practice: resp })
     setStep(3)
@@ -43,7 +39,14 @@ const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
       )
     }
     case 3:
-      return <Slide onNext={onNext} content={`شروغ (→)`} />
+      return (
+        <Slide
+          onNext={() => {
+            setStep(4)
+          }}
+          content={`شروع آزمایش (→)`}
+        />
+      )
     case 4:
       return (
         <ExperimentModule

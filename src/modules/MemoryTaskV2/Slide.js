@@ -22,7 +22,8 @@ const Slide = ({ content = '', onNext }) => {
           sx={{
             display: 'flex',
             alignItems: 'center',
-            // backgroundColor: 'black',
+            backgroundColor: 'black',
+            color: 'white',
             justifyContent: 'center',
             width: '100%',
             minHeight: 450,
