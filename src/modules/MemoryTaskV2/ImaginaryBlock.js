@@ -1,7 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
+import shuffleArray from '../../helpers/shuffleArray'
+import { tutorialTypes } from '../../Components/DarkSlide/consts'
+import DarkSlide from '../../Components/DarkSlide'
 
 const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
@@ -22,16 +25,25 @@ const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content="Imaginary Practice" />
-    case 2:
+      return (
+        <DarkSlide
+          onNext={() => {
+            setStep(2)
+          }}
+          content={tutorialTypes.IMAGINARY}
+        />
+      )
+    case 2: {
+      const exp = shuffleArray(experiment)
       return (
         <ExperimentModule
-          experiment={experiment.slice(0, 10)}
+          experiment={exp.slice(0, 10)}
           onFinishExperiment={onFinishPractice}
         />
       )
+    }
     case 3:
-      return <Slide onNext={onNext} content="Imaginary Main Trial" />
+      return <Slide onNext={onNext} content={`شروغ (→)`} />
     case 4:
       return (
         <ExperimentModule

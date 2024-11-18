@@ -3,11 +3,9 @@ import React from 'react'
 import { Grid, Typography, Card, Slider } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 import { fontColor, keyboardKeys } from '../../consts'
-// import Slide from '../Slide'
-import Strings from '../Slide/Strings'
 
 const Final = ({ onFinishStep, showTracker = false, index, expLength }) => {
-  const content = Strings.trial.exit
+  const content = `بعدی (→)`
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onFinishStep()
@@ -63,12 +61,18 @@ const Final = ({ onFinishStep, showTracker = false, index, expLength }) => {
             {content.length > 0 && (
               <Grid item xs={8} marginTop={2}>
                 {showTracker && (
-                  <Typography fontSize={content[0].fontSize}>
-                    Feel free to take some rest.
+                  <Typography
+                    fontFamily={'B-Nazanin'}
+                    fontSize={content[0].fontSize}
+                  >
+                    کمی استراحت کنید
                   </Typography>
                 )}
-                <Typography fontSize={content[0].fontSize}>
-                  {content[0].text}
+                <Typography
+                  fontFamily={'B-Nazanin'}
+                  fontSize={content[0].fontSize}
+                >
+                  {content}
                 </Typography>
               </Grid>
             )}

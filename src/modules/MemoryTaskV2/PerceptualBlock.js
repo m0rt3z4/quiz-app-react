@@ -2,14 +2,13 @@
 import React, { useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
+import shuffleArray from '../../helpers/shuffleArray'
+import { tutorialTypes } from '../../Components/DarkSlide/consts'
+import DarkSlide from '../../Components/DarkSlide'
 
 const PerceptualBlock = ({ experiment, onFinishBlock }) => {
   const [step, setStep] = useState(1)
   const [practiceRes, setPracticeRes] = useState({})
-
-  const onNext = () => {
-    setStep(2)
-  }
 
   const onFinishPractice = (resp) => {
     setPracticeRes({ practice: resp })
@@ -22,16 +21,33 @@ const PerceptualBlock = ({ experiment, onFinishBlock }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content="Perceptual Practice" />
-    case 2:
+      return (
+        <DarkSlide
+          onNext={() => {
+            setStep(2)
+          }}
+          content={tutorialTypes.PERCEPTUAL}
+        />
+      )
+    case 2: {
+      const exp = shuffleArray(experiment)
       return (
         <ExperimentModule
-          experiment={experiment.slice(0, 10)}
+          experiment={exp.slice(0, 10)}
           onFinishExperiment={onFinishPractice}
         />
       )
+    }
+
     case 3:
-      return <Slide onNext={onNext} content="Perceptual Main Trial" />
+      return (
+        <Slide
+          onNext={() => {
+            setStep(4)
+          }}
+          content={`شروغ (→)`}
+        />
+      )
     case 4:
       return (
         <ExperimentModule

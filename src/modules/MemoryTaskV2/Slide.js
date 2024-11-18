@@ -33,7 +33,7 @@ const Slide = ({ content = '', onNext }) => {
           }}
         >
           <Box>
-            <Typography fontSize={22} paddingTop={10}>
+            <Typography fontFamily={'B-Nazanin'} fontSize={22} paddingTop={10}>
               {content}
             </Typography>
           </Box>

@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState } from 'react'
 import BinocularModule from '../experiment2/BinocularModule'
-import Slide from './TutorialSlide'
+import DarkSlide from '../../Components/DarkSlide'
+import { tutorialTypes } from '../../Components/DarkSlide/consts'
 
 const BinocularTrialModule = ({
   onFinishExperiment,
@@ -16,7 +17,7 @@ const BinocularTrialModule = ({
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content={binocularTrialType} />
+      return <DarkSlide onNext={onNext} content={tutorialTypes.BINOCULARV2} />
     case 2: {
       return (
         <BinocularModule

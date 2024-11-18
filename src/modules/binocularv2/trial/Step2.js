@@ -6,7 +6,7 @@ import { fontColor } from '../../../consts'
 
 // Imagination Cue Step
 const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
-  const cue = imaginationCue === imaginationCueTypes.GREEN ? 'G' : 'R'
+  const cue = imaginationCue === imaginationCueTypes.GREEN ? 'س' : 'ق'
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -26,7 +26,11 @@ const Step2 = ({ imaginationCue = imaginationCueTypes.RED }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={8}>
-              <Typography fontSize={25} sx={{ color: fontColor }}>
+              <Typography
+                fontFamily={'B-Nazanin'}
+                fontSize={25}
+                sx={{ color: fontColor }}
+              >
                 {cue}
               </Typography>
             </Grid>

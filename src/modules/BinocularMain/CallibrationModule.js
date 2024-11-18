@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import BinocularCallibrationModule from '../binocluar/callibration'
-import Slide from './TutorialSlide'
+import DarkSlide from '../../Components/DarkSlide'
+import { tutorialTypes } from '../../Components/DarkSlide/consts'
 
 const CallibrationModule = ({ experiment, onFinishCallibration }) => {
   const [step, setStep] = useState(1)
@@ -13,7 +14,12 @@ const CallibrationModule = ({ experiment, onFinishCallibration }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content="Calibration" />
+      return (
+        <DarkSlide
+          onNext={onNext}
+          content={tutorialTypes.BINOCULARV2CALIBRATION}
+        />
+      )
     case 2:
       return (
         <BinocularCallibrationModule

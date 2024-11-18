@@ -83,7 +83,7 @@ const ResultsPage = ({ results = {}, onBack }) => {
                 }}
                 onClick={onBack}
               >
-                Back
+                Next
               </Button>
             </Grid>
             <Grid item xs={8} paddingTop={5}>
