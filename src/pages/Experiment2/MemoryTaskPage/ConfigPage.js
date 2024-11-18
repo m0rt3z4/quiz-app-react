@@ -37,6 +37,8 @@ export const ConfigPage = ({
           <Card
             sx={{
               display: 'flex',
+              backgroundColor: 'black',
+              color: 'white',
               justifyContent: 'center',
               minHeight: 420,
               borderRadius: '35px',
@@ -57,6 +59,7 @@ export const ConfigPage = ({
                       setBinocularType(e.target.value)
                     }}
                     size="small"
+                    sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
                   >
                     <MenuItem value={binocularTrialTypes.BINOCULAR_V1}>
                       {binocularTrialTypes.BINOCULAR_V1}
@@ -79,6 +82,7 @@ export const ConfigPage = ({
                       setMemoryType(e.target.value)
                     }}
                     size="small"
+                    sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
                   >
                     <MenuItem value={memeoryTaskTypes.MEMORY_V2}>
                       {memeoryTaskTypes.MEMORY_V2}

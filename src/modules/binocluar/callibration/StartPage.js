@@ -13,7 +13,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
   }
   useKeyboard(keyboardCallback, Date.now())
 
-  const content = `Press -> to start`
+  const content = `شروغ (→)`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>
@@ -34,7 +34,11 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
           <Grid container item xs={12} justifyContent={'center'}>
             {isStart ? (
               <Grid item xs={8} marginTop={2}>
-                <Typography fontSize={25} sx={{ color: 'white' }}>
+                <Typography
+                  fontSize={25}
+                  fontFamily={'B-Nazanin'}
+                  sx={{ color: 'white' }}
+                >
                   {content}
                 </Typography>
               </Grid>

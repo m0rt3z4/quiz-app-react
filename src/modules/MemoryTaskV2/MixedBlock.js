@@ -2,14 +2,13 @@
 import React, { useState } from 'react'
 import Slide from './Slide'
 import ExperimentModule from '../experiment2/ExperimentModule'
+import shuffleArray from '../../helpers/shuffleArray'
+import { tutorialTypes } from '../../Components/DarkSlide/consts'
+import DarkSlide from '../../Components/DarkSlide'
 
 const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
   const [practiceRes, setPracticeRes] = useState({})
-
-  const onNext = () => {
-    setStep(2)
-  }
 
   const onFinishPractice = (resp) => {
     setPracticeRes({ practice: resp })
@@ -22,16 +21,32 @@ const MixedBlock = ({ experiment, onFinishBlock, trialSettings }) => {
 
   switch (step) {
     case 1:
-      return <Slide onNext={onNext} content="Mixed Practice" />
-    case 2:
+      return (
+        <DarkSlide
+          onNext={() => {
+            setStep(2)
+          }}
+          content={tutorialTypes.MIXED}
+        />
+      )
+    case 2: {
+      const exp = shuffleArray(experiment)
       return (
         <ExperimentModule
-          experiment={experiment.slice(0, 10)}
+          experiment={exp.slice(0, 10)}
           onFinishExperiment={onFinishPractice}
         />
       )
+    }
     case 3:
-      return <Slide onNext={onNext} content="Mixed Main Trial" />
+      return (
+        <Slide
+          onNext={() => {
+            setStep(4)
+          }}
+          content={`شروع آزمایش (→)`}
+        />
+      )
     case 4:
       return (
         <ExperimentModule

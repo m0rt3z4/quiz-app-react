@@ -42,11 +42,15 @@ const Step3 = ({ onUserAnswer }) => {
         >
           <Grid container item xs={12} justifyContent={'center'}>
             <Grid item xs={4}>
-              <Typography sx={{ color: fontColor }}>Green</Typography>
+              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+                سبز
+              </Typography>
               <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
             </Grid>
             <Grid item xs={4}>
-              <Typography sx={{ color: fontColor }}>Red</Typography>
+              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+                قرمر
+              </Typography>
               <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
             </Grid>
           </Grid>
