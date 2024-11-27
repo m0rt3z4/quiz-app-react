@@ -22,7 +22,7 @@ const Experiment2Trial = ({
 }) => {
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
-  const { memoryV1Settings } = useExp2PersistedContext()
+  const { memoryV1Settings, changeUserResp } = useExp2PersistedContext()
   const { isLeft } = trialParams
 
   const trialSettings = memoryV1Settings
@@ -52,6 +52,7 @@ const Experiment2Trial = ({
   }
   const onFinishRecognition = (resp) => {
     setResults(resp)
+    changeUserResp(false)
     setStep(6)
   }
 

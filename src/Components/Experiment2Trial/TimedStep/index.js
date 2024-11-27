@@ -16,6 +16,8 @@ const TimedStep = ({
     showArrows,
     changeFeedbackStatus,
     memoryV1Settings,
+    respRef,
+    changeUserResp,
   } = useExp2PersistedContext()
 
   const onFinishSurprizeStep = (resp) => {
@@ -49,6 +51,8 @@ const TimedStep = ({
   }
 
   const onResponse = (resp) => {
+    if (!!respRef) return null
+    changeUserResp(true)
     if (resp.userAnswer === 'NO_ANSWER') {
       onFinishSurprizeStep(resp)
     } else {
