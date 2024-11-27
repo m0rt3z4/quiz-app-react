@@ -13,7 +13,7 @@ const StartPage = ({ onUserAnswer, isStart = false }) => {
   }
   useKeyboard(keyboardCallback, Date.now())
 
-  const content = `شروغ (→)`
+  const content = `شروع (→)`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid container item xs={12} justifyContent={'center'}>

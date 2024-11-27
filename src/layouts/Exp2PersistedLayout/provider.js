@@ -12,6 +12,7 @@ export const Exp2PersistedProvider = ({ children }) => {
   const [leftBarWarning, setLeftBarWarning] = useState('')
   const [rightBarWarning, setRightBarWarning] = useState('')
   const [feedbackStatus, setFeedbackStatus] = useState('')
+  const [respRef, setRespRef] = useState(false)
   const [binocluarV1Settings, setBinocluarV1Settings] = usePersistedState(
     storageKeys.BINOCULAR_V1_SETTINGS,
     {
@@ -131,6 +132,9 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     [setMemoryV2MixedSizes]
   )
+  const changeUserResp = useCallback((resp) => {
+    setRespRef(resp)
+  }, [])
 
   const value = useMemo(() => {
     return {
@@ -151,6 +155,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       showLeftArrow,
       feedbackStatus,
       changeFeedbackStatus,
+      respRef,
+      changeUserResp,
       binocluarV1Settings,
       changeBinocularV1Settings,
       binocluarV2Settings,
@@ -178,6 +184,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     showLeftArrow,
     feedbackStatus,
     changeFeedbackStatus,
+    respRef,
+    changeUserResp,
     binocluarV1Settings,
     changeBinocularV1Settings,
     binocluarV2Settings,
