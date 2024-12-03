@@ -35,8 +35,8 @@ const OpacitySlider = ({
       label: '20',
     },
     {
-      value: 80,
-      label: '80',
+      value: 150,
+      label: '150',
     },
   ]
   const marks3 = [
@@ -141,7 +141,7 @@ const OpacitySlider = ({
               // color="success"
               valueLabelDisplay="on"
               marks={marks2}
-              max={80}
+              max={150}
               min={20}
             />
           </Grid>
