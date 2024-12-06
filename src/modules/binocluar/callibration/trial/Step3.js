@@ -49,7 +49,7 @@ const Step3 = ({ onUserAnswer }) => {
             </Grid>
             <Grid item xs={4}>
               <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                قرمر
+                قرمز
               </Typography>
               <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
             </Grid>
