@@ -16,7 +16,7 @@ export const TrialLayout = () => {
 
   // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
-    <Box sx={{ flexGrow: 1, height: '100vh' }}>
+    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: '#e6dada' }}>
       <Grid
         container
         justifyContent={'center'}

@@ -17,7 +17,7 @@ export const Exp2PersistedLayout = () => {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '99vw',
         minHeight: '100vh',
         backgroundColor: darkTheme ? 'black' : '#e6dada',
       }}
