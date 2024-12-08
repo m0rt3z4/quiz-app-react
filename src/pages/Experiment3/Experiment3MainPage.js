@@ -66,7 +66,7 @@ export const Experiment3MainPage = () => {
                 </Grid>
                 <Grid item xs={8}>
                   <Button
-                    onClick={() => redirectUrl('setting')}
+                    onClick={() => redirectUrl('preview')}
                     size="large"
                     sx={{
                       width: '70%',

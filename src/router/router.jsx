@@ -16,6 +16,10 @@ import {
 } from '../layouts/Exp2PersistedLayout'
 import Experiment1Page from '../pages/main/Experiment1Page'
 import Experiment3MainPage from '../pages/Experiment3/Experiment3MainPage'
+import { Experiment3Provider } from '../layouts/Experiment3Layout/provider'
+import { Experiment3Layout } from '../layouts/Experiment3Layout'
+import Experiment3PreviewPage from '../pages/Experiment3/Experiment3PreviewPage'
+import { PreviewGridPage, TrialSettingsPage } from '../pages/Experiment3/PreviewPages'
 
 export const router = createBrowserRouter([
   {
@@ -85,28 +89,33 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   element: (
-  //     <Exp2PersistedProvider>
-  //       <Exp2PersistedLayout />
-  //     </Exp2PersistedProvider>
-  //   ),
-  //   children: [
-  //     {
-  //       id: 'main-exp2-page',
-  //       path: hierarchy.main.exp2.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //     {
-  //       id: 'trial-exp2-page',
-  //       path: hierarchy.main.exp2.preview.path,
-  //       element: <Experiment2PreviewPage />,
-  //     },
-  //     {
-  //       id: 'preview-exp2-page',
-  //       path: hierarchy.main.exp2.trial.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //   ],
-  // },
+  {
+    element: (
+      <Experiment3Provider>
+        <Experiment3Layout />
+      </Experiment3Provider>
+    ),
+    children: [
+      {
+        id: 'trial-exp3-page',
+        path: hierarchy.main.experiment3.preview.path,
+        element: <Experiment3PreviewPage />,
+      },
+      {
+        id: 'preview-grid-exp3-page',
+        path: hierarchy.main.experiment3.preview.grid.path,
+        element: <PreviewGridPage />,
+      },
+      {
+        id: 'preview-settings-exp3-page',
+        path: hierarchy.main.experiment3.preview.settings.path,
+        element: <TrialSettingsPage />,
+      },
+      // {
+      //   id: 'preview-exp3-page',
+      //   path: hierarchy.main.exp2.trial.path,
+      //   element: <Experiment2Page />,
+      // },
+    ],
+  },
 ])

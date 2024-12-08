@@ -6,12 +6,12 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 export const Experiment3Layout = () => {
   const {
+    title,
     outletWidth,
     leftBarVisible,
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
-    // feedbackStatus,
   } = useExperiment3Context()
 
   // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
@@ -21,9 +21,26 @@ export const Experiment3Layout = () => {
         container
         justifyContent={'center'}
         alignContent={'center'}
-        spacing={2}
         sx={{ paddingTop: 1 }}
       >
+        {!!title && (
+          <Grid item xs={outletWidth}>
+            <Card
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: 125,
+                borderRadius: '35px',
+                border: '1px solid black',
+                // background: 'rgb(247, 241, 241)',
+                background: 'white',
+              }}
+            >
+              <Typography fontSize={'25px'}>{title}</Typography>
+            </Card>
+          </Grid>
+        )}
         <Grid
           container
           justifyContent={'center'}
@@ -90,3 +107,5 @@ export const Experiment3Layout = () => {
     </Box>
   )
 }
+export * from './provider'
+export * from './context'
