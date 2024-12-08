@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Box, Grid, Card } from '@mui/material'
 import { useExperiment3Context } from '../../../layouts/Experiment3Layout'
+import { Experiment3Grid } from '../../../Components/Experiment3Grid'
 
 // import { SettingsButton } from '../../../Components/SettingsButton'
 
@@ -22,11 +23,13 @@ export const PreviewGridPage = () => {
           backgroundColor: 'white',
           minHeight: 420,
           borderRadius: '35px',
-          padding: 7,
+          padding: 1,
           border: '1px solid black',
         }}
       >
-        <Grid container paddingTop={3}></Grid>
+        <Grid container item xs={8} justifyContent={'center'}>
+          <Experiment3Grid isPreview isWhiteThemed />
+        </Grid>
       </Card>
     </Box>
   )

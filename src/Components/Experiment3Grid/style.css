@@ -1,0 +1,30 @@
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    to { opacity: 1.0; }
+}                                                                                                                                                                                                                                  
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.5; }
+    to { opacity: 1.0; }
+}
+
+.blink-success {
+  color: rgba(13, 231, 46, 0.881);
+  animation:fade 600ms infinite;
+  -webkit-animation:fade 600ms infinite;
+}
+.blink-error {
+  color: rgba(255, 24, 24, 0.881);
+  animation:fade 600ms infinite;
+  -webkit-animation:fade 600ms infinite;
+}
+.blink-black {
+  color: rgba(0, 0, 0, 0.881);
+  animation:fade 600ms infinite;
+  -webkit-animation:fade 600ms infinite;
+}
+.question-black{color: rgba(0, 0, 0, 0.881);}
+.question-success{color: rgba(13, 231, 46, 0.881);}
+.question-error{color: rgba(255, 24, 24, 0.881);}
