@@ -1,89 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
-// import Exit from '../../Components/Trial2/Exit'
-// import { createNewExperiment } from '../../helpers/trialManagerHelper'
 
 export const MainPage = () => {
   const navigate = useNavigate()
-  // const test = () => {
-  //   const exp = createNewExperiment()
-  //   let arr = [],
-  //     arr2 = []
-  //   exp
-  //     .map((e) => {
-  //       return e.trialParams.stimuli
-  //     })
-  //     .map((t) => {
-  //       return t.map((z) => z.iconType === 'CIRCLE' && arr.push(z.isOnLetter))
-  //     })
-  //   exp
-  //     .map((e) => {
-  //       return e.trialParams.recognition
-  //     })
-  //     .map((t) => {
-  //       return t.map((z) => arr2.push(z.taskType))
-  //     })
-  //   const zarr = arr2.reduce(
-  //     (acc, curr) => {
-  //       switch (curr) {
-  //         case 'CORRECT_ON_LETTER': {
-  //           acc.correctOnLetter++
-  //           return acc
-  //         }
-  //         case 'CORRECT_OFF_LETTER': {
-  //           acc.correctOffLetter++
-  //           return acc
-  //         }
-  //         case 'INCORRECT_ON_LETTER': {
-  //           acc.inCorrectOnLetter++
-  //           return acc
-  //         }
-  //         case 'INCORRECT_OFF_LETTER': {
-  //           acc.incorrectOffLetter++
-  //           return acc
-  //         }
-
-  //         default:
-  //           return acc
-  //       }
-  //     },
-  //     {
-  //       correctOnLetter: 0,
-  //       correctOffLetter: 0,
-  //       inCorrectOnLetter: 0,
-  //       incorrectOffLetter: 0,
-  //     }
-  //   )
-  //   const countSurprize = (arr = []) => {
-  //     return arr.reduce(
-  //       (acc, curr) => {
-  //         if (curr) {
-  //           acc.onLettersCount++
-  //         } else {
-  //           acc.offLettersCount++
-  //         }
-  //         return acc
-  //       },
-  //       { onLettersCount: 0, offLettersCount: 0 }
-  //     )
-  //   }
-  //   const stimuliCount = exp
-  //     .map((e) => {
-  //       return e.trialParams.stimuli
-  //     })
-  //     .reduce((acc, curr) => {
-  //       acc = acc + curr.length
-  //       return acc
-  //     }, 0)
-  //   console.log(exp)
-  //   console.log(countSurprize(arr))
-  //   console.log(zarr)
-  //   console.log({ stimuliCount })
-  // }
-  // for (let i = 0; i < 30; i++) {
-  //   test()
-  // }
 
   const redirectUrl = (url) => {
     navigate(url)
@@ -94,7 +14,6 @@ export const MainPage = () => {
       <Grid
         container
         justifyContent={'center'}
-        // alignItems={'baseline'}
         spacing={2}
         sx={{ paddingTop: 1 }}
       >
@@ -104,7 +23,7 @@ export const MainPage = () => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
-              minHeight: 420,
+              minHeight: 480,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
@@ -120,9 +39,7 @@ export const MainPage = () => {
                     padding: '10px',
                   }}
                 >
-                  <Typography fontSize={'25px'}>
-                    Please read through the Tutorial before starting the task.
-                  </Typography>
+                  <Typography fontSize={'25px'}>Welcome</Typography>
                 </Box>
               </Grid>
               <Grid
@@ -130,11 +47,11 @@ export const MainPage = () => {
                 justifyContent={'center'}
                 xs={12}
                 paddingTop={8}
-                spacing={3}
+                // spacing={3}
               >
                 <Grid item xs={8}>
                   <Button
-                    onClick={() => redirectUrl('/tutorial')}
+                    onClick={() => redirectUrl('/experiment1')}
                     size="large"
                     sx={{
                       width: '70%',
@@ -142,23 +59,10 @@ export const MainPage = () => {
                       margin: '5px',
                     }}
                   >
-                    Start
+                    Experiment 1
                   </Button>
                 </Grid>
-                <Grid item xs={8}>
-                  <Button
-                    onClick={() => redirectUrl('/setting')}
-                    size="large"
-                    sx={{
-                      width: '70%',
-                      backgroundColor: 'lightgray',
-                      margin: '5px',
-                    }}
-                  >
-                    Settings
-                  </Button>
-                </Grid>
-                <Grid item xs={8}>
+                <Grid item xs={8} paddingTop={1}>
                   <Button
                     onClick={() => redirectUrl('/experiment2')}
                     size="large"
@@ -169,6 +73,19 @@ export const MainPage = () => {
                     }}
                   >
                     Experiment 2
+                  </Button>
+                </Grid>
+                <Grid item xs={8} paddingTop={1}>
+                  <Button
+                    onClick={() => redirectUrl('/experiment3')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Experiment 3
                   </Button>
                 </Grid>
               </Grid>

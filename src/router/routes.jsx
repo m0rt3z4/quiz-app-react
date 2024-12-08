@@ -18,6 +18,20 @@ export const { collection, hierarchy } = defineRoutes([
         path: '/setting',
       },
       {
+        key: 'experiment1',
+        path: '/experiment1',
+        children: [
+          {
+            key: 'setting',
+            path: '/setting',
+          },
+          {
+            key: 'tutorial',
+            path: '/tutorial',
+          },
+        ],
+      },
+      {
         key: 'experiment2',
         path: '/experiment2',
         children: [
@@ -31,20 +45,20 @@ export const { collection, hierarchy } = defineRoutes([
           },
         ],
       },
-      // {
-      //   key: 'exp2',
-      //   path: '/exp2',
-      //   children: [
-      //     {
-      //       key: 'preview',
-      //       path: '/preview',
-      //     },
-      //     {
-      //       key: 'trial',
-      //       path: '/trial',
-      //     },
-      //   ],
-      // },
+      {
+        key: 'experiment3',
+        path: '/experiment3',
+        children: [
+          {
+            key: 'preview',
+            path: '/preview',
+          },
+          {
+            key: 'trial',
+            path: '/trial',
+          },
+        ],
+      },
     ],
   },
 ])
