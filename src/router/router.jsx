@@ -2,12 +2,9 @@ import React from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 import { MainLayout } from '../layouts/MainLayout/'
 import { TrialLayout } from '../layouts/TrialLayout/TestLayout'
-// import { Experiment2Layout } from '../layouts/Experiment2Layout/'
 import { MainProvider } from '../layouts/MainLayout/provider'
 import { TrialProvider } from '../layouts/TrialLayout/provider'
-// import { Experiment2Provider } from '../layouts/Experiment2Layout/provider'
 import { hierarchy } from './routes'
-import TrialPage from '../pages/Trial'
 import MainPage from '../pages/main'
 import SettingPage from '../pages/setting'
 import TutorialPage from '../pages/tutorial'
@@ -17,6 +14,12 @@ import {
   Exp2PersistedProvider,
   Exp2PersistedLayout,
 } from '../layouts/Exp2PersistedLayout'
+import Experiment1Page from '../pages/main/Experiment1Page'
+import Experiment3MainPage from '../pages/Experiment3/Experiment3MainPage'
+import { Experiment3Provider } from '../layouts/Experiment3Layout/provider'
+import { Experiment3Layout } from '../layouts/Experiment3Layout'
+import Experiment3PreviewPage from '../pages/Experiment3/Experiment3PreviewPage'
+import { PreviewGridPage, TrialSettingsPage } from '../pages/Experiment3/PreviewPages'
 
 export const router = createBrowserRouter([
   {
@@ -27,18 +30,13 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        id: 'trial-page',
-        path: hierarchy.main.trial.path,
-        element: <TrialPage />,
-      },
-      {
         id: 'setting-page',
-        path: hierarchy.main.setting.path,
+        path: hierarchy.main.experiment1.setting.path,
         element: <SettingPage />,
       },
       {
         id: 'tutorial-page',
-        path: hierarchy.main.tutorial.path,
+        path: hierarchy.main.experiment1.tutorial.path,
         element: <TutorialPage />,
       },
     ],
@@ -50,15 +48,20 @@ export const router = createBrowserRouter([
       </MainProvider>
     ),
     children: [
-      // {
-      //   id: 'trial-page',
-      //   path: hierarchy.main.trial.path,
-      //   element: <TrialPage />,
-      // },
+      {
+        id: 'main-experiment1-page',
+        path: hierarchy.main.experiment1.path,
+        element: <Experiment1Page />,
+      },
       {
         id: 'main-page',
         path: hierarchy.main.path,
         element: <MainPage />,
+      },
+      {
+        id: 'main-experiment3-page',
+        path: hierarchy.main.experiment3.path,
+        element: <Experiment3MainPage />,
       },
     ],
   },
@@ -86,28 +89,33 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   element: (
-  //     <Exp2PersistedProvider>
-  //       <Exp2PersistedLayout />
-  //     </Exp2PersistedProvider>
-  //   ),
-  //   children: [
-  //     {
-  //       id: 'main-exp2-page',
-  //       path: hierarchy.main.exp2.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //     {
-  //       id: 'trial-exp2-page',
-  //       path: hierarchy.main.exp2.preview.path,
-  //       element: <Experiment2PreviewPage />,
-  //     },
-  //     {
-  //       id: 'preview-exp2-page',
-  //       path: hierarchy.main.exp2.trial.path,
-  //       element: <Experiment2Page />,
-  //     },
-  //   ],
-  // },
+  {
+    element: (
+      <Experiment3Provider>
+        <Experiment3Layout />
+      </Experiment3Provider>
+    ),
+    children: [
+      {
+        id: 'trial-exp3-page',
+        path: hierarchy.main.experiment3.preview.path,
+        element: <Experiment3PreviewPage />,
+      },
+      {
+        id: 'preview-grid-exp3-page',
+        path: hierarchy.main.experiment3.preview.grid.path,
+        element: <PreviewGridPage />,
+      },
+      {
+        id: 'preview-settings-exp3-page',
+        path: hierarchy.main.experiment3.preview.settings.path,
+        element: <TrialSettingsPage />,
+      },
+      // {
+      //   id: 'preview-exp3-page',
+      //   path: hierarchy.main.exp2.trial.path,
+      //   element: <Experiment2Page />,
+      // },
+    ],
+  },
 ])

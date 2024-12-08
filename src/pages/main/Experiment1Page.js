@@ -1,22 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Box, Grid, Card, Typography, Button, InputLabel } from '@mui/material'
+import { Box, Grid, Card, Typography, Button } from '@mui/material'
 
-import { useTrialContext } from '../../layouts/TrialLayout/context'
-
-export const SettingPage = () => {
-  const { changePreviewMode } = useTrialContext()
-  // const [checked, setChecked] = useState(preview)
-
+export const Experiment1Page = () => {
   const navigate = useNavigate()
-
   const redirectUrl = (url) => {
     navigate(url)
-  }
-
-  const onClickSaveButton = () => {
-    changePreviewMode(true)
-    redirectUrl('/experiment1/tutorial')
   }
 
   return (
@@ -34,13 +23,13 @@ export const SettingPage = () => {
               display: 'flex',
               alignItems: 'baseline',
               justifyContent: 'center',
-              minHeight: 420,
+              minHeight: 480,
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
             }}
           >
-            <Grid container>
+            <Grid container sx={{ paddingTop: '20px' }}>
               <Grid item xs={12} justifyContent={'center'}>
                 <Box
                   sx={{
@@ -50,26 +39,40 @@ export const SettingPage = () => {
                     padding: '10px',
                   }}
                 >
-                  <Typography fontSize={'25px'}>Settings</Typography>
+                  <Typography fontSize={'25px'}>Welcome to Experiment 1</Typography>
                 </Box>
               </Grid>
-              <Grid container xs={12} padding={4}>
-                <Grid container item xs={7} alignItems={'center'}>
-                  <InputLabel id="demo-simple-select-label">
-                    <Typography>Start Tutorial in Preview Mode:</Typography>
-                  </InputLabel>
-                </Grid>
-                <Grid item xs={5}>
+              <Grid
+                container
+                justifyContent={'center'}
+                xs={12}
+                paddingTop={8}
+                // spacing={3}
+              >
+                <Grid item xs={8}>
                   <Button
-                    onClick={() => onClickSaveButton()}
+                    onClick={() => redirectUrl('tutorial')}
                     size="large"
                     sx={{
-                      width: '90%',
-                      backgroundColor: 'orange',
+                      width: '70%',
+                      backgroundColor: 'lightgray',
                       margin: '5px',
                     }}
                   >
-                    Preview
+                    Start
+                  </Button>
+                </Grid>
+                <Grid item xs={8}>
+                  <Button
+                    onClick={() => redirectUrl('setting')}
+                    size="large"
+                    sx={{
+                      width: '70%',
+                      backgroundColor: 'lightgray',
+                      margin: '5px',
+                    }}
+                  >
+                    Settings
                   </Button>
                 </Grid>
               </Grid>
@@ -81,4 +84,4 @@ export const SettingPage = () => {
   )
 }
 
-export default SettingPage
+export default Experiment1Page

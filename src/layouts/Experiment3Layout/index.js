@@ -1,10 +1,10 @@
 import { Box, Grid, Card, Typography } from '@mui/material'
 import { Outlet } from 'react-router'
+import { useExperiment3Context } from './context'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { useExp2PersistedContext } from './context'
 
-export const Exp2PersistedLayout = () => {
+export const Experiment3Layout = () => {
   const {
     title,
     outletWidth,
@@ -12,21 +12,15 @@ export const Exp2PersistedLayout = () => {
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
-    darkTheme,
-  } = useExp2PersistedContext()
+  } = useExperiment3Context()
+
+  // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
-    <Box
-      sx={{
-        width: '99vw',
-        minHeight: '100vh',
-        backgroundColor: darkTheme ? 'black' : '#e6dada',
-      }}
-    >
+    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: '#e6dada' }}>
       <Grid
         container
         justifyContent={'center'}
         alignContent={'center'}
-        // spacing={2}
         sx={{ paddingTop: 1 }}
       >
         {!!title && (
@@ -36,20 +30,14 @@ export const Exp2PersistedLayout = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                // backgroundColor: darkTheme ? 'white' : 'black',
                 minHeight: 125,
                 borderRadius: '35px',
-                // border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+                border: '1px solid black',
                 // background: 'rgb(247, 241, 241)',
-                background: darkTheme ? 'black' : 'white',
+                background: 'white',
               }}
             >
-              <Typography
-                fontSize={'25px'}
-                sx={{ color: darkTheme ? 'white' : 'black' }}
-              >
-                {title}
-              </Typography>
+              <Typography fontSize={'25px'}>{title}</Typography>
             </Card>
           </Grid>
         )}
@@ -57,8 +45,7 @@ export const Exp2PersistedLayout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          // sx={{ paddingTop: '10' }}
-          paddingTop={!title ? 6 : 3}
+          sx={{ paddingTop: 5 }}
           spacing={2}
         >
           <Grid item xs={1}>
@@ -120,3 +107,5 @@ export const Exp2PersistedLayout = () => {
     </Box>
   )
 }
+export * from './provider'
+export * from './context'
