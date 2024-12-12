@@ -3,8 +3,8 @@ import React from 'react'
 import { Grid, Card } from '@mui/material'
 
 //assets
-import GREEN from '../../assets/Binocular/green_mixed.png'
-import RED from '../../assets/Binocular/red_mixed.png'
+import GREEN from '../../assets/Binocular/mixed_green.png'
+import RED from '../../assets/Binocular/mixed.red.png'
 
 // Question Step
 const Slide4Mixed = ({

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { recallTypes } from '../../../../Components/BinocularTrial/consts'
 import { Grid, Slider, Typography } from '@mui/material'
 import Step4 from '../../../../modules/binocularv2/trial/Step4'
 import { SettingsButton } from '../../../../Components/SettingsButton'
@@ -14,11 +13,18 @@ const OpacitySlider = ({
   setStimulusWidth,
   stimulusDistance,
   setStimulusDistance,
+  //mock stimulus
+  mockStimulusWidth,
+  setMockStimulusWidth,
+  mockStimulusDistance,
+  setMockStimulusDistance,
+
   degreeValue,
   setDegreeValue,
-  rivalry = recallTypes.GR,
+  rivalry,
   onSave,
 }) => {
+  const isFused = rivalry === 'FUSED'
   const marks = [
     {
       value: 0,
@@ -108,9 +114,9 @@ const OpacitySlider = ({
           </Grid>
           <Grid item xs={8}>
             <Slider
-              value={stimulusWidth}
+              value={isFused ? stimulusWidth : mockStimulusWidth}
               onChange={(e, v) => {
-                setStimulusWidth(v)
+                return isFused ? setStimulusWidth(v) : setMockStimulusWidth(v)
               }}
               sx={{
                 color: 'lightgray',
@@ -130,9 +136,11 @@ const OpacitySlider = ({
           </Grid>
           <Grid item xs={8}>
             <Slider
-              value={stimulusDistance}
+              value={isFused ? stimulusDistance : mockStimulusDistance}
               onChange={(e, v) => {
-                setStimulusDistance(v)
+                return isFused
+                  ? setStimulusDistance(v)
+                  : setMockStimulusDistance(v)
               }}
               sx={{
                 color: 'lightgray',
@@ -175,8 +183,8 @@ const OpacitySlider = ({
           recallType={rivalry}
           redOpacity={redOpacity}
           greenOpacity={greenOpacity}
-          stimulusWidth={stimulusWidth}
-          stimulusDistance={stimulusDistance}
+          stimulusWidth={isFused ? stimulusWidth : mockStimulusWidth}
+          stimulusDistance={isFused ? stimulusDistance : mockStimulusDistance}
           degreeValue={degreeValue}
           i
         />

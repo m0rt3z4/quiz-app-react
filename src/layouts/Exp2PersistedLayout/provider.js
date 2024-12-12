@@ -38,6 +38,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       greenOpacity: 100,
       stimulusWidth: 40,
       stimulusDistance: 80,
+      mockStimulusWidth: 100,
+      mockStimulusDistance: 40,
     },
     true
   )
