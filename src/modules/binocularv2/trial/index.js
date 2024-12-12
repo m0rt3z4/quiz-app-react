@@ -63,8 +63,28 @@ const BinocularTrialV2 = ({
 
   const onFinishStep5 = (resp) => {
     setStep(6)
+    const { responseTime, userAnswer } = resp
+    let isAnswerCorrect
+    //handle results
+    if (trialParams.recallType === 'MIXED') {
+      if (userAnswer === 'MIXED') {
+        isAnswerCorrect = true
+      } else {
+        isAnswerCorrect = false
+      }
+    } else {
+      if (userAnswer === trialParams.imaginationCue) {
+        isAnswerCorrect = true
+      } else {
+        isAnswerCorrect = false
+      }
+    }
     return setTimeout(() => {
-      onFinishTrial({ trialParams, results: resp })
+      onFinishTrial({
+        responseTime,
+        userAnswer,
+        isAnswerCorrect,
+      })
       return clearTimeout()
     }, 2000)
   }
@@ -99,6 +119,7 @@ const BinocularTrialV2 = ({
       const stimulus = {
         [trialParams.cellId]: { cellType: cellTypes.BINOCULAR },
       }
+      const isFused = trialParams.recallType === 'FUSED'
       return (
         // <Experiment2Grid
         //   size={3}
@@ -111,8 +132,16 @@ const BinocularTrialV2 = ({
           recallType={trialParams.recallType}
           greenOpacity={trialSettings.greenOpacity}
           redOpacity={trialSettings.redOpacity}
-          stimulusWidth={trialSettings.stimulusWidth}
-          stimulusDistance={trialSettings.stimulusDistance}
+          stimulusWidth={
+            isFused
+              ? trialSettings.stimulusWidth
+              : trialSettings.mockStimulusWidth
+          }
+          stimulusDistance={
+            isFused
+              ? trialSettings.stimulusDistance
+              : trialSettings.mockStimulusDistance
+          }
           stimulus={stimulus}
         />
       )

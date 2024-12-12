@@ -34,9 +34,12 @@ const BinocularModule = ({
 
   const onFinishTrial = (resp) => {
     const trialResult = {
-      // ...experiment[trialIndex],
+      trialNumber: trialIndex + 1,
+      trialParams: current,
       results: resp,
     }
+    console.log(trialResult)
+
     setResults([...results, trialResult])
     setTrialIndex(trialIndex + 1)
     toggleBreake()
