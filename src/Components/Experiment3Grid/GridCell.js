@@ -6,6 +6,7 @@ import StarRateIcon from '@mui/icons-material/StarRate'
 import TagIcon from '@mui/icons-material/Tag'
 import { useExperiment3Context } from '../../layouts/Experiment3Layout'
 import './style.css'
+import { iconLoader } from './iconLoader'
 
 const GridCell = ({
   showStimulus,
@@ -33,9 +34,13 @@ const GridCell = ({
           />
         )
       case 'CENTER_DOT':
-        return <Typography fontSize={'35px'} sx={{paddingBottom:'19px'}}>.</Typography>
+        return (
+          <Typography fontSize={'35px'} sx={{ paddingBottom: '19px' }}>
+            .
+          </Typography>
+        )
       case 'CIRCLE':
-        return <CircleIcon fontSize="10px" sx={{paddingTop:'3px'}} />
+        return <CircleIcon fontSize="10px" sx={{ paddingTop: '3px' }} />
       case 'QUESTION':
         return (
           <QuestionMarkIcon
@@ -56,7 +61,24 @@ const GridCell = ({
     }
   }
 
-  const content = showStimulus ? <span>{Icon(iconType)}</span> : null
+  const content = showStimulus ? (
+    iconType === 'CENTER_DOT' ? (
+      <span>
+        <Typography fontSize={'35px'} sx={{ paddingBottom: '19px' }}>
+          .
+        </Typography>
+      </span>
+    ) : (
+      <img
+        src={iconLoader(iconType, backgroundColor === 'white')}
+        alt="Rivalry1"
+        style={{
+          width: `100%`,
+          // rotate: `-${degreeValue}deg`,
+        }}
+      />
+    )
+  ) : null
   return (
     <Box
       sx={{
