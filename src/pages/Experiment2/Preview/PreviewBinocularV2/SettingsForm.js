@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Box,
-  Grid,
-  Card,
-  Button,
-  Divider,
-  Typography,
-  TextField,
-} from '@mui/material'
+import { Box, Grid, Card, Divider, Typography, TextField } from '@mui/material'
 import OpacitySlider from './OpacitySlider'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import { imaginationCueTypes } from '../../../../Components/BinocularTrial/consts'
@@ -36,6 +28,12 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [stimulusDistance, setStimulusDistance] = useState(
     binocluarV2Settings.stimulusDistance
   )
+  const [mockStimulusWidth, setMockStimulusWidth] = useState(
+    binocluarV2Settings.mockStimulusWidth
+  )
+  const [mockStimulusDistance, setMockStimulusDistance] = useState(
+    binocluarV2Settings.mockStimulusDistance
+  )
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
   const [rivalry, setRivalry] = useState('FUSED')
@@ -50,6 +48,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       greenOpacity,
       stimulusWidth,
       stimulusDistance,
+      mockStimulusWidth,
+      mockStimulusDistance,
     })
   }
   const onClickV2 = () => {
@@ -62,6 +62,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       greenOpacity,
       stimulusWidth,
       stimulusDistance,
+      mockStimulusWidth,
+      mockStimulusDistance,
     }
     const paramsObj = {
       imaginationCue: imgCue,
@@ -207,6 +209,12 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 setStimulusWidth={setStimulusWidth}
                 stimulusDistance={stimulusDistance}
                 setStimulusDistance={setStimulusDistance}
+                //mock stimulus
+                mockStimulusWidth={mockStimulusWidth}
+                setMockStimulusWidth={setMockStimulusWidth}
+                mockStimulusDistance={mockStimulusDistance}
+                setMockStimulusDistance={setMockStimulusDistance}
+                //
                 degreeValue={degreeValue}
                 setDegreeValue={setDegreeValue}
                 rivalry={rivalry}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/material'
-import GREEN from '../../assets/Binocular/green_mixed.png'
-import RED from '../../assets/Binocular/red_mixed.png'
+import GREEN from '../../assets/Binocular/mixed_green.png'
+import RED from '../../assets/Binocular/mixed.red.png'
 import FADED_GREEN from '../../assets/Binocular/greenV3.png'
 import FADED_RED from '../../assets/Binocular/redV3.png'
 
@@ -18,7 +18,7 @@ const BinocularCell = ({
   darkTheme = false,
   cellSize = 34,
   binocularOptions = binocluarOptionsMock,
-  borderObj
+  borderObj,
 }) => {
   const MixedPatches = () => {
     return (
@@ -27,7 +27,7 @@ const BinocularCell = ({
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: 'black',
-          width: '75%',
+          width: '65%',
           display: 'flex',
           rotate: `${-1 * binocularOptions.degreeValue}deg`,
         }}
@@ -37,7 +37,7 @@ const BinocularCell = ({
             display: 'flex',
             position: 'relative',
             justifyContent: 'end',
-            // left: `2px`,
+            left: `${binocularOptions.stimulusDistance / 2}px`,
             // bottom: `-1px`,
           }}
         >
@@ -45,7 +45,7 @@ const BinocularCell = ({
             src={GREEN}
             alt="Rivalry1"
             style={{
-              width: `${binocularOptions.stimulusWidth}%`,
+              width: `${binocularOptions.stimulusWidth + 130}%`,
               opacity: `${binocularOptions.greenOpacity}%`,
             }}
           />
@@ -54,7 +54,7 @@ const BinocularCell = ({
           style={{
             display: 'flex',
             position: 'relative',
-            // left: `-2px`,
+            left: `-${binocularOptions.stimulusDistance / 2}px`,
             //   bottom: `1px`,
           }}
         >
@@ -62,7 +62,7 @@ const BinocularCell = ({
             src={RED}
             alt="Rivalry2"
             style={{
-              width: `${binocularOptions.stimulusWidth}%`,
+              width: `${binocularOptions.stimulusWidth + 130}%`,
               opacity: `${binocularOptions.redOpacity}%`,
             }}
           />

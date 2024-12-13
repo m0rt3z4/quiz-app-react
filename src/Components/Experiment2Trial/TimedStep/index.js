@@ -20,7 +20,7 @@ const TimedStep = ({
     changeUserResp,
   } = useExp2PersistedContext()
 
-  const onFinishSurprizeStep = (resp) => {
+  const onFinishAnswering = (resp) => {
     showArrows(false)
     onFinishStep(resp)
   }
@@ -42,10 +42,11 @@ const TimedStep = ({
         isAnswerCorrect = true
       }
     }
+    const result = { ...resp, isAnswerCorrect }
     changeFeedbackStatus(isAnswerCorrect ? 'success' : 'error')
     setTimeout(() => {
       changeFeedbackStatus('')
-      onFinishSurprizeStep(resp)
+      onFinishAnswering(result)
       return clearTimeout()
     }, feedbackTime)
   }
@@ -54,7 +55,7 @@ const TimedStep = ({
     if (!!respRef) return null
     changeUserResp(true)
     if (resp.userAnswer === 'NO_ANSWER') {
-      onFinishSurprizeStep(resp)
+      onFinishAnswering({ ...resp, isAnswerCorrect: false })
     } else {
       delayedFeedback(resp)
     }
