@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import Experiment2Trial from '../../Components/Experiment2Trial'
+import { proccessTrialResponse } from './processTrialResponse'
 
 const ExperimentModule = ({
   experiment,
@@ -24,16 +25,18 @@ const ExperimentModule = ({
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
-      onFinishExperiment(results)
+      // adding statistics
+      onFinishExperiment(proccessTrialResponse(results))
     }
   }, [trialIndex])
 
   const onFinishTrial = (resp) => {
     const trialResult = {
-      params: { trialNumber: trialIndex, ...experiment[trialIndex] },
+      trialNumber: trialIndex + 1,
+      params: experiment[trialIndex],
       results: resp,
     }
-    console.log(trialResult)
+    // console.log(trialResult)
 
     setResults([...results, trialResult])
     setTrialIndex(trialIndex + 1)
