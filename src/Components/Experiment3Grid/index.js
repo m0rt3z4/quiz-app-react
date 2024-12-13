@@ -78,6 +78,7 @@ export const Experiment3Grid = ({
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: 350,
+        minWidth: 350,
         padding: 1,
         borderRadius: '35px',
         border: `1px solid ${isPreview ? 'white' : 'black'}`,
