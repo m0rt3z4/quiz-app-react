@@ -8,6 +8,7 @@ import DarkSlide from '../../Components/DarkSlide'
 
 const PerceptualBlock = ({ experiment, onFinishBlock }) => {
   const [step, setStep] = useState(1)
+  const [startTime, setStartTime] = useState(0)
   const [practiceRes, setPracticeRes] = useState({})
 
   const onFinishPractice = (resp) => {
@@ -16,7 +17,15 @@ const PerceptualBlock = ({ experiment, onFinishBlock }) => {
   }
 
   const onFinishMainTrial = (resp) => {
-    onFinishBlock({ practice: practiceRes, mainTrial: resp })
+    onFinishBlock({
+      practice: practiceRes,
+      mainTrial: {
+        ...resp,
+        blockTime: Math.floor((Date.now() - startTime) / 1000),
+        startTime,
+        finishTime: Date.now(),
+      },
+    })
   }
 
   switch (step) {
@@ -43,6 +52,7 @@ const PerceptualBlock = ({ experiment, onFinishBlock }) => {
       return (
         <Slide
           onNext={() => {
+            setStartTime(Date.now())
             setStep(4)
           }}
           content={`شروع آزمایش (→)`}

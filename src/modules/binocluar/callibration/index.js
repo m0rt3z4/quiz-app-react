@@ -9,6 +9,7 @@ import ResultsPage from './ResultsPage'
 
 const BinocularCallibrationModule = ({ onFinishExperiment, experiment }) => {
   const [step, setStep] = useState(1)
+  const [startTime, setStartTime] = useState(0)
   const [results, setResults] = useState([])
   // const [experiment, setExperiment] = useState([])
 
@@ -18,7 +19,10 @@ const BinocularCallibrationModule = ({ onFinishExperiment, experiment }) => {
 
   const onFinishTrial = (resp) => {
     // console.log(resp)
-    setResults(resp)
+    setResults({
+      ...resp,
+      blockTime: Math.floor((Date.now() - startTime) / 1000),
+    })
     return setTimeout(() => {
       setStep(3)
       return clearTimeout()
@@ -31,6 +35,7 @@ const BinocularCallibrationModule = ({ onFinishExperiment, experiment }) => {
         <StartPage
           isStart
           onUserAnswer={() => {
+            setStartTime(Date.now())
             setStep(2)
           }}
         />
