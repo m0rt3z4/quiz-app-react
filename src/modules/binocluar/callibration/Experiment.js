@@ -22,9 +22,7 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
     }, 500)
   }
   useEffect(() => {
-    if (trialIndex < experiment.length) {
-      console.log(experiment);
-      
+    if (trialIndex < experiment.length) {   
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment

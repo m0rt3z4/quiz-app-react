@@ -10,6 +10,7 @@ const BinocularMainModule = ({
   experiment,
   onFinishExperiment,
   binocularTrialType = binocularTrialTypes.BINOCULAR_V1,
+  userId,
 }) => {
   const {
     binocluarV1Settings,
@@ -53,7 +54,7 @@ const BinocularMainModule = ({
       binocular: resp,
     }
     changeTheme(false)
-    downloadQuizDataAsJson(fullRes, '123', 'binocular')
+    downloadQuizDataAsJson(fullRes, userId, 'binocular')
     onFinishExperiment(fullRes)
   }
 

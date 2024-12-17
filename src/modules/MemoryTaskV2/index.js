@@ -5,7 +5,7 @@ import PerceptualBlock from './PerceptualBlock'
 import ImaginaryBlock from './ImaginaryBlock'
 import MixedBlock from './MixedBlock'
 
-const MemoryTaskV2 = ({ experiment, onFinishExperiment }) => {
+const MemoryTaskV2 = ({ experiment, onFinishExperiment, userId }) => {
   const [step, setStep] = useState(1)
   const [results, setResults] = useState({})
 
@@ -14,7 +14,7 @@ const MemoryTaskV2 = ({ experiment, onFinishExperiment }) => {
   }
   const onFinish = (resp) => {
     const res = { ...results, mixed: resp }
-    downloadQuizDataAsJson(res, 123, 'memory')
+    downloadQuizDataAsJson(res, userId, 'memory')
     onFinishExperiment(res)
   }
 

@@ -9,16 +9,16 @@ import BinocularMainModule from '../../../modules/BinocularMain'
 import MemoryTaskV2 from '../../../modules/MemoryTaskV2'
 import { binocularTrialTypes } from '../../../consts'
 import { createBinocularV2Params } from '../../../modules/binocularv2/createBinocularV2Params'
-// import Exit from '../../Components/Trial2/Exit'
-// import { createNewExperiment } from '../../helpers/trialManagerHelper'
+import InfoForm from './InfoForm/InfoForm'
 
 export const memeoryTaskTypes = {
   MEMORY_V2: 'MEMORY_V2',
 }
 export const MemoryTaskPage = () => {
   const [step, setStep] = useState(1)
+  const [userId, setUserId] = useState(0)
   const [binocluarType, setBinocularType] = useState(
-    binocularTrialTypes.BINOCULAR_V1
+    binocularTrialTypes.BINOCULAR_V2
   )
   const [memoryType, setMemoryType] = useState(memeoryTaskTypes.MEMORY_V2)
   const [binocluarExp, setBinocularExp] = useState()
@@ -27,6 +27,7 @@ export const MemoryTaskPage = () => {
 
   useEffect(() => {
     changeTitle('')
+    setUserId(Math.floor(100000 + Math.random() * 900000).toString())
     setBinocularExp(generateBinocularParams())
     setMemoryExp(generateMemoryParams())
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,6 +36,10 @@ export const MemoryTaskPage = () => {
     setBinocularExp(generateBinocularParams(binocluarType))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [binocluarType])
+
+  const onFinishForm = () => {
+    setStep(2)
+  }
 
   const generateBinocularParams = (type = binocularTrialTypes.BINOCULAR_V1) => {
     let res = {}
@@ -54,8 +59,8 @@ export const MemoryTaskPage = () => {
     return res
   }
   const generateMemoryParams = (type = memeoryTaskTypes.MEMORY_V2) => {
-    let res = createExperimentParams()    
-    
+    let res = createExperimentParams()
+
     res.type = type
 
     res.mixed = createMixedBlock(false, memoryV2MixedSizes)
@@ -68,15 +73,16 @@ export const MemoryTaskPage = () => {
   switch (step) {
     case 1:
       return (
-        <ConfigPage
-          binocluarType={binocluarType}
-          memoryType={memoryType}
-          setBinocularType={setBinocularType}
-          setMemoryType={setMemoryType}
-          onStart={() => {
-            setStep(2)
-          }}
-        />
+        <InfoForm onNext={onFinishForm} userId={userId} />
+        // <ConfigPage
+        //   binocluarType={binocluarType}
+        //   memoryType={memoryType}
+        //   setBinocularType={setBinocularType}
+        //   setMemoryType={setMemoryType}
+        //   onStart={() => {
+        //     setStep(2)
+        //   }}
+        // />
       )
     case 2: {
       return (
@@ -84,6 +90,7 @@ export const MemoryTaskPage = () => {
           experiment={binocluarExp}
           binocularTrialType={binocluarType}
           onFinishExperiment={onFinishBinocular}
+          userId={userId}
         />
       )
     }
@@ -94,6 +101,7 @@ export const MemoryTaskPage = () => {
           onFinishExperiment={() => {
             setStep(1)
           }}
+          userId={userId}
         />
       )
     }

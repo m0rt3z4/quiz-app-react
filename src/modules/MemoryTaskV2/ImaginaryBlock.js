@@ -8,6 +8,7 @@ import DarkSlide from '../../Components/DarkSlide'
 
 const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   const [step, setStep] = useState(1)
+  const [startTime, setStartTime] = useState(0)
   const [practiceRes, setPracticeRes] = useState({})
 
   const onFinishPractice = (resp) => {
@@ -16,7 +17,15 @@ const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
   }
 
   const onFinishMainTrial = (resp) => {
-    onFinishBlock({ practice: practiceRes, mainTrial: resp })
+    onFinishBlock({
+      practice: practiceRes,
+      mainTrial: {
+        ...resp,
+        blockTime: Math.floor((Date.now() - startTime) / 1000),
+        startTime,
+        finishTime: Date.now(),
+      },
+    })
   }
 
   switch (step) {
@@ -39,9 +48,15 @@ const ImaginaryBlock = ({ experiment, onFinishBlock, trialSettings }) => {
       )
     }
     case 3:
-      return <Slide onNext={() => {
-        setStep(4)
-      }} content={`شروع آزمایش (→)`} />
+      return (
+        <Slide
+          onNext={() => {
+            setStartTime(Date.now())
+            setStep(4)
+          }}
+          content={`شروع آزمایش (→)`}
+        />
+      )
     case 4:
       return (
         <ExperimentModule
