@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import BinocularTrial from '../../Components/BinocularTrial'
 import { binocularTrialTypes } from '../../consts'
 import BinocularTrialV2 from '../binocularv2/trial'
+import { proccessBinocularResults } from './processTrialResponse'
 
 const BinocularModule = ({
   experiment,
@@ -28,7 +29,7 @@ const BinocularModule = ({
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
-      onFinishExperiment(results)
+      onFinishExperiment(proccessBinocularResults(results))
     }
   }, [trialIndex])
 

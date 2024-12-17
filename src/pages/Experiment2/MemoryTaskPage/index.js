@@ -18,7 +18,7 @@ export const MemoryTaskPage = () => {
   const [step, setStep] = useState(1)
   const [userId, setUserId] = useState(0)
   const [binocluarType, setBinocularType] = useState(
-    binocularTrialTypes.BINOCULAR_V1
+    binocularTrialTypes.BINOCULAR_V2
   )
   const [memoryType, setMemoryType] = useState(memeoryTaskTypes.MEMORY_V2)
   const [binocluarExp, setBinocularExp] = useState()

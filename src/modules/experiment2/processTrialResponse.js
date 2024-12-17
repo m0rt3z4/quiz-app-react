@@ -1,4 +1,3 @@
-
 export const proccessTrialResponse = (resultsArray = []) => {
   if (!resultsArray.length) return null
 
@@ -107,4 +106,35 @@ export const proccessTrialResponse = (resultsArray = []) => {
   }
 
   return resultsWithStatistics
+}
+
+export const proccessBinocularResults = (resultsArray = []) => {
+  const initialValue = {
+    blockSize: resultsArray.length,
+    sumCorrectAnswers: 0,
+    numFusedTrials: 0,
+    numMockTrials: 0,
+    numFusedTrialCorrects: 0,
+    numMockTrialCorrect: 0,
+  }
+
+  const reducedArray = resultsArray.reduce((prev, curr) => {
+    const { trialParams, results } = curr
+    const newValue = { ...prev }
+    if (results.isAnswerCorrect) newValue.sumCorrectAnswers++
+    if (trialParams.recallType === 'FUSED') {
+      newValue.numFusedTrials++
+      if (results.isAnswerCorrect) newValue.numFusedTrialCorrects++
+    } else {
+      newValue.numMockTrials++
+      if (results.isAnswerCorrect) newValue.numMockTrialCorrect++
+    }
+
+    return newValue
+  }, initialValue)
+  reducedArray.fusedTrialPercent =
+    reducedArray.numFusedTrialCorrects / reducedArray.numFusedTrials
+  reducedArray.mockTrialPercent =
+    reducedArray.numMockTrialCorrect / reducedArray.numMockTrials
+  return { blockData: resultsArray, statistics: reducedArray }
 }
