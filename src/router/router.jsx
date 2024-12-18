@@ -19,7 +19,11 @@ import Experiment3MainPage from '../pages/Experiment3/Experiment3MainPage'
 import { Experiment3Provider } from '../layouts/Experiment3Layout/provider'
 import { Experiment3Layout } from '../layouts/Experiment3Layout'
 import Experiment3PreviewPage from '../pages/Experiment3/Experiment3PreviewPage'
-import { PreviewGridPage, TrialSettingsPage } from '../pages/Experiment3/PreviewPages'
+import {
+  PreviewBlocksPage,
+  PreviewGridPage,
+  TrialSettingsPage,
+} from '../pages/Experiment3/PreviewPages'
 
 export const router = createBrowserRouter([
   {
@@ -110,6 +114,11 @@ export const router = createBrowserRouter([
         id: 'preview-settings-exp3-page',
         path: hierarchy.main.experiment3.preview.settings.path,
         element: <TrialSettingsPage />,
+      },
+      {
+        id: 'preview-blocks-exp3-page',
+        path: hierarchy.main.experiment3.preview.blocks.path,
+        element: <PreviewBlocksPage />,
       },
       // {
       //   id: 'preview-exp3-page',

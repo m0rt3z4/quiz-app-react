@@ -28,6 +28,11 @@ export const createPracticeParams = () => {
   }
 }
 
+export const createSuprizeBlockParams = ()=>{
+  const trials = generateTrials(16)
+  return populateBlock(trials, 'surprizeBlock')
+}
+
 // generating blocks of 8 for the practice blocks
 const HL2 = ['HL', 'HD', 'IL', 'ID']
 const HD2 = ['HD', 'HL', 'ID', 'IL']

@@ -61,6 +61,10 @@ export const { collection, hierarchy } = defineRoutes([
                 key: 'settings',
                 path: '/settings',
               },
+              {
+                key: 'blocks',
+                path: '/blocks',
+              },
             ],
           },
           {
