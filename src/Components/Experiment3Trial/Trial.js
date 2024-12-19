@@ -6,9 +6,9 @@ import ReadtToStart from './ReadyToStart'
 import Step2 from './Step2'
 import Step3 from './Step3'
 import Exit from './Exit'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import { Experiment3Grid } from '../Experiment3Grid'
 
-const Trial2 = ({
+export const Trial2 = ({
   background,
   letter,
   trialParams,
@@ -103,7 +103,7 @@ const Trial2 = ({
     }
     case 3: {
       return (
-        <TrialGrid
+        <Experiment3Grid
           isWhiteThemed={background === 'L' ? true : false}
           isBold={true}
         />
@@ -134,5 +134,3 @@ const Trial2 = ({
       break
   }
 }
-
-export default Trial2

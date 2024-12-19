@@ -3,7 +3,7 @@ import React from 'react'
 
 import { useExperiment3Context } from '../../../layouts/Experiment3Layout'
 import { recognitionTypes } from '../../../consts'
-import { TrialGrid } from '../../TrialGrid/TrialGrid'
+import { Experiment3Grid } from '../../Experiment3Grid'
 import useKeyboard from './useKeyboard'
 
 const TimedStep = ({
@@ -71,7 +71,7 @@ const TimedStep = ({
   useKeyboard(onResponse, startTime)
 
   const Grid = (
-    <TrialGrid
+    <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
       isBold={stimulus.iconType === 'QUESTION' ? true : false}

@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
 
-import { TrialGrid } from '../TrialGrid/TrialGrid'
-import { useExperiment3Context } from '../../layouts/Experiment3Layout'
+import { Experiment3Grid } from '../Experiment3Grid'
 import {
   hLetterArray,
   iLetterArray,
@@ -17,10 +16,8 @@ const Step1 = ({
 }) => {
   const [isMask, setIsMask] = useState(false)
   const [customBackground, setCustomBackground] = useState([])
-  const { changeTitle } = useExperiment3Context()
 
   useEffect(() => {
-    changeTitle(`Imagin the letter '${letter}' on the grid.`)
     let timer
     if (!dontShowLetter) {
       setCustomBackground(letter === 'H' ? hLetterArray : iLetterArray)
@@ -57,7 +54,7 @@ const Step1 = ({
   }
 
   const Grid = (
-    <TrialGrid
+    <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       cutomBgArray={customBackground}
       isMask={isMask}

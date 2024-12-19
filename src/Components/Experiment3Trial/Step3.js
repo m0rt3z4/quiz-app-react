@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 
 import { useExperiment3Context } from '../../layouts/Experiment3Layout'
 import TimedStep from './TimedStep'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import { Experiment3Grid } from '../Experiment3Grid'
 
 const Step3 = ({
   background,
@@ -68,7 +68,7 @@ const Step3 = ({
     />
   )
   const EmptyGrid = () => (
-    <TrialGrid
+    <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       isBold={isPracticeSurprize ? false : true}
     />

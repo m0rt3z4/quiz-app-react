@@ -6,7 +6,7 @@ import ReadtToStart from './ReadyToStart'
 import Step3 from './Step3'
 import Exit from './Exit'
 
-const PracticeSurprize = ({
+export const PracticeSurprize = ({
   background,
   letter,
   trialParams,
@@ -51,6 +51,8 @@ const PracticeSurprize = ({
     case 2: {
       showLeftArrow('Off Letter')
       showRightArrow('On Letter')
+      console.log(trialParams)
+
       return (
         <Step3
           background={background}
@@ -71,5 +73,3 @@ const PracticeSurprize = ({
       break
   }
 }
-
-export default PracticeSurprize

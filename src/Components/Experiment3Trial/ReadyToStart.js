@@ -4,7 +4,7 @@ import React from 'react'
 import { useExperiment3Context } from '../../layouts/Experiment3Layout'
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import { Experiment3Grid } from '../Experiment3Grid'
 
 const ReadtToStart = ({ background, dontShowLetter = false, onNext }) => {
   const { showRightArrow } = useExperiment3Context()
@@ -24,7 +24,7 @@ const ReadtToStart = ({ background, dontShowLetter = false, onNext }) => {
   }
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
-  const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
+  const Grid = <Experiment3Grid isWhiteThemed={background === 'L' ? true : false} />
   return Grid
 }
 

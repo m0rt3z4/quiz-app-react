@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { useExperiment3Context } from '../../layouts/Experiment3Layout'
-import { TrialGrid } from '../TrialGrid/TrialGrid'
+import { Experiment3Grid } from '../Experiment3Grid'
 import TimedStep from './TimedStep'
 
 const TIME_SHOW_STIMULI = 250
@@ -20,10 +20,9 @@ const Step2 = ({
   const [result, setResult] = useState({})
   const [toggleSurprize, setToggleSurprize] = useState(false)
   const [startTime, setStartTime] = useState(0)
-  const { changeTitle, changeUserResp } = useExperiment3Context()
+  const { changeUserResp } = useExperiment3Context()
 
   useEffect(() => {
-    changeTitle('Focus')
     if (index < stimuliArray.length) {
       if (stimuliArray[index].iconType === 'SURPRIZE') {
         setSurprize(stimuliArray[index])
@@ -45,7 +44,7 @@ const Step2 = ({
   }, [index])
 
   const Grid = (
-    <TrialGrid
+    <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
     />
