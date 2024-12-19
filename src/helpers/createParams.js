@@ -1,5 +1,5 @@
 import { recognitionTypes } from '../consts'
-import { chooseGridElements, pickExtraSurprize } from './letterPicker'
+import { chooseGridElements } from './letterPicker'
 import shuffleArray from './shuffleArray'
 
 const iconTypes = {
@@ -8,12 +8,13 @@ const iconTypes = {
   QUESTION: 'QUESTION',
 }
 
-const createStimulus = (location, iconType, isOnLetter, taskType) => {
+export const createStimulus = (location, iconType, isOnLetter, taskType) => {
   const obj = {
     i: location === 0 ? 0 : Math.floor(location / 5),
     j: location === 0 ? 0 : location % 5,
     iconType,
     isOnLetter,
+    cellId: location,
   }
   if (!!taskType) obj.taskType = taskType
   return obj
