@@ -67,6 +67,13 @@ const Experiment3PreviewPage = () => {
             }}
           />
           <Item
+            text="Preview Trial Blocks"
+            buttonLable="Blocks"
+            onClickButton={() => {
+              redirectUrl('blocks')
+            }}
+          />
+          <Item
             text="Trial Settings"
             buttonLable="Settings"
             onClickButton={() => {

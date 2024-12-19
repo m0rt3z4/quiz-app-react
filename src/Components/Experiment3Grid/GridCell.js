@@ -10,11 +10,19 @@ import { iconLoader } from './iconLoader'
 
 const GridCell = ({
   showStimulus,
-  iconType,
+  iconType = '',
   backgroundColor,
   isBold = false,
 }) => {
   const { feedbackStatus } = useExperiment3Context()
+  const isOrientationStimulus = iconType && iconType.substring(0, 3) === 'STI'
+  const borderColor = isOrientationStimulus
+    ? feedbackStatus
+      ? feedbackStatus === 'success'
+        ? 'rgba(13, 231, 46, 0.881)'
+        : 'rgba(255, 24, 24, 0.881)'
+      : 'black'
+    : 'black'
   const Icon = (iconType) => {
     switch (iconType) {
       case 'SURPRIZE':
@@ -62,13 +70,7 @@ const GridCell = ({
   }
 
   const content = showStimulus ? (
-    iconType === 'CENTER_DOT' ? (
-      <span>
-        <Typography fontSize={'35px'} sx={{ paddingBottom: '19px' }}>
-          .
-        </Typography>
-      </span>
-    ) : (
+    isOrientationStimulus ? (
       <img
         src={iconLoader(iconType, backgroundColor === 'white')}
         alt="Rivalry1"
@@ -77,6 +79,8 @@ const GridCell = ({
           // rotate: `-${degreeValue}deg`,
         }}
       />
+    ) : (
+      <span>{Icon(iconType)} </span>
     )
   ) : null
   return (
@@ -86,7 +90,7 @@ const GridCell = ({
         backgroundColor: backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        border: `${isBold ? '2' : '1'}px solid black`,
+        border: `${isBold ? '2' : '1'}px solid ${borderColor}`,
         borderCollapse: 'collapse',
         width: 34,
         height: 34,
