@@ -33,7 +33,6 @@ const Step3 = ({
       }, 100)
     } else {
       setStimulus({})
-      console.log('res', results)
       onFinishStep(Object.values(results))
     }
   }, [index])

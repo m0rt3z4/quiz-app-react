@@ -2,10 +2,25 @@ import { recognitionTypes } from '../../consts'
 import { countStimuli, createStimulus } from '../../helpers/createParams'
 import { chooseGridElements } from '../../helpers/letterPicker'
 import shuffleArray from '../../helpers/shuffleArray'
+import {
+  generateRecognition,
+  generateTrials,
+} from '../../helpers/trialManagerHelper'
 import { exp3StimuliArray } from './exp3StimuliConst'
 
-export const createExp3Params = () => {
-  return
+export const createExp3MemoryBlock = () => {
+  const trialsArray = generateTrials(16)
+  const recognitionList = generateRecognition(trialsArray.length)
+  return trialsArray.map((trial, index) => {
+    return {
+      background: trial[1],
+      letter: trial[0],
+      trialParams: createMemorandumBlockParams(
+        trial[0],
+        recognitionList.splice(0, 4)
+      ),
+    }
+  })
 }
 
 const mock = [
@@ -23,7 +38,7 @@ export const createMemorandumBlockParams = (
   if (!stimuliArray.length) return null
   const shuffledStimuli = shuffleArray(exp3StimuliArray)
   const countsArray = countStimuli(stimuliArray)
-  
+
   let numOnLetters =
     countsArray[recognitionTypes.CORRECT_ON_LETTER] +
     countsArray[recognitionTypes.INCORRECT_ON_LETTER]
@@ -35,7 +50,7 @@ export const createMemorandumBlockParams = (
     numOnLetters,
     numOffLetters
   )
-  
+
   // generating presentation step stimuli array
   const presentationArray = []
   const onletterStimuliArray = []
