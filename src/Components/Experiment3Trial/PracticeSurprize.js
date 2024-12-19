@@ -51,8 +51,6 @@ export const PracticeSurprize = ({
     case 2: {
       showLeftArrow('Off Letter')
       showRightArrow('On Letter')
-      console.log(trialParams)
-
       return (
         <Step3
           background={background}

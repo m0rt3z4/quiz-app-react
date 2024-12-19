@@ -12,7 +12,7 @@ export const Trial2 = ({
   background,
   letter,
   trialParams,
-  showFeedback = false,
+  showFeedback = true,
   dontShowLetter = false,
   onFinishTrial,
   showTracker = false,

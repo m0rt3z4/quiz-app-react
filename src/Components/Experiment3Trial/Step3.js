@@ -15,7 +15,7 @@ const Step3 = ({
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [startTime, setStartTime] = useState(0)
-  const [results, setRseults] = useState({})
+  const [results, setRseults] = useState([])
   const [toggle, setToggle] = useState(false)
   const { changeUserResp } = useExperiment3Context()
 
@@ -33,19 +33,18 @@ const Step3 = ({
       }, 100)
     } else {
       setStimulus({})
-      // console.log(results)
+      console.log('res', results)
       onFinishStep(Object.values(results))
     }
   }, [index])
 
   const onUserResp = (resp) => {
-    const stimulusLocation = stimulus.i * 5 + stimulus.j
-    if (Object.keys(results).includes(stimulusLocation)) return null
-    const response = { [stimulusLocation]: resp }
-    setRseults({
-      ...results,
-      ...response,
-    })
+    // const stimulusLocation = stimulus.i * 5 + stimulus.j
+    // if (Object.keys(results).includes(stimulusLocation)) return null
+    // const response = { stimulus, result: resp }
+    // console.log(response)
+
+    setRseults([...results, resp])
     setTimeout(() => {
       changeUserResp(false)
       setIndex(index + 1)

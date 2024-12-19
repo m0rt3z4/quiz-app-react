@@ -16,6 +16,13 @@ const GridCell = ({
 }) => {
   const { feedbackStatus } = useExperiment3Context()
   const isOrientationStimulus = iconType && iconType.substring(0, 3) === 'STI'
+  const borderColor = isOrientationStimulus
+    ? feedbackStatus
+      ? feedbackStatus === 'success'
+        ? 'rgba(13, 231, 46, 0.881)'
+        : 'rgba(255, 24, 24, 0.881)'
+      : 'black'
+    : 'black'
   const Icon = (iconType) => {
     switch (iconType) {
       case 'SURPRIZE':
@@ -83,7 +90,7 @@ const GridCell = ({
         backgroundColor: backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        border: `${isBold ? '2' : '1'}px solid black`,
+        border: `${isBold ? '2' : '1'}px solid ${borderColor}`,
         borderCollapse: 'collapse',
         width: 34,
         height: 34,

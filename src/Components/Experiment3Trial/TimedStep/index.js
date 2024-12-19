@@ -20,6 +20,8 @@ const TimedStep = ({
     changeUserResp,
     changeFeedbackStatus,
   } = useExperiment3Context()
+  const isOrientationStimulus =
+    stimulus && stimulus.iconType && stimulus.iconType.substring(0, 3) === 'STI'
 
   const isAnswerCorrect = (userAnswer) => {
     if (stimulus.iconType === 'SURPRIZE') {
@@ -30,7 +32,7 @@ const TimedStep = ({
         : userAnswer === 'ArrowLeft'
         ? true
         : false
-    } else if (stimulus.iconType === 'QUESTION') {
+    } else if (isOrientationStimulus) {
       return stimulus.taskType === recognitionTypes.CORRECT_ON_LETTER ||
         stimulus.taskType === recognitionTypes.CORRECT_OFF_LETTER
         ? userAnswer === 'ArrowRight'
@@ -51,6 +53,7 @@ const TimedStep = ({
   const delayedFeedback = (answer, isCorrect, callback) => {
     changeFeedbackStatus(isCorrect ? 'success' : 'error')
     setTimeout(() => {
+      changeFeedbackStatus('')
       callback()
     }, 1000)
   }
@@ -58,6 +61,7 @@ const TimedStep = ({
     if (!!respRef) return null
     changeUserResp(true)
     const isCorrect = isAnswerCorrect(resp.userAnswer)
+
     if (resp.userAnswer === 'NO_ANSWER') {
       onFinishSurprizeStep(resp)
       return null
@@ -74,7 +78,7 @@ const TimedStep = ({
     <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
-      isBold={stimulus.iconType === 'QUESTION' ? true : false}
+      isBold={isOrientationStimulus ? true : false}
     />
   )
   return Grid
