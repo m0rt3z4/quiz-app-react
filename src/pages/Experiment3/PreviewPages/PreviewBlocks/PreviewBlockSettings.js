@@ -5,7 +5,7 @@ import { ImageryBlocks } from '.'
 
 // import { SettingsButton } from '../../../Components/SettingsButton'
 
-export const PreviewBlockSettings = () => {
+export const PreviewBlockSettings = ({onStartPreview}) => {
   const { changeTitle, changeOutletWidth } = useExperiment3Context()
   useEffect(() => {
     changeTitle('Preview Trial Blocks')
@@ -28,7 +28,7 @@ export const PreviewBlockSettings = () => {
         }}
       >
         <Grid container paddingTop={3}>
-          <ImageryBlocks />
+          <ImageryBlocks onStartPreview={onStartPreview} />
         </Grid>
       </Card>
     </Box>

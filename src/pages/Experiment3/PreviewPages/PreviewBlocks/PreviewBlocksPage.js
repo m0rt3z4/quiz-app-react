@@ -1,50 +1,53 @@
 import React, { useEffect, useState } from 'react'
-import ExperimentModule from '../../../../modules/experiment2/ExperimentModule'
 import { PreviewBlockSettings } from './PreviewBlockSettings'
 import { useExperiment3Context } from '../../../../layouts/Experiment3Layout'
-import { createPracticeParams, createSuprizeBlockParams } from '../../../../helpers/trialManagerHelper'
+import { createSuprizeBlockParams } from '../../../../helpers/trialManagerHelper'
+import { PracticeSurprizeRunner } from '../../../../modules/experiment3/PracticeSurprizeRunner'
 
-const defaultSettings = {
-  timeBeforeRecognition: 6000,
-  timeToShowStimuli: 500,
-  timeBetweenStimuli: 500,
-  feedbackTime: 700,
+export const pages = {
+  SETTINGS: 'SETTINGS',
+  IMAGERY: 'IMAGERY',
 }
-
 export const PreviewBlocksPage = ({ onBack }) => {
-  const [showForm, setShowForm] = useState(true)
-  const [experiment, setExperiment] = useState({})
-  const [perceptualParams, setPerceptualParams] = useState({})
-  const [imaginaryParams, setImaginaryParams] = useState({})
-  const [mixedParams, setMixedParams] = useState([])
-  const [trialSettings, setTrialSettings] = useState(defaultSettings)
+  const [currentPage, setCurrentPage] = useState(pages.SETTINGS)
+  const [imageryParams, setImageryParams] = useState({})
   const { changeTitle, memoryV2MixedSizes } = useExperiment3Context()
 
   useEffect(() => {
-    console.log(createSuprizeBlockParams())
+    setImageryParams(createSuprizeBlockParams())
+    // console.log()
 
     // changeTitle('Trial Blocks Settings')
   }, [changeTitle, memoryV2MixedSizes])
 
-  const onStartPreview = (blockType, settings) => {
-    setTrialSettings(settings)
+  const onStartPreview = (page = pages.SETTINGS) => {
     setTimeout(() => {
-      setShowForm(false)
       changeTitle('')
+      setCurrentPage(page)
       return clearTimeout()
     }, 200)
   }
 
-  return showForm ? (
-    <PreviewBlockSettings onBack={onBack} onStartPreview={onStartPreview} />
-  ) : (
-    <ExperimentModule
-      experiment={experiment}
-      onFinishExperiment={() => {
-        changeTitle('Trial Blocks Settings')
-        return setShowForm(true)
-      }}
-      trialSettings={trialSettings}
-    />
-  )
+  switch (currentPage) {
+    case pages.SETTINGS: {
+      return (
+        <PreviewBlockSettings onBack={onBack} onStartPreview={onStartPreview} />
+      )
+    }
+    case pages.IMAGERY: {
+      return (
+        <PracticeSurprizeRunner
+          experiment={imageryParams.slice(0, 2)}
+          onFinishExperiment={() => {
+            changeTitle('Preview Trial Blocks')
+            return setCurrentPage(pages.SETTINGS)
+          }}
+        />
+      )
+    }
+    default:
+      return (
+        <PreviewBlockSettings onBack={onBack} onStartPreview={onStartPreview} />
+      )
+  }
 }

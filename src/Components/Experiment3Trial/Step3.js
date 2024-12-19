@@ -17,11 +17,7 @@ const Step3 = ({
   const [startTime, setStartTime] = useState(0)
   const [results, setRseults] = useState({})
   const [toggle, setToggle] = useState(false)
-  const { changeTitle, changeUserResp } = useExperiment3Context()
-
-  useEffect(() => {
-    changeTitle('Recognition')
-  }, [])
+  const { changeUserResp } = useExperiment3Context()
 
   useEffect(() => {
     if (index === 0) {
@@ -36,7 +32,6 @@ const Step3 = ({
         return clearTimeout()
       }, 100)
     } else {
-      changeTitle('Next Trial')
       setStimulus({})
       // console.log(results)
       onFinishStep(Object.values(results))

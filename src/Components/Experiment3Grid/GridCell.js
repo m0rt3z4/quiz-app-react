@@ -10,11 +10,12 @@ import { iconLoader } from './iconLoader'
 
 const GridCell = ({
   showStimulus,
-  iconType,
+  iconType = '',
   backgroundColor,
   isBold = false,
 }) => {
   const { feedbackStatus } = useExperiment3Context()
+  const isOrientationStimulus = iconType && iconType.substring(0, 3) === 'STI'
   const Icon = (iconType) => {
     switch (iconType) {
       case 'SURPRIZE':
@@ -62,13 +63,7 @@ const GridCell = ({
   }
 
   const content = showStimulus ? (
-    iconType === 'CENTER_DOT' ? (
-      <span>
-        <Typography fontSize={'35px'} sx={{ paddingBottom: '19px' }}>
-          .
-        </Typography>
-      </span>
-    ) : (
+    isOrientationStimulus ? (
       <img
         src={iconLoader(iconType, backgroundColor === 'white')}
         alt="Rivalry1"
@@ -77,6 +72,8 @@ const GridCell = ({
           // rotate: `-${degreeValue}deg`,
         }}
       />
+    ) : (
+      <span>{Icon(iconType)} </span>
     )
   ) : null
   return (
