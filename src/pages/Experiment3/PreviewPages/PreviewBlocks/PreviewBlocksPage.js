@@ -3,7 +3,10 @@ import { PreviewBlockSettings } from './PreviewBlockSettings'
 import { useExperiment3Context } from '../../../../layouts/Experiment3Layout'
 import { createSuprizeBlockParams } from '../../../../helpers/trialManagerHelper'
 import { PracticeSurprizeRunner } from '../../../../modules/experiment3/PracticeSurprizeRunner'
-import { createExp3MemoryBlock } from '../../../../modules/experiment3/createExp3Params'
+import {
+  createExp3MemoryBlock,
+  // runTest,
+} from '../../../../modules/experiment3/createExp3Params'
 import { TrialRunner } from '../../../../modules/experiment3/TrialRunner'
 
 export const pages = {
@@ -22,6 +25,7 @@ export const PreviewBlocksPage = ({ onBack }) => {
     setImageryParams(createSuprizeBlockParams())
     setMemoryParams(createExp3MemoryBlock())
 
+    // runTest(50000)
     // mockArray.map((value) => {
     //   return createMemorandumBlockParams(value.letter, value.stimuliArray)
     // })
