@@ -9,7 +9,7 @@ import {
 import { exp3StimuliArray } from './exp3StimuliConst'
 
 export const createExp3MemoryBlock = () => {
-  const trialsArray = generateTrials(16)
+  const trialsArray = generateTrials(32)
   const recognitionList = generateRecognition(trialsArray.length)
   return trialsArray.map((trial, index) => {
     return {
@@ -21,6 +21,32 @@ export const createExp3MemoryBlock = () => {
       ),
     }
   })
+}
+
+export const runTest = (testSize = 1) => {
+  const extremeCases = []
+  for (let index = 0; index < testSize; index++) {
+    let count = 0
+    const blockList = createExp3MemoryBlock()
+    blockList.forEach((block) => {
+      const countsArray = countStimuli(
+        block.trialParams.recognition.map((value) => {
+          return value.taskType
+        })
+      )
+      const extremeCheck =
+        countsArray[recognitionTypes.INCORRECT_ON_LETTER] +
+          countsArray[recognitionTypes.INCORRECT_OFF_LETTER] ===
+        4
+      if (extremeCheck) count++
+    })
+    extremeCases.push(count)
+  }
+  // console.log(extremeCases)
+  const total = extremeCases.reduce((prev, curr) => {
+    return prev + curr
+  }, 0)
+  console.log('total extreme cases', total, 'average => ', total / testSize)
 }
 
 const mock = [
@@ -67,15 +93,7 @@ export const createMemorandumBlockParams = (
     presentationArray.push(generatedStimulus)
     onletterStimuliArray.push(generatedStimulus)
   })
-  const randomLocationPick =
-    presentationArray[Math.floor(Math.random() * presentationArray.length)]
-  // if (!randomLocationPick) console.log('err',stimuliArray, presentationArray)
 
-  const {
-    // i: recognitonI,
-    // j: recogintionJ,
-    cellId: recognitionCellId,
-  } = randomLocationPick
   // console.log(
   //   presentationArray,
   //   randomLocationPick,
@@ -92,7 +110,7 @@ export const createMemorandumBlockParams = (
     )
     items.forEach((item) => {
       const generatedStimulus = createStimulus(
-        recognitionCellId,
+        item.cellId,
         item.iconType,
         true,
         recognitionTypes.CORRECT_ON_LETTER
@@ -107,7 +125,7 @@ export const createMemorandumBlockParams = (
     )
     items.forEach((item) => {
       const generatedStimulus = createStimulus(
-        recognitionCellId,
+        item.cellId,
         item.iconType,
         false,
         recognitionTypes.CORRECT_OFF_LETTER
@@ -116,37 +134,38 @@ export const createMemorandumBlockParams = (
     })
   }
   if (countsArray[recognitionTypes.INCORRECT_ON_LETTER]) {
-    for (
-      let i = 0;
-      i < countsArray[recognitionTypes.INCORRECT_ON_LETTER];
-      i++
-    ) {
+    const items = onletterStimuliArray.splice(
+      0,
+      countsArray[recognitionTypes.INCORRECT_ON_LETTER]
+    )
+    items.forEach((item) => {
       const orientation = shuffledStimuli.splice(0, 1)[0]
       const generatedStimulus = createStimulus(
-        recognitionCellId,
+        item.cellId,
         orientation,
         true,
         recognitionTypes.INCORRECT_ON_LETTER
       )
       recognitionStimuliArray.push(generatedStimulus)
-    }
+    })
   }
   if (countsArray[recognitionTypes.INCORRECT_OFF_LETTER]) {
-    for (
-      let i = 0;
-      i < countsArray[recognitionTypes.INCORRECT_OFF_LETTER];
-      i++
-    ) {
+    const items = offletterStimuliArray.splice(
+      0,
+      countsArray[recognitionTypes.INCORRECT_OFF_LETTER]
+    )
+    items.forEach((item) => {
       const orientation = shuffledStimuli.splice(0, 1)[0]
       const generatedStimulus = createStimulus(
-        recognitionCellId,
+        item.cellId,
         orientation,
         false,
         recognitionTypes.INCORRECT_OFF_LETTER
       )
       recognitionStimuliArray.push(generatedStimulus)
-    }
+    })
   }
+
   // console.log(recognitionStimuliArray)
   // if (!runTest)
   return {
