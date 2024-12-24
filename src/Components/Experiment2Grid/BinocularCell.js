@@ -28,7 +28,7 @@ const BinocularCell = ({
         style={{
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'black',
+          // backgroundColor: 'black',
           width: '65%',
           display: 'flex',
           rotate: `${-1 * binocularOptions.degreeValue}deg`,
@@ -47,7 +47,7 @@ const BinocularCell = ({
             src={GREEN}
             alt="Rivalry1"
             style={{
-              width: `${binocularOptions.stimulusWidth + 130}%`,
+              width: `${binocularOptions.stimulusWidth + 260}%`,
               opacity: `${binocularOptions.greenOpacity}%`,
             }}
           />
@@ -64,7 +64,7 @@ const BinocularCell = ({
             src={RED}
             alt="Rivalry2"
             style={{
-              width: `${binocularOptions.stimulusWidth + 130}%`,
+              width: `${binocularOptions.stimulusWidth + 240}%`,
               opacity: `${binocularOptions.redOpacity}%`,
             }}
           />
@@ -126,7 +126,7 @@ const BinocularCell = ({
     <Box
       sx={{
         display: 'flex',
-        backgroundColor: `${darkTheme ? 'black' : 'white'}`,
+        // backgroundColor: `${darkTheme ? 'black' : 'white'}`,
         justifyContent: 'center',
         alignItems: 'center',
         // border: `1px solid ${borderColor}`,
