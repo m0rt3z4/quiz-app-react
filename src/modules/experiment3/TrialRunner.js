@@ -6,7 +6,7 @@ import { Trial2 } from '../../Components/Experiment3Trial'
 
 export const TrialRunner = ({
   experiment,
-  showFeedback,
+  isMixed = false,
   onFinishExperiment,
   showTracker = false,
 }) => {
@@ -46,10 +46,10 @@ export const TrialRunner = ({
     <Trial2
       {...current}
       onFinishTrial={onFinishTrial}
-    //   showFeedback={showFeedback}
+      //   showFeedback={showFeedback}
       showTracker={showTracker}
       trackerIndex={trialIndex}
-      dontShowLetter
+      dontShowLetter={!isMixed}
     />
   )
 }

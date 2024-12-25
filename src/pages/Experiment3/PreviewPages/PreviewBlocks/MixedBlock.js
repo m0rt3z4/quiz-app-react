@@ -15,7 +15,7 @@ export const MixedBlocks = ({ onStartPreview }) => {
           text="Preview Block"
           backgroundColor="lightgray"
           onClickButton={() => {
-            return onStartPreview(pages.MEMORY)
+            return onStartPreview(pages.MIXED)
           }}
         />
       </Grid>

@@ -17,7 +17,7 @@ const Step2 = ({
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
   const [surprize, setSurprize] = useState({})
-  const [result, setResult] = useState({})
+  const [result, setResult] = useState([])
   const [toggleSurprize, setToggleSurprize] = useState(false)
   const [startTime, setStartTime] = useState(0)
   const { changeUserResp } = useExperiment3Context()
@@ -27,7 +27,10 @@ const Step2 = ({
       if (stimuliArray[index].iconType === 'SURPRIZE') {
         setSurprize(stimuliArray[index])
         setStartTime(Date.now())
-        setToggleSurprize(true)
+        setTimeout(() => {
+          setToggleSurprize(true)
+          return clearTimeout()
+        }, 100)
       } else {
         setStimulus(stimuliArray[index])
         setTimeout(() => {
@@ -51,7 +54,7 @@ const Step2 = ({
   )
 
   const onFinishSurprize = (resp) => {
-    setResult(resp)
+    setResult([...result, resp])
     setToggleSurprize(false)
     changeUserResp(false)
     const timeout = setTimeout(() => {

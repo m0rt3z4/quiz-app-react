@@ -61,14 +61,15 @@ const TimedStep = ({
     if (!!respRef) return null
     changeUserResp(true)
     const isCorrect = isAnswerCorrect(resp.userAnswer)
+    const result = { ...resp, isAnswerCorrect: isCorrect }
 
     if (resp.userAnswer === 'NO_ANSWER') {
-      onFinishSurprizeStep(resp)
+      onFinishSurprizeStep(result)
       return null
     }
     if (showFeedback) {
       delayedFeedback(resp.userAnswer, isCorrect, () => {
-        onFinishSurprizeStep(resp)
+        onFinishSurprizeStep(result)
       })
     }
   }

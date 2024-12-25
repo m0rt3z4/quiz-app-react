@@ -43,23 +43,21 @@ export const createExp3MixedBlock = (size = 40) => {
     }
     return { ...value, sixthElementInfo }
   })
-  console.log(res)
   const trials = [...generateTrials(32), ...generateTrials(16)].splice(0, 40)
-  console.log(
-    trials.map((trial, index) => {
-      const params = res[index]
-      return {
-        background: trial[1],
-        letter: trial[0],
-        trialParams: createMixedBlockParams(
-          trial[0],
-          params.stimuliArray,
-          params.surprizeInfo,
-          params.sixthElementInfo
-        ),
-      }
-    })
-  )
+  const finalResults = trials.map((trial, index) => {
+    const params = res[index]
+    return {
+      background: trial[1],
+      letter: trial[0],
+      trialParams: createMixedBlockParams(
+        trial[0],
+        params.stimuliArray,
+        params.surprizeInfo,
+        params.sixthElementInfo
+      ),
+    }
+  })
+  return finalResults
 }
 
 const mock = [
