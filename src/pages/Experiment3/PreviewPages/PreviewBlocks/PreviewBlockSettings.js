@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Box, Grid, Card } from '@mui/material'
 import { useExperiment3Context } from '../../../../layouts/Experiment3Layout'
-import { ImageryBlocks, MemoryBlocks } from '.'
+import { ImageryBlocks, MemoryBlocks, MixedBlocks } from '.'
 
 // import { SettingsButton } from '../../../Components/SettingsButton'
 
@@ -33,6 +33,9 @@ export const PreviewBlockSettings = ({ onStartPreview }) => {
           </Grid>
           <Grid container paddingTop={3}>
             <MemoryBlocks onStartPreview={onStartPreview} />
+          </Grid>
+          <Grid container paddingTop={3}>
+            <MixedBlocks onStartPreview={onStartPreview} />
           </Grid>
         </Grid>
       </Card>

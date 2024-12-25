@@ -50,7 +50,7 @@ const pick8TrialBlock = () => {
   return arr
 }
 
-const generateSurprizes = (size) => {
+export const generateSurprizes = (size) => {
   const halfSize = size / 2
   const array = Array(halfSize).fill(true).concat(Array(halfSize).fill(false))
   return shuffleArray(array)

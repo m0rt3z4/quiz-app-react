@@ -8,22 +8,26 @@ import {
   // runTest,
 } from '../../../../modules/experiment3/createExp3Params'
 import { TrialRunner } from '../../../../modules/experiment3/TrialRunner'
+import { createExp3MixedBlock } from '../../../../modules/experiment3/createExp3MixedParams'
 
 export const pages = {
   SETTINGS: 'SETTINGS',
   IMAGERY: 'IMAGERY',
   MEMORY: 'MEMORY',
+  MIXED: 'MIXED',
 }
 export const PreviewBlocksPage = ({ onBack }) => {
   const [currentPage, setCurrentPage] = useState(pages.SETTINGS)
   const [imageryParams, setImageryParams] = useState([])
   const [memoryParams, setMemoryParams] = useState([])
+  const [mixedParams, setMixedParams] = useState([])
 
   const { changeTitle, memoryV2MixedSizes } = useExperiment3Context()
 
   useEffect(() => {
     setImageryParams(createSuprizeBlockParams())
     setMemoryParams(createExp3MemoryBlock())
+    setMixedParams(createExp3MixedBlock())
 
     // runTest(50000)
     // mockArray.map((value) => {
@@ -32,7 +36,6 @@ export const PreviewBlocksPage = ({ onBack }) => {
 
     // changeTitle('Trial Blocks Settings')
   }, [changeTitle, memoryV2MixedSizes])
-
   const onStartPreview = (page = pages.SETTINGS) => {
     setTimeout(() => {
       changeTitle('')
@@ -63,6 +66,20 @@ export const PreviewBlocksPage = ({ onBack }) => {
         <TrialRunner
           experiment={memoryParams}
           onFinishExperiment={() => {
+            changeTitle('Preview Trial Blocks')
+            return setCurrentPage(pages.SETTINGS)
+          }}
+        />
+      )
+    }
+    case pages.MIXED: {
+      return (
+        <TrialRunner
+          experiment={mixedParams.slice(0, 4)}
+          isMixed
+          onFinishExperiment={(resp) => {
+            console.log(resp)
+
             changeTitle('Preview Trial Blocks')
             return setCurrentPage(pages.SETTINGS)
           }}

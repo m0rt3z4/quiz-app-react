@@ -32,11 +32,11 @@ export const Trial2 = ({
     if (!!resp)
       setResults({
         ...results,
-        surprize: {
-          ...trialParams.surpize,
-          responseTime: resp.responseTime,
-          userAnswer: resp.userAnswer,
-        },
+        background,
+        letter,
+        presentationArray: trialParams.stimuli,
+        presentationResults: resp,
+        recognitionTypeArray: trialParams.recognitionTypeArray,
       })
     setStep(3)
     setTimeout(() => {
