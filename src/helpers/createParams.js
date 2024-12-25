@@ -2,7 +2,7 @@ import { recognitionTypes } from '../consts'
 import { chooseGridElements } from './letterPicker'
 import shuffleArray from './shuffleArray'
 
-const iconTypes = {
+export const iconTypes = {
   SURPRIZE: 'SURPRIZE',
   CIRCLE: 'CIRCLE',
   QUESTION: 'QUESTION',
