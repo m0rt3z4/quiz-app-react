@@ -19,7 +19,7 @@ export const Exp2PersistedLayout = () => {
       sx={{
         width: '99vw',
         minHeight: '100vh',
-        backgroundColor: darkTheme ? 'black' : '#e6dada',
+        backgroundColor: 'black',
       }}
     >
       <Grid
