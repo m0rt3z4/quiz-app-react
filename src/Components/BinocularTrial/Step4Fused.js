@@ -3,8 +3,11 @@ import React from 'react'
 import { Grid, Card } from '@mui/material'
 
 //assets
-import FADED_GREEN from '../../assets/Binocular/greenV3.png'
-import FADED_RED from '../../assets/Binocular/redV3.png'
+// import FADED_GREEN from '../../assets/Binocular/greenV3.png'
+// import FADED_RED from '../../assets/Binocular/redV3.png'
+
+import FADED_GREEN from '../../assets/Binocular/faded_green.png'
+import FADED_RED from '../../assets/Binocular/faded_red.png'
 
 // Question Step
 const Step4Fused = ({
