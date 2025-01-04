@@ -47,7 +47,7 @@ const BinocularCell = ({
             src={GREEN}
             alt="Rivalry1"
             style={{
-              width: `${binocularOptions.stimulusWidth + 260}%`,
+              width: `${binocularOptions.stimulusWidth + 300}%`,
               opacity: `${binocularOptions.greenOpacity}%`,
             }}
           />
@@ -64,7 +64,7 @@ const BinocularCell = ({
             src={RED}
             alt="Rivalry2"
             style={{
-              width: `${binocularOptions.stimulusWidth + 240}%`,
+              width: `${binocularOptions.stimulusWidth + 300}%`,
               opacity: `${binocularOptions.redOpacity}%`,
             }}
           />

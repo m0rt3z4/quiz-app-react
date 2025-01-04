@@ -29,7 +29,7 @@ export const createPracticeParams = () => {
 }
 
 export const createSuprizeBlockParams = ()=>{
-  const trials = generateTrials(16)
+  const trials = generateTrials(32)
   return populateBlock(trials, 'surprizeBlock')
 }
 

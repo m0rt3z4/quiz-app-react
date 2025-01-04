@@ -12,9 +12,11 @@ import {
   Button,
   Typography,
 } from '@mui/material'
+// import { mockCalibrationResults } from './mockCalibrationResults'
 
 // ResultsPage
 const ResultsPage = ({ results = {}, onBack }) => {
+  const isSuccess = results.switchRatio >= 0.8
   const ResultsTable = () => {
     return (
       <TableContainer>
@@ -81,7 +83,9 @@ const ResultsPage = ({ results = {}, onBack }) => {
                   bgcolor: 'darksalmon',
                   maxWidth: '200px',
                 }}
-                onClick={onBack}
+                onClick={() => {
+                  onBack(true)
+                }}
               >
                 Next
               </Button>
@@ -109,12 +113,28 @@ const ResultsPage = ({ results = {}, onBack }) => {
             <Grid item xs={8} paddingTop={1}>
               <Typography
                 sx={{
-                  color: results.switchRatio >= 0.8 ? 'lightgreen' : 'red',
+                  color: isSuccess ? 'lightgreen' : 'red',
                 }}
               >{`Callibration ${
-                results.switchRatio >= 0.8 ? 'Successful' : 'Failed'
+                isSuccess ? 'Successful' : 'Failed'
               }!`}</Typography>
             </Grid>
+            {!isSuccess && (
+              <Grid item xs={8} paddingTop={2}>
+                <Button
+                  sx={{
+                    color: 'white',
+                    bgcolor: 'darksalmon',
+                    maxWidth: '200px',
+                  }}
+                  onClick={() => {
+                    onBack(true)
+                  }}
+                >
+                  retry
+                </Button>
+              </Grid>
+            )}
             <Grid item xs={8} paddingTop={5}>
               <ResultsTable />
             </Grid>
