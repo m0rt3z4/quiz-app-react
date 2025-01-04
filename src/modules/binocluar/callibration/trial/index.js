@@ -29,14 +29,14 @@ const BinocularCallibrationTrial = ({
       setStep(2)
       stepTwo()
       return clearTimeout()
-    }, trialSettings.slide1Time)
+    }, binocluarV1Settings.slide1Time)
   }
   const stepTwo = () => {
     return setTimeout(() => {
       setStep(3)
       //   stepThree()
       return clearTimeout()
-    }, trialSettings.slide2Time)
+    }, binocluarV1Settings.slide2Time)
   }
   const onUserAnswer = (answer) => {
     // console.log(answer)
@@ -46,7 +46,7 @@ const BinocularCallibrationTrial = ({
     return setTimeout(() => {
       onFinishTrial(answer)
       return clearTimeout()
-    }, trialSettings.slide4Time)
+    }, binocluarV1Settings.slide4Time)
   }
   //   const stepFour = () => {
   //     return setTimeout(() => {
