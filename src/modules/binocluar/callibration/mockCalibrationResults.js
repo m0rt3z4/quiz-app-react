@@ -1,0 +1,80 @@
+export const mockCalibrationResults = {
+  results: [
+    {
+      userResponse: 'RED',
+      isSwitched: true,
+      redOpacity: 80,
+      greenOpacity: 80,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: false,
+      redOpacity: 80,
+      greenOpacity: 80,
+    },
+    {
+      userResponse: 'GREEN',
+      isSwitched: true,
+      redOpacity: 78,
+      greenOpacity: 82,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: true,
+      redOpacity: 78,
+      greenOpacity: 82,
+    },
+    {
+      userResponse: 'GREEN',
+      isSwitched: true,
+      redOpacity: 78,
+      greenOpacity: 82,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: true,
+      redOpacity: 78,
+      greenOpacity: 82,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: false,
+      redOpacity: 78,
+      greenOpacity: 82,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: false,
+      redOpacity: 76,
+      greenOpacity: 84,
+    },
+    {
+      userResponse: 'GREEN',
+      isSwitched: true,
+      redOpacity: 74,
+      greenOpacity: 86,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: true,
+      redOpacity: 74,
+      greenOpacity: 86,
+    },
+    {
+      userResponse: 'GREEN',
+      isSwitched: true,
+      redOpacity: 74,
+      greenOpacity: 86,
+    },
+    {
+      userResponse: 'RED',
+      isSwitched: true,
+      redOpacity: 74,
+      greenOpacity: 86,
+    },
+  ],
+  switchRatio: 0.2,
+  redOpacity: 74,
+  greenOpacity: 86,
+  blockTime: 167,
+}
