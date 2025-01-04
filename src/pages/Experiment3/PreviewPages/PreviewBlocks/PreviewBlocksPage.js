@@ -9,6 +9,7 @@ import {
 } from '../../../../modules/experiment3/createExp3Params'
 import { TrialRunner } from '../../../../modules/experiment3/TrialRunner'
 import { createExp3MixedBlock } from '../../../../modules/experiment3/createExp3MixedParams'
+import { downloadQuizDataAsJson } from '../../../../helpers/donwloadJson'
 
 export const pages = {
   SETTINGS: 'SETTINGS',
@@ -54,8 +55,9 @@ export const PreviewBlocksPage = ({ onBack }) => {
       return (
         <PracticeSurprizeRunner
           experiment={imageryParams}
-          onFinishExperiment={() => {
+          onFinishExperiment={(resp) => {
             changeTitle('Preview Trial Blocks')
+            downloadQuizDataAsJson(resp, 123456, 'IMAGERY')
             return setCurrentPage(pages.SETTINGS)
           }}
         />
@@ -65,8 +67,9 @@ export const PreviewBlocksPage = ({ onBack }) => {
       return (
         <TrialRunner
           experiment={memoryParams}
-          onFinishExperiment={() => {
+          onFinishExperiment={(resp) => {
             changeTitle('Preview Trial Blocks')
+            downloadQuizDataAsJson(resp, 123456, 'MEMORY')
             return setCurrentPage(pages.SETTINGS)
           }}
         />
@@ -75,11 +78,11 @@ export const PreviewBlocksPage = ({ onBack }) => {
     case pages.MIXED: {
       return (
         <TrialRunner
-          experiment={mixedParams.slice(0, 4)}
+          experiment={mixedParams}
           isMixed
           onFinishExperiment={(resp) => {
             console.log(resp)
-
+            downloadQuizDataAsJson(resp, 123456, 'MIXED')
             changeTitle('Preview Trial Blocks')
             return setCurrentPage(pages.SETTINGS)
           }}
