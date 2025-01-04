@@ -16,7 +16,7 @@ const BinocularCallibrationModule = ({ onFinishExperiment }) => {
   const [experiment, setExperiment] = useState([])
 
   useEffect(() => {
-    setExperiment(createCalibrationExperiment(12))
+    setExperiment(createCalibrationExperiment(20))
   }, [])
 
   const onFinishTrial = (resp) => {
@@ -40,7 +40,7 @@ const BinocularCallibrationModule = ({ onFinishExperiment }) => {
       onFinishExperiment(results)
     } else {
       // setCalibrationTries((calibrationTries) => calibrationTries + 1)
-      setExperiment(createCalibrationExperiment(12))
+      setExperiment(createCalibrationExperiment(20))
       console.log(results)
 
       return setTimeout(() => {
