@@ -7,10 +7,15 @@ import { createExperimentParams } from '../../../modules/experiment2/createExper
 import { createMixedBlock } from '../../../modules/experiment2/createMixedMemoryTaskParams'
 import BinocularMainModule from '../../../modules/BinocularMain'
 import MemoryTaskV2 from '../../../modules/MemoryTaskV2'
-import { binocularTrialTypes } from '../../../consts'
+// import { binocularTrialTypes } from '../../../consts'
 import { createBinocularV2Params } from '../../../modules/binocularv2/createBinocularV2Params'
 import InfoForm from './InfoForm/InfoForm'
 
+export const binocularTrialTypes = {
+  BINOCULAR_V1: 'BINOCULAR_V1',
+  BINOCULAR_V2: 'BINOCULAR_V2',
+  NO_BINOCULAR: 'NO_BINOCULAR',
+}
 export const memeoryTaskTypes = {
   MEMORY_V2: 'MEMORY_V2',
 }
@@ -38,7 +43,7 @@ export const MemoryTaskPage = () => {
   }, [binocluarType])
 
   const onFinishForm = () => {
-    setStep(2)
+    setStep((step) => step + 1)
   }
 
   const generateBinocularParams = (type = binocularTrialTypes.BINOCULAR_V1) => {
@@ -69,22 +74,30 @@ export const MemoryTaskPage = () => {
   const onFinishBinocular = () => {
     setStep(3)
   }
+  const onPressStart = () => {
+    if (binocluarType === binocularTrialTypes.NO_BINOCULAR) {
+      changeTitle('')
+      setStep(4)
+    } else {
+      setStep(2)
+    }
+  }
 
   switch (step) {
     case 1:
       return (
-        <InfoForm onNext={onFinishForm} userId={userId} />
-        // <ConfigPage
-        //   binocluarType={binocluarType}
-        //   memoryType={memoryType}
-        //   setBinocularType={setBinocularType}
-        //   setMemoryType={setMemoryType}
-        //   onStart={() => {
-        //     setStep(2)
-        //   }}
-        // />
+        <ConfigPage
+          binocluarType={binocluarType}
+          memoryType={memoryType}
+          setBinocularType={setBinocularType}
+          setMemoryType={setMemoryType}
+          onStart={onPressStart}
+        />
       )
-    case 2: {
+    case 2:
+      return <InfoForm onNext={onFinishForm} userId={userId} />
+
+    case 3: {
       return (
         <BinocularMainModule
           experiment={binocluarExp}
@@ -94,7 +107,7 @@ export const MemoryTaskPage = () => {
         />
       )
     }
-    case 3: {
+    case 4: {
       return (
         <MemoryTaskV2
           experiment={memoryExp}

@@ -9,8 +9,7 @@ import {
   MenuItem,
 } from '@mui/material'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
-import { memeoryTaskTypes } from '.'
-import { binocularTrialTypes } from '../../../consts'
+import { binocularTrialTypes, memeoryTaskTypes } from '.'
 
 export const ConfigPage = ({
   binocluarType = memeoryTaskTypes.MEMORY_V2,
@@ -61,6 +60,10 @@ export const ConfigPage = ({
                     size="small"
                     sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
                   >
+                    <MenuItem value={binocularTrialTypes.NO_BINOCULAR}>
+                      {binocularTrialTypes.NO_BINOCULAR}
+                    </MenuItem>
+
                     <MenuItem value={binocularTrialTypes.BINOCULAR_V1}>
                       {binocularTrialTypes.BINOCULAR_V1}
                     </MenuItem>
