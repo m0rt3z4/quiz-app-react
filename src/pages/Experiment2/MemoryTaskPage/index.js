@@ -72,7 +72,7 @@ export const MemoryTaskPage = () => {
     return res
   }
   const onFinishBinocular = () => {
-    setStep(3)
+    setStep((step) => step + 1)
   }
   const onPressStart = () => {
     if (binocluarType === binocularTrialTypes.NO_BINOCULAR) {

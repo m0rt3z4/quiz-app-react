@@ -39,7 +39,7 @@ const BinocularModule = ({
       trialParams: current,
       results: resp,
     }
-    console.log(trialResult)
+    // console.log(experiment)
 
     setResults([...results, trialResult])
     setTrialIndex(trialIndex + 1)
