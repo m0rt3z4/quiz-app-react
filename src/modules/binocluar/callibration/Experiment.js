@@ -22,32 +22,70 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
     }, 500)
   }
   useEffect(() => {
-    if (trialIndex < experiment.length) {   
+    if (trialIndex < experiment.length) {
       setCurrent(experiment[trialIndex])
     } else {
       //finished experiment
+      const {
+        frequency,
+        redOpacity: red,
+        greenOpacity: green,
+      } = calculateRatio(results)
       onFinishExperiment({
         results,
-        switchRatio: calculateRatio(results),
-        redOpacity,
-        greenOpacity,
+        switchRatio: frequency,
+        redOpacity: red,
+        greenOpacity: green,
       })
     }
   }, [trialIndex])
 
+  // const calculateRatio = (resultsArray = []) => {
+  //   if (resultsArray.length < 10) return 0
+  //   const lastTen = resultsArray.slice(resultsArray.length - 10)
+  //   return (
+  //     lastTen
+  //       .map((res) => res.isSwitched)
+  //       .reduce((prev, cur) => {
+  //         if (cur) {
+  //           return prev + 1
+  //         } else return prev
+  //       }, 0) / lastTen.length
+  //   )
+  // }
   const calculateRatio = (resultsArray = []) => {
     if (resultsArray.length < 10) return 0
+
+    // Get last 10 entries
     const lastTen = resultsArray.slice(resultsArray.length - 10)
-    return (
-      lastTen
-        .map((res) => res.isSwitched)
-        .reduce((prev, cur) => {
-          if (cur) {
-            return prev + 1
-          } else return prev
-        }, 0) / lastTen.length
-    )
+
+    // Create opacity pairs and count their occurrences
+    const pairCounts = lastTen.reduce((counts, result) => {
+      const pair = `${result.redOpacity}-${result.greenOpacity}`
+      counts[pair] = (counts[pair] || 0) + 1
+      return counts
+    }, {})
+
+    // Find the most frequent pair and its count
+    let maxCount = 0
+    let mostFrequentPair = ''
+
+    Object.entries(pairCounts).forEach(([pair, count]) => {
+      if (count > maxCount) {
+        maxCount = count
+        mostFrequentPair = pair
+      }
+    })
+
+    // Return the pair and its frequency ratio
+    const [red, green] = mostFrequentPair.split('-').map(Number)
+    return {
+      redOpacity: red,
+      greenOpacity: green,
+      frequency: maxCount / 10,
+    }
   }
+
   const onFinishTrial = (resp) => {
     const isSwitched = resp !== lastAnswer
     const savedResults = [
@@ -55,15 +93,17 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
       { userResponse: resp, isSwitched, redOpacity, greenOpacity },
     ]
     setResults(savedResults)
-    const ratio = calculateRatio(savedResults)
+    const { frequency, redOpacity: red, greenOpacity: green } = calculateRatio(
+      savedResults
+    )
     // console.log(`Ratio is => ${ratio}`)
 
-    if (ratio >= 0.8) {
+    if (frequency >= 0.8) {
       onFinishExperiment({
         results: savedResults,
-        switchRatio: ratio,
-        redOpacity,
-        greenOpacity,
+        switchRatio: frequency,
+        redOpacity: red,
+        greenOpacity: green,
       })
     }
     setLastAnswer(resp)
