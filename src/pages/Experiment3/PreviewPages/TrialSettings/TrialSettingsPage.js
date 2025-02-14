@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { Box, Grid, Card } from '@mui/material'
-import { useExperiment3Context } from '../../../layouts/Experiment3Layout'
+import { Box, Card } from '@mui/material'
+import { useExperiment3Context } from '../../../../layouts/Experiment3Layout'
+import { SettingsConfiguration } from './SettingsConfiguration'
 
 // import { SettingsButton } from '../../../Components/SettingsButton'
 
@@ -26,7 +27,7 @@ export const TrialSettingsPage = () => {
           border: '1px solid black',
         }}
       >
-        <Grid container paddingTop={3}></Grid>
+        <SettingsConfiguration />
       </Card>
     </Box>
   )
