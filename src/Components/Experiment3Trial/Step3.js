@@ -11,6 +11,7 @@ const Step3 = ({
   showFeedback = false,
   onFinishStep,
   isPracticeSurprize = false,
+  timeBetweenStimuli = 400,
 }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
@@ -48,7 +49,7 @@ const Step3 = ({
       changeUserResp(false)
       setIndex(index + 1)
       return clearTimeout()
-    }, 400)
+    }, timeBetweenStimuli)
   }
 
   const Grid = () => (

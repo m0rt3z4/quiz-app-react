@@ -13,6 +13,8 @@ const Step1 = ({
   letter,
   dontShowLetter = false,
   onStartTrial,
+  timeToShowLetter = 3000,
+  timeToShowMask = 1000,
 }) => {
   const [isMask, setIsMask] = useState(false)
   const [customBackground, setCustomBackground] = useState([])
@@ -24,7 +26,7 @@ const Step1 = ({
       timer = setTimeout(() => {
         setCustomBackground(maskArray)
         setIsMask(true)
-      }, 3000)
+      }, timeToShowLetter)
     } else {
       waitBeforeStart()
     }
@@ -40,7 +42,7 @@ const Step1 = ({
         setCustomBackground([])
         setIsMask(false)
         waitBeforeStart()
-      }, 1000)
+      }, timeToShowMask)
     }
   }, [isMask])
 

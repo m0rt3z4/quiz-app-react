@@ -21,7 +21,7 @@ export const Trial2 = ({
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
-  const { showRightArrow } = useExperiment3Context()
+  const { showRightArrow, exp3Settings } = useExperiment3Context()
 
   useEffect(() => {
     setStep(0)
@@ -42,7 +42,7 @@ export const Trial2 = ({
     setTimeout(() => {
       setStep(4)
       return clearTimeout()
-    }, 1000)
+    }, exp3Settings.timeToWaitAfterPresentation)
   }
   const onFinishImagination = (resp) => {
     showRightArrow('')
@@ -74,6 +74,8 @@ export const Trial2 = ({
           onStartTrial={() => {
             setStep(1)
           }}
+          timeToShowLetter={exp3Settings.block1TimeToShowLetter}
+          timeToShowMask={exp3Settings.block1TimeToShowMask}
         />
       )
     }
@@ -98,6 +100,9 @@ export const Trial2 = ({
           stimuliArray={trialParams.stimuli}
           onFinishStep={onFinishFirstStep}
           showFeedback={showFeedback}
+          timeToShowOrientation={exp3Settings.timeToShowOrientation}
+          timeBetweenOrientations={exp3Settings.timeBetweenOrientations}
+          timeToWaitAfterSurprize={exp3Settings.timeToWaitAfterSurprize}
         />
       )
     }

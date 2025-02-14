@@ -5,14 +5,14 @@ import { useExperiment3Context } from '../../layouts/Experiment3Layout'
 import { Experiment3Grid } from '../Experiment3Grid'
 import TimedStep from './TimedStep'
 
-const TIME_SHOW_STIMULI = 250
-const TIME_WAIT_BETWEEN_STIMULI = 250
-
 const Step2 = ({
   background,
   onFinishStep,
   showFeedback = false,
   stimuliArray = [],
+  timeToShowOrientation = 250,
+  timeBetweenOrientations = 250,
+  timeToWaitAfterSurprize = 1000,
 }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
@@ -37,8 +37,8 @@ const Step2 = ({
           setStimulus({})
           setTimeout(() => {
             setIndex((index) => index + 1)
-          }, TIME_WAIT_BETWEEN_STIMULI)
-        }, TIME_SHOW_STIMULI)
+          }, timeBetweenOrientations)
+        }, timeToShowOrientation)
       }
     } else {
       onFinishStep(result)
@@ -61,7 +61,7 @@ const Step2 = ({
       setToggleSurprize(false)
       setIndex(index + 1)
       return clearTimeout(timeout)
-    }, 1000)
+    }, timeToWaitAfterSurprize)
   }
 
   return toggleSurprize ? (

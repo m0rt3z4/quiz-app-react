@@ -16,7 +16,11 @@ export const PracticeSurprize = ({
   const [step, setStep] = useState(0)
   const [imaginationTime, setImaginationTime] = useState(0)
   const [results, setResults] = useState({})
-  const { showRightArrow, showLeftArrow } = useExperiment3Context()
+  const {
+    showRightArrow,
+    showLeftArrow,
+    exp3Settings,
+  } = useExperiment3Context()
 
   const onFinishImagination = (resp) => {
     setImaginationTime(resp)
@@ -39,6 +43,8 @@ export const PracticeSurprize = ({
           onStartTrial={() => {
             setStep(1)
           }}
+          timeToShowLetter={exp3Settings.block1TimeToShowLetter}
+          timeToShowMask={exp3Settings.block1TimeToShowMask}
         />
       )
     }
@@ -58,6 +64,7 @@ export const PracticeSurprize = ({
           onFinishStep={onFinishSurprizePractice}
           showFeedback={true}
           isPracticeSurprize={true}
+          timeBetweenStimuli={exp3Settings.block1TimeBetweenStimuli}
         />
       )
     }
