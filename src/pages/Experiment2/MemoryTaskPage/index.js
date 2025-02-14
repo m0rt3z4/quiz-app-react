@@ -8,7 +8,7 @@ import { createMixedBlock } from '../../../modules/experiment2/createMixedMemory
 import BinocularMainModule from '../../../modules/BinocularMain'
 import MemoryTaskV2 from '../../../modules/MemoryTaskV2'
 // import { binocularTrialTypes } from '../../../consts'
-import { createBinocularV2Params } from '../../../modules/binocularv2/createBinocularV2Params'
+import { createBinocularV2ParamsRevamped } from '../../../modules/binocularv2/createBinocularV2Params'
 import InfoForm from './InfoForm/InfoForm'
 
 export const binocularTrialTypes = {
@@ -19,8 +19,8 @@ export const binocularTrialTypes = {
 export const memeoryTaskTypes = {
   MEMORY_V2: 'MEMORY_V2',
 }
-export const MemoryTaskPage = () => {
-  const [step, setStep] = useState(1)
+export const MemoryTaskPage = ({ isMainTrial = false }) => {
+  const [step, setStep] = useState(isMainTrial ? 2 : 1)
   const [userId, setUserId] = useState(0)
   const [binocluarType, setBinocularType] = useState(
     binocularTrialTypes.BINOCULAR_V2
@@ -55,7 +55,7 @@ export const MemoryTaskPage = () => {
         res.binocular = createBinocularParams(16)
         break
       case binocularTrialTypes.BINOCULAR_V2:
-        res.binocular = createBinocularV2Params(16)
+        res.binocular = createBinocularV2ParamsRevamped()
 
         break
       default:

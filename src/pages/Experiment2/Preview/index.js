@@ -50,7 +50,7 @@ export const Experiment2PreviewPage = () => {
       return <PreviewBinocularV2Page onBack={backButton} />
     }
     case 5: {
-      return <MemoryTaskPage />
+      return <MemoryTaskPage isMainTrial={false} />
     }
     case 6: {
       return <PreviewTutorials onBack={backButton} />

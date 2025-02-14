@@ -1,5 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import { Experiment3Context } from './context'
+import { storageKeys } from './consts'
+import { usePersistedState } from '../../helpers/usePersistedState'
 
 export const Experiment3Provider = ({ children }) => {
   const [title, setTitle] = useState()
@@ -11,6 +13,19 @@ export const Experiment3Provider = ({ children }) => {
   const [feedbackStatus, setFeedbackStatus] = useState('')
   const [preview, setPreview] = useState(false)
   const [respRef, setRespRef] = useState(false)
+  const [exp3Settings, setExp3Settings] = usePersistedState(
+    storageKeys.EXP3_SETTINGS,
+    {
+      block1TimeToShowLetter: 3000,
+      block1TimeToShowMask: 1000,
+      block1TimeBetweenStimuli: 250,
+      timeToShowOrientation: 250,
+      timeBetweenOrientations: 250,
+      timeToWaitAfterSurprize: 1000,
+      timeToWaitAfterPresentation: 2000,
+    },
+    true
+  )
 
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
@@ -62,6 +77,13 @@ export const Experiment3Provider = ({ children }) => {
     setRespRef(resp)
   }, [])
 
+  const changeExp3Settings = useCallback(
+    (settings) => {
+      setExp3Settings(settings)
+    },
+    [setExp3Settings]
+  )
+
   const value = useMemo(() => {
     return {
       outletWidth,
@@ -85,6 +107,8 @@ export const Experiment3Provider = ({ children }) => {
       changePreviewMode,
       respRef,
       changeUserResp,
+      exp3Settings,
+      changeExp3Settings,
     }
   }, [
     outletWidth,
@@ -108,6 +132,8 @@ export const Experiment3Provider = ({ children }) => {
     changePreviewMode,
     respRef,
     changeUserResp,
+    exp3Settings,
+    changeExp3Settings,
   ])
 
   return (

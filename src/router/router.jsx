@@ -24,6 +24,7 @@ import {
   PreviewGridPage,
   TrialSettingsPage,
 } from '../pages/Experiment3/PreviewPages'
+import MemoryTaskPage from '../pages/Experiment2/MemoryTaskPage'
 
 export const router = createBrowserRouter([
   {
@@ -82,14 +83,14 @@ export const router = createBrowserRouter([
         element: <Experiment2Page />,
       },
       {
-        id: 'trial-experiment2-page',
+        id: 'preview-experiment2-page',
         path: hierarchy.main.experiment2.preview.path,
         element: <Experiment2PreviewPage />,
       },
       {
-        id: 'preview-experiment2-page',
+        id: 'trial-experiment2-page',
         path: hierarchy.main.experiment2.trial.path,
-        element: <Experiment2Page />,
+        element: <MemoryTaskPage isMainTrial />,
       },
     ],
   },
