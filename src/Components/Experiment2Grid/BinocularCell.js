@@ -6,6 +6,7 @@ import RED from '../../assets/Binocular/mixed.red_v2.png'
 // import FADED_RED from '../../assets/Binocular/redV3.png'
 import FADED_GREEN from '../../assets/Binocular/faded_green.png'
 import FADED_RED from '../../assets/Binocular/faded_red.png'
+import { binocularPatchTypes } from '../../consts'
 
 const binocluarOptionsMock = {
   recallType: 'MIXED',
@@ -122,6 +123,20 @@ const BinocularCell = ({
       </div>
     )
   }
+  const renderPatch = (recallType = 'MIXED') => {
+    switch (recallType) {
+      case binocularPatchTypes.MIXED:
+        return <MixedPatches />
+      case binocularPatchTypes.FUSED:
+        return <FusedPatches />
+      case binocularPatchTypes.RED:
+        return <MixedPatches />
+      case binocularPatchTypes.GREEN:
+        return <MixedPatches />
+      default:
+        return null
+    }
+  }
   return (
     <Box
       sx={{
@@ -135,11 +150,7 @@ const BinocularCell = ({
         height: cellSize,
       }}
     >
-      {binocularOptions.recallType === 'MIXED' ? (
-        <MixedPatches />
-      ) : (
-        <FusedPatches />
-      )}
+      {renderPatch(binocularOptions.recallType)}
     </Box>
   )
 }

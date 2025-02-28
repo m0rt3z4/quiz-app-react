@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
-import Step1 from './Step1'
-import Step2 from './Step2'
-import Step4 from './Step4'
-import Step5 from './Step5'
-import { imaginationCueTypes } from './consts'
+import StereoscopeStep1 from './StereoscopeStep1'
+import StereoscopeStep2 from './StereoscopeStep2'
+import StereoscopeStep4 from './StereoscopeStep4'
+import StereoscopeStep5 from './StereoscopeStep5'
+import { imaginationCueTypes } from '../trial/consts'
 
 const trialSettingsObj = {
   slide1Time: 1000,
@@ -23,7 +23,7 @@ const trialParamsObj = {
   //   recallType: recallTypes.GR,
   angle: 0,
 }
-const BinocularTrialV2 = ({
+const BinocularStereoscopeTrial = ({
   trialParams = trialParamsObj,
   trialSettings = trialSettingsObj,
   onFinishTrial,
@@ -95,10 +95,10 @@ const BinocularTrialV2 = ({
 
   switch (step) {
     case 1: {
-      return <Step1 />
+      return <StereoscopeStep1 />
     }
     case 2: {
-      return <Step2 imaginationCue={trialParams.imaginationCue} />
+      return <StereoscopeStep2 imaginationCue={trialParams.imaginationCue} />
     }
     case 3: {
       return (
@@ -115,7 +115,7 @@ const BinocularTrialV2 = ({
       }
       const isFused = trialParams.recallType === 'FUSED'
       return (
-        <Step4
+        <StereoscopeStep4
           degreeValue={trialParams.angle}
           recallType={trialParams.recallType}
           greenOpacity={trialSettings.greenOpacity}
@@ -135,10 +135,10 @@ const BinocularTrialV2 = ({
       )
     }
     case 5: {
-      return <Step5 onNext={onFinishStep5} />
+      return <StereoscopeStep5 onNext={onFinishStep5} />
     }
     case 6: {
-      return <Step1 />
+      return <StereoscopeStep1 />
     }
 
     default:
@@ -146,4 +146,4 @@ const BinocularTrialV2 = ({
   }
 }
 
-export default BinocularTrialV2
+export default BinocularStereoscopeTrial
