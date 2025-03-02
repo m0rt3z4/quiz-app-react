@@ -140,7 +140,7 @@ const BinocularCell = ({
           src={FADED_RED}
           alt="Rivalry2"
           style={{
-            width: `${binocularOptions.stimulusWidth}px`,
+            width: `${binocularOptions.stimulusWidth + 35}px`,
             opacity: `${binocularOptions.redOpacity}%`,
           }}
         />
@@ -164,14 +164,13 @@ const BinocularCell = ({
           src={FADED_GREEN}
           alt="Rivalry2"
           style={{
-            width: `${binocularOptions.stimulusWidth}px`,
+            width: `${binocularOptions.stimulusWidth + 35}px`,
             opacity: `${binocularOptions.greenOpacity}%`,
           }}
         />
       </div>
     )
   }
-
 
   const renderPatch = (recallType = 'MIXED') => {
     switch (recallType) {

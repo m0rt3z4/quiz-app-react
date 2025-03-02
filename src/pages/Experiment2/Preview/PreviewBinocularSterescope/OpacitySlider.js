@@ -1,14 +1,18 @@
 import React from 'react'
 
 import { Grid, Slider, Typography } from '@mui/material'
-import Step4 from '../../../../modules/binocularv2/trial/Step4'
 import { SettingsButton } from '../../../../Components/SettingsButton'
+import StereoscopeStep4 from '../../../../modules/binocularv2/stereoscopeTrial/StereoscopeStep4'
 
 const OpacitySlider = ({
-  redOpacity,
-  setRedOpacity,
-  greenOpacity,
-  setGreenOpacity,
+  leftGreenOpacity,
+  setLeftGreenOpacity,
+  leftRedOpacity,
+  setLeftRedOpacity,
+  rightGreenOpacity,
+  setRightGreenOpacity,
+  righRedOpacity,
+  setRighRedOpacity,
   stimulusWidth,
   setStimulusWidth,
   stimulusDistance,
@@ -68,16 +72,16 @@ const OpacitySlider = ({
   ]
   return (
     <Grid container xs={12}>
-      <Grid container xs={6}>
-        <Grid container item xs={6} paddingTop={4} justifyContent={'center'}>
+      <Grid container xs={12} spacing={1}>
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={4}>
-            <Typography variant="h7">Red Opacity:</Typography>
+            <Typography variant="h7">Left Red Opacity:</Typography>
           </Grid>
           <Grid item xs={8}>
             <Slider
-              value={redOpacity}
+              value={leftRedOpacity}
               onChange={(e, v) => {
-                setRedOpacity(v)
+                setLeftRedOpacity(v)
               }}
               sx={{ color: 'red', '.MuiSlider-markLabel': { color: 'white' } }}
               // color="success"
@@ -87,20 +91,17 @@ const OpacitySlider = ({
             />
           </Grid>
         </Grid>
-        <Grid container item xs={6} paddingTop={4} justifyContent={'center'}>
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={4}>
-            <Typography variant="h7">Red Opacity:</Typography>
+            <Typography variant="h7">Right Red Opacity:</Typography>
           </Grid>
           <Grid item xs={8}>
             <Slider
-              value={greenOpacity}
+              value={righRedOpacity}
               onChange={(e, v) => {
-                setGreenOpacity(v)
+                setRighRedOpacity(v)
               }}
-              sx={{
-                color: 'green',
-                '.MuiSlider-markLabel': { color: 'white' },
-              }}
+              sx={{ color: 'red', '.MuiSlider-markLabel': { color: 'white' } }}
               // color="success"
               valueLabelDisplay="on"
               marks={marks}
@@ -108,7 +109,8 @@ const OpacitySlider = ({
             />
           </Grid>
         </Grid>
-        <Grid container item xs={6} paddingTop={4} justifyContent={'center'}>
+
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={4}>
             <Typography variant="h7">Patch Size:</Typography>
           </Grid>
@@ -130,7 +132,50 @@ const OpacitySlider = ({
             />
           </Grid>
         </Grid>
-        <Grid container item xs={6} paddingTop={4} justifyContent={'center'}>
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
+          <Grid item xs={4}>
+            <Typography variant="h7">Left Green Opacity:</Typography>
+          </Grid>
+          <Grid item xs={8}>
+            <Slider
+              value={leftGreenOpacity}
+              onChange={(e, v) => {
+                setLeftGreenOpacity(v)
+              }}
+              sx={{
+                color: 'green',
+                '.MuiSlider-markLabel': { color: 'white' },
+              }}
+              // color="success"
+              valueLabelDisplay="on"
+              marks={marks}
+              max={100}
+            />
+          </Grid>
+        </Grid>
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
+          <Grid item xs={4}>
+            <Typography variant="h7">Right Green Opacity:</Typography>
+          </Grid>
+          <Grid item xs={8}>
+            <Slider
+              value={rightGreenOpacity}
+              onChange={(e, v) => {
+                setRightGreenOpacity(v)
+              }}
+              sx={{
+                color: 'green',
+                '.MuiSlider-markLabel': { color: 'white' },
+              }}
+              // color="success"
+              valueLabelDisplay="on"
+              marks={marks}
+              max={100}
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={4}>
             <Typography variant="h7">Horizental Distance:</Typography>
           </Grid>
@@ -154,7 +199,7 @@ const OpacitySlider = ({
             />
           </Grid>
         </Grid>
-        <Grid container item xs={10} paddingTop={4} justifyContent={'center'}>
+        <Grid container item xs={8} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={3}>
             <Typography variant="h7">Angle:</Typography>
           </Grid>
@@ -178,11 +223,13 @@ const OpacitySlider = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid container item xs={6} paddingTop={2} justifyContent={'center'}>
-        <Step4
+      <Grid container item xs={12} paddingTop={2} justifyContent={'center'}>
+        <StereoscopeStep4
           recallType={rivalry}
-          redOpacity={redOpacity}
-          greenOpacity={greenOpacity}
+          leftGreenOpacity={leftGreenOpacity}
+          leftRedOpacity={leftRedOpacity}
+          righRedOpacity={righRedOpacity}
+          rightGreenOpacity={rightGreenOpacity}
           stimulusWidth={isFused ? stimulusWidth : mockStimulusWidth}
           stimulusDistance={isFused ? stimulusDistance : mockStimulusDistance}
           degreeValue={degreeValue}

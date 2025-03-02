@@ -44,8 +44,8 @@ const StereoscopeStep4 = ({
           stimuli={stimulus}
           binocularOptions={{
             recallType: leftRecalltype,
-            leftGreenOpacity,
-            leftRedOpacity,
+            greenOpacity: leftGreenOpacity,
+            redOpacity: leftRedOpacity,
             stimulusWidth,
             stimulusDistance,
             degreeValue,
@@ -60,8 +60,8 @@ const StereoscopeStep4 = ({
           stimuli={stimulus}
           binocularOptions={{
             recallType: rightRecallType,
-            rightGreenOpacity,
-            righRedOpacity,
+            greenOpacity: rightGreenOpacity,
+            redOpacity: righRedOpacity,
             stimulusWidth,
             stimulusDistance,
             degreeValue,

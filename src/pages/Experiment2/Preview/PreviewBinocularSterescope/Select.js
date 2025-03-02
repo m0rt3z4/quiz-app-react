@@ -46,7 +46,8 @@ const SelectSection = ({
             }}
             sx={{ backgroundColor: 'gray', borderRadius: '20px' }}
           >
-            <MenuItem value={'FUSED'}>FUSED</MenuItem>
+            <MenuItem value={'RG'}>RG</MenuItem>
+            <MenuItem value={'GR'}>GR</MenuItem>
             <MenuItem value={'MIXED'}>MIXED</MenuItem>
           </Select>
         </Grid>
