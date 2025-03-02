@@ -1,14 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { Grid } from '@mui/material'
-import { imaginationCueTypes } from '../trial/consts'
-import Step2 from '../trial/Step2'
+import Step1 from '../../binocularv2/trial/Step1'
 
-// Imagination Cue Step
-const StereoscopeStep2 = ({
-  imaginationCue = imaginationCueTypes.RED,
-  eyeCalibrationDistance,
-}) => {
+const StereoscopeStep1 = ({ eyeCalibrationDistance }) => {
   return (
     <Grid container justifyContent={'center'} spacing={2}>
       <Grid
@@ -22,7 +16,7 @@ const StereoscopeStep2 = ({
           left: `${-1 * eyeCalibrationDistance}px`,
         }}
       >
-        <Step2 imaginationCue={imaginationCue} />
+        <Step1 />
       </Grid>
       <Grid
         container
@@ -35,10 +29,10 @@ const StereoscopeStep2 = ({
           left: `${eyeCalibrationDistance}px`,
         }}
       >
-        <Step2 imaginationCue={imaginationCue} />
+        <Step1 />
       </Grid>
     </Grid>
   )
 }
 
-export default StereoscopeStep2
+export default StereoscopeStep1

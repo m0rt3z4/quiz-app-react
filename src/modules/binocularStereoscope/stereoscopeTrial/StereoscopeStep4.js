@@ -3,7 +3,7 @@ import React from 'react'
 import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 import { Grid } from '@mui/material'
-import { imaginationCueTypes } from '../trial/consts'
+import { imaginationCueTypes } from '../../binocularv2/trial/consts'
 
 // Question Step
 const StereoscopeStep4 = ({

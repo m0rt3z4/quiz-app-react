@@ -5,7 +5,7 @@ import StereoscopeStep1 from './StereoscopeStep1'
 import StereoscopeStep2 from './StereoscopeStep2'
 import StereoscopeStep4 from './StereoscopeStep4'
 import StereoscopeStep5 from './StereoscopeStep5'
-import { imaginationCueTypes } from '../trial/consts'
+import { imaginationCueTypes } from '../../binocularv2/trial/consts'
 import StereoscopeStep3 from './StereoscopeStep3'
 
 const trialSettingsObj = {

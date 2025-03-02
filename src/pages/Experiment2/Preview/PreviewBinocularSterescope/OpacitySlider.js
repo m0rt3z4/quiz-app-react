@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Grid, Slider, Typography } from '@mui/material'
 import { SettingsButton } from '../../../../Components/SettingsButton'
-import StereoscopeStep4 from '../../../../modules/binocularv2/stereoscopeTrial/StereoscopeStep4'
+import StereoscopeStep4 from '../../../../modules/binocularStereoscope/stereoscopeTrial/StereoscopeStep4'
 
 const OpacitySlider = ({
   leftGreenOpacity,

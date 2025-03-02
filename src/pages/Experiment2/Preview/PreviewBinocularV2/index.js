@@ -8,7 +8,7 @@ import { createCalibrationExperiment } from '../../../../modules/binocluar/calli
 import BinocularModule from '../../../../modules/experiment2/BinocularModule'
 import { binocularTrialTypes } from '../../../../consts'
 import { createBinocularV2Params } from '../../../../modules/binocularv2/createBinocularV2Params'
-import BinocularStereoscopeTrial from '../../../../modules/binocularv2/stereoscopeTrial'
+import BinocularStereoscopeTrial from '../../../../modules/binocularStereoscope/stereoscopeTrial'
 
 export const pages = {
   SETTING: 1,
