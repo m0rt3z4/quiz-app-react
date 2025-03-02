@@ -28,7 +28,7 @@ const BinocularTrialV2 = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
 }) => {
-  const [step, setStep] = useState(4)
+  const [step, setStep] = useState(1)
   const { changeTitle } = useExp2PersistedContext()
 
   const stepOne = () => {

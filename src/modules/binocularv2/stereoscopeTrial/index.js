@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
 import StereoscopeStep1 from './StereoscopeStep1'
@@ -7,6 +6,7 @@ import StereoscopeStep2 from './StereoscopeStep2'
 import StereoscopeStep4 from './StereoscopeStep4'
 import StereoscopeStep5 from './StereoscopeStep5'
 import { imaginationCueTypes } from '../trial/consts'
+import StereoscopeStep3 from './StereoscopeStep3'
 
 const trialSettingsObj = {
   slide1Time: 1000,
@@ -20,7 +20,7 @@ const trialSettingsObj = {
 }
 const trialParamsObj = {
   imaginationCue: imaginationCueTypes.GREEN,
-  //   recallType: recallTypes.GR,
+  cellId: 1,
   angle: 0,
 }
 const BinocularStereoscopeTrial = ({
@@ -28,7 +28,7 @@ const BinocularStereoscopeTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
 }) => {
-  const [step, setStep] = useState(4)
+  const [step, setStep] = useState(1)
   const { changeTitle } = useExp2PersistedContext()
 
   const stepOne = () => {
@@ -102,10 +102,8 @@ const BinocularStereoscopeTrial = ({
     }
     case 3: {
       return (
-        <Experiment2Grid
-          size={3}
-          darkTheme
-          stimuli={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
+        <StereoscopeStep3
+          stimulus={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
         />
       )
     }

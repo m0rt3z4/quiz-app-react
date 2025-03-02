@@ -123,6 +123,56 @@ const BinocularCell = ({
       </div>
     )
   }
+
+  const RedPatches = () => {
+    return (
+      <div
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          // backgroundColor: 'black',
+          width: '100%',
+          display: 'flex',
+          rotate: `${-1 * binocularOptions.degreeValue}deg`,
+        }}
+      >
+        <img
+          src={FADED_RED}
+          alt="Rivalry2"
+          style={{
+            width: `${binocularOptions.stimulusWidth}px`,
+            opacity: `${binocularOptions.redOpacity}%`,
+          }}
+        />
+      </div>
+    )
+  }
+
+  const GreenPatches = () => {
+    return (
+      <div
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          // backgroundColor: 'black',
+          width: '100%',
+          display: 'flex',
+          rotate: `${-1 * binocularOptions.degreeValue}deg`,
+        }}
+      >
+        <img
+          src={FADED_GREEN}
+          alt="Rivalry2"
+          style={{
+            width: `${binocularOptions.stimulusWidth}px`,
+            opacity: `${binocularOptions.greenOpacity}%`,
+          }}
+        />
+      </div>
+    )
+  }
+
+
   const renderPatch = (recallType = 'MIXED') => {
     switch (recallType) {
       case binocularPatchTypes.MIXED:
@@ -130,9 +180,9 @@ const BinocularCell = ({
       case binocularPatchTypes.FUSED:
         return <FusedPatches />
       case binocularPatchTypes.RED:
-        return <MixedPatches />
+        return <RedPatches />
       case binocularPatchTypes.GREEN:
-        return <MixedPatches />
+        return <GreenPatches />
       default:
         return null
     }

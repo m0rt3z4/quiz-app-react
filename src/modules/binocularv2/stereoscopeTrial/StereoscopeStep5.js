@@ -13,46 +13,51 @@ const StereoscopeStep5 = ({ onNext }) => {
   }
   useKeyboard(keyboardCallback, Date.now())
 
+  const QuestionCard = () => (
+    <Card
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'black',
+        width: '100%',
+        minHeight: 450,
+        maxHeight: 540,
+        borderRadius: '35px',
+        padding: 7,
+        border: '1px solid black',
+      }}
+    >
+      <Grid container item xs={12} justifyContent={'center'}>
+        <Grid item xs={4}>
+          <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+            سبز
+          </Typography>
+          <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
+        </Grid>
+        <Grid item xs={4}>
+          <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+            هیچکدام
+          </Typography>
+          <ArrowDownwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
+        </Grid>
+        <Grid item xs={4}>
+          <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+            قرمز
+          </Typography>
+          <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
+        </Grid>
+      </Grid>
+    </Card>
+  )
+
   return (
     <Grid container justifyContent={'center'} spacing={2}>
-      <Grid container item xs={12} justifyContent={'center'}>
-        <Card
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'black',
-            width: '100%',
-            minHeight: 450,
-            maxHeight: 540,
-            borderRadius: '35px',
-            padding: 7,
-            border: '1px solid black',
-          }}
-        >
-          <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={4}>
-              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                سبز
-              </Typography>
-              <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
-            </Grid>
-            <Grid item xs={4}>
-              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                هیچکدام
-              </Typography>
-              <ArrowDownwardSharpIcon
-                sx={{ color: fontColor, paddingTop: 2 }}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                قرمز
-              </Typography>
-              <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
-            </Grid>
-          </Grid>
-        </Card>
+      <Grid container item xs={6} justifyContent={'center'}>
+        <QuestionCard />
+      </Grid>
+      <Grid container item xs={6} justifyContent={'center'}>
+        <QuestionCard />
       </Grid>
     </Grid>
   )

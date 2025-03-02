@@ -8,12 +8,14 @@ import { createCalibrationExperiment } from '../../../../modules/binocluar/calli
 import BinocularModule from '../../../../modules/experiment2/BinocularModule'
 import { binocularTrialTypes } from '../../../../consts'
 import { createBinocularV2Params } from '../../../../modules/binocularv2/createBinocularV2Params'
+import BinocularStereoscopeTrial from '../../../../modules/binocularv2/stereoscopeTrial'
 
 export const pages = {
   SETTING: 1,
   TRIAL: 2,
   CALLIBRATION: 3,
   BINOCLAR_V2: 4,
+  BINOCULAR_STEREOSCOPE: 5,
 }
 export const PreviewBinocularV2Page = ({ onBack }) => {
   const [state, setState] = useState(1)
@@ -26,6 +28,8 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
   }, [changeTitle])
 
   const onStart = (page = pages.SETTING, options = {}) => {
+    console.log(page, options)
+
     switch (page) {
       case pages.SETTING: {
         setTimeout(() => {
@@ -62,6 +66,15 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
         }, 100)
         break
       }
+      case pages.BINOCULAR_STEREOSCOPE: {
+        setTrialParams(options.params)
+        setTrialSettings(options.settings)
+        setTimeout(() => {
+          setState(pages.BINOCULAR_STEREOSCOPE)
+          return clearTimeout()
+        }, 100)
+        break
+      }
 
       default:
         break
@@ -93,14 +106,6 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
         />
       )
     case 4:
-      // return (
-      //   <BinocularTrialV2
-      //     onFinishTrial={onFinishTrial}
-      //     trialParams={trialParams}
-      //     trialSettings={trialSettings}
-      //     // experiment={createCalibrationExperiment(4)}
-      //   />
-      // )
       return (
         <BinocularModule
           experiment={createBinocularV2Params(
@@ -112,6 +117,15 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
           trialType={binocularTrialTypes.BINOCULAR_V2}
         />
       )
+    case 5:
+      return (
+        <BinocularStereoscopeTrial
+          onFinishTrial={onFinishTrial}
+          trialParams={trialParams}
+          trialSettings={trialSettings}
+        />
+      )
+
     default:
       onBack()
   }

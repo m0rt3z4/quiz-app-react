@@ -52,7 +52,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       mockStimulusDistance,
     })
   }
-  const onClickV2 = () => {
+  const onClickV2 = (page = pages.BINOCLAR_V2) => {
     const settingObj = {
       slide1Time,
       slide2Time,
@@ -68,9 +68,10 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
     const paramsObj = {
       imaginationCue: imgCue,
       recallType: rivalry,
+      cellId: 1,
       angle: degreeValue,
     }
-    onStartPreview(pages.BINOCLAR_V2, {
+    onStartPreview(page, {
       params: paramsObj,
       settings: settingObj,
     })
@@ -254,6 +255,15 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   text="CALLIBRATION"
                   onClickButton={() => {
                     onStartPreview(pages.CALLIBRATION)
+                  }}
+                />
+              </Grid>
+              <Grid item xs={4}>
+                <SettingsButton
+                  size={50}
+                  text="Stereoscope"
+                  onClickButton={() => {
+                    onClickV2(pages.BINOCULAR_STEREOSCOPE)
                   }}
                 />
               </Grid>
