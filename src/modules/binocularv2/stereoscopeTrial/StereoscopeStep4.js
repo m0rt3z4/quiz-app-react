@@ -14,6 +14,7 @@ const StereoscopeStep4 = ({
   righRedOpacity = 100,
   stimulusWidth = 45,
   stimulusDistance = 80,
+  eyeCalibrationDistance = 50,
   degreeValue = 0,
   stimulus = { 8: { cellType: cellTypes.BINOCULAR } },
   isPreview = false,
@@ -37,7 +38,17 @@ const StereoscopeStep4 = ({
   }
   return (
     <Grid container justifyContent={'center'} spacing={2}>
-      <Grid container item xs={6} justifyContent={'center'}>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${-1 * eyeCalibrationDistance}px`,
+        }}
+      >
         <Experiment2Grid
           size={3}
           darkTheme
@@ -53,7 +64,17 @@ const StereoscopeStep4 = ({
           isPreview={isPreview}
         />
       </Grid>
-      <Grid container item xs={6} justifyContent={'center'}>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${eyeCalibrationDistance}px`,
+        }}
+      >
         <Experiment2Grid
           size={3}
           darkTheme

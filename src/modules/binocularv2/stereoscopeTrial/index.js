@@ -13,8 +13,11 @@ const trialSettingsObj = {
   slide2Time: 1000,
   slide3Time: 6000,
   slide4Time: 1250,
-  redOpacity: 100,
-  greenOpacity: 100,
+  leftGreenOpacity: 100,
+  leftRedOpacity: 100,
+  rightGreenOpacity: 100,
+  righRedOpacity: 100,
+  eyeCalibrationDistance: 50,
   stimulusWidth: 40,
   stimulusDistance: 80,
 }
@@ -28,6 +31,8 @@ const BinocularStereoscopeTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
 }) => {
+  console.log(trialSettings)
+
   const [step, setStep] = useState(1)
   const { changeTitle } = useExp2PersistedContext()
 
@@ -95,15 +100,25 @@ const BinocularStereoscopeTrial = ({
 
   switch (step) {
     case 1: {
-      return <StereoscopeStep1 />
+      return (
+        <StereoscopeStep1
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 2: {
-      return <StereoscopeStep2 imaginationCue={trialParams.imaginationCue} />
+      return (
+        <StereoscopeStep2
+          imaginationCue={trialParams.imaginationCue}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 3: {
       return (
         <StereoscopeStep3
           stimulus={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
         />
       )
     }
@@ -129,11 +144,17 @@ const BinocularStereoscopeTrial = ({
               : trialSettings.mockStimulusDistance
           }
           stimulus={stimulus}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
         />
       )
     }
     case 5: {
-      return <StereoscopeStep5 onNext={onFinishStep5} />
+      return (
+        <StereoscopeStep5
+          onNext={onFinishStep5}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 6: {
       return <StereoscopeStep1 />

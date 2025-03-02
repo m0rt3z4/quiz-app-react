@@ -22,7 +22,8 @@ const OpacitySlider = ({
   setMockStimulusWidth,
   mockStimulusDistance,
   setMockStimulusDistance,
-
+  eyeCalibrationDistance,
+  setEyeCalibrationDistance,
   degreeValue,
   setDegreeValue,
   rivalry,
@@ -49,6 +50,7 @@ const OpacitySlider = ({
       label: '150',
     },
   ]
+
   const marks3 = [
     {
       value: 20,
@@ -70,6 +72,17 @@ const OpacitySlider = ({
     { value: 30, label: '30°' },
     { value: 37, label: '37°' },
   ]
+  const marks5 = [
+    {
+      value: -100,
+      label: '-100',
+    },
+    {
+      value: 100,
+      label: '100',
+    },
+  ]
+
   return (
     <Grid container xs={12}>
       <Grid container xs={12} spacing={1}>
@@ -199,6 +212,29 @@ const OpacitySlider = ({
             />
           </Grid>
         </Grid>
+        <Grid container item xs={4} paddingTop={4} justifyContent={'center'}>
+          <Grid item xs={4}>
+            <Typography variant="h7">Eye Calibration:</Typography>
+          </Grid>
+          <Grid item xs={8}>
+            <Slider
+              value={eyeCalibrationDistance}
+              onChange={(e, v) => {
+                setEyeCalibrationDistance(v)
+              }}
+              sx={{
+                color: 'lightgray',
+                '.MuiSlider-markLabel': { color: 'white' },
+              }}
+              // color="success"
+              valueLabelDisplay="on"
+              marks={marks5}
+              max={100}
+              min={-100}
+            />
+          </Grid>
+        </Grid>
+
         <Grid container item xs={8} paddingTop={4} justifyContent={'center'}>
           <Grid item xs={3}>
             <Typography variant="h7">Angle:</Typography>
@@ -232,6 +268,7 @@ const OpacitySlider = ({
           rightGreenOpacity={rightGreenOpacity}
           stimulusWidth={isFused ? stimulusWidth : mockStimulusWidth}
           stimulusDistance={isFused ? stimulusDistance : mockStimulusDistance}
+          eyeCalibrationDistance={eyeCalibrationDistance}
           degreeValue={degreeValue}
           i
         />

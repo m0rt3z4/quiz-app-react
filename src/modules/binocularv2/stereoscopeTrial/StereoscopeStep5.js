@@ -7,7 +7,7 @@ import ArrowForwardSharpIcon from '@mui/icons-material/ArrowForwardSharp'
 import useKeyboard from './useKeyboard'
 import { fontColor } from '../../../consts'
 
-const StereoscopeStep5 = ({ onNext }) => {
+const StereoscopeStep5 = ({ onNext, eyeCalibrationDistance }) => {
   const keyboardCallback = (resp) => {
     if (!!resp) onNext(resp)
   }
@@ -28,20 +28,20 @@ const StereoscopeStep5 = ({ onNext }) => {
         border: '1px solid black',
       }}
     >
-      <Grid container item xs={12} justifyContent={'center'}>
-        <Grid item xs={4}>
+      <Grid container item xs={10} justifyContent={'center'}>
+        <Grid item xs={3}>
           <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
             سبز
           </Typography>
           <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
             هیچکدام
           </Typography>
           <ArrowDownwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
             قرمز
           </Typography>
@@ -53,10 +53,30 @@ const StereoscopeStep5 = ({ onNext }) => {
 
   return (
     <Grid container justifyContent={'center'} spacing={2}>
-      <Grid container item xs={6} justifyContent={'center'}>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${-1 * eyeCalibrationDistance}px`,
+        }}
+      >
         <QuestionCard />
       </Grid>
-      <Grid container item xs={6} justifyContent={'center'}>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${eyeCalibrationDistance}px`,
+        }}
+      >
         <QuestionCard />
       </Grid>
     </Grid>

@@ -59,7 +59,7 @@ export const Exp2PersistedProvider = ({ children }) => {
       righRedOpacity: 100,
       stimulusWidth: 40,
       stimulusDistance: 80,
-      eyeCalibrationDistance: 100,
+      eyeCalibrationDistance: 50,
       mockStimulusWidth: 100,
       mockStimulusDistance: 40,
     },

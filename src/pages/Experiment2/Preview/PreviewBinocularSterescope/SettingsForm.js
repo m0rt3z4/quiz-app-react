@@ -45,6 +45,10 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
   const [stimulusDistance, setStimulusDistance] = useState(
     binocluarSterescopeSettings.stimulusDistance
   )
+  const [eyeCalibrationDistance, setEyeCalibrationDistance] = useState(
+    binocluarSterescopeSettings.eyeCalibrationDistance
+  )
+
   const [mockStimulusWidth, setMockStimulusWidth] = useState(
     binocluarSterescopeSettings.mockStimulusWidth
   )
@@ -67,6 +71,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       righRedOpacity,
       stimulusWidth,
       stimulusDistance,
+      eyeCalibrationDistance,
       mockStimulusWidth,
       mockStimulusDistance,
     })
@@ -83,6 +88,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       setRighRedOpacity,
       stimulusWidth,
       stimulusDistance,
+      eyeCalibrationDistance,
       mockStimulusWidth,
       mockStimulusDistance,
     }
@@ -208,6 +214,8 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 setStimulusWidth={setStimulusWidth}
                 stimulusDistance={stimulusDistance}
                 setStimulusDistance={setStimulusDistance}
+                eyeCalibrationDistance={eyeCalibrationDistance}
+                setEyeCalibrationDistance={setEyeCalibrationDistance}
                 //mock stimulus
                 mockStimulusWidth={mockStimulusWidth}
                 setMockStimulusWidth={setMockStimulusWidth}
