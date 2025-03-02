@@ -4,24 +4,29 @@ import Step1 from './Step1'
 import Step3 from './Step3'
 import Step4 from './Step4'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
-import Step4Fused from '../../../../Components/BinocularTrial/Step4Fused'
+import StereoscopeStep2 from './Step2'
 
 const trialSettingsObj = {
   slide1Time: 1000,
-  slide2Time: 750,
-  slide3Time: 6000,
-  slide4Time: 4000,
+  slide2Time: 1000,
+  slide3Time: 1000,
+  slide4Time: 1000,
+  leftGreenOpacity: 10,
+  leftRedOpacity: 10,
+  rightGreenOpacity: 10,
+  righRedOpacity: 10,
+  eyeCalibrationDistance: -100,
   opacity: 100,
 }
-const BinocularCallibrationTrial = ({
+const BinocularStereoscopeCallibrationTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
   angle = 0,
   greenOpacity = 100,
   redOpacity = 100,
 }) => {
-  const [step, setStep] = useState(1)
-  const [userAnswer, setUserAnswer] = useState('')
+  const [step, setStep] = useState(2)
+  const [userAnswer, setUserAnswer] = useState('GREEN')
   const { changeTitle, binocluarV1Settings } = useExp2PersistedContext()
 
   const stepOne = () => {
@@ -65,36 +70,51 @@ const BinocularCallibrationTrial = ({
 
   switch (step) {
     case 1: {
-      return <Step1 />
+      return (
+        <Step1 eyeCalibrationDistance={trialSettings.eyeCalibrationDistance} />
+      )
     }
     case 2: {
-      return (
-        <Step4Fused
-          greenOpacity={greenOpacity}
-          redOpacity={redOpacity}
-          rivalryType="GR"
-          stimulusDistance={binocluarV1Settings.stimulusDistance}
-          stimulusWidth={binocluarV1Settings.stimulusWidth}
-          degreeValue={angle}
-        />
-      )
       // return (
-      //   <Step2
-      //     isGreenFirst={isGreenFirst}
+      //   <Step4Fused
       //     greenOpacity={greenOpacity}
       //     redOpacity={redOpacity}
+      //     rivalryType="GR"
+      //     stimulusDistance={binocluarV1Settings.stimulusDistance}
+      //     stimulusWidth={binocluarV1Settings.stimulusWidth}
+      //     degreeValue={angle}
       //   />
       // )
+      return (
+        <StereoscopeStep2
+          isGreenFirst={false}
+          leftGreenOpacity={trialSettings.leftGreenOpacity}
+          leftRedOpacity={trialSettings.leftRedOpacity}
+          righRedOpacity={trialSettings.righRedOpacity}
+          rightGreenOpacity={trialSettings.rightGreenOpacity}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 3: {
-      return <Step3 onUserAnswer={onUserAnswer} />
+      return (
+        <Step3
+          onUserAnswer={onUserAnswer}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 4: {
-      return <Step4 userAnswer={userAnswer} />
+      return (
+        <Step4
+          userAnswer={userAnswer}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     default:
       break
   }
 }
 
-export default BinocularCallibrationTrial
+export default BinocularStereoscopeCallibrationTrial

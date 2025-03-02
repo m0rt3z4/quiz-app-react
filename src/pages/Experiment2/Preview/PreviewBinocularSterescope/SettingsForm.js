@@ -30,13 +30,13 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
     binocluarSterescopeSettings.leftGreenOpacity
   )
   const [leftRedOpacity, setLeftRedOpacity] = useState(
-    binocluarSterescopeSettings.leftGreenOpacity
+    binocluarSterescopeSettings.leftRedOpacity
   )
   const [rightGreenOpacity, setRightGreenOpacity] = useState(
-    binocluarSterescopeSettings.leftGreenOpacity
+    binocluarSterescopeSettings.rightGreenOpacity
   )
   const [righRedOpacity, setRighRedOpacity] = useState(
-    binocluarSterescopeSettings.leftGreenOpacity
+    binocluarSterescopeSettings.righRedOpacity
   )
 
   const [stimulusWidth, setStimulusWidth] = useState(
@@ -85,7 +85,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       leftGreenOpacity,
       leftRedOpacity,
       rightGreenOpacity,
-      setRighRedOpacity,
+      righRedOpacity,
       stimulusWidth,
       stimulusDistance,
       eyeCalibrationDistance,
@@ -251,7 +251,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   size={50}
                   text="CALLIBRATION"
                   onClickButton={() => {
-                    onStartPreview(pages.CALLIBRATION)
+                    onClickV2(pages.CALLIBRATION)
                   }}
                 />
               </Grid>

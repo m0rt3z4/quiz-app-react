@@ -8,7 +8,7 @@ import useKeyboard from './useKeyboard'
 import { fontColor } from '../../../../consts'
 
 // Intro Step
-const Step3 = ({ onUserAnswer }) => {
+const StereoscopeStep3 = ({ onUserAnswer, eyeCalibrationDistance = 100 }) => {
   const keyboardCallback = (resp) => {
     // console.log(resp)
     let answer = null
@@ -21,43 +21,76 @@ const Step3 = ({ onUserAnswer }) => {
     onUserAnswer(answer)
   }
   useKeyboard(keyboardCallback, Date.now())
+  const QuestionCard = () => {
+    return (
+      <Grid container justifyContent={'center'} spacing={2}>
+        <Grid container item xs={12} justifyContent={'center'}>
+          <Card
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              backgroundColor: 'black',
+              justifyContent: 'center',
+              width: '100%',
+              minHeight: 450,
+              maxHeight: 540,
+              borderRadius: '35px',
+              padding: 7,
+              border: '1px solid black',
+            }}
+          >
+            <Grid container item xs={12} justifyContent={'center'}>
+              <Grid item xs={4}>
+                <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+                  سبز
+                </Typography>
+                <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
+              </Grid>
+              <Grid item xs={4}>
+                <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
+                  قرمز
+                </Typography>
+                <ArrowForwardSharpIcon
+                  sx={{ color: fontColor, paddingTop: 2 }}
+                />
+              </Grid>
+            </Grid>
+          </Card>
+        </Grid>
+      </Grid>
+    )
+  }
 
-  // const content = `Which color was dominant? press <- for Red and -> for Green`
   return (
     <Grid container justifyContent={'center'} spacing={2}>
-      <Grid container item xs={12} justifyContent={'center'}>
-        <Card
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: 'black',
-            justifyContent: 'center',
-            width: '100%',
-            minHeight: 450,
-            maxHeight: 540,
-            borderRadius: '35px',
-            padding: 7,
-            border: '1px solid black',
-          }}
-        >
-          <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={4}>
-              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                سبز
-              </Typography>
-              <ArrowBackSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
-            </Grid>
-            <Grid item xs={4}>
-              <Typography fontFamily={'B-Nazanin'} sx={{ color: fontColor }}>
-                قرمز
-              </Typography>
-              <ArrowForwardSharpIcon sx={{ color: fontColor, paddingTop: 2 }} />
-            </Grid>
-          </Grid>
-        </Card>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${-1 * eyeCalibrationDistance}px`,
+        }}
+      >
+        <QuestionCard />
+      </Grid>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${eyeCalibrationDistance}px`,
+        }}
+      >
+        <QuestionCard />
       </Grid>
     </Grid>
   )
 }
 
-export default Step3
+export default StereoscopeStep3

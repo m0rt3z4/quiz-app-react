@@ -1,36 +1,40 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
-import { Grid, Card } from '@mui/material'
-import BinocularBullseyeDot from '../../../../Components/BinocularBullseyeDot'
+import { Grid } from '@mui/material'
+import Step1 from '../../../binocluar/callibration/trial/Step1'
 
 // Intro Step
-const Step1 = () => {
+const StereoscopeStep1 = ({ eyeCalibrationDistance }) => {
   return (
     <Grid container justifyContent={'center'} spacing={2}>
-      <Grid container item xs={12} justifyContent={'center'}>
-        <Card
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'black',
-            width: '100%',
-            minHeight: 450,
-            maxHeight: 540,
-            borderRadius: '35px',
-            padding: 7,
-            border: '1px solid black',
-          }}
-        >
-          <Grid container item xs={12} justifyContent={'center'}>
-            <Grid item xs={8}>
-              <BinocularBullseyeDot width={13} />
-            </Grid>
-          </Grid>
-        </Card>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${-1 * eyeCalibrationDistance}px`,
+        }}
+      >
+        <Step1 />
+      </Grid>
+      <Grid
+        container
+        item
+        xs={6}
+        justifyContent={'center'}
+        sx={{
+          display: 'flex',
+          position: 'relative',
+          left: `${eyeCalibrationDistance}px`,
+        }}
+      >
+        <Step1 />
       </Grid>
     </Grid>
   )
 }
 
-export default Step1
+export default StereoscopeStep1
