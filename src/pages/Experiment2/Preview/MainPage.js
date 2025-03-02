@@ -90,6 +90,11 @@ export const MainPage = ({ setPage }) => {
                 onClickButton={() => setPage(previewPages.BINOCULAR_TRIAL_V2)}
               />
               <Item
+                text="Binocular Stereoscope Trial:"
+                buttonLable="Settings"
+                onClickButton={() => setPage(previewPages.BINOCULAR_STEREOSCOPE)}
+              />
+              <Item
                 text="Tutorial Slides:"
                 buttonLable="preview"
                 onClickButton={() => setPage(previewPages.TUTORIAL_SLIDES)}
