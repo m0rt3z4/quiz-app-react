@@ -7,6 +7,7 @@ import PreviewBinocularPage from './PreviewBinocular'
 import PreviewBinocularV2Page from './PreviewBinocularV2'
 import MemoryTaskPage from '../MemoryTaskPage'
 import PreviewTutorials from './PreviewTutorials'
+import PreviewBinocularSterescope from './PreviewBinocularSterescope'
 
 export const previewPages = {
   TRIAL_GRID: 1,
@@ -15,6 +16,7 @@ export const previewPages = {
   BINOCULAR_TRIAL_V2: 4,
   MAIN_TRIAL: 5,
   TUTORIAL_SLIDES: 6,
+  BINOCULAR_STEREOSCOPE: 7,
 }
 
 export const Experiment2PreviewPage = () => {
@@ -55,6 +57,10 @@ export const Experiment2PreviewPage = () => {
     case 6: {
       return <PreviewTutorials onBack={backButton} />
     }
+    case 7: {
+      return <PreviewBinocularSterescope onBack={backButton} />
+    }
+
     default:
       break
   }

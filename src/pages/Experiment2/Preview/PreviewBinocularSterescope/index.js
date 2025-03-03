@@ -3,12 +3,12 @@ import SettingsForm from './SettingsForm'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import BinocularTrial from '../../../../Components/BinocularTrial'
 import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
-import { createCalibrationExperiment } from '../../../../modules/binocluar/callibration/createCallibrationExperiment'
 // import BinocularTrialV2 from '../../../../modules/binocularv2/trial'
 import BinocularModule from '../../../../modules/experiment2/BinocularModule'
 import { binocularTrialTypes } from '../../../../consts'
 import { createBinocularV2Params } from '../../../../modules/binocularv2/createBinocularV2Params'
 import BinocularStereoscopeTrial from '../../../../modules/binocularStereoscope/stereoscopeTrial'
+import BinocularStereoscopeCallibrationTrial from '../../../../modules/binocularStereoscope/stereoscopeCalibration/trial'
 
 export const pages = {
   SETTING: 1,
@@ -17,14 +17,14 @@ export const pages = {
   BINOCLAR_V2: 4,
   BINOCULAR_STEREOSCOPE: 5,
 }
-export const PreviewBinocularV2Page = ({ onBack }) => {
+export const PreviewBinocularSterescope = ({ onBack }) => {
   const [state, setState] = useState(1)
   const [trialParams, setTrialParams] = useState({})
   const [trialSettings, setTrialSettings] = useState({})
   const { changeTitle } = useExp2PersistedContext()
 
   useEffect(() => {
-    changeTitle('Preview Binocular Trial Version 2')
+    changeTitle('Preview Binocular Sterescope Trial')
   }, [changeTitle])
 
   const onStart = (page = pages.SETTING, options = {}) => {
@@ -49,8 +49,8 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
         break
       }
       case pages.CALLIBRATION: {
-        // setTrialParams(options.params)
-        // setTrialSettings(options.settings)
+        setTrialParams(options.params)
+        setTrialSettings(options.settings)
         setTimeout(() => {
           setState(pages.CALLIBRATION)
           return clearTimeout()
@@ -84,7 +84,7 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
   const onFinishTrial = (resp) => {
     console.log(resp)
     setState(pages.SETTING)
-    changeTitle('Preview Binocular Trial')
+    changeTitle('Preview Binocular Sterescope Trial')
   }
 
   switch (state) {
@@ -100,9 +100,14 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
       )
     case 3:
       return (
-        <BinocularCallibrationModule
-          onFinishExperiment={onFinishTrial}
-          experiment={createCalibrationExperiment(4)}
+        // <BinocularCallibrationModule
+        //   onFinishExperiment={onFinishTrial}
+        //   experiment={createCalibrationExperiment(4)}
+        // />
+        <BinocularStereoscopeCallibrationTrial
+          angle={0}
+          trialSettings={trialSettings}
+          onFinishTrial={onFinishTrial}
         />
       )
     case 4:
@@ -131,4 +136,4 @@ export const PreviewBinocularV2Page = ({ onBack }) => {
   }
 }
 
-export default PreviewBinocularV2Page
+export default PreviewBinocularSterescope

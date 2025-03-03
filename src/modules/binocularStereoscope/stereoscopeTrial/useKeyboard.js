@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { keyboardKeys } from '../../../consts'
-import { imaginationCueTypes } from './consts'
+import { imaginationCueTypes } from '../../binocularv2/trial/consts'
 
 const keyboardKeysArray = [
   keyboardKeys.m,

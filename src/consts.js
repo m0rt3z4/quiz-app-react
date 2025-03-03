@@ -40,3 +40,10 @@ export const fontColor = 'rgb(95, 95, 95)'
 export const cellColor = 'rgb(200, 200, 200)'
 export const bullseyeOpacity = 35
 export const inquiryBorderColor = 'darkred'
+
+export const binocularPatchTypes = {
+  RED: 'RED',
+  GREEN: 'GREEN',
+  MIXED: 'MIXED',
+  FUSED: 'FUSED',
+}

@@ -9,59 +9,86 @@ import { pages } from '.'
 
 export const SettingsForm = ({ onBack, onStartPreview }) => {
   const {
-    binocluarV2Settings,
-    changeBinocularV2Settings,
+    binocluarSterescopeSettings,
+    changeBinocularSterescopeSettings,
     darkTheme,
   } = useExp2PersistedContext()
 
-  const [slide1Time, setSlide1Tiem] = useState(binocluarV2Settings.slide1Time)
-  const [slide2Time, setSlide2Tiem] = useState(binocluarV2Settings.slide2Time)
-  const [slide3Time, setSlide3Tiem] = useState(binocluarV2Settings.slide3Time)
-  const [slide4Time, setSlide4Tiem] = useState(binocluarV2Settings.slide4Time)
-  const [redOpacity, setRedOpacity] = useState(binocluarV2Settings.redOpacity)
-  const [greenOpacity, setGreenOpacity] = useState(
-    binocluarV2Settings.greenOpacity
+  const [slide1Time, setSlide1Tiem] = useState(
+    binocluarSterescopeSettings.slide1Time
   )
+  const [slide2Time, setSlide2Tiem] = useState(
+    binocluarSterescopeSettings.slide2Time
+  )
+  const [slide3Time, setSlide3Tiem] = useState(
+    binocluarSterescopeSettings.slide3Time
+  )
+  const [slide4Time, setSlide4Tiem] = useState(
+    binocluarSterescopeSettings.slide4Time
+  )
+  const [leftGreenOpacity, setLeftGreenOpacity] = useState(
+    binocluarSterescopeSettings.leftGreenOpacity
+  )
+  const [leftRedOpacity, setLeftRedOpacity] = useState(
+    binocluarSterescopeSettings.leftRedOpacity
+  )
+  const [rightGreenOpacity, setRightGreenOpacity] = useState(
+    binocluarSterescopeSettings.rightGreenOpacity
+  )
+  const [righRedOpacity, setRighRedOpacity] = useState(
+    binocluarSterescopeSettings.righRedOpacity
+  )
+
   const [stimulusWidth, setStimulusWidth] = useState(
-    binocluarV2Settings.stimulusWidth
+    binocluarSterescopeSettings.stimulusWidth
   )
   const [stimulusDistance, setStimulusDistance] = useState(
-    binocluarV2Settings.stimulusDistance
+    binocluarSterescopeSettings.stimulusDistance
   )
+  const [eyeCalibrationDistance, setEyeCalibrationDistance] = useState(
+    binocluarSterescopeSettings.eyeCalibrationDistance
+  )
+
   const [mockStimulusWidth, setMockStimulusWidth] = useState(
-    binocluarV2Settings.mockStimulusWidth
+    binocluarSterescopeSettings.mockStimulusWidth
   )
   const [mockStimulusDistance, setMockStimulusDistance] = useState(
-    binocluarV2Settings.mockStimulusDistance
+    binocluarSterescopeSettings.mockStimulusDistance
   )
   const [degreeValue, setDegreeValue] = useState(0)
   const [imgCue, setImgCue] = useState(imaginationCueTypes.GREEN)
-  const [rivalry, setRivalry] = useState('FUSED')
+  const [rivalry, setRivalry] = useState('MIXED')
 
   const onSave = () => {
-    changeBinocularV2Settings({
+    changeBinocularSterescopeSettings({
       slide1Time,
       slide2Time,
       slide3Time,
       slide4Time,
-      redOpacity,
-      greenOpacity,
+      leftGreenOpacity,
+      leftRedOpacity,
+      rightGreenOpacity,
+      righRedOpacity,
       stimulusWidth,
       stimulusDistance,
+      eyeCalibrationDistance,
       mockStimulusWidth,
       mockStimulusDistance,
     })
   }
-  const onClickV2 = (page = pages.BINOCLAR_V2) => {
+  const onClickV2 = (page = pages.BINOCULAR_STEREOSCOPE) => {
     const settingObj = {
       slide1Time,
       slide2Time,
       slide3Time,
       slide4Time,
-      redOpacity,
-      greenOpacity,
+      leftGreenOpacity,
+      leftRedOpacity,
+      rightGreenOpacity,
+      righRedOpacity,
       stimulusWidth,
       stimulusDistance,
+      eyeCalibrationDistance,
       mockStimulusWidth,
       mockStimulusDistance,
     }
@@ -75,33 +102,6 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       params: paramsObj,
       settings: settingObj,
     })
-  }
-
-  const Item = ({ text = '', value, setValue }) => {
-    return (
-      <Grid
-        container
-        item
-        xs={12}
-        paddingTop={2}
-        alignItems={'center'}
-        sx={{ maxHeight: '120px' }}
-      >
-        <Grid item xs={12}>
-          <Typography>{text}</Typography>
-        </Grid>
-        <Grid item xs={12} paddingTop={1}>
-          <TextField
-            value={value}
-            onChange={(event) => {
-              setValue(event.target.value)
-            }}
-            variant="outlined"
-            sx={{ borderRadius: '20px', backgroundColor: 'gray' }}
-          />
-        </Grid>
-      </Grid>
-    )
   }
 
   return (
@@ -202,14 +202,20 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
             </Grid>
             <Grid container item xs={12} justifyContent={'center'}>
               <OpacitySlider
-                redOpacity={redOpacity}
-                setRedOpacity={setRedOpacity}
-                greenOpacity={greenOpacity}
-                setGreenOpacity={setGreenOpacity}
+                leftGreenOpacity={leftGreenOpacity}
+                setLeftGreenOpacity={setLeftGreenOpacity}
+                leftRedOpacity={leftRedOpacity}
+                setLeftRedOpacity={setLeftRedOpacity}
+                righRedOpacity={righRedOpacity}
+                setRighRedOpacity={setRighRedOpacity}
+                rightGreenOpacity={rightGreenOpacity}
+                setRightGreenOpacity={setRightGreenOpacity}
                 stimulusWidth={stimulusWidth}
                 setStimulusWidth={setStimulusWidth}
                 stimulusDistance={stimulusDistance}
                 setStimulusDistance={setStimulusDistance}
+                eyeCalibrationDistance={eyeCalibrationDistance}
+                setEyeCalibrationDistance={setEyeCalibrationDistance}
                 //mock stimulus
                 mockStimulusWidth={mockStimulusWidth}
                 setMockStimulusWidth={setMockStimulusWidth}
@@ -243,18 +249,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
               <Grid item xs={4}>
                 <SettingsButton
                   size={50}
-                  text="Binocular v2"
-                  onClickButton={() => {
-                    onClickV2(pages.BINOCLAR_V2)
-                  }}
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <SettingsButton
-                  size={50}
                   text="CALLIBRATION"
                   onClickButton={() => {
-                    onStartPreview(pages.CALLIBRATION)
+                    onClickV2(pages.CALLIBRATION)
                   }}
                 />
               </Grid>
@@ -272,6 +269,32 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
         </Card>
       </Grid>
     </Box>
+  )
+}
+const Item = ({ text = '', value, setValue }) => {
+  return (
+    <Grid
+      container
+      item
+      xs={12}
+      paddingTop={2}
+      alignItems={'center'}
+      sx={{ maxHeight: '120px' }}
+    >
+      <Grid item xs={12}>
+        <Typography>{text}</Typography>
+      </Grid>
+      <Grid item xs={12} paddingTop={1}>
+        <TextField
+          value={value}
+          onChange={(event) => {
+            setValue(event.target.value)
+          }}
+          variant="outlined"
+          sx={{ borderRadius: '20px', backgroundColor: 'gray' }}
+        />
+      </Grid>
+    </Grid>
   )
 }
 

@@ -1,33 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import { Experiment2Grid } from '../../../Components/Experiment2Grid'
 import { cellTypes } from '../../../Components/Experiment2Grid/consts'
 import { useExp2PersistedContext } from '../../../layouts/Exp2PersistedLayout'
-import Step1 from './Step1'
-import Step2 from './Step2'
-import Step4 from './Step4'
-import Step5 from './Step5'
-import { imaginationCueTypes } from './consts'
+import StereoscopeStep1 from './StereoscopeStep1'
+import StereoscopeStep2 from './StereoscopeStep2'
+import StereoscopeStep4 from './StereoscopeStep4'
+import StereoscopeStep5 from './StereoscopeStep5'
+import { imaginationCueTypes } from '../../binocularv2/trial/consts'
+import StereoscopeStep3 from './StereoscopeStep3'
 
 const trialSettingsObj = {
   slide1Time: 1000,
   slide2Time: 1000,
   slide3Time: 6000,
   slide4Time: 1250,
-  redOpacity: 100,
-  greenOpacity: 100,
+  leftGreenOpacity: 100,
+  leftRedOpacity: 100,
+  rightGreenOpacity: 100,
+  righRedOpacity: 100,
+  eyeCalibrationDistance: 50,
   stimulusWidth: 40,
   stimulusDistance: 80,
 }
 const trialParamsObj = {
   imaginationCue: imaginationCueTypes.GREEN,
-  //   recallType: recallTypes.GR,
+  cellId: 1,
   angle: 0,
 }
-const BinocularTrialV2 = ({
+const BinocularStereoscopeTrial = ({
   trialParams = trialParamsObj,
   trialSettings = trialSettingsObj,
   onFinishTrial,
 }) => {
+  console.log(trialSettings)
+
   const [step, setStep] = useState(1)
   const { changeTitle } = useExp2PersistedContext()
 
@@ -95,17 +100,25 @@ const BinocularTrialV2 = ({
 
   switch (step) {
     case 1: {
-      return <Step1 />
+      return (
+        <StereoscopeStep1
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 2: {
-      return <Step2 imaginationCue={trialParams.imaginationCue} />
+      return (
+        <StereoscopeStep2
+          imaginationCue={trialParams.imaginationCue}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 3: {
       return (
-        <Experiment2Grid
-          size={3}
-          darkTheme
-          stimuli={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
+        <StereoscopeStep3
+          stimulus={{ [trialParams.cellId]: { cellType: cellTypes.IMAGINARY } }}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
         />
       )
     }
@@ -115,7 +128,7 @@ const BinocularTrialV2 = ({
       }
       const isFused = trialParams.recallType === 'FUSED'
       return (
-        <Step4
+        <StereoscopeStep4
           degreeValue={trialParams.angle}
           recallType={trialParams.recallType}
           greenOpacity={trialSettings.greenOpacity}
@@ -131,14 +144,20 @@ const BinocularTrialV2 = ({
               : trialSettings.mockStimulusDistance
           }
           stimulus={stimulus}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
         />
       )
     }
     case 5: {
-      return <Step5 onNext={onFinishStep5} />
+      return (
+        <StereoscopeStep5
+          onNext={onFinishStep5}
+          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+        />
+      )
     }
     case 6: {
-      return <Step1 />
+      return <StereoscopeStep1 />
     }
 
     default:
@@ -146,4 +165,4 @@ const BinocularTrialV2 = ({
   }
 }
 
-export default BinocularTrialV2
+export default BinocularStereoscopeTrial

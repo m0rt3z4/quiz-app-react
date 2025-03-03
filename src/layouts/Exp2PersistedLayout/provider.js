@@ -43,6 +43,29 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     true
   )
+  const [
+    binocluarSterescopeSettings,
+    setBinocluarSterescopeSettings,
+  ] = usePersistedState(
+    storageKeys.BINOCULAR_STEREOSCOPE_SETTINGS,
+    {
+      slide1Time: 1000,
+      slide2Time: 1000,
+      slide3Time: 6000,
+      slide4Time: 750,
+      leftGreenOpacity: 100,
+      leftRedOpacity: 100,
+      rightGreenOpacity: 100,
+      righRedOpacity: 100,
+      stimulusWidth: 40,
+      stimulusDistance: 80,
+      eyeCalibrationDistance: 50,
+      mockStimulusWidth: 100,
+      mockStimulusDistance: 40,
+    },
+    true
+  )
+
   const [memoryV1Settings, setMemoryV1Settings] = usePersistedState(
     storageKeys.MEMORY_TASK_V2_SETTINGS,
     {
@@ -122,6 +145,13 @@ export const Exp2PersistedProvider = ({ children }) => {
     },
     [setBinocluarV2Settings]
   )
+  const changeBinocularSterescopeSettings = useCallback(
+    (settings) => {
+      setBinocluarSterescopeSettings(settings)
+    },
+    [setBinocluarSterescopeSettings]
+  )
+
   const changeMemoryV1Settings = useCallback(
     (settings) => {
       setMemoryV1Settings(settings)
@@ -163,6 +193,8 @@ export const Exp2PersistedProvider = ({ children }) => {
       changeBinocularV1Settings,
       binocluarV2Settings,
       changeBinocularV2Settings,
+      binocluarSterescopeSettings,
+      changeBinocularSterescopeSettings,
       memoryV1Settings,
       changeMemoryV1Settings,
       memoryV2MixedSizes,
@@ -192,6 +224,8 @@ export const Exp2PersistedProvider = ({ children }) => {
     changeBinocularV1Settings,
     binocluarV2Settings,
     changeBinocularV2Settings,
+    binocluarSterescopeSettings,
+    changeBinocularSterescopeSettings,
     memoryV1Settings,
     changeMemoryV1Settings,
     memoryV2MixedSizes,

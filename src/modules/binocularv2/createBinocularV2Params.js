@@ -62,12 +62,12 @@ const createBinocularV2Blocks = (
 
       res.push({
         imaginationCue:
-          recallType === 'FUSED'
-            ? imaginationCue
-            : imaginationCueArray.splice(
+          recallType === 'MIXED'
+            ? imaginationCueArray.splice(
                 Math.floor(Math.random() * imaginationCueArray.length),
                 1
-              )[0],
+              )[0]
+            : imaginationCue,
         recallType,
         cellId: j,
         angle,
