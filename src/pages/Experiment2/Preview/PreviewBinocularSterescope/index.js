@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react'
 import SettingsForm from './SettingsForm'
 import { useExp2PersistedContext } from '../../../../layouts/Exp2PersistedLayout'
 import BinocularTrial from '../../../../Components/BinocularTrial'
-import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
+// import BinocularCallibrationModule from '../../../../modules/binocluar/callibration'
 // import BinocularTrialV2 from '../../../../modules/binocularv2/trial'
 import BinocularModule from '../../../../modules/experiment2/BinocularModule'
 import { binocularTrialTypes } from '../../../../consts'
 import { createBinocularV2Params } from '../../../../modules/binocularv2/createBinocularV2Params'
 import BinocularStereoscopeTrial from '../../../../modules/binocularStereoscope/stereoscopeTrial'
 import BinocularStereoscopeCallibrationTrial from '../../../../modules/binocularStereoscope/stereoscopeCalibration/trial'
+import EyeCalibrationStep from '../../../../modules/binocularStereoscope/eyeCalibration'
 
 export const pages = {
   SETTING: 1,
@@ -16,6 +17,7 @@ export const pages = {
   CALLIBRATION: 3,
   BINOCLAR_V2: 4,
   BINOCULAR_STEREOSCOPE: 5,
+  EYE_CALIBRATION: 6,
 }
 export const PreviewBinocularSterescope = ({ onBack }) => {
   const [state, setState] = useState(1)
@@ -75,6 +77,13 @@ export const PreviewBinocularSterescope = ({ onBack }) => {
         }, 100)
         break
       }
+      case pages.EYE_CALIBRATION: {
+        setTimeout(() => {
+          setState(pages.EYE_CALIBRATION)
+          return clearTimeout()
+        }, 100)
+        break
+      }
 
       default:
         break
@@ -130,6 +139,8 @@ export const PreviewBinocularSterescope = ({ onBack }) => {
           trialSettings={trialSettings}
         />
       )
+    case 6:
+      return <EyeCalibrationStep onFinish={onFinishTrial} />
 
     default:
       onBack()
