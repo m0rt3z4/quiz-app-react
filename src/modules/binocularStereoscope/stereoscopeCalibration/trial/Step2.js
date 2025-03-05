@@ -8,11 +8,10 @@ import RED from '../../../../assets/Binocular/faded_red.png'
 
 const StereoscopeStep2 = ({
   isGreenFirst = true,
-  leftGreenOpacity,
-  rightGreenOpacity,
-  leftRedOpacity,
-  righRedOpacity,
+  greenOpacity = 100,
+  redOpacity = 100,
   eyeCalibrationDistance,
+  angle = 11,
 }) => {
   const QuestionCard = ({ pic, opacity }) => {
     return (
@@ -38,6 +37,7 @@ const StereoscopeStep2 = ({
               xs={12}
               justifyContent={'center'}
               alignItems={'center'}
+              sx={{ rotate: `${-1 * angle}deg` }}
             >
               <img
                 src={pic}
@@ -66,7 +66,7 @@ const StereoscopeStep2 = ({
       >
         <QuestionCard
           pic={isGreenFirst ? GREEN : RED}
-          opacity={isGreenFirst ? leftGreenOpacity : leftRedOpacity}
+          opacity={isGreenFirst ? greenOpacity : redOpacity}
         />
       </Grid>
       <Grid
@@ -82,7 +82,7 @@ const StereoscopeStep2 = ({
       >
         <QuestionCard
           pic={isGreenFirst ? RED : GREEN}
-          opacity={isGreenFirst ? righRedOpacity : rightGreenOpacity}
+          opacity={isGreenFirst ? redOpacity : greenOpacity}
         />
       </Grid>
     </Grid>

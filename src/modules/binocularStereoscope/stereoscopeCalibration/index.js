@@ -3,26 +3,27 @@ import React, { useEffect, useState } from 'react'
 
 // import BinocularTrial from '../../Components/BinocularTrial'
 // import { createCalibrationExperiment } from './createCallibrationExperiment'
-import Experiment from './Experiment'
+import StereoscopeCalibrationExperiment from './Experiment'
 import StartPage from './StartPage'
 import ResultsPage from './ResultsPage'
-import { createCalibrationExperiment } from './createCallibrationExperiment'
 
-const StereoscopeCallibrationModule = ({ onFinishExperiment }) => {
+const StereoscopeCallibrationModule = ({
+  onFinishExperiment,
+  isGreenFirst,
+  experiment,
+}) => {
   const [step, setStep] = useState(1)
   const [startTime, setStartTime] = useState(0)
   const [results, setResults] = useState({})
   const [calibrationTries, setCalibrationTries] = useState(1)
-  const [experiment, setExperiment] = useState([])
 
   useEffect(() => {
-    setExperiment(createCalibrationExperiment(20))
-  }, [])
-
+    setStep(1)
+  }, [isGreenFirst])
   const onFinishTrial = (resp) => {
     // console.log(resp)
     const obj = results
-    obj[`calibration${calibrationTries}`] = {
+    obj[`calibration_try${calibrationTries}`] = {
       ...resp,
       blockTime: Math.floor((Date.now() - startTime) / 1000),
     }
@@ -36,11 +37,13 @@ const StereoscopeCallibrationModule = ({ onFinishExperiment }) => {
   const onFinishResults = (isSuccess = true) => {
     if (isSuccess) {
       console.log(results)
-
-      onFinishExperiment(results)
+      const lastTry = results[`calibration_try${calibrationTries}`]
+      onFinishExperiment({
+        ...results,
+        redOpacity: lastTry.redOpacity,
+        greenOpacity: lastTry.greenOpacity,
+      })
     } else {
-      // setCalibrationTries((calibrationTries) => calibrationTries + 1)
-      setExperiment(createCalibrationExperiment(20))
       console.log(results)
 
       return setTimeout(() => {
@@ -64,15 +67,16 @@ const StereoscopeCallibrationModule = ({ onFinishExperiment }) => {
       )
     case 2:
       return (
-        <Experiment
+        <StereoscopeCalibrationExperiment
           experiment={experiment}
           onFinishExperiment={onFinishTrial}
+          isGreenFirst={isGreenFirst}
         />
       )
     case 3:
       return (
         <ResultsPage
-          results={results[`calibration${calibrationTries}`]}
+          results={results[`calibration_try${calibrationTries}`]}
           onBack={onFinishResults}
         />
       )

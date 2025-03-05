@@ -45,6 +45,16 @@ export const createBinocularV2ParamsRevamped = () => {
   ])
 }
 
+export const createBinocularSterescopeParams = () => {
+  return shuffleArray([
+    ...createBinocularV2Blocks(2, imaginationCueTypes.GREEN, 'RG'),
+    ...createBinocularV2Blocks(2, imaginationCueTypes.RED, 'GR'),
+    ...createBinocularV2Blocks(2, imaginationCueTypes.GREEN, 'RG'),
+    ...createBinocularV2Blocks(2, imaginationCueTypes.RED, 'GR'),
+    ...createBinocularV2Blocks(1, imaginationCueTypes.RED, 'MIXED'),
+  ])
+}
+
 const createBinocularV2Blocks = (
   numberOf8Blocks = 4,
   imaginationCue = imaginationCueTypes.GREEN,

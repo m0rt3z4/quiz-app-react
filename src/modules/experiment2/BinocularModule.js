@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from 'react'
 
 import BinocularTrial from '../../Components/BinocularTrial'
-import { binocularTrialTypes } from '../../consts'
 import BinocularTrialV2 from '../binocularv2/trial'
 import { proccessBinocularResults } from './processTrialResponse'
+import { binocularTrialTypes } from '../../pages/Experiment2/MemoryTaskPage'
+import BinocularStereoscopeTrial from '../binocularStereoscope/stereoscopeTrial'
 
 const BinocularModule = ({
   experiment,
@@ -62,6 +63,17 @@ const BinocularModule = ({
       case binocularTrialTypes.BINOCULAR_V2: {
         return (
           <BinocularTrialV2
+            trialParams={current}
+            onFinishTrial={onFinishTrial}
+            // showTracker={showTracker}
+            trackerIndex={trialIndex}
+            trialSettings={trialSettings}
+          />
+        )
+      }
+      case binocularTrialTypes.STEREOSCOPE_BINOCULAR: {
+        return (
+          <BinocularStereoscopeTrial
             trialParams={current}
             onFinishTrial={onFinishTrial}
             // showTracker={showTracker}

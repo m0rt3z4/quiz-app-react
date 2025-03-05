@@ -22,10 +22,11 @@ const BinocularStereoscopeCallibrationTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
   angle = 0,
+  isGreenFirst = true,
   greenOpacity = 100,
   redOpacity = 100,
 }) => {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('GREEN')
   const { changeTitle, binocluarV1Settings } = useExp2PersistedContext()
 
@@ -53,14 +54,6 @@ const BinocularStereoscopeCallibrationTrial = ({
       return clearTimeout()
     }, binocluarV1Settings.slide4Time)
   }
-  //   const stepFour = () => {
-  //     return setTimeout(() => {
-  //       console.log(userAnswer)
-
-  //       onFinishTrial(userAnswer)
-  //       return clearTimeout()
-  //     }, trialSettings.slide4Time)
-  //   }
 
   useEffect(() => {
     changeTitle('')
@@ -75,24 +68,13 @@ const BinocularStereoscopeCallibrationTrial = ({
       )
     }
     case 2: {
-      // return (
-      //   <Step4Fused
-      //     greenOpacity={greenOpacity}
-      //     redOpacity={redOpacity}
-      //     rivalryType="GR"
-      //     stimulusDistance={binocluarV1Settings.stimulusDistance}
-      //     stimulusWidth={binocluarV1Settings.stimulusWidth}
-      //     degreeValue={angle}
-      //   />
-      // )
       return (
         <StereoscopeStep2
-          isGreenFirst={false}
-          leftGreenOpacity={trialSettings.leftGreenOpacity}
-          leftRedOpacity={trialSettings.leftRedOpacity}
-          righRedOpacity={trialSettings.righRedOpacity}
-          rightGreenOpacity={trialSettings.rightGreenOpacity}
+          isGreenFirst={isGreenFirst}
+          redOpacity={redOpacity}
+          greenOpacity={greenOpacity}
           eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+          angle={angle}
         />
       )
     }
