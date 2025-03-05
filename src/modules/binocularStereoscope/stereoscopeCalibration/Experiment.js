@@ -1,10 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 
-import BinocularCallibrationTrial from './trial'
 import StartPage from './StartPage'
+import BinocularStereoscopeCallibrationTrial from './trial'
 
-const Experiment = ({ experiment, onFinishExperiment }) => {
+const StereoscopeCalibrationExperiment = ({
+  experiment,
+  onFinishExperiment,
+  isGreenFirst,
+}) => {
   const [results, setResults] = useState([])
   const [lastAnswer, setLastAnswer] = useState('')
   const [current, setCurrent] = useState({})
@@ -40,19 +44,6 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
     }
   }, [trialIndex])
 
-  // const calculateRatio = (resultsArray = []) => {
-  //   if (resultsArray.length < 10) return 0
-  //   const lastTen = resultsArray.slice(resultsArray.length - 10)
-  //   return (
-  //     lastTen
-  //       .map((res) => res.isSwitched)
-  //       .reduce((prev, cur) => {
-  //         if (cur) {
-  //           return prev + 1
-  //         } else return prev
-  //       }, 0) / lastTen.length
-  //   )
-  // }
   const calculateRatio = (resultsArray = []) => {
     if (resultsArray.length < 10) return 0
 
@@ -124,13 +115,14 @@ const Experiment = ({ experiment, onFinishExperiment }) => {
       isStart={false}
     />
   ) : (
-    <BinocularCallibrationTrial
+    <BinocularStereoscopeCallibrationTrial
       onFinishTrial={onFinishTrial}
       angle={current}
       greenOpacity={greenOpacity}
       redOpacity={redOpacity}
+      isGreenFirst={isGreenFirst}
     />
   )
 }
 
-export default Experiment
+export default StereoscopeCalibrationExperiment

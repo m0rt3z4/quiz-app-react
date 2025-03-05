@@ -131,8 +131,10 @@ const BinocularStereoscopeTrial = ({
         <StereoscopeStep4
           degreeValue={trialParams.angle}
           recallType={trialParams.recallType}
-          greenOpacity={trialSettings.greenOpacity}
-          redOpacity={trialSettings.redOpacity}
+          leftGreenOpacity={trialSettings.leftGreenOpacity}
+          leftRedOpacity={trialSettings.leftRedOpacity}
+          righRedOpacity={trialSettings.righRedOpacity}
+          rightGreenOpacity={trialSettings.rightGreenOpacity}
           stimulusWidth={
             isFused
               ? trialSettings.stimulusWidth

@@ -22,12 +22,17 @@ const BinocularStereoscopeCallibrationTrial = ({
   trialSettings = trialSettingsObj,
   onFinishTrial,
   angle = 0,
+  isGreenFirst = true,
   greenOpacity = 100,
   redOpacity = 100,
 }) => {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('GREEN')
-  const { changeTitle, binocluarV1Settings } = useExp2PersistedContext()
+  const {
+    changeTitle,
+    binocluarV1Settings,
+    binocluarSterescopeSettings,
+  } = useExp2PersistedContext()
 
   const stepOne = () => {
     return setTimeout(() => {
@@ -53,14 +58,6 @@ const BinocularStereoscopeCallibrationTrial = ({
       return clearTimeout()
     }, binocluarV1Settings.slide4Time)
   }
-  //   const stepFour = () => {
-  //     return setTimeout(() => {
-  //       console.log(userAnswer)
-
-  //       onFinishTrial(userAnswer)
-  //       return clearTimeout()
-  //     }, trialSettings.slide4Time)
-  //   }
 
   useEffect(() => {
     changeTitle('')
@@ -71,28 +68,23 @@ const BinocularStereoscopeCallibrationTrial = ({
   switch (step) {
     case 1: {
       return (
-        <Step1 eyeCalibrationDistance={trialSettings.eyeCalibrationDistance} />
+        <Step1
+          eyeCalibrationDistance={
+            binocluarSterescopeSettings.eyeCalibrationDistance
+          }
+        />
       )
     }
     case 2: {
-      // return (
-      //   <Step4Fused
-      //     greenOpacity={greenOpacity}
-      //     redOpacity={redOpacity}
-      //     rivalryType="GR"
-      //     stimulusDistance={binocluarV1Settings.stimulusDistance}
-      //     stimulusWidth={binocluarV1Settings.stimulusWidth}
-      //     degreeValue={angle}
-      //   />
-      // )
       return (
         <StereoscopeStep2
-          isGreenFirst={false}
-          leftGreenOpacity={trialSettings.leftGreenOpacity}
-          leftRedOpacity={trialSettings.leftRedOpacity}
-          righRedOpacity={trialSettings.righRedOpacity}
-          rightGreenOpacity={trialSettings.rightGreenOpacity}
-          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+          isGreenFirst={isGreenFirst}
+          redOpacity={redOpacity}
+          greenOpacity={greenOpacity}
+          eyeCalibrationDistance={
+            binocluarSterescopeSettings.eyeCalibrationDistance
+          }
+          angle={angle}
         />
       )
     }
@@ -100,7 +92,9 @@ const BinocularStereoscopeCallibrationTrial = ({
       return (
         <Step3
           onUserAnswer={onUserAnswer}
-          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+          eyeCalibrationDistance={
+            binocluarSterescopeSettings.eyeCalibrationDistance
+          }
         />
       )
     }
@@ -108,7 +102,9 @@ const BinocularStereoscopeCallibrationTrial = ({
       return (
         <Step4
           userAnswer={userAnswer}
-          eyeCalibrationDistance={trialSettings.eyeCalibrationDistance}
+          eyeCalibrationDistance={
+            binocluarSterescopeSettings.eyeCalibrationDistance
+          }
         />
       )
     }

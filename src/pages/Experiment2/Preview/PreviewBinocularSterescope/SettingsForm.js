@@ -264,6 +264,15 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                   }}
                 />
               </Grid>
+              <Grid item xs={4}>
+                <SettingsButton
+                  size={50}
+                  text="Eye calibration"
+                  onClickButton={() => {
+                    onStartPreview(pages.EYE_CALIBRATION)
+                  }}
+                />
+              </Grid>
             </Grid>
           </Grid>
         </Card>

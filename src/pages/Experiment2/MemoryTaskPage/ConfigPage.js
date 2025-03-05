@@ -63,7 +63,9 @@ export const ConfigPage = ({
                     <MenuItem value={binocularTrialTypes.NO_BINOCULAR}>
                       {binocularTrialTypes.NO_BINOCULAR}
                     </MenuItem>
-
+                    <MenuItem value={binocularTrialTypes.STEREOSCOPE_BINOCULAR}>
+                      {binocularTrialTypes.STEREOSCOPE_BINOCULAR}
+                    </MenuItem>
                     <MenuItem value={binocularTrialTypes.BINOCULAR_V1}>
                       {binocularTrialTypes.BINOCULAR_V1}
                     </MenuItem>
