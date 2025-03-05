@@ -5,6 +5,7 @@ import CallibrationModule from './CallibrationModule'
 import BinocularTrialModule from './BinocularTrialModule'
 import { useExp2PersistedContext } from '../../layouts/Exp2PersistedLayout'
 import { binocularTrialTypes } from '../../consts'
+import EyeCalibrationStep from './eyeCalibration'
 
 const BinocularStereoscopeMainModule = ({
   experiment,
@@ -28,20 +29,34 @@ const BinocularStereoscopeMainModule = ({
     changeTheme(true)
   }, [])
 
+  const onFinishEyeCalibration = (resp) => {
+    let settings = { ...currentSettings }
+    settings.eyeCalibrationDistance = resp
+    setCurrentSettings(settings)
+    setTimeout(() => {
+      setStep(2)
+      return clearTimeout()
+    }, 200)
+  }
+
   const onFinishCallibration = (resp) => {
-    setCallResults(resp)
-    let settings = { ...binocluarSterescopeSettings }
+    setCallResults({
+      ...resp,
+      eyeCalibrationDistance:
+        binocluarSterescopeSettings.eyeCalibrationDistance,
+    })
+    let settings = { ...currentSettings }
     settings.leftGreenOpacity = resp.leftGreenOpacity
     settings.righRedOpacity = resp.righRedOpacity
     settings.leftRedOpacity = resp.leftRedOpacity
-    settings.righRedOpacity = resp.righRedOpacity
+    settings.rightGreenOpacity = resp.righRedOpacity
     console.log('calibration results => ', resp)
     console.log('settings after => ', settings)
 
     setCurrentSettings(settings)
 
     setTimeout(() => {
-      setStep(2)
+      setStep(3)
     }, 200)
   }
   const onFinishTrial = (resp) => {
@@ -56,13 +71,15 @@ const BinocularStereoscopeMainModule = ({
 
   switch (step) {
     case 1:
+      return <EyeCalibrationStep onFinish={onFinishEyeCalibration} />
+    case 2:
       return (
         <CallibrationModule
           experiment={experiment.calibration}
           onFinishCallibration={onFinishCallibration}
         />
       )
-    case 2:
+    case 3:
       return (
         <BinocularTrialModule
           experiment={experiment.binocular}

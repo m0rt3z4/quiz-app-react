@@ -28,7 +28,7 @@ const EyeCalibrationStep = ({ onFinish }) => {
       ...binocluarSterescopeSettings,
       eyeCalibrationDistance,
     })
-    onFinish()
+    onFinish(eyeCalibrationDistance)
   }
 
   return (

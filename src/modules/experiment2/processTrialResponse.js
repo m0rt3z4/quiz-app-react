@@ -122,12 +122,12 @@ export const proccessBinocularResults = (resultsArray = []) => {
     const { trialParams, results } = curr
     const newValue = { ...prev }
     if (results.isAnswerCorrect) newValue.sumCorrectAnswers++
-    if (trialParams.recallType === 'FUSED') {
-      newValue.numFusedTrials++
-      if (results.isAnswerCorrect) newValue.numFusedTrialCorrects++
-    } else {
+    if (trialParams.recallType === 'MIXED') {
       newValue.numMockTrials++
       if (results.isAnswerCorrect) newValue.numMockTrialCorrect++
+    } else {
+      newValue.numFusedTrials++
+      if (results.isAnswerCorrect) newValue.numFusedTrialCorrects++
     }
 
     return newValue
