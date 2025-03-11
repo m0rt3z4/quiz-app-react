@@ -28,25 +28,21 @@ const BinocularStereoscopeCallibrationTrial = ({
 }) => {
   const [step, setStep] = useState(1)
   const [userAnswer, setUserAnswer] = useState('GREEN')
-  const {
-    changeTitle,
-    binocluarV1Settings,
-    binocluarSterescopeSettings,
-  } = useExp2PersistedContext()
+  const { changeTitle, binocluarSterescopeSettings } = useExp2PersistedContext()
 
   const stepOne = () => {
     return setTimeout(() => {
       setStep(2)
       stepTwo()
       return clearTimeout()
-    }, binocluarV1Settings.slide1Time)
+    }, binocluarSterescopeSettings.calibrationSlide1Time)
   }
   const stepTwo = () => {
     return setTimeout(() => {
       setStep(3)
       //   stepThree()
       return clearTimeout()
-    }, binocluarV1Settings.slide2Time)
+    }, binocluarSterescopeSettings.calibrationSlide2Time)
   }
   const onUserAnswer = (answer) => {
     // console.log(answer)
@@ -56,7 +52,7 @@ const BinocularStereoscopeCallibrationTrial = ({
     return setTimeout(() => {
       onFinishTrial(answer)
       return clearTimeout()
-    }, binocluarV1Settings.slide4Time)
+    }, binocluarSterescopeSettings.calibrationSlide3Time)
   }
 
   useEffect(() => {

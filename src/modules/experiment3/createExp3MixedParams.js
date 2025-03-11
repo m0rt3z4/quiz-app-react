@@ -81,9 +81,17 @@ export const createMixedBlockParams = (
   if (!stimuliArray.length) return null
   const shuffledStimuli = shuffleArray(exp3StimuliArray)
   const countsArray = countStimuli(stimuliArray)
+  const temp = sixthElementInfo.isSurprize
+    ? 0
+    : sixthElementInfo.recognitionType ===
+        recognitionTypes.INCORRECT_ON_LETTER ||
+      sixthElementInfo.recognitionType === recognitionTypes.INCORRECT_OFF_LETTER
+    ? 1
+    : 0
   const isExtremeCase =
     countsArray[recognitionTypes.INCORRECT_ON_LETTER] +
-      countsArray[recognitionTypes.INCORRECT_OFF_LETTER] ===
+      countsArray[recognitionTypes.INCORRECT_OFF_LETTER] +
+      temp >=
     4
 
   let numOnLetters =
@@ -321,5 +329,6 @@ export const createMixedBlockParams = (
     sixthElementInfo,
     stimuli: presentationArray,
     recognition: shuffleArray(recognitionStimuliArray),
+    isExtremeCase,
   }
 }

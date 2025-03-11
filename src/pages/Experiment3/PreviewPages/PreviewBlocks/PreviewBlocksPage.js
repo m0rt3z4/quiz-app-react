@@ -36,6 +36,29 @@ export const PreviewBlocksPage = ({ onBack }) => {
     // })
 
     // changeTitle('Trial Blocks Settings')
+    const test = createExp3MixedBlock()
+    console.log('Mixed Block => ', test)
+    let errorRate = 0
+    let extremeCases = 0
+    test.map((trial, index) => {
+      if (trial.trialParams.isExtremeCase) {
+        extremeCases += 1
+        console.log('extremeCase @ inedex: ', index)
+      }
+      const recogintion = trial.trialParams.recognition
+      if (recogintion.length === 5) {
+        recogintion.map((rec) => {
+          if (!rec.iconType) {
+            errorRate += 1
+            console.log('error @ inedex: ', index)
+          }
+          return true
+        })
+      }
+      return true
+    })
+    console.log('errorRate => ', errorRate)
+    console.log('extremeCases => ', extremeCases)
   }, [changeTitle, memoryV2MixedSizes])
   const onStartPreview = (page = pages.SETTINGS) => {
     setTimeout(() => {
