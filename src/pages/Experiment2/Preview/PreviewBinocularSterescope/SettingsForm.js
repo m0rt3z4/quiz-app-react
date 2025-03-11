@@ -14,17 +14,26 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
     darkTheme,
   } = useExp2PersistedContext()
 
-  const [slide1Time, setSlide1Tiem] = useState(
+  const [slide1Time, setSlide1Time] = useState(
     binocluarSterescopeSettings.slide1Time
   )
-  const [slide2Time, setSlide2Tiem] = useState(
+  const [slide2Time, setSlide2Time] = useState(
     binocluarSterescopeSettings.slide2Time
   )
-  const [slide3Time, setSlide3Tiem] = useState(
+  const [slide3Time, setSlide3Time] = useState(
     binocluarSterescopeSettings.slide3Time
   )
-  const [slide4Time, setSlide4Tiem] = useState(
+  const [slide4Time, setSlide4Time] = useState(
     binocluarSterescopeSettings.slide4Time
+  )
+  const [calibrationSlide1Time, setCalibrationSlide1Time] = useState(
+    binocluarSterescopeSettings.calibrationSlide1Time
+  )
+  const [calibrationSlide2Time, setCalibrationSlide2Time] = useState(
+    binocluarSterescopeSettings.calibrationSlide2Time
+  )
+  const [calibrationSlide3Time, setCalibrationSlide3Time] = useState(
+    binocluarSterescopeSettings.calibrationSlide3Time
   )
   const [leftGreenOpacity, setLeftGreenOpacity] = useState(
     binocluarSterescopeSettings.leftGreenOpacity
@@ -65,6 +74,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       slide2Time,
       slide3Time,
       slide4Time,
+      calibrationSlide1Time,
+      calibrationSlide2Time,
+      calibrationSlide3Time,
       leftGreenOpacity,
       leftRedOpacity,
       rightGreenOpacity,
@@ -82,6 +94,9 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
       slide2Time,
       slide3Time,
       slide4Time,
+      calibrationSlide1Time,
+      calibrationSlide2Time,
+      calibrationSlide3Time,
       leftGreenOpacity,
       leftRedOpacity,
       rightGreenOpacity,
@@ -142,7 +157,7 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 sx={{ paddingTop: 1, borderColor: 'darkgray' }}
               />
             </Grid>
-            <Grid container item xs={8}>
+            <Grid container item xs={6}>
               <Grid
                 container
                 item
@@ -151,37 +166,71 @@ export const SettingsForm = ({ onBack, onStartPreview }) => {
                 paddingBottom={3}
               >
                 <Grid item xs={12}>
-                  <Typography variant="h6">Trial Settings:</Typography>
+                  <Typography variant="h6">
+                    Main Rivalry Trial Settings:
+                  </Typography>
                 </Grid>
 
-                <Grid container xs={6}>
+                <Grid container item xs={6}>
                   <Item
                     text="Time to show Intro"
                     value={slide1Time}
-                    setValue={setSlide1Tiem}
+                    setValue={setSlide1Time}
                   />
                   <Item
                     text="Time To Show Imagination Cue"
                     value={slide2Time}
-                    setValue={setSlide2Tiem}
+                    setValue={setSlide2Time}
                   />
                 </Grid>
                 <Grid container xs={6}>
                   <Item
                     text="Imagination Time"
                     value={slide3Time}
-                    setValue={setSlide3Tiem}
+                    setValue={setSlide3Time}
                   />
                   <Item
                     text="Time to show Rivalry"
                     value={slide4Time}
-                    setValue={setSlide4Tiem}
+                    setValue={setSlide4Time}
+                  />
+                </Grid>
+
+                <Grid item xs={12} paddingTop={3}>
+                  <Typography variant="h6">
+                    Calibration Trial Settings:
+                  </Typography>
+                </Grid>
+
+                <Grid container item xs={6}>
+                  <Item
+                    text="Time To Show Intro"
+                    value={calibrationSlide1Time}
+                    setValue={setCalibrationSlide1Time}
+                  />
+                  <Item
+                    text="Time To Show Calibration Patches"
+                    value={calibrationSlide2Time}
+                    setValue={setCalibrationSlide2Time}
+                  />
+                </Grid>
+                <Grid container item xs={6}>
+                  <Item
+                    text="Time To Show Outro Patch"
+                    value={calibrationSlide3Time}
+                    setValue={setCalibrationSlide3Time}
                   />
                 </Grid>
               </Grid>
             </Grid>
-            <Grid container item xs={4} justifyContent={'center'}>
-              <Grid container item xs={4}>
+            <Grid
+              container
+              item
+              xs={4}
+              justifyContent={'center'}
+              alignItems={'center'}
+            >
+              <Grid container item xs={6} justifyContent={'center'}>
                 <Typography variant="h6">Preview Params:</Typography>
               </Grid>
               <SelectSection
