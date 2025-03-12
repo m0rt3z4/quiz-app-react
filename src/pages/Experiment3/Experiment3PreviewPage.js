@@ -6,14 +6,16 @@ import { useExperiment3Context } from '../../layouts/Experiment3Layout'
 import { SettingsButton } from '../../Components/SettingsButton'
 
 const Experiment3PreviewPage = () => {
-  const { changeTitle } = useExperiment3Context()
+  const { changeTitle, changeOutletWidth, showArrows } = useExperiment3Context()
   const navigate = useNavigate()
   const redirectUrl = (url) => {
     navigate(url)
   }
   useEffect(() => {
     changeTitle('Settings & Preview')
-  }, [changeTitle])
+    changeOutletWidth(5)
+    showArrows(false)
+  }, [changeOutletWidth, changeTitle, showArrows])
 
   const Item = ({ text = '', buttonLable = '', onClickButton }) => {
     return (

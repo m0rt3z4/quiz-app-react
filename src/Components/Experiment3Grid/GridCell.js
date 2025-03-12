@@ -13,8 +13,9 @@ const GridCell = ({
   iconType = '',
   backgroundColor,
   isBold = false,
+  cellSize,
 }) => {
-  const { feedbackStatus } = useExperiment3Context()
+  const { feedbackStatus, exp3Settings } = useExperiment3Context()
   const isOrientationStimulus = iconType && iconType.substring(0, 3) === 'STI'
   const borderColor = isOrientationStimulus
     ? feedbackStatus
@@ -92,8 +93,8 @@ const GridCell = ({
         alignItems: 'center',
         border: `${isBold ? '2' : '1'}px solid ${borderColor}`,
         borderCollapse: 'collapse',
-        width: 34,
-        height: 34,
+        width: !!cellSize ? cellSize : exp3Settings.gridCellSize,
+        height: !!cellSize ? cellSize : exp3Settings.gridCellSize,
       }}
     >
       {content}

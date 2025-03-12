@@ -9,7 +9,7 @@ export const PreviewBlockSettings = ({ onStartPreview }) => {
   const { changeTitle, changeOutletWidth } = useExperiment3Context()
   useEffect(() => {
     changeTitle('Preview Trial Blocks')
-    changeOutletWidth(6)
+    changeOutletWidth(5)
   }, [changeOutletWidth, changeTitle])
 
   return (

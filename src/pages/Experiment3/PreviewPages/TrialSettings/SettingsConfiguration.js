@@ -43,7 +43,7 @@ export const SettingsConfiguration = () => {
     })
   }
   return (
-    <Grid container xs={12}>
+    <Grid container>
       {/* block 1 */}
 
       <Grid container item spacing={2} justifyContent={'center'}>

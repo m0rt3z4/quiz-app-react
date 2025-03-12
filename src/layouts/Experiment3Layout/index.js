@@ -16,12 +16,20 @@ export const Experiment3Layout = () => {
 
   // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
-    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: '#e6dada' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexGrow: 1,
+        height: '100vh',
+        backgroundColor: '#e6dada',
+        alignItems: 'center',
+      }}
+    >
       <Grid
         container
         justifyContent={'center'}
-        alignContent={'center'}
-        sx={{ paddingTop: 1 }}
+        alignItems={'center'}
+        // sx={{ paddingTop: 1 }}
       >
         {!!title && (
           <Grid item xs={outletWidth}>
@@ -45,7 +53,7 @@ export const Experiment3Layout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={{ paddingTop: 5 }}
+          sx={!!title && { paddingTop: 5 }}
           spacing={2}
         >
           <Grid item xs={1}>
