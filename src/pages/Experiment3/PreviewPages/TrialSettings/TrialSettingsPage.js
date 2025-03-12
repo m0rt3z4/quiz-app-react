@@ -9,7 +9,7 @@ export const TrialSettingsPage = () => {
   const { changeTitle, changeOutletWidth } = useExperiment3Context()
   useEffect(() => {
     changeTitle('Trial Settings')
-    changeOutletWidth(6)
+    changeOutletWidth(5)
   }, [changeOutletWidth, changeTitle])
 
   return (
