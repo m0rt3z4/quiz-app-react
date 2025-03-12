@@ -10,6 +10,7 @@ export const Experiment3Grid = ({
   isBold = false,
   isPreview = false,
   isMask = false,
+  cellSize,
 }) => {
   const renderGrid = () => {
     let rows = []
@@ -26,19 +27,13 @@ export const Experiment3Grid = ({
         let showStimulus =
           !!stimulus && i === stimulus.i && j === stimulus.j ? true : false
 
-        // const iconType = isMask
-        //   ? bgColor
-        //     ? null
-        //     : 'TAG'
-        //   : showStimulus
-        //   ? stimulus.iconType
-        //   : null
         cells.push(
           i === 2 && j === 2 && (stimulus.i !== 2 || stimulus.j !== 2) ? (
             <GridCell
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={true}
               iconType={'CENTER_DOT'}
+              cellSize={cellSize}
               // isBold={isBold}
             />
           ) : (
@@ -46,6 +41,7 @@ export const Experiment3Grid = ({
               backgroundColor={bgColor ? 'white' : 'lightGray'}
               showStimulus={showStimulus}
               iconType={showStimulus ? stimulus.iconType : null}
+              cellSize={cellSize}
               // isBold={isBold}
             />
           )
@@ -77,9 +73,9 @@ export const Experiment3Grid = ({
         backgroundColor: isWhiteThemed ? 'white' : 'lightGray',
         justifyContent: 'center',
         alignItems: 'center',
-        minHeight: 350,
+        minHeight: 470,
         minWidth: 350,
-        padding: 1,
+        // padding: 1,
         borderRadius: '35px',
         border: `1px solid ${isPreview ? 'white' : 'black'}`,
       }}

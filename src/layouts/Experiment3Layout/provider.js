@@ -23,6 +23,7 @@ export const Experiment3Provider = ({ children }) => {
       timeBetweenOrientations: 250,
       timeToWaitAfterSurprize: 1000,
       timeToWaitAfterPresentation: 2000,
+      gridCellSize: 34,
     },
     true
   )
