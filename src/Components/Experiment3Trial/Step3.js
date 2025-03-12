@@ -22,32 +22,34 @@ const Step3 = ({
 
   useEffect(() => {
     if (index === 0) {
+      changeUserResp(false)
       setStimulus(stimuliArray[index])
       setStartTime(Date.now())
     } else if (index < stimuliArray.length) {
       setToggle(true)
+      setStimulus(stimuliArray[index])
+      setStartTime(Date.now())
       setTimeout(() => {
-        setStimulus(stimuliArray[index])
-        setStartTime(Date.now())
+        changeUserResp(false)
         setToggle(false)
         return clearTimeout()
       }, 100)
     } else {
       setStimulus({})
-      onFinishStep(Object.values(results))
+      onFinishStep(results)
     }
   }, [index])
 
   const onUserResp = (resp) => {
-    // const stimulusLocation = stimulus.i * 5 + stimulus.j
-    // if (Object.keys(results).includes(stimulusLocation)) return null
-    // const response = { stimulus, result: resp }
-    // console.log(response)
+    if (Object.keys(results).includes(resp.cellId)) {
+      return null
+    }
+    let oldResoults = { ...results }
+    oldResoults[resp.cellId] = resp
 
-    setRseults([...results, resp])
+    setRseults(oldResoults)
     setTimeout(() => {
-      changeUserResp(false)
-      setIndex(index + 1)
+      setIndex((index) => index + 1)
       return clearTimeout()
     }, timeBetweenStimuli)
   }

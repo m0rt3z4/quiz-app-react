@@ -23,6 +23,7 @@ const Step2 = ({
   const { changeUserResp } = useExperiment3Context()
 
   useEffect(() => {
+    if (index === 0) changeUserResp(false)
     if (index < stimuliArray.length) {
       if (stimuliArray[index].iconType === 'SURPRIZE') {
         setSurprize(stimuliArray[index])

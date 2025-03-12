@@ -20,10 +20,12 @@ const TimedStep = ({
     changeUserResp,
     changeFeedbackStatus,
   } = useExperiment3Context()
-  const isOrientationStimulus =
-    stimulus && stimulus.iconType && stimulus.iconType.substring(0, 3) === 'STI'
 
   const isAnswerCorrect = (userAnswer) => {
+    const isOrientationStimulus =
+      stimulus &&
+      stimulus.iconType &&
+      stimulus.iconType.substring(0, 3) === 'STI'
     if (stimulus.iconType === 'SURPRIZE') {
       return stimulus.isOnLetter
         ? userAnswer === 'ArrowRight'
@@ -79,7 +81,7 @@ const TimedStep = ({
     <Experiment3Grid
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
-      isBold={isOrientationStimulus ? true : false}
+      isBold={stimulus.iconType === 'SURPRIZE' ? false : true}
     />
   )
   return Grid

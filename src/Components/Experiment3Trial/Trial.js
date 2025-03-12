@@ -60,7 +60,6 @@ export const Trial2 = ({
   }
 
   const onNext = () => {
-    // console.log(results)
     return onFinishTrial(results)
   }
 

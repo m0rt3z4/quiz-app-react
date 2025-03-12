@@ -15,6 +15,7 @@ function useKeyboard(onResponse, startTime) {
       if (!['ArrowRight', 'ArrowLeft'].includes(event.key)) {
         return
       }
+      window.removeEventListener('keydown', handleKeyDown)
       const endTime = Date.now()
       const response = {
         responseTime: endTime - startTime,
