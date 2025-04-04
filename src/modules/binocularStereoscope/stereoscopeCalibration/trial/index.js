@@ -27,7 +27,7 @@ const BinocularStereoscopeCallibrationTrial = ({
   redOpacity = 100,
 }) => {
   const [step, setStep] = useState(1)
-  const [userAnswer, setUserAnswer] = useState('GREEN')
+  const [userAnswer, setUserAnswer] = useState('RED')
   const { changeTitle, binocluarSterescopeSettings } = useExp2PersistedContext()
 
   const stepOne = () => {
@@ -101,6 +101,7 @@ const BinocularStereoscopeCallibrationTrial = ({
           eyeCalibrationDistance={
             binocluarSterescopeSettings.eyeCalibrationDistance
           }
+          isGreenFirst={isGreenFirst}
         />
       )
     }

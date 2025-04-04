@@ -6,8 +6,18 @@ import { Grid, Card } from '@mui/material'
 import GREEN from '../../../../assets/Binocular/faded_green.png'
 import RED from '../../../../assets/Binocular/faded_red.png'
 
-const Step4 = ({ userAnswer = 'RED', eyeCalibrationDistance }) => {
+const Step4 = ({
+  userAnswer = 'RED',
+  eyeCalibrationDistance,
+  isGreenFirst = true,
+}) => {
   const pic = userAnswer === 'GREEN' ? GREEN : userAnswer === 'RED' ? RED : null
+  const leftStimulusCondition =
+    isGreenFirst & (userAnswer === 'GREEN') ||
+    (!isGreenFirst && userAnswer === 'RED')
+  const rightStimulusCondition =
+    isGreenFirst & (userAnswer === 'RED') ||
+    (!isGreenFirst && userAnswer === 'GREEN')
   const QuestionCard = () => {
     return (
       <Grid container justifyContent={'center'} spacing={2}>
@@ -53,7 +63,7 @@ const Step4 = ({ userAnswer = 'RED', eyeCalibrationDistance }) => {
           left: `${-1 * eyeCalibrationDistance}px`,
         }}
       >
-        <QuestionCard />
+        {leftStimulusCondition ? <QuestionCard /> : null}
       </Grid>
       <Grid
         container
@@ -66,7 +76,7 @@ const Step4 = ({ userAnswer = 'RED', eyeCalibrationDistance }) => {
           left: `${eyeCalibrationDistance}px`,
         }}
       >
-        <QuestionCard />
+        {rightStimulusCondition ? <QuestionCard /> : null}
       </Grid>
     </Grid>
   )
