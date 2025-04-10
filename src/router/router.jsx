@@ -25,6 +25,7 @@ import {
   TrialSettingsPage,
 } from '../pages/Experiment3/PreviewPages'
 import MemoryTaskPage from '../pages/Experiment2/MemoryTaskPage'
+import { PreviewTutorialsPage } from '../pages/Experiment3/PreviewPages/PreviewTutorials/PreviewTutorialsPage'
 
 export const router = createBrowserRouter([
   {
@@ -120,6 +121,11 @@ export const router = createBrowserRouter([
         id: 'preview-blocks-exp3-page',
         path: hierarchy.main.experiment3.preview.blocks.path,
         element: <PreviewBlocksPage />,
+      },
+      {
+        id: 'preview-tutorials-exp3-page',
+        path: hierarchy.main.experiment3.preview.tutorials.path,
+        element: <PreviewTutorialsPage />,
       },
       // {
       //   id: 'preview-exp3-page',

@@ -20,7 +20,7 @@ export const Experiment3Layout = () => {
       sx={{
         display: 'flex',
         flexGrow: 1,
-        height: '100vh',
+        minHeight: '100vh',
         backgroundColor: '#e6dada',
         alignItems: 'center',
       }}
@@ -29,7 +29,7 @@ export const Experiment3Layout = () => {
         container
         justifyContent={'center'}
         alignItems={'center'}
-        // sx={{ paddingTop: 1 }}
+        sx={{ paddingTop: 1 }}
       >
         {!!title && (
           <Grid item xs={outletWidth}>
@@ -53,7 +53,7 @@ export const Experiment3Layout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={!!title && { paddingTop: 5 }}
+          paddingTop={!!title && 6}
           spacing={2}
         >
           <Grid item xs={1}>

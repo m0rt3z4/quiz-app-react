@@ -11,7 +11,7 @@ export const ImageryBlocks = ({ onStartPreview }) => {
       </Grid>
       <Grid container item xs={12} justifyContent={'end'}>
         <SettingsButton
-          size={25}
+          size={45}
           text="Preview Block"
           backgroundColor="lightgray"
           onClickButton={() => {
