@@ -35,19 +35,23 @@ export const PreviewTutorialsSettings = ({ onStartPreview }) => {
                 return onStartPreview(pages.IMAGERY)
               }}
               buttonText="Preview"
-              headerText="Memory Block Tutorials"
-            />
-          </Grid>
-          <Grid container paddingTop={3}>
-            <TutorialSection
-              onStartPreview={onStartPreview}
-              buttonText="Preview"
               headerText="Imagery Block Tutorials"
             />
           </Grid>
           <Grid container paddingTop={3}>
             <TutorialSection
-              onStartPreview={onStartPreview}
+              onStartPreview={() => {
+                return onStartPreview(pages.MEMORY)
+              }}
+              buttonText="Preview"
+              headerText="Memory Block Tutorials"
+            />
+          </Grid>
+          <Grid container paddingTop={3}>
+            <TutorialSection
+              onStartPreview={() => {
+                return onStartPreview(pages.MIXED)
+              }}
               buttonText="Preview"
               headerText="Mixed Block Tutorials"
             />
