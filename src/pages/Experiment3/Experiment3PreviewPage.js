@@ -46,7 +46,7 @@ const Experiment3PreviewPage = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, paddingBottom: 6 }}>
       <Card
         sx={{
           display: 'flex',
@@ -54,7 +54,7 @@ const Experiment3PreviewPage = () => {
           justifyContent: 'center',
           color: 'black',
           backgroundColor: 'white',
-          minHeight: 420,
+          minHeight: 450,
           borderRadius: '35px',
           padding: 7,
           border: '1px solid black',
@@ -80,6 +80,13 @@ const Experiment3PreviewPage = () => {
             buttonLable="Settings"
             onClickButton={() => {
               redirectUrl('settings')
+            }}
+          />
+          <Item
+            text="Tutorials"
+            buttonLable="Preview"
+            onClickButton={() => {
+              redirectUrl('tutorials')
             }}
           />
         </Grid>
