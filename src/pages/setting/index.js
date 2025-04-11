@@ -4,11 +4,15 @@ import { Box, Grid, Card, Typography, Button, InputLabel } from '@mui/material'
 
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
-export const SettingPage = () => {
-  const { changePreviewMode } = useTrialContext()
+export const SettingPage = ({ darkTheme = false }) => {
+  const { changePreviewMode, changeTheme } = useTrialContext()
   // const [checked, setChecked] = useState(preview)
 
   const navigate = useNavigate()
+
+  React.useEffect(() => {
+    changeTheme(darkTheme)
+  }, [darkTheme, changeTheme])
 
   const redirectUrl = (url) => {
     navigate(url)
@@ -20,7 +24,7 @@ export const SettingPage = () => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, bgcolor: darkTheme ? 'black' : 'white' }}>
       <Grid
         container
         justifyContent={'center'}
@@ -38,6 +42,8 @@ export const SettingPage = () => {
               borderRadius: '35px',
               padding: 7,
               border: '1px solid black',
+              bgcolor: darkTheme ? '#1a1a1a' : 'white',
+              color: darkTheme ? 'white' : 'black',
             }}
           >
             <Grid container>
@@ -56,7 +62,9 @@ export const SettingPage = () => {
               <Grid container xs={12} padding={4}>
                 <Grid container item xs={7} alignItems={'center'}>
                   <InputLabel id="demo-simple-select-label">
-                    <Typography>Start Tutorial in Preview Mode:</Typography>
+                    <Typography color={darkTheme ? 'white' : 'black'}>
+                      Start Tutorial in Preview Mode:
+                    </Typography>
                   </InputLabel>
                 </Grid>
                 <Grid item xs={5}>
@@ -67,6 +75,9 @@ export const SettingPage = () => {
                       width: '90%',
                       backgroundColor: 'orange',
                       margin: '5px',
+                      '&:hover': {
+                        backgroundColor: darkTheme ? '#ffa726' : '#f57c00',
+                      },
                     }}
                   >
                     Preview

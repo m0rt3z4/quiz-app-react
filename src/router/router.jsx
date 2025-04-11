@@ -26,6 +26,7 @@ import {
 } from '../pages/Experiment3/PreviewPages'
 import MemoryTaskPage from '../pages/Experiment2/MemoryTaskPage'
 import { PreviewTutorialsPage } from '../pages/Experiment3/PreviewPages/PreviewTutorials/PreviewTutorialsPage'
+import Experiment4Page from '../pages/Experiment4'
 
 export const router = createBrowserRouter([
   {
@@ -48,12 +49,12 @@ export const router = createBrowserRouter([
       {
         id: 'exp4-setting-page',
         path: hierarchy.main.experiment4.setting.path,
-        element: <SettingPage />,
+        element: <SettingPage darkTheme={true} />,
       },
       {
         id: 'exp4-tutorial-page',
         path: hierarchy.main.experiment4.tutorial.path,
-        element: <TutorialPage />,
+        element: <Experiment4Page darkTheme={true} />,
       },
     ],
   },

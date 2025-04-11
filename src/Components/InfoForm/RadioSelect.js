@@ -16,6 +16,7 @@ const RadioSelect = ({
   followUp,
   followUpResponse,
   setFollowUpResponse,
+  darkTheme = false,
 }) => {
   const handleChange = (event) => {
     setValue(event.target.value)
@@ -24,7 +25,7 @@ const RadioSelect = ({
   return (
     <FormControl sx={{ paddingTop: '25px' }}>
       <FormLabel
-        sx={{ display: 'flex' }}
+        sx={{ display: 'flex', color: darkTheme ? 'white' : 'black' }}
         id="demo-controlled-radio-buttons-group"
       >
         {questionText}
@@ -37,13 +38,27 @@ const RadioSelect = ({
         onChange={handleChange}
       >
         {valueList.map((value) => (
-          <FormControlLabel value={value} control={<Radio />} label={value} />
+          <FormControlLabel
+            value={value}
+            control={
+              <Radio
+                sx={{
+                  color: darkTheme ? 'white' : 'black',
+                  '&.Mui-checked': {
+                    color: darkTheme ? '#2a2a2a' : '#1976d2',
+                  },
+                }}
+              />
+            }
+            label={value}
+            sx={{ color: darkTheme ? 'white' : 'black' }}
+          />
         ))}
       </RadioGroup>
       {!!followUp && (
         <>
           <FormLabel
-            sx={{ display: 'flex', paddingTop: '5px' }}
+            sx={{ display: 'flex', paddingTop: '5px', color: darkTheme ? 'white' : 'black' }}
             id="demo-controlled-radio-buttons-group"
           >
             {followUp}
@@ -51,7 +66,16 @@ const RadioSelect = ({
           <TextField
             id="outlined-controlled"
             value={followUpResponse}
-            sx={{ paddingTop: '5px', maxWidth: '400px' }}
+            sx={{
+              paddingTop: '5px',
+              maxWidth: '400px',
+              '& .MuiInputBase-input': {
+                color: darkTheme ? 'white' : 'black',
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: darkTheme ? 'white' : 'black',
+              },
+            }}
             onChange={(event) => {
               setFollowUpResponse(event.target.value)
             }}

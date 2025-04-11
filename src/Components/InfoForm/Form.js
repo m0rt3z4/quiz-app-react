@@ -17,7 +17,7 @@ import RadioSelect from './RadioSelect'
 import { InfoFormStrings } from './Strings'
 import Intro from './Intro'
 
-const Form = ({ onNext }) => {
+const Form = ({ onNext, darkTheme = false }) => {
   const [userNumber] = useState(
     Math.floor(100000 + Math.random() * 900000).toString()
   )
@@ -74,11 +74,11 @@ const Form = ({ onNext }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Intro />
+      <Intro darkTheme={darkTheme} />
       <Grid container padding={2} spacing={2}>
         <Grid container xs={12} padding={2}>
           <Grid container item xs={4} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">User Number:</InputLabel>
+            <InputLabel id="demo-simple-select-label" sx={{ color: darkTheme ? 'white' : 'black' }}>User Number:</InputLabel>
           </Grid>
           <Grid item xs={7}>
             <TextField
@@ -87,12 +87,20 @@ const Form = ({ onNext }) => {
               disabled
               fullWidth
               autoFocus
+              sx={{
+                '& .MuiInputBase-input': {
+                  color: darkTheme ? 'white' : 'black',
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: darkTheme ? 'white' : 'black',
+                },
+              }}
             />
           </Grid>
         </Grid>
         <Grid container xs={12} padding={2}>
           <Grid container item xs={4} alignItems={'center'}>
-            <InputLabel id="demo-simple-select-label">
+            <InputLabel id="demo-simple-select-label" sx={{ color: darkTheme ? 'white' : 'black' }}>
               <Typography>Date of birth (Click to Change):</Typography>
             </InputLabel>
           </Grid>
@@ -102,6 +110,7 @@ const Form = ({ onNext }) => {
               setValue={(newValue) => {
                 setDateValue(newValue)
               }}
+              darkTheme={darkTheme}
             />
           </Grid>
         </Grid>
@@ -114,6 +123,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings.other}
             followUpResponse={qestion1FollowUp}
             setFollowUpResponse={setQestion1FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -125,6 +135,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings.other}
             followUpResponse={qestion2FollowUp}
             setFollowUpResponse={setQestion2FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -136,6 +147,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[3].otherText}
             followUpResponse={qestion3FollowUp}
             setFollowUpResponse={setQestion3FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -147,12 +159,13 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings.other}
             followUpResponse={qestion4FollowUp}
             setFollowUpResponse={setQestion4FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
           <FormControl>
             <FormLabel
-              sx={{ display: 'flex', paddingTop: '5px' }}
+              sx={{ display: 'flex', paddingTop: '5px', color: darkTheme ? 'white' : 'black' }}
               id="demo-controlled-radio-buttons-group"
             >
               {InfoFormStrings[5].question}
@@ -160,7 +173,16 @@ const Form = ({ onNext }) => {
             <TextField
               id="outlined-controlled"
               value={qestion5}
-              sx={{ paddingTop: '5px', maxWidth: '400px' }}
+              sx={{
+                paddingTop: '5px',
+                maxWidth: '400px',
+                '& .MuiInputBase-input': {
+                  color: darkTheme ? 'white' : 'black',
+                },
+                '& .MuiOutlinedInput-notchedOutline': {
+                  borderColor: darkTheme ? 'white' : 'black',
+                },
+              }}
               onChange={(event) => {
                 setQuestion5(event.target.value)
               }}
@@ -176,6 +198,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[6].otherText}
             followUpResponse={qestion6FollowUp}
             setFollowUpResponse={setQestion6FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -187,6 +210,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[7].otherText}
             followUpResponse={qestion7FollowUp}
             setFollowUpResponse={setQestion7FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -198,6 +222,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[8].otherText}
             followUpResponse={qestion8FollowUp}
             setFollowUpResponse={setQestion8FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -209,6 +234,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[9].otherText}
             followUpResponse={qestion9FollowUp}
             setFollowUpResponse={setQestion9FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container xs={12} padding={2}>
@@ -220,6 +246,7 @@ const Form = ({ onNext }) => {
             followUp={InfoFormStrings[10].otherText}
             followUpResponse={qestion10FollowUp}
             setFollowUpResponse={setQestion10FollowUp}
+            darkTheme={darkTheme}
           />
         </Grid>
         <Grid container justifyContent={'center'} xs={12}>
@@ -228,7 +255,11 @@ const Form = ({ onNext }) => {
               sx={{
                 width: '70%',
                 height: 50,
-                backgroundColor: 'lightgray',
+                backgroundColor: darkTheme ? '#1a1a1a' : 'lightgray',
+                color: darkTheme ? 'white' : 'black',
+                '&:hover': {
+                  backgroundColor: darkTheme ? '#2a2a2a' : '#d4d4d4',
+                },
               }}
               color="primary"
               onClick={onClickNext}

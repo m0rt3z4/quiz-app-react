@@ -6,6 +6,7 @@ export const TrialProvider = ({ children }) => {
   const [experiment, setExperiment] = useState(createNewExperiment())
   const [title, setTitle] = useState()
   const [outletWidth, setOutletWidth] = useState(5)
+  const [darkTheme, setDarkTheme] = useState(false)
   const [leftBarVisible, setLeftBarVisible] = useState(false)
   const [rightBarVisible, setRightBarVisible] = useState(false)
   const [leftBarWarning, setLeftBarWarning] = useState('')
@@ -17,6 +18,11 @@ export const TrialProvider = ({ children }) => {
   const changeTitle = useCallback((newTitle) => {
     setTitle(newTitle)
   }, [])
+
+  const changeTheme = useCallback((isDark) => {
+    setDarkTheme(isDark)
+  }, [])
+
   const changeOutletWidth = useCallback((newWidth) => {
     setOutletWidth(newWidth)
   }, [])
@@ -72,6 +78,8 @@ export const TrialProvider = ({ children }) => {
       changeOutletWidth,
       title,
       changeTitle,
+      darkTheme,
+      changeTheme,
       leftBarVisible,
       rightBarVisible,
       changeLeftbarVisiblity,
@@ -96,6 +104,8 @@ export const TrialProvider = ({ children }) => {
     changeOutletWidth,
     title,
     changeTitle,
+    darkTheme,
+    changeTheme,
     leftBarVisible,
     rightBarVisible,
     changeLeftbarVisiblity,
