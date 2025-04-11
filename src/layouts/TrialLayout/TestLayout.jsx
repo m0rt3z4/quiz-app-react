@@ -11,12 +11,12 @@ export const TrialLayout = () => {
     rightBarVisible,
     rightBarWarning,
     leftBarWarning,
-    // feedbackStatus,
+    darkTheme,
   } = useTrialContext()
 
   // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
-    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: '#e6dada' }}>
+    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: darkTheme ? 'black' : '#e6dada' }}>
       <Grid
         container
         justifyContent={'center'}
@@ -35,7 +35,7 @@ export const TrialLayout = () => {
             {leftBarVisible && (
               <Grid item>
                 {!!leftBarWarning && (
-                  <Typography color={'black'} sx={{ marginBottom: 1 }}>
+                  <Typography color={darkTheme ? 'white' : 'black'} sx={{ marginBottom: 1 }}>
                     {leftBarWarning}
                   </Typography>
                 )}
@@ -46,7 +46,9 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    border: '1px solid black',
+                    border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+                    bgcolor: darkTheme ? '#1a1a1a' : 'white',
+                    color: darkTheme ? 'white' : 'black',
                   }}
                 >
                   <ArrowBackIcon fontSize="large" />
@@ -66,7 +68,7 @@ export const TrialLayout = () => {
             {rightBarVisible && (
               <Grid item>
                 {!!rightBarWarning && (
-                  <Typography color={'black'} sx={{ marginBottom: 1 }}>
+                  <Typography color={darkTheme ? 'white' : 'black'} sx={{ marginBottom: 1 }}>
                     {rightBarWarning}
                   </Typography>
                 )}
@@ -77,7 +79,9 @@ export const TrialLayout = () => {
                     justifyContent: 'center',
                     height: '150px',
                     borderRadius: '35px',
-                    border: '1px solid black',
+                    border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+                    bgcolor: darkTheme ? '#1a1a1a' : 'white',
+                    color: darkTheme ? 'white' : 'black',
                   }}
                 >
                   <ArrowForwardIcon fontSize="large" />

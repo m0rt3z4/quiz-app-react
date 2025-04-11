@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Grid, Card } from '@mui/material'
 import Form from './Form'
 
-const InfoForm = ({ onNext }) => {
+const InfoForm = ({ onNext, darkTheme = false }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid
@@ -21,10 +21,12 @@ const InfoForm = ({ onNext }) => {
               minHeight: 450,
               borderRadius: '35px',
               padding: 7,
-              border: '1px solid black',
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+              bgcolor: darkTheme ? '#1a1a1a' : 'white',
+              color: darkTheme ? 'white' : 'black',
             }}
           >
-            <Form onNext={onNext} />
+            <Form onNext={onNext} darkTheme={darkTheme} />
           </Card>
         </Grid>
       </Grid>

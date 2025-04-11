@@ -1,6 +1,7 @@
 import React from 'react'
 import { Box, Card } from '@mui/material'
 import GridCell from './GridCell'
+import { exp4BorderColor } from '../../consts'
 
 export const TrialGrid = ({
   size = 5,
@@ -9,7 +10,17 @@ export const TrialGrid = ({
   stimulus = {},
   isBold = false,
   isMask = false,
+  darkTheme = false,
 }) => {
+  const bgColorPicker = (bgColor) => {
+    return darkTheme
+      ? bgColor
+        ? 'black'
+        : 'rgb(55, 55, 55)'
+      : bgColor
+      ? 'white'
+      : 'lightGray'
+  }
   const renderGrid = () => {
     let rows = []
     rows.includes()
@@ -35,14 +46,14 @@ export const TrialGrid = ({
         cells.push(
           i === 2 && j === 2 && (stimulus.i !== 2 || stimulus.j !== 2) ? (
             <GridCell
-              backgroundColor={bgColor ? 'white' : 'lightGray'}
+              backgroundColor={bgColorPicker(bgColor)}
               showStimulus={true}
               iconType={'CENTER_DOT'}
               // isBold={isBold}
             />
           ) : (
             <GridCell
-              backgroundColor={bgColor ? 'white' : 'lightGray'}
+              backgroundColor={bgColorPicker(bgColor)}
               showStimulus={showStimulus}
               iconType={showStimulus ? stimulus.iconType : null}
               // isBold={isBold}
@@ -72,13 +83,13 @@ export const TrialGrid = ({
     <Card
       sx={{
         display: 'flex',
-        backgroundColor: isWhiteThemed ? 'white' : 'lightGray',
+        backgroundColor: bgColorPicker(isWhiteThemed),
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: 350,
         padding: 6,
         borderRadius: '35px',
-        border: '1px solid black',
+        border: `1px solid ${darkTheme ? exp4BorderColor : 'black'}`,
       }}
     >
       <Box
@@ -86,7 +97,9 @@ export const TrialGrid = ({
           display: 'block',
           flexWrap: 'wrap',
           maxWidth: 420,
-          border: `${isBold ? '4' : '1'}px solid black`,
+          border: `${isBold ? '4' : '1'}px solid ${
+            darkTheme ? exp4BorderColor : 'black'
+          }`,
         }}
       >
         {renderGrid()}

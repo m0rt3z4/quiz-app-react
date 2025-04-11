@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 // import Trial from '../../Components/TrialManager/Trial'
 import PracticeSurprize from '../../../Components/Trial2/PracticeSurprize'
 
-const SurprizeBlocks = ({ experiment, onFinishStep }) => {
+const SurprizeBlocks = ({ experiment, onFinishStep, darkTheme = false }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -38,7 +38,7 @@ const SurprizeBlocks = ({ experiment, onFinishStep }) => {
   return toggle ? (
     <></>
   ) : (
-    <PracticeSurprize {...current} onFinishTrial={onFinishTrial} />
+    <PracticeSurprize {...current} onFinishTrial={onFinishTrial} darkTheme={darkTheme} />
   )
 }
 

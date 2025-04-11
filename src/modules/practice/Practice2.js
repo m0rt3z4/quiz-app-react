@@ -4,7 +4,7 @@ import { useTrialContext } from '../../layouts/TrialLayout/context'
 import SurprizeBlock from './SurprizeBlock'
 import MemorandumBlock from './MemorandumBlock'
 
-const Practice2 = ({ practice, onFinishPractice }) => {
+const Practice2 = ({ practice, onFinishPractice, darkTheme = false }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState([])
   const { preview } = useTrialContext()
@@ -31,6 +31,7 @@ const Practice2 = ({ practice, onFinishPractice }) => {
           onNext={saveStimuliBlocksResult}
           showTutorial={false}
           isSecondRound={true}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -45,6 +46,7 @@ const Practice2 = ({ practice, onFinishPractice }) => {
           onNext={saveSurprizeBlocksResult}
           showTutorial={false}
           isSecondRound={true}
+          darkTheme={darkTheme}
         />
       )
     }

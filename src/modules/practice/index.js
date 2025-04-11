@@ -8,7 +8,7 @@ import TrialBlock from './TrialBlock'
 // import PerformanceFeedback from '../../Components/PerformanceFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
-const Practice = ({ practice, onFinishPractice }) => {
+const Practice = ({ practice, onFinishPractice, darkTheme = false }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState([])
   const { preview } = useTrialContext()
@@ -37,6 +37,7 @@ const Practice = ({ practice, onFinishPractice }) => {
               : practice.stimuliBlock1
           }
           onNext={saveStimuliBlocksResult}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -50,6 +51,7 @@ const Practice = ({ practice, onFinishPractice }) => {
           }
           // showTutorial={!preview}
           onNext={saveSurprizeBlocksResult}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -60,6 +62,7 @@ const Practice = ({ practice, onFinishPractice }) => {
             preview ? practice.mixedBlock.slice(0, 2) : practice.mixedBlock
           }
           onNext={saveMainBlocksResult}
+          darkTheme={darkTheme}
         />
       )
     }

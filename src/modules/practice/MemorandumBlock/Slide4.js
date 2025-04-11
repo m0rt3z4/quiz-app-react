@@ -5,7 +5,7 @@ import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { pickSurprize } from '../../../helpers/letterHelper'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide4 = ({ onNext, onPrevious }) => {
+const Slide4 = ({ onNext, onPrevious, darkTheme = false }) => {
   const [stimulus, setStimulus] = useState({})
 
   useKeyboardNavigation(onNext, onPrevious)
@@ -29,7 +29,8 @@ const Slide4 = ({ onNext, onPrevious }) => {
             maxHeight: 530,
             borderRadius: '35px',
             padding: 4,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
           <Grid
@@ -43,20 +44,20 @@ const Slide4 = ({ onNext, onPrevious }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'}>
+              <Typography fontSize={'20px'} sx={{ color: darkTheme ? 'white' : 'inherit' }}>
                 Following this, question marks will appear in some cells of the
                 grid. If you recall seeing a dot in the cell where the question
                 mark now appears, press the (→) key. If you think a dot was not
                 presented in that cell, press the (←) key.
               </Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: 4, color: darkTheme ? 'white' : 'inherit' }}>
                 Press the (→) key to start the next trial.
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={true}
+              isWhiteThemed={!darkTheme}
               stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'QUESTION' }}
             />
           </Grid>

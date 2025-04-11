@@ -3,7 +3,7 @@ import { Box, Grid, Typography, Card } from '@mui/material'
 import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 
-const Slide = ({ content = [], onNext }) => {
+const Slide = ({ content = [], onNext, darkTheme = false }) => {
   //press space to continue
   const keyboardCallback = (resp) => {
     if (!!resp && resp.keyPressed === keyboardKeys.RIGHT_ARROW) onNext()
@@ -28,7 +28,9 @@ const Slide = ({ content = [], onNext }) => {
             maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            bgcolor: darkTheme ? '#1a1a1a' : 'white',
+            color: darkTheme ? 'white' : 'black',
           }}
         >
           <Box>

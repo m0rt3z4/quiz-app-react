@@ -13,6 +13,7 @@ const TimedStep = ({
   showFeedback = false,
   noTimeout = false,
   onFinishStep,
+  darkTheme = false,
 }) => {
   const {
     showArrows,
@@ -75,6 +76,7 @@ const TimedStep = ({
       isWhiteThemed={background === 'L' ? true : false}
       stimulus={stimulus}
       isBold={stimulus.iconType === 'QUESTION' ? true : false}
+      darkTheme={darkTheme}
     />
   )
   return Grid

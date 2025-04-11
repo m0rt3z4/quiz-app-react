@@ -6,7 +6,7 @@ import useKeyboard from '../../helpers/useKeyboard'
 import { keyboardKeys } from '../../consts'
 import { TrialGrid } from '../TrialGrid/TrialGrid'
 
-const ReadtToStart = ({ background, dontShowLetter = false, onNext }) => {
+const ReadtToStart = ({ background, dontShowLetter = false, onNext, darkTheme = false }) => {
   const { showRightArrow } = useTrialContext()
 
   const onClickStart = (resp) => {
@@ -24,7 +24,7 @@ const ReadtToStart = ({ background, dontShowLetter = false, onNext }) => {
   }
   useKeyboard(Date.now(), [keyboardKeys.RIGHT_ARROW], keyboardCallback)
 
-  const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} />
+  const Grid = <TrialGrid isWhiteThemed={background === 'L' ? true : false} darkTheme={darkTheme} />
   return Grid
 }
 

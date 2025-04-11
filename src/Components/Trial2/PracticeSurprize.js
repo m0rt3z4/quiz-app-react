@@ -11,6 +11,7 @@ const PracticeSurprize = ({
   letter,
   trialParams,
   onFinishTrial,
+  darkTheme = false,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
@@ -39,13 +40,14 @@ const PracticeSurprize = ({
           onStartTrial={() => {
             setStep(1)
           }}
+          darkTheme={darkTheme}
         />
       )
     }
     case 1: {
       showRightArrow('Visualize the letter and press → to Start!')
       return (
-        <ReadtToStart background={background} onNext={onFinishImagination} />
+        <ReadtToStart background={background} onNext={onFinishImagination} darkTheme={darkTheme} />
       )
     }
     case 2: {
@@ -58,13 +60,14 @@ const PracticeSurprize = ({
           onFinishStep={onFinishSurprizePractice}
           showFeedback={true}
           isPracticeSurprize={true}
+          darkTheme={darkTheme}
         />
       )
     }
     case 3: {
       showLeftArrow('')
       showRightArrow('')
-      return <Exit background={background} onFinishStep={onFinishFirstStep} />
+      return <Exit background={background} onFinishStep={onFinishFirstStep} darkTheme={darkTheme} />
     }
 
     default:

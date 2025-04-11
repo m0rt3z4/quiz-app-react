@@ -14,7 +14,7 @@ import Feedback from './Feedback'
 // import BlockFeedback from '../../../Components/BlockFeedback'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
-const TrialBlock = ({ practice, onNext }) => {
+const TrialBlock = ({ practice, onNext, darkTheme = false }) => {
   const [step, setStep] = useState(0)
   // const [results, setResults] = useState({})
   const { changeOutletWidth, showRightArrow, showLeftArrow } = useTrialContext()
@@ -35,7 +35,7 @@ const TrialBlock = ({ practice, onNext }) => {
   switch (step) {
     case 0: {
       changeOutletWidth(5)
-      return <Slide content={Strings.restSlide} onNext={nextStep} />
+      return <Slide content={Strings.restSlide} onNext={nextStep} darkTheme={darkTheme} />
     }
     case 1: {
       changeOutletWidth(5)
@@ -45,6 +45,7 @@ const TrialBlock = ({ practice, onNext }) => {
         <Slide5
           content={Strings.tutorial.mainSlides.slide1}
           onNext={nextStep}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -57,6 +58,7 @@ const TrialBlock = ({ practice, onNext }) => {
           content={Strings.tutorial.mainSlides.slide2}
           onNext={nextStep}
           onPrevious={previousStep}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -67,6 +69,7 @@ const TrialBlock = ({ practice, onNext }) => {
           content={Strings.tutorial.mainSlides.slide3}
           onNext={nextStep}
           onPrevious={previousStep}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -77,6 +80,7 @@ const TrialBlock = ({ practice, onNext }) => {
           content={Strings.tutorial.mainSlides.slide4}
           onNext={nextStep}
           onPrevious={previousStep}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -92,6 +96,7 @@ const TrialBlock = ({ practice, onNext }) => {
             onNext()
           }}
           onPrevious={previousStep}
+          darkTheme={darkTheme}
         />
       )
     }

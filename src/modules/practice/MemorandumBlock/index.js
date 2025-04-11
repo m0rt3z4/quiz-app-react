@@ -17,6 +17,7 @@ const MemorandumBlock = ({
   onNext,
   showTutorial = true,
   isSecondRound = false,
+  darkTheme = false,
 }) => {
   const [step, setStep] = useState(!showTutorial ? 4 : 1)
   const [results, setResults] = useState({})
@@ -41,26 +42,26 @@ const MemorandumBlock = ({
       changeOutletWidth(5)
       showRightArrow('Next Slide')
       showLeftArrow('')
-      return <Slide content={Strings.restSlide} onNext={nextStep} />
+      return <Slide content={Strings.restSlide} onNext={nextStep} darkTheme={darkTheme} />
     }
     case 1: {
       changeOutletWidth(8)
       showRightArrow('Next Slide')
       showLeftArrow('')
-      return <Slide3 onNext={nextStep} />
+      return <Slide3 onNext={nextStep} darkTheme={darkTheme} />
     }
     case 2: {
       changeOutletWidth(8)
       showRightArrow('Next Slide')
       showLeftArrow('Previous Slide')
 
-      return <Slide4 onNext={nextStep} onPrevious={previousStep} />
+      return <Slide4 onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 3: {
       changeOutletWidth(5)
       showRightArrow('Next Slide')
       showLeftArrow('Previous Slide')
-      return <Feedback onNext={nextStep} onPrevious={previousStep} />
+      return <Feedback onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 4: {
       changeOutletWidth(8)
@@ -77,6 +78,7 @@ const MemorandumBlock = ({
                 }
               : previousStep
           }
+          darkTheme={darkTheme}
         />
       )
     }
@@ -88,6 +90,7 @@ const MemorandumBlock = ({
         <NoSurprizeBlocks
           experiment={practice}
           onFinishStep={saveStimuliBlocksResult}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -97,6 +100,7 @@ const MemorandumBlock = ({
         <BlockFeedback
           onNext={onSubmitFeedback}
           blockType={isSecondRound ? blockTypes.MEMORANDUM_BLOCK : ''}
+          darkTheme={darkTheme}
         />
       )
     }

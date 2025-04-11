@@ -15,8 +15,8 @@ import ConsentForm from './ConsentForm'
 import Practice2 from '../../modules/practice/Practice2'
 import FinalFeedback from '../../modules/finalFeedback'
 
-export const TutorialPage = () => {
-  const { changeOutletWidth, showArrows, preview } = useTrialContext()
+export const TutorialPage = ({ darkTheme = false }) => {
+  const { changeOutletWidth, showArrows, preview, changeTheme } = useTrialContext()
   const [step, setStep] = useState(0)
   const [userType, setUserType] = useState('')
   const [userInfo, setUserInfo] = useState({})
@@ -28,6 +28,10 @@ export const TutorialPage = () => {
     setPractice(exp)
     console.log('Experiment Data: ', exp)
   }, [])
+
+  useEffect(() => {
+    changeTheme(darkTheme)
+  }, [darkTheme, changeTheme])
 
   const onStart = (consentType) => {
     setUserType(consentType)
@@ -81,22 +85,22 @@ export const TutorialPage = () => {
 
   switch (step) {
     case 0:
-      return <Start onNext={onStart} />
+      return <Start onNext={onStart} darkTheme={darkTheme} />
     case 1: {
       changeOutletWidth(8)
-      return <ConsentForm onNext={onConsent} consentType={userType} />
+      return <ConsentForm onNext={onConsent} consentType={userType} darkTheme={darkTheme} />
     }
     case 2: {
       changeOutletWidth(8)
-      return <InfoForm onNext={onSubmitInfo} />
+      return <InfoForm onNext={onSubmitInfo} darkTheme={darkTheme} />
     }
     case 3:
       changeOutletWidth(5)
       showArrows(true)
-      return <Slide content={Strings.tutorial.slide2} onNext={onNext} />
+      return <Slide content={Strings.tutorial.slide2} onNext={onNext} darkTheme={darkTheme} />
     case 4:
       return (
-        <Practice practice={practice} onFinishPractice={savePracticeResults} />
+        <Practice practice={practice} onFinishPractice={savePracticeResults} darkTheme={darkTheme} />
       )
     // case 5:
     //   return <Slide content={Strings.tutorial.finish} onNext={onNext} />
@@ -105,6 +109,7 @@ export const TutorialPage = () => {
         <TrialPage
           experiment={practice.mixedBlock}
           onFinishTrial={saveMainTrialResults}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -113,14 +118,15 @@ export const TutorialPage = () => {
         <Practice2
           practice={practice}
           onFinishPractice={onFinishSecondPractice}
+          darkTheme={darkTheme}
         />
       )
     }
     case 7: {
-      return <FinalFeedback onNext={onFinishFeedback} />
+      return <FinalFeedback onNext={onFinishFeedback} darkTheme={darkTheme} />
     }
     case 8: {
-      return <Finish />
+      return <Finish darkTheme={darkTheme} />
     }
 
     default:

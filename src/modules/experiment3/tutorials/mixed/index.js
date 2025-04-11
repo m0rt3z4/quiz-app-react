@@ -119,3 +119,4 @@ const MixedTutorial = ({ onNext }) => {
 }
 
 export default MixedTutorial
+

@@ -6,7 +6,7 @@ import { keyboardKeys } from '../../consts'
 // import Slide from '../Slide'
 import Strings from '../Slide/Strings'
 
-const Exit = ({ background, onFinishStep, showTracker = false, index }) => {
+const Exit = ({ background, onFinishStep, showTracker = false, index, darkTheme = false }) => {
   const content = Strings.trial.exit
   //press space to continue
   const keyboardCallback = (resp) => {
@@ -42,6 +42,8 @@ const Exit = ({ background, onFinishStep, showTracker = false, index }) => {
             borderRadius: '35px',
             padding: 7,
             border: '1px solid black',
+            backgroundColor: darkTheme ? '#1a1a1a' : 'white',
+            color: darkTheme ? 'white' : 'black',
           }}
         >
           <Grid container item xs={12} justifyContent={'center'}>
@@ -54,12 +56,20 @@ const Exit = ({ background, onFinishStep, showTracker = false, index }) => {
                   valueLabelDisplay="on"
                   marks={marks}
                   max={64}
+                  sx={{
+                    '& .MuiSlider-markLabel': {
+                      color: darkTheme ? 'white' : 'black',
+                    },
+                    '& .MuiSlider-valueLabel': {
+                      color: darkTheme ? 'white' : 'black',
+                    },
+                  }}
                 />
               </Grid>
             )}
             {content.length > 0 && (
               <Grid item xs={8} marginTop={2}>
-                <Typography fontSize={content[0].fontSize}>
+                <Typography fontSize={content[0].fontSize} color={darkTheme ? 'white' : 'black'}>
                   {content[0].text}
                 </Typography>
               </Grid>

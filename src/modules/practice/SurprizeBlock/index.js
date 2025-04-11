@@ -18,6 +18,7 @@ const SurprizeBlock = ({
   onNext,
   showTutorial = true,
   isSecondRound = false,
+  darkTheme = false,
 }) => {
   const [step, setStep] = useState(showTutorial ? 0 : 6)
   const [results, setResults] = useState({})
@@ -45,6 +46,7 @@ const SurprizeBlock = ({
         <Slide3
           content={Strings.tutorial.mainSlides.slide1}
           onNext={nextStep}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -52,26 +54,26 @@ const SurprizeBlock = ({
       changeOutletWidth(8)
       showRightArrow('Next Slide')
       showLeftArrow('Previous Slide')
-      return <Slide1 onNext={nextStep} onPrevious={previousStep} />
+      return <Slide1 onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
 
     case 2: {
       changeOutletWidth(5)
-      return <Slide4 onNext={nextStep} onPrevious={previousStep} />
+      return <Slide4 onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 3: {
       changeOutletWidth(8)
-      return <Slide2 onNext={nextStep} onPrevious={previousStep} />
+      return <Slide2 onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 4: {
       changeOutletWidth(5)
-      return <Feedback onNext={nextStep} onPrevious={previousStep} />
+      return <Feedback onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 5: {
       showRightArrow('Next Slide')
       showLeftArrow('Previous Slide')
       changeOutletWidth(8)
-      return <Slide5 onNext={nextStep} onPrevious={previousStep} />
+      return <Slide5 onNext={nextStep} onPrevious={previousStep} darkTheme={darkTheme} />
     }
     case 6: {
       showRightArrow('')
@@ -87,6 +89,7 @@ const SurprizeBlock = ({
                 }
               : previousStep
           }
+          darkTheme={darkTheme}
         />
       )
     }
@@ -98,6 +101,7 @@ const SurprizeBlock = ({
         <SurprizeBlocks
           experiment={practice}
           onFinishStep={saveSurprizeBlocksResult}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -106,6 +110,7 @@ const SurprizeBlock = ({
         <BlockFeedback
           onNext={onSubmitFeedback}
           blockType={isSecondRound ? blockTypes.SURPRIZE_BLOCK : ''}
+          darkTheme={darkTheme}
         />
       )
     }
