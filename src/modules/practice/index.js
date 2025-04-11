@@ -9,7 +9,7 @@ import TrialBlock from './TrialBlock'
 // import SurprizeBlocksSlide from './SurprizeBlocksSlide'
 
 const Practice = ({ practice, onFinishPractice, darkTheme = false }) => {
-  const [step, setStep] = useState(2)
+  const [step, setStep] = useState(0)
   const [results, setResults] = useState([])
   const { preview } = useTrialContext()
   const nextStep = () => {

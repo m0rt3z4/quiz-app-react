@@ -5,7 +5,7 @@ import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { hLetterArray } from '../../../helpers/customBackground'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide2 = ({ onNext, onPrevious }) => {
+const Slide2 = ({ onNext, onPrevious, darkTheme = false }) => {
   const [surprize, setSurprize] = useState({ i: 3, j: 0, iconType: 'SURPRIZE' })
 
   useKeyboardNavigation(onNext, onPrevious)
@@ -33,7 +33,8 @@ const Slide2 = ({ onNext, onPrevious }) => {
             maxHeight: 530,
             borderRadius: '35px',
             padding: 4,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
           <Grid
@@ -46,17 +47,17 @@ const Slide2 = ({ onNext, onPrevious }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: '45px', color: darkTheme ? 'white' : 'inherit' }}>
                 Here is the example
               </Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: '45px', color: darkTheme ? 'white' : 'inherit' }}>
                 {'press the (→) key to continue'}
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={true}
+              isWhiteThemed={!darkTheme}
               cutomBgArray={hLetterArray}
               stimulus={surprize}
             />

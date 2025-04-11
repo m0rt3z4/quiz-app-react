@@ -5,7 +5,7 @@ import { useTrialContext } from '../../../layouts/TrialLayout/context'
 import { hLetterArray } from '../../../helpers/customBackground'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide5 = ({ onNext, onPrevious }) => {
+const Slide5 = ({ onNext, onPrevious, darkTheme = false }) => {
   const [surprize] = useState({
     i: Math.floor(Math.random() * 5),
     j: Math.floor(Math.random() * 5),
@@ -35,7 +35,8 @@ const Slide5 = ({ onNext, onPrevious }) => {
             maxHeight: 530,
             borderRadius: '35px',
             padding: 4,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
           <Grid
@@ -48,17 +49,17 @@ const Slide5 = ({ onNext, onPrevious }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: '45px', color: darkTheme ? 'white' : 'inherit' }}>
                 Here is the example of feedback colors
               </Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: '45px' }}>
+              <Typography fontSize={'20px'} sx={{ paddingTop: '45px', color: darkTheme ? 'white' : 'inherit' }}>
                 {'press the (→) key to continue'}
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={true}
+              isWhiteThemed={!darkTheme}
               cutomBgArray={hLetterArray}
               stimulus={surprize}
             />

@@ -6,7 +6,7 @@ import { pickSurprize } from '../../../helpers/letterHelper'
 import { keyboardKeys } from '../../../consts'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide3 = ({ onNext }) => {
+const Slide3 = ({ onNext, darkTheme = false }) => {
   const [stimulus, setStimulus] = useState({})
 
   //press space to continue
@@ -34,7 +34,8 @@ const Slide3 = ({ onNext }) => {
             maxHeight: 530,
             borderRadius: '35px',
             padding: 4,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
           <Grid
@@ -48,14 +49,20 @@ const Slide3 = ({ onNext }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'}>
+              <Typography
+                fontSize={'20px'}
+                sx={{ color: darkTheme ? 'white' : 'inherit' }}
+              >
                 In the following, you will be presented with a grid. then
                 several dots will appear briefly in some cells of the grid. Try
                 to memorize the cells where the dots were presented while
                 keeping your eyes on the center of the grid—resist the urge to
                 look away from the center.
               </Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: 4 }}>
+              <Typography
+                fontSize={'20px'}
+                sx={{ paddingTop: 4, color: darkTheme ? 'white' : 'inherit' }}
+              >
                 To move forward, press the (→) key.
               </Typography>
             </Box>

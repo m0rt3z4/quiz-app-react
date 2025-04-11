@@ -11,6 +11,7 @@ const Step3 = ({
   showFeedback = false,
   onFinishStep,
   isPracticeSurprize = false,
+  darkTheme = false,
 }) => {
   const [index, setIndex] = useState(0)
   const [stimulus, setStimulus] = useState({})
@@ -65,12 +66,14 @@ const Step3 = ({
       startTime={startTime}
       onFinishStep={onUserResp}
       showFeedback={showFeedback}
+      darkTheme={darkTheme}
     />
   )
   const EmptyGrid = () => (
     <TrialGrid
       isWhiteThemed={background === 'L' ? true : false}
       isBold={isPracticeSurprize ? false : true}
+      darkTheme={darkTheme}
     />
   )
 

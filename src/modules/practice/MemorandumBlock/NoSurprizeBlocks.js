@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 // import Trial from '../../Components/TrialManager/Trial'
 import Trial2 from '../../../Components/Trial2/Trial'
 
-const NoSurprizeBlocks = ({ experiment, onFinishStep }) => {
+const NoSurprizeBlocks = ({ experiment, onFinishStep, darkTheme = false }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
   const [toggle, setToggle] = useState(false)
@@ -43,6 +43,7 @@ const NoSurprizeBlocks = ({ experiment, onFinishStep }) => {
       onFinishTrial={onFinishTrial}
       showFeedback={true}
       dontShowLetter={true}
+      darkTheme={darkTheme}
     />
   )
 }

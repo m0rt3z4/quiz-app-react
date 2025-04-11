@@ -14,6 +14,7 @@ const Step1 = ({
   letter,
   dontShowLetter = false,
   onStartTrial,
+  darkTheme = false,
 }) => {
   const [isMask, setIsMask] = useState(false)
   const [customBackground, setCustomBackground] = useState([])
@@ -61,6 +62,7 @@ const Step1 = ({
       isWhiteThemed={background === 'L' ? true : false}
       cutomBgArray={customBackground}
       isMask={isMask}
+      darkTheme={darkTheme}
     />
   )
   return Grid

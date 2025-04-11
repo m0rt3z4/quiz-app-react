@@ -5,7 +5,7 @@ import useKeyboardNavigation from '../../../helpers/useKeyboardNavigation'
 import { hLetterArray, iLetterArray } from '../../../helpers/customBackground'
 import { TrialGrid } from '../../../Components/TrialGrid/TrialGrid'
 
-const Slide1 = ({ onNext, onPrevious }) => {
+const Slide1 = ({ onNext, onPrevious, darkTheme = false }) => {
   const [index, setIndex] = useState(0)
   const [background, setBackground] = useState(true)
   const [customBgArray, setCustomBgArray] = useState([])
@@ -39,7 +39,8 @@ const Slide1 = ({ onNext, onPrevious }) => {
             maxHeight: 530,
             borderRadius: '35px',
             padding: 4,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
           <Grid
@@ -53,15 +54,23 @@ const Slide1 = ({ onNext, onPrevious }) => {
             }}
           >
             <Box>
-              <Typography fontSize={'20px'}>Here is the example</Typography>
-              <Typography fontSize={'20px'} sx={{ paddingTop: 8 }}>
+              <Typography
+                fontSize={'20px'}
+                sx={{ color: darkTheme ? 'white' : 'inherit' }}
+              >
+                Here is the example
+              </Typography>
+              <Typography
+                fontSize={'20px'}
+                sx={{ paddingTop: 8, color: darkTheme ? 'white' : 'inherit' }}
+              >
                 To move forward, press the (→) key.
               </Typography>
             </Box>
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={background}
+              isWhiteThemed={!darkTheme && background}
               cutomBgArray={customBgArray}
             />
           </Grid>
