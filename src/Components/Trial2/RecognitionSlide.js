@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Box, Grid, Typography, Card } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
-const RecognitionSlide = () => {
+const RecognitionSlide = ({ darkTheme = false }) => {
   const { changeTitle } = useTrialContext()
 
   useEffect(() => {
@@ -28,10 +28,11 @@ const RecognitionSlide = () => {
               maxHeight: 530,
               borderRadius: '35px',
               padding: 7,
-              border: '1px solid black',
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+              backgroundColor: darkTheme ? 'black' : 'white',
             }}
           >
-            <Typography fontSize={'25px'}>
+            <Typography fontSize={'25px'} sx={{ color: darkTheme ? 'white' : 'inherit' }}>
               {
                 'If you recall seeing a dot in the cell where the question mark now appears, press the (→) key. If you think a dot was not presented in the cell, press the (←) key.'
               }

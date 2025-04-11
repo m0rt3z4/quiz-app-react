@@ -16,7 +16,15 @@ export const TrialLayout = () => {
 
   // console.log(rightBarWarning, leftBarWarning, feedbackStatus)
   return (
-    <Box sx={{ flexGrow: 1, height: '100vh', backgroundColor: darkTheme ? 'black' : '#e6dada' }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexGrow: 1,
+        height: '100vh',
+        backgroundColor: darkTheme ? 'black' : '#e6dada',
+        alignItems: 'center',
+      }}
+    >
       <Grid
         container
         justifyContent={'center'}
@@ -28,14 +36,17 @@ export const TrialLayout = () => {
           container
           justifyContent={'center'}
           alignItems={'center'}
-          sx={{ paddingTop: 5 }}
+          sx={{ paddingTop: 1 }}
           spacing={2}
         >
           <Grid item xs={1}>
             {leftBarVisible && (
               <Grid item>
                 {!!leftBarWarning && (
-                  <Typography color={darkTheme ? 'white' : 'black'} sx={{ marginBottom: 1 }}>
+                  <Typography
+                    color={darkTheme ? 'white' : 'black'}
+                    sx={{ marginBottom: 1 }}
+                  >
                     {leftBarWarning}
                   </Typography>
                 )}
@@ -68,7 +79,10 @@ export const TrialLayout = () => {
             {rightBarVisible && (
               <Grid item>
                 {!!rightBarWarning && (
-                  <Typography color={darkTheme ? 'white' : 'black'} sx={{ marginBottom: 1 }}>
+                  <Typography
+                    color={darkTheme ? 'white' : 'black'}
+                    sx={{ marginBottom: 1 }}
+                  >
                     {rightBarWarning}
                   </Typography>
                 )}

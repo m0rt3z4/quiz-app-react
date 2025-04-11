@@ -20,7 +20,7 @@ export const SettingPage = ({ darkTheme = false }) => {
 
   const onClickSaveButton = () => {
     changePreviewMode(true)
-    redirectUrl('/experiment1/tutorial')
+    redirectUrl(`/experiment${darkTheme ? '4' : '1'}/tutorial`)
   }
 
   return (
