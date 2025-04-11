@@ -45,6 +45,16 @@ export const router = createBrowserRouter([
         path: hierarchy.main.experiment1.tutorial.path,
         element: <TutorialPage />,
       },
+      {
+        id: 'exp4-setting-page',
+        path: hierarchy.main.experiment4.setting.path,
+        element: <SettingPage />,
+      },
+      {
+        id: 'exp4-tutorial-page',
+        path: hierarchy.main.experiment4.tutorial.path,
+        element: <TutorialPage />,
+      },
     ],
   },
   {

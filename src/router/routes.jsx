@@ -77,6 +77,20 @@ export const { collection, hierarchy } = defineRoutes([
           },
         ],
       },
+      {
+        key: 'experiment4',
+        path: '/experiment4',
+        children: [
+          {
+            key: 'preview',
+            path: '/preview',
+          },
+          {
+            key: 'trial',
+            path: '/trial',
+          },
+        ],
+      },
     ],
   },
 ])
