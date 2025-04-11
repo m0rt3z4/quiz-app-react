@@ -62,6 +62,7 @@ const Slide5 = ({ onNext, onPrevious, darkTheme = false }) => {
               isWhiteThemed={!darkTheme}
               cutomBgArray={hLetterArray}
               stimulus={surprize}
+              darkTheme={darkTheme}
             />
           </Grid>
         </Card>

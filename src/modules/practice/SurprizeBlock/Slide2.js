@@ -57,9 +57,10 @@ const Slide2 = ({ onNext, onPrevious, darkTheme = false }) => {
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={!darkTheme}
+              isWhiteThemed={darkTheme}
               cutomBgArray={hLetterArray}
               stimulus={surprize}
+              darkTheme={darkTheme}
             />
           </Grid>
         </Card>

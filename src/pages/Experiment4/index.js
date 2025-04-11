@@ -8,9 +8,10 @@ import Strings from '../../Components/Slide/Strings'
 import TrialPage from '../Trial'
 import Finish from '../tutorial/Finish'
 import Practice2 from '../../modules/practice/Practice2'
+import { downloadQuizDataAsJson } from '../../helpers/donwloadJson'
 
 export const Experiment4Page = ({ darkTheme = true }) => {
-  const { changeOutletWidth, showArrows, preview, changeTheme } = useTrialContext()
+  const { changeOutletWidth, showArrows, changeTheme } = useTrialContext()
   const [step, setStep] = useState(0)
   const [practice, setPractice] = useState()
   const [results, setResults] = useState({})
@@ -38,12 +39,20 @@ export const Experiment4Page = ({ darkTheme = true }) => {
     setResults({ ...results, mainTrial: { ...resp } })
     onNext()
   }
-  
+
   const onFinishSecondPractice = (resp) => {
     setResults({
       ...results,
       practice2: { ...resp },
     })
+    downloadQuizDataAsJson(
+      {
+        ...results,
+        practice2: { ...resp },
+      },
+      111111,
+      'Trial Results'
+    )
     onNext()
   }
 
@@ -51,10 +60,20 @@ export const Experiment4Page = ({ darkTheme = true }) => {
     case 0:
       changeOutletWidth(5)
       showArrows(true)
-      return <Slide content={Strings.tutorial.slide2} onNext={onNext} darkTheme={darkTheme} />
+      return (
+        <Slide
+          content={Strings.tutorial.slide2}
+          onNext={onNext}
+          darkTheme={darkTheme}
+        />
+      )
     case 1:
       return (
-        <Practice practice={practice} onFinishPractice={savePracticeResults} darkTheme={darkTheme} />
+        <Practice
+          practice={practice}
+          onFinishPractice={savePracticeResults}
+          darkTheme={darkTheme}
+        />
       )
     case 2: {
       return (
@@ -82,4 +101,4 @@ export const Experiment4Page = ({ darkTheme = true }) => {
   }
 }
 
-export default Experiment4Page 
+export default Experiment4Page

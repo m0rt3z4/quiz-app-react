@@ -71,6 +71,7 @@ const Slide3 = ({ onNext, darkTheme = false }) => {
             <TrialGrid
               isWhiteThemed={true}
               stimulus={{ i: stimulus.i, j: stimulus.j, iconType: 'CIRCLE' }}
+              darkTheme={darkTheme}
             />
           </Grid>
         </Card>

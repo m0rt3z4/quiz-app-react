@@ -70,8 +70,9 @@ const Slide1 = ({ onNext, onPrevious, darkTheme = false }) => {
           </Grid>
           <Grid item xs={6}>
             <TrialGrid
-              isWhiteThemed={!darkTheme && background}
+              isWhiteThemed={false}
               cutomBgArray={customBgArray}
+              darkTheme={darkTheme}
             />
           </Grid>
         </Card>

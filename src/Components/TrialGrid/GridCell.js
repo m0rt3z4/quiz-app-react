@@ -6,6 +6,7 @@ import StarRateIcon from '@mui/icons-material/StarRate'
 import TagIcon from '@mui/icons-material/Tag'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 import './style.css'
+import { exp4BorderColor } from '../../consts'
 
 const GridCell = ({
   showStimulus,
@@ -13,7 +14,7 @@ const GridCell = ({
   backgroundColor,
   isBold = false,
 }) => {
-  const { feedbackStatus } = useTrialContext()
+  const { feedbackStatus, darkTheme } = useTrialContext()
   const Icon = (iconType) => {
     switch (iconType) {
       case 'SURPRIZE':
@@ -28,14 +29,34 @@ const GridCell = ({
                 ? feedbackStatus === 'success'
                   ? 'blink-success'
                   : 'blink-error'
+                : darkTheme
+                ? 'blink-gray'
                 : 'blink-black'
             }
           />
         )
       case 'CENTER_DOT':
-        return <Typography fontSize={'35px'} sx={{paddingBottom:'19px'}}>.</Typography>
+        return (
+          <Typography
+            fontSize={'35px'}
+            sx={{
+              paddingBottom: '19px',
+              color: darkTheme ? exp4BorderColor : 'black',
+            }}
+          >
+            .
+          </Typography>
+        )
       case 'CIRCLE':
-        return <CircleIcon fontSize="10px" sx={{paddingTop:'3px'}} />
+        return (
+          <CircleIcon
+            fontSize="10px"
+            sx={{
+              paddingTop: '3px',
+              color: darkTheme ? exp4BorderColor : 'black',
+            }}
+          />
+        )
       case 'QUESTION':
         return (
           <QuestionMarkIcon
@@ -45,6 +66,8 @@ const GridCell = ({
                 ? feedbackStatus === 'success'
                   ? 'question-success'
                   : 'question-error'
+                : darkTheme
+                ? 'question-gray'
                 : 'question-black'
             }
           />
@@ -64,7 +87,9 @@ const GridCell = ({
         backgroundColor: backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-        border: `${isBold ? '2' : '1'}px solid black`,
+        border: `${isBold ? '2' : '1'}px solid ${
+          darkTheme ? exp4BorderColor : 'black'
+        }`,
         borderCollapse: 'collapse',
         width: 34,
         height: 34,

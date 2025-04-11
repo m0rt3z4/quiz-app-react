@@ -47,3 +47,6 @@ export const binocularPatchTypes = {
   MIXED: 'MIXED',
   FUSED: 'FUSED',
 }
+
+//experiment 4 consts
+export const exp4BorderColor = 'rgb(200, 200, 200)'
