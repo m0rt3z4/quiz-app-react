@@ -9,6 +9,7 @@ const Experiment = ({
   showFeedback,
   onFinishExperiment,
   showTracker = false,
+  darkTheme = false,
 }) => {
   const [results, setResults] = useState([])
   const [current, setCurrent] = useState({})
@@ -49,6 +50,7 @@ const Experiment = ({
       showFeedback={showFeedback}
       showTracker={showTracker}
       trackerIndex={trialIndex}
+      darkTheme={darkTheme}
     />
   )
 }

@@ -8,7 +8,7 @@ import StartSlide from './StartSlide'
 import PictureSlide from '../../Components/PictureSlide'
 import BlockFeedback from '../../Components/BlockFeedback'
 
-export const TrialPage = ({ experiment, onFinishTrial }) => {
+export const TrialPage = ({ experiment, onFinishTrial, darkTheme = false }) => {
   const [step, setStep] = useState(0)
   const [results, setResults] = useState({})
   // const [experiment, setExperiment] = useState()
@@ -39,7 +39,7 @@ export const TrialPage = ({ experiment, onFinishTrial }) => {
   switch (step) {
     case 0: {
       changeOutletWidth(8)
-      return <PictureSlide content={'Both'} onNext={onNext} />
+      return <PictureSlide content={'Both'} onNext={onNext} darkTheme={darkTheme} />
     }
     case 1: {
       changeOutletWidth(5)
@@ -47,6 +47,7 @@ export const TrialPage = ({ experiment, onFinishTrial }) => {
         <StartSlide
           header="Press the (→) key to start the trial."
           onNext={onNext}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -59,11 +60,12 @@ export const TrialPage = ({ experiment, onFinishTrial }) => {
           onFinishExperiment={submitExperimentResults}
           showFeedback={true}
           showTracker={true}
+          darkTheme={darkTheme}
         />
       )
     }
     case 3: {
-      return <BlockFeedback onNext={onSubmitFeedback} />
+      return <BlockFeedback onNext={onSubmitFeedback} darkTheme={darkTheme} />
     }
     default:
       break

@@ -17,6 +17,7 @@ const Trial2 = ({
   onFinishTrial,
   showTracker = false,
   trackerIndex,
+  darkTheme = false,
 }) => {
   // Steps => 0: Ready, 1: Show Stimuli, 2: Recognition Task
   const [step, setStep] = useState(0)
@@ -74,6 +75,7 @@ const Trial2 = ({
           onStartTrial={() => {
             setStep(1)
           }}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -88,6 +90,7 @@ const Trial2 = ({
           background={background}
           dontShowLetter={dontShowLetter}
           onNext={onFinishImagination}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -98,6 +101,7 @@ const Trial2 = ({
           stimuliArray={trialParams.stimuli}
           onFinishStep={onFinishFirstStep}
           showFeedback={showFeedback}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -106,6 +110,7 @@ const Trial2 = ({
         <TrialGrid
           isWhiteThemed={background === 'L' ? true : false}
           isBold={true}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -116,6 +121,7 @@ const Trial2 = ({
           stimuliArray={trialParams.recognition}
           onFinishStep={onFinishRecognition}
           showFeedback={showFeedback}
+          darkTheme={darkTheme}
         />
       )
     }
@@ -126,6 +132,7 @@ const Trial2 = ({
           onFinishStep={onNext}
           showTracker={showTracker}
           index={trackerIndex + 1}
+          darkTheme={darkTheme}
         />
       )
     }

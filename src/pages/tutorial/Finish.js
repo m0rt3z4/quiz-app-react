@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { Box, Grid, Card, Typography, Button } from '@mui/material'
 import { useTrialContext } from '../../layouts/TrialLayout/context'
 
-const Finish = () => {
+const Finish = ({ darkTheme = false }) => {
   const { changeTitle, showArrows } = useTrialContext()
 
   useEffect(() => {
@@ -34,7 +34,8 @@ const Finish = () => {
               maxHeight: 430,
               borderRadius: '35px',
               padding: 7,
-              border: '1px solid black',
+              border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+              backgroundColor: darkTheme ? 'black' : 'white',
             }}
           >
             <Grid
@@ -44,15 +45,24 @@ const Finish = () => {
               spacing={2}
             >
               <Grid item xs={8}>
-                <Typography fontSize={'25px'}>
+                <Typography
+                  fontSize={'25px'}
+                  sx={{ color: darkTheme ? 'white' : 'inherit' }}
+                >
                   Thanks for your participation in this study!
                 </Typography>
-                <Typography fontSize={'25px'}>
+                <Typography
+                  fontSize={'25px'}
+                  sx={{ color: darkTheme ? 'white' : 'inherit' }}
+                >
                   Remember to pick up a debrief sheet and feel free to inquire
                   about any questions with the experimenter prior to exiting the
                   lab.
                 </Typography>
-                <Typography fontSize={'25px'}>
+                <Typography
+                  fontSize={'25px'}
+                  sx={{ color: darkTheme ? 'white' : 'inherit' }}
+                >
                   Wishing you an excellent day!
                 </Typography>
               </Grid>

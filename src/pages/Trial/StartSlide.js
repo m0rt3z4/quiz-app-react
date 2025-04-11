@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Grid, Typography, Card } from '@mui/material'
 
-const StartSlide = ({ header = '', onNext }) => {
+const StartSlide = ({ header = '', onNext, darkTheme = false }) => {
   useEffect(() => {
     setTimeout(() => {
       onNext()
@@ -22,10 +22,11 @@ const StartSlide = ({ header = '', onNext }) => {
             maxHeight: 540,
             borderRadius: '35px',
             padding: 7,
-            border: '1px solid black',
+            border: `1px solid ${darkTheme ? 'white' : 'black'}`,
+            backgroundColor: darkTheme ? 'black' : 'white',
           }}
         >
-          <Typography fontSize={'25px'}>{header}</Typography>
+          <Typography fontSize={'25px'} sx={{ color: darkTheme ? 'white' : 'inherit' }}>{header}</Typography>
         </Card>
       </Grid>
     </Grid>
